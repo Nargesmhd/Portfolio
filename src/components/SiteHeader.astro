@@ -1,5 +1,5 @@
 ---
-import { primaryNav } from '../lib/routes';
+import { primaryNav, routes } from '../lib/routes';
 import ThemeSwitch from './ThemeSwitch.tsx';
 
 interface Props {
@@ -10,7 +10,10 @@ const { current } = Astro.props;
 ---
 
 <header class="site-header">
-  <span class="wordmark">Narges Mirheydari</span>
+  {/* The wordmark is a second route home, so it is a link, not a heading.
+      aria-current stays on the nav's Works item rather than being duplicated
+      here — two "current page" markers would be noise, not information. */}
+  <a class="wordmark" href={routes.works}>Narges Mirheydari</a>
 
   <div class="header-right">
     <nav class="site-nav" aria-label="Primary">

@@ -34,10 +34,16 @@
   border-bottom: 1px dotted var(--line);
 }
 
+/* A link home, so it takes the 44px control minimum like every other one. */
 .site-header .wordmark {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font: 500 12px/1 var(--font-mono);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
 }
 
 .header-right {
