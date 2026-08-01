@@ -190,7 +190,7 @@
 }
 
 .folder-num {
-  font-size: 12px;
+  font-size: calc(12px * var(--ts));
   letter-spacing: 0.12em;
   color: var(--f-meta);
 }
@@ -202,8 +202,10 @@
   letter-spacing: -0.02em;
 }
 
+/* The open/close cue is the only text carrying the folder's state, so it takes
+   the same 12px floor as every other control label rather than 11px. */
 .folder-state {
-  font-size: 11px;
+  font-size: calc(12px * var(--ts));
   letter-spacing: 0.1em;
   color: var(--f-meta);
   white-space: nowrap;
@@ -246,17 +248,24 @@
   color: var(--f-meta);
 }
 
+/*
+ * The label is the folder's own colour, knocked out of a dark pill. The pill
+ * takes --f-ink rather than --ink: --f-ink is the one value guaranteed to
+ * oppose --folder-bg in every state. --ink is not — the open folder turns
+ * --folder-bg yellow, and in a dark theme --ink is a near-white, which put
+ * pale yellow on white (1.1:1) and left the primary CTA invisible.
+ */
 .folder-cta {
   display: inline-flex;
   align-items: center;
   min-height: 46px;
   margin-top: 18px;
   padding: 0 22px;
-  background: var(--ink);
+  background: var(--f-ink);
   color: var(--folder-bg);
   border-radius: 3px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: calc(12px * var(--ts));
   letter-spacing: 0.08em;
 }
 
@@ -344,7 +353,7 @@
   color: var(--bg);
   border-radius: 3px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: calc(12px * var(--ts));
   letter-spacing: 0.08em;
 }
 
@@ -365,7 +374,7 @@
   background: var(--paper);
   color: var(--ink);
   border-top: 1px dotted var(--line);
-  font: 500 12px/1.4 var(--font-mono);
+  font: 500 calc(12px * var(--ts)) / 1.4 var(--font-mono);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;

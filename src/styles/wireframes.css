@@ -18,7 +18,7 @@
   background: var(--paper);
   color: var(--ink);
   border: 1px dotted var(--line);
-  font: 500 12px/1 var(--font-mono);
+  font: 500 calc(12px * var(--ts)) / 1 var(--font-mono);
   letter-spacing: 0.08em;
 }
 
@@ -246,6 +246,8 @@
   color: var(--note-ink);
 }
 
+/* Caveat sets a good deal smaller than a sans at the same nominal size, so
+   these read at 18px to land near the 12px mono the other controls use. */
 .wf-chip {
   min-height: 44px;
   padding: 0 18px;
@@ -253,7 +255,7 @@
   background: none;
   border: 1.5px dashed var(--note-ink);
   color: var(--note-ink);
-  font: 600 16px/1 var(--font-hand);
+  font: 600 calc(18px * var(--ts)) / 1.15 var(--font-hand);
   text-align: left;
   text-decoration: none;
   display: inline-flex;
