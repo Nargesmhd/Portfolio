@@ -4,22 +4,34 @@ import RotatingWord from '../components/RotatingWord.tsx';
 import Marquee from '../components/Marquee.tsx';
 import FolderStack from '../components/FolderStack.tsx';
 import AboutAccordion from '../components/AboutAccordion.tsx';
+import { url } from '../lib/routes';
 import '../styles/home.css';
 ---
 
 <Base title="Works — Narges Mirheydari" current="works">
   <div class="home">
     <div class="masthead">
-      <h1>Works</h1>
-      {/* A nav affordance for a future archive route, not a heading. */}
-      <p class="archive">Archive</p>
-    </div>
+      {/* alt="" on purpose: the heading right below already says who this is,
+          so naming her again in the image would only repeat the sentence a
+          screen reader is about to read. */}
+      <img
+        class="portrait"
+        src={url('/portrait.jpg')}
+        alt=""
+        width="160"
+        height="160"
+        decoding="async"
+      />
+      <div class="masthead-text">
+        <h1>Hi, I am Narges.</h1>
 
-    <p class="intro">
-      Product designer in Toronto. I use behavioural research and WCAG standards
-      to build things that work for everyone - including the people most
-      products forget.
-    </p>
+        <p class="intro">
+          A product designer in Toronto. I use behavioural research and WCAG
+          standards to build things that work for everyone - including the
+          people most products forget.
+        </p>
+      </div>
+    </div>
 
     <RotatingWord client:load />
 

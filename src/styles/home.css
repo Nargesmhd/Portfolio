@@ -8,26 +8,43 @@
 
 .masthead {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 26px;
   flex-wrap: wrap;
 }
 
-.masthead h1,
-.masthead .archive {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 88px;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+/* min-width lets the column shrink before the flex row wraps, so the bio
+   reflows next to the photo instead of jumping under it too early. */
+.masthead-text {
+  flex: 1 1 320px;
+  min-width: 0;
 }
 
-.masthead .archive {
-  color: var(--muted);
+/* Fixed square + object-fit so any crop the photo arrives in still lands as a
+   circle instead of an ellipse. */
+.portrait {
+  flex: none;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+/* Reads as the first line of the bio, not a display heading: same type as the
+   paragraph under it, so the greeting carries no extra weight. */
+.masthead h1 {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: calc(19px * var(--ts));
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: var(--body);
 }
 
 .intro {
-  margin-top: 22px;
+  margin-top: 4px;
   max-width: 58ch;
   font-size: calc(19px * var(--ts));
   line-height: 1.6;
@@ -440,9 +457,9 @@
 /* ------------------------------------------------------------------ narrow */
 
 @media (max-width: 700px) {
-  .masthead h1,
-  .masthead .archive {
-    font-size: 56px;
+  .portrait {
+    width: 120px;
+    height: 120px;
   }
 
   .rotator {
