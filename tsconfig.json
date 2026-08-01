@@ -6,7 +6,8 @@
   ],
   "exclude": [
     "dist",
-    "design"
+    "design",
+    "worker"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

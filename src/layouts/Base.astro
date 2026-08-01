@@ -18,13 +18,33 @@ interface Props {
   description?: string;
   /** Which nav item gets aria-current="page". Omit on pages outside the nav. */
   current?: 'works' | 'about' | 'design';
+  /**
+   * Keeps the page out of search results *and* out of its own analytics.
+   * The two belong together: a page nobody should find is also a page whose
+   * views would only ever be mine, and counting those would corrupt the very
+   * numbers the admin page exists to report.
+   */
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Product designer in Toronto. Behavioural research and WCAG standards, applied to things that work for everyone.',
   current,
+  noindex = false,
 } = Astro.props;
+
+/*
+ * Cloudflare Web Analytics. The token is a public, write-only site tag — it is
+ * meant to ship in the page, and it grants no read access to the numbers. The
+ * reading side is the Worker behind Cloudflare Access; nothing here can be used
+ * to see the data.
+ *
+ * Unset means no beacon at all, so local dev and previews never pollute the
+ * real counts. See docs/analytics.md for where the value comes from.
+ */
+const beaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+const beacon = !noindex && beaconToken ? beaconToken : null;
 ---
 
 <!doctype html>
@@ -34,7 +54,24 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+
+    {
+      /*
+        Deferred so it never competes with first paint, and cookie-less by
+        design — it stores nothing on the visitor's machine, which is why the
+        site needs no cookie banner.
+      */
+      beacon && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: beacon })}
+        />
+      )
+    }
 
     {/*
       Runs before first paint so the saved theme and reading settings are

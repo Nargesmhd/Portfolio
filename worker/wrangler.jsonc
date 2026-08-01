@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio-admin-stats",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-01",
+
+  // No workers.dev subdomain. That URL would sit outside the zone, which means
+  // outside the Access application — a second front door to the same data with
+  // no lock on it. The JWT check in the Worker would still refuse it, but the
+  // better answer is for the door not to exist.
+  "workers_dev": false,
+
+  // Inside /admin/* so the Access application covering that path covers this
+  // too, and the dashboard's fetch is same-origin.
+  "routes": [
+    {
+      "pattern": "nargesmirheydari.com/admin/api/*",
+      "zone_name": "nargesmirheydari.com"
+    }
+  ],
+
+  "observability": { "enabled": true },
+
+  // Not secrets: an account id, a public site tag, your team domain, and the
+  // Access audience tag. All are safe in version control — none grants access
+  // on its own. Fill these in before the first deploy; CF_API_TOKEN is the one
+  // real secret and is set with `wrangler secret put`, never here.
+  "vars": {
+    "CF_ACCOUNT_ID": "",
+    "CF_SITE_TAG": "",
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": ""
+  }
+}
