@@ -8,7 +8,7 @@ export type FolderItem = {
   num: string;
   title: string;
   description: string;
-  /** The mono line under the description — reads like a label on a real file. */
+  /** The mono line under the description - reads like a label on a real file. */
   contents: string;
   cta: string;
   href: string;
@@ -16,7 +16,7 @@ export type FolderItem = {
   tone: string;
   /** Tab offset, so the tabs form a staircase. */
   tabOffset: number;
-  /** Optional short status word — shown beside the title, e.g. DRAFT. */
+  /** Optional short status word - shown beside the title, e.g. DRAFT. */
   badge?: string;
 };
 
@@ -24,7 +24,7 @@ type Props = {
   items: FolderItem[];
   /** Sits above the pile, outside the list. */
   caption: string;
-  /** Names the list for screen readers — a page can hold more than one stack. */
+  /** Names the list for screen readers - a page can hold more than one stack. */
   label: string;
 };
 

@@ -21,7 +21,7 @@ tag, which cannot read anything back.
 > `/admin` is left out of the build entirely and returns a 404 in production.
 > It still works in `npm run dev`, where only localhost can reach it.
 >
-> Turn it on by building with `ENABLE_ADMIN=1` — step 6 below. Do that *after*
+> Turn it on by building with `ENABLE_ADMIN=1` - step 6 below. Do that *after*
 > step 4, not before.
 
 ```
@@ -33,7 +33,7 @@ you → /admin (Access challenge) → dashboard      │ GraphQL + secret token
 
 ## Setup
 
-These steps need your Cloudflare login, so they are yours to run — I can't
+These steps need your Cloudflare login, so they are yours to run - I can't
 create accounts or handle credentials. Everything in the repo is already
 written and waiting on the five values you collect below.
 
@@ -41,7 +41,7 @@ written and waiting on the five values you collect below.
 
 Add `nargesmirheydari.com` to Cloudflare and change the nameservers at your
 registrar (Namecheap) to the pair Cloudflare gives you. Make sure the record for
-the apex is **proxied** (orange cloud) — Access and Workers only apply to
+the apex is **proxied** (orange cloud) - Access and Workers only apply to
 proxied traffic.
 
 > **Copy your email records across first.** Changing nameservers moves *all*
@@ -57,11 +57,11 @@ proxied traffic.
 > | MX | `@` | `eforward3.registrar-servers.com` | 10 |
 > | MX | `@` | `eforward4.registrar-servers.com` | 15 |
 > | MX | `@` | `eforward5.registrar-servers.com` | 20 |
-> | TXT | `@` | `v=spf1 include:spf.efwd.registrar-servers.com ~all` | — |
+> | TXT | `@` | `v=spf1 include:spf.efwd.registrar-servers.com ~all` | - |
 >
 > Also keep the four GitHub Pages A records (`185.199.108–111.153`) and the
 > `www` CNAME to `nargesmhd.github.io`. Cloudflare's scan usually imports these
-> automatically — check them against the list before you switch.
+> automatically - check them against the list before you switch.
 
 Nothing about the deploy changes. GitHub Pages stays the origin, and the
 workflow is untouched.
@@ -82,7 +82,7 @@ in `.github/workflows/deploy.yml`:
 ```
 
 The `PUBLIC_` prefix is Astro's marker for "safe to ship to the browser", which
-this is — it can only write events, never read them. Leave it unset locally so
+this is - it can only write events, never read them. Leave it unset locally so
 your own development never lands in the real numbers.
 
 While you're on that screen, note the **site tag** (the `siteTag`, distinct from
@@ -92,12 +92,12 @@ the beacon token). The Worker needs it.
 
 **My Profile → API Tokens → Create Token → Create Custom Token.**
 
-- Permission: **Account · Account Analytics · Read** — this one permission and
+- Permission: **Account · Account Analytics · Read** - this one permission and
   nothing else. It cannot change settings, read email, or touch DNS.
 - Account resources: your account only.
 - Set a TTL if you want; you'll need to rotate it when it expires.
 
-Copy the token once — Cloudflare won't show it again.
+Copy the token once - Cloudflare won't show it again.
 
 You also need your **Account ID**, on the right-hand side of any zone's overview
 page.
@@ -159,7 +159,7 @@ then.
 
 Confirm the lock works by opening the same URL in a private window: it should
 stop at the Cloudflare login and never reach the page. If it loads without
-asking, the Access application is not matching the path — fix that before
+asking, the Access application is not matching the path - fix that before
 leaving it up.
 
 ## How access is actually enforced
@@ -169,12 +169,12 @@ configuration drifts:
 
 1. **Cloudflare Access** blocks unauthenticated requests at the edge, before
    they reach GitHub Pages or the Worker.
-2. **The Worker verifies the Access JWT itself** — signature against your team's
+2. **The Worker verifies the Access JWT itself** - signature against your team's
    public keys, audience, issuer, and expiry (`worker/src/access.ts`). If the
    route were ever misconfigured so that Access didn't cover it, the data stays
    shut.
 
-`workers_dev` is off, so the Worker has no `*.workers.dev` URL — that address
+`workers_dev` is off, so the Worker has no `*.workers.dev` URL - that address
 would sit outside the zone and therefore outside Access.
 
 What is *not* security: the page being missing from the nav, and the `noindex`

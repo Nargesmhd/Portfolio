@@ -38,7 +38,7 @@ const {
 } = Astro.props;
 
 /*
- * Cloudflare Web Analytics. The token is a public, write-only site tag — it is
+ * Cloudflare Web Analytics. The token is a public, write-only site tag - it is
  * meant to ship in the page, and it grants no read access to the numbers. The
  * reading side is the Worker behind Cloudflare Access; nothing here can be used
  * to see the data.
@@ -63,7 +63,7 @@ const beacon = !noindex && beaconToken ? beaconToken : null;
     {
       /*
         Deferred so it never competes with first paint, and cookie-less by
-        design — it stores nothing on the visitor's machine, which is why the
+        design - it stores nothing on the visitor's machine, which is why the
         site needs no cookie banner.
       */
       beacon && (

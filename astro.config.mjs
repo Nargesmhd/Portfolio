@@ -8,7 +8,7 @@ import react from '@astrojs/react';
  * be left out of a build entirely.
  *
  * This matters because the site is static. A page under src/pages/ becomes a
- * file in dist/, and every file in dist/ is served to anyone who asks — there
+ * file in dist/, and every file in dist/ is served to anyone who asks - there
  * is no request-time check available to refuse them. So while the domain sits
  * on GitHub Pages with nothing in front of it, the only way to keep /admin
  * private is to not publish it.
@@ -45,7 +45,7 @@ const adminRoute = {
   },
 };
 
-// Served from the apex domain, so the site sits at the root — no `base`.
+// Served from the apex domain, so the site sits at the root - no `base`.
 // The domain binding itself lives in public/CNAME, which GitHub Pages reads
 // out of the build artifact on every deploy.
 // https://astro.build/config

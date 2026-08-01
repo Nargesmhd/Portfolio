@@ -5,7 +5,7 @@
   "compatibility_date": "2026-07-01",
 
   // No workers.dev subdomain. That URL would sit outside the zone, which means
-  // outside the Access application — a second front door to the same data with
+  // outside the Access application - a second front door to the same data with
   // no lock on it. The JWT check in the Worker would still refuse it, but the
   // better answer is for the door not to exist.
   "workers_dev": false,
@@ -22,7 +22,7 @@
   "observability": { "enabled": true },
 
   // Not secrets: an account id, a public site tag, your team domain, and the
-  // Access audience tag. All are safe in version control — none grants access
+  // Access audience tag. All are safe in version control - none grants access
   // on its own. Fill these in before the first deploy; CF_API_TOKEN is the one
   // real secret and is set with `wrangler secret put`, never here.
   "vars": {

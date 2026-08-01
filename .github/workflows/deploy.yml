@@ -34,7 +34,7 @@ jobs:
 
       # The Cloudflare Web Analytics beacon tag. Write-only and meant to be
       # public, but it lives in a secret so it is set in one place rather than
-      # committed. Unset — in a fork, or locally — simply omits the beacon, so
+      # committed. Unset - in a fork, or locally - simply omits the beacon, so
       # the build never fails for want of it and development never lands in the
       # real numbers. See docs/analytics.md.
       - run: npm run build
