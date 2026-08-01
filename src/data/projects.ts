@@ -66,38 +66,41 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'freelance-remediation',
-    title: 'freelance remediation',
-    draft: true,
+    slug: 'bookloop',
+    title: 'bookloop',
     summary:
-      'Draft. Accessibility remediation for small teams, 2022 onward. Pick one engagement and write it up the way nibbit.ai is written up.',
-    contents: 'draft · not written yet',
-    headline: 'Name the outcome you delivered, not the work you did',
+      'Audit and remediation of a live social book club app - form semantics, dark-mode contrast, and a keyboard defect that was quietly changing which books clubs read.',
+    contents: 'audit · 110 controls · both themes · WCAG 2.2 AA',
+    headline: 'An accessibility audit that changed the product, not just the markup',
     meta: [
-      ['Role', 'Freelance (fill in)'],
-      ['Timeline', 'fill in'],
-      ['Team', 'fill in'],
+      ['Role', 'Product Designer (solo)'],
+      ['Timeline', '2026'],
+      ['Team', 'Solo project'],
       ['Standard', 'WCAG 2.2 AA'],
     ],
-    heroCaption: 'before/after of the screen you changed - drop real screens here',
+    heroCaption: 'the same Search button in both themes - 15.3:1 and 1.05:1',
     sections: [
       {
         heading: 'Problem',
-        body: 'What was broken, and for whom. Name the barrier in plain language and say who hit it - a keyboard user, a screen-reader user, someone reading at 200% zoom. Two or three sentences is enough.',
+        body: 'BookLoop is a book club app where progress, posts and votes update live. It had two accessibility problems and only one of them was visible. The first was ordinary and severe: 73 of its 110 form controls had no accessible name, because labels were written as siblings of their inputs rather than linked to them - including the Email and Password fields on the sign-in screen, the first thing anyone touches. The second was that the product assumed an uninterrupted reader. You read fifteen pages on a Tuesday, nothing for nine days, then an hour on a plane, and by the time you finish, the thing you wanted to say about chapter three is gone. That gap hits everyone, and it hits people with ADHD, brain fog or fluctuating capacity considerably harder.',
       },
       {
         heading: 'Process',
-        body: 'What you audited, what you rebuilt, and how you checked it. This is the section that proves the method, so keep the order you actually worked in rather than the order that sounds tidy.',
+        body: 'Two passes, because the two kinds of defect hide from different tools. A static scan of every component file checked each control for an accessible name and each label for a real association - that is where the 73 came from, and the 30 labels attached to nothing at all. Then I ran the app locally against its own database and measured contrast on the rendered elements in both themes rather than reading it off the palette. That is how the dark-mode Search button turned up at 1.05:1, white on cream, from a hardcoded text-white sitting next to a background token that flips from navy to cream between themes - a pairing that appears 98 times. The remaining four defects were found by using the product, not by scanning it.',
       },
       {
         heading: 'Outcome',
-        body: 'What shipped and what it changed. Claim only what you measured - the numbers below should be countable, not estimated.',
+        body: 'Four defects fixed. The one worth naming looked like a keyboard bug and was corrupting data: half-star ratings were chosen by cursor position, and keyboard activation reports a cursor position of zero, so keyboard users could set 2.5 stars but never 3. Club ballots are decided by average stars, so keyboard votes ran half a star low and could change which book a club read. The fix changed the design rather than the markup - five focusable stars became one slider with the stars decorative, five tab stops down to one, arrows previewing and Enter committing so a trip from 1 to 5 does not fire five writes at everyone watching the ballot. Contrast, focus order and modal keyboard handling were fixed across 15 files and 36 controls. The open findings are documented with severity, WCAG criterion and a plan ordered by impact per hour.',
+      },
+      {
+        heading: 'Strategy',
+        body: 'Two things this project taught me. An unadopted primitive is worse than none: BookLoop had a shared Button component added specifically so contrast could be fixed in one place, and nothing ever imported it - 78 hand-styled buttons across 55 class signatures instead, which is why every fix cost 15 files rather than one line. And cognitive accessibility is product strategy, not an accommodation bolted on. Progress is stored as a percent rather than a page, which is the only unit that means the same thing to a paperback, an ebook and a fourteen-hour audiobook, and it is also what lets notes anchor to a place in the book and stay sealed until you reach them - so you can open a three-week-old club thread without being spoiled. That is not a feature for a minority. It is the reason someone is still in the club in week six.',
       },
     ],
     metrics: [
-      ['—', 'fill in'],
-      ['—', 'fill in'],
-      ['—', 'fill in'],
+      ['73/110', 'controls with no name'],
+      ['1.05:1', 'dark-mode button contrast'],
+      ['4', 'defects found and fixed'],
     ],
   },
   {
