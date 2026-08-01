@@ -1,0 +1,174 @@
+@import './tokens.css';
+@import './chrome.css';
+
+/* ------------------------------------------------------------------- reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: calc(16px * var(--ts));
+  line-height: 1.6;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+/* -------------------------------------------------------------- typography */
+
+:root {
+  --font-serif: 'Newsreader Variable', 'Newsreader', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-hand: 'Caveat Variable', 'Caveat', cursive;
+}
+
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Large display text balances; running copy gets the prettier rag. */
+h1,
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------- focus */
+/* Global and non-negotiable: every interactive element shows the same ring. */
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Only suppress the default ring where :focus-visible is supported, so
+   keyboard users never lose the indicator in older engines. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* -------------------------------------------------------------- primitives */
+
+/* The yellow highlighter underlay. Depth varies by type size, so it is a
+   variable rather than four near-identical classes. */
+.hl {
+  box-shadow: inset 0 calc(-1 * var(--hl-depth, 9px)) 0 var(--accent);
+}
+
+/* Diagonal-stripe image placeholder. Every image slot in the design is a
+   named empty box rather than a stock photo. */
+.stripe {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--line) 0 1px,
+    transparent 1px 9px
+  );
+  background-color: var(--f3);
+  border: 1px solid var(--line);
+}
+
+/* Visually hidden but reachable by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------- motion */
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-enter {
+    animation: page-enter 250ms ease;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The blanket guard. JS additionally refuses to start the rotating word and
+   the folder-pull timer, because cancelling an animation is not the same as
+   never scheduling the state change behind it. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

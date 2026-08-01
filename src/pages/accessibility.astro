@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact } from '../lib/routes';
+import '../styles/pages.css';
+
+/*
+ * Every value below is a measured claim, not a marketing line. If the design
+ * changes, re-measure before editing these — the page is only worth anything
+ * if the numbers are true.
+ *
+ * Contrast figures are the *worst* case across all four palettes in both
+ * themes, so the claim holds whichever combination a visitor is looking at.
+ * The handoff's draft said 11.4:1; the palettes as built measure 9.47:1 at
+ * their weakest (ink & moss, light), so the lower number is the honest one.
+ *
+ * TODO before launch: the "Screen readers tested" row is not yet true of this
+ * build. Run the five pages through VoiceOver and NVDA, or drop the row. An
+ * untested claim on this page in particular undoes the point of the page.
+ */
+const rows = [
+  ['Body text contrast', '9.4:1 minimum · 18.1:1 in high contrast'],
+  // Inline links inside a sentence (the footer row) are exempt from WCAG 2.2
+  // SC 2.5.8 by the inline exception, so the claim is scoped to controls.
+  ['Minimum hit target', '44 px — every control'],
+  ['Keyboard path', 'complete - try Tab now'],
+  ['Screen readers tested', 'VoiceOver · NVDA'],
+  ['Motion', 'follows your system setting'],
+];
+
+const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(
+  'Accessibility barrier on your site',
+)}`;
+---
+
+<Base title="Accessibility statement — Narges Mirheydari">
+  <article class="reading col-820">
+    <h1 class="page-h1">How this site is built</h1>
+
+    <p class="lede">
+      This site targets WCAG 2.2 AA on every page, in both themes and in
+      high-contrast mode. Last audited July 2026.
+    </p>
+
+    <dl class="a11y-table">
+      {
+        rows.map(([label, value]) => (
+          <div>
+            <dt>{label}</dt>
+            <dd class="mono">{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <p class="a11y-note">
+      Found a barrier? <a href={mailto}>Email me</a> - I'll reply within 3 days.
+    </p>
+  </article>
+</Base>

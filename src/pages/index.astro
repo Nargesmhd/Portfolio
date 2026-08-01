@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import RotatingWord from '../components/RotatingWord.tsx';
+import Marquee from '../components/Marquee.tsx';
+import FolderStack from '../components/FolderStack.tsx';
+import AboutAccordion from '../components/AboutAccordion.tsx';
+import '../styles/home.css';
+---
+
+<Base title="Works — Narges Mirheydari" current="works">
+  <div class="home">
+    <div class="masthead">
+      <h1>Works</h1>
+      {/* A nav affordance for a future archive route, not a heading. */}
+      <p class="archive">Archive</p>
+    </div>
+
+    <p class="intro">
+      Product designer in Toronto. I use behavioural research and WCAG standards
+      to build things that work for everyone - including the people most
+      products forget.
+    </p>
+
+    <RotatingWord client:load />
+
+    <div class="scroll-cue mono" aria-hidden="true">
+      SCROLL<span>↓</span>
+    </div>
+
+    <Marquee client:load />
+
+    <FolderStack client:load />
+
+    <AboutAccordion client:load />
+  </div>
+</Base>

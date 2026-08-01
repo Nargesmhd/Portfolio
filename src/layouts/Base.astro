@@ -1,0 +1,113 @@
+---
+import '@fontsource-variable/newsreader';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource-variable/caveat';
+import '../styles/global.css';
+
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ReadingRail from '../components/ReadingRail.tsx';
+import { url } from '../lib/routes';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Which nav item gets aria-current="page". Omit on pages outside the nav. */
+  current?: 'works' | 'about' | 'design';
+}
+
+const {
+  title,
+  description = 'Product designer in Toronto. Behavioural research and WCAG standards, applied to things that work for everyone.',
+  current,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light" data-palette="sky">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+
+    {/*
+      Runs before first paint so the saved theme and reading settings are
+      already on <html> when the page renders. Without this the page would
+      flash the default light theme before React hydrated — which is worst
+      for exactly the users these settings exist for.
+    */}
+    <script is:inline>
+      (function () {
+        var el = document.documentElement;
+        var p = {};
+        try {
+          p = JSON.parse(localStorage.getItem('nm-prefs') || '{}') || {};
+        } catch (e) {
+          p = {};
+        }
+        var theme =
+          p.theme ||
+          (window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light');
+        el.dataset.theme = theme;
+        el.dataset.palette = p.palette || 'sky';
+        if (p.largerText) el.dataset.text = 'large';
+        if (p.highContrast) el.dataset.contrast = 'high';
+        if (p.plain) el.dataset.plain = 'on';
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <SiteHeader current={current} />
+
+    <ReadingRail client:load />
+
+    <main id="main" class="shell page-enter" tabindex="-1">
+      <slot />
+    </main>
+
+    <SiteFooter />
+
+    <style>
+      /* Off-screen until focused, then pinned top-left. Kept in the layout
+         because it must be the first focusable element in the document. */
+      /* The handoff specifies 12px/18px padding, which lands at 37px tall —
+         under the 44px minimum the site claims. Kept the visual padding and
+         set an explicit min-height so the target actually meets the claim. */
+      .skip {
+        position: absolute;
+        left: 12px;
+        top: -60px;
+        z-index: 20;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        background: var(--ink);
+        color: var(--bg);
+        padding: 12px 18px;
+        font: 500 13px/1 var(--font-mono);
+        text-decoration: none;
+      }
+
+      .skip:focus {
+        top: 12px;
+      }
+
+      /* main is focusable only as the skip-link target — never a tab stop. */
+      main:focus {
+        outline: none;
+      }
+    </style>
+  </body>
+</html>

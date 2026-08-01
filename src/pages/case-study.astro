@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import { routes } from '../lib/routes';
+import '../styles/pages.css';
+
+const meta = [
+  ['Role', 'Product Designer (solo)'],
+  ['Timeline', 'Jan 2023 – Nov 2024'],
+  ['Team', 'Early-stage startup'],
+  ['Standard', 'WCAG 2.2 AA'],
+];
+
+const sections = [
+  {
+    heading: 'Problem',
+    body: 'Tab order followed the DOM, not the visual flow. Keyboard users hit dead ends in the core consumer flow - actions a mouse could reach had no keyboard route at all, and screen readers announced controls in an order that made no sense.',
+  },
+  {
+    heading: 'Process',
+    body: 'Audited every stop in the flow, rebuilt the layout in screen-reader order so the visual and programmatic sequence matched, then tested each round with VoiceOver and NVDA before shipping.',
+  },
+  {
+    heading: 'Outcome',
+    body: 'Every mouse path got a keyboard twin. The rebuilt flow shipped across the consumer app.',
+  },
+];
+
+const metrics = [
+  ['23 mo', 'on the product'],
+  ['100%', 'keyboard coverage'],
+  ['2', 'screen readers tested'],
+];
+---
+
+<Base title="Case study: nibbit.ai — Narges Mirheydari">
+  <article class="reading col-820">
+    <p class="breadcrumb mono">
+      <a href={routes.works}>works</a> / case study
+    </p>
+
+    <h1 class="page-h1">
+      Giving keyboard users the same path as mouse users
+    </h1>
+
+    <dl class="meta-grid">
+      {
+        meta.map(([label, value]) => (
+          <div>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <figure class="slot">
+      <div class="stripe slot-16-8"></div>
+      <figcaption class="slot-caption mono">
+        before/after of the core flow - drop real screens here
+      </figcaption>
+    </figure>
+
+    {
+      sections.map(({ heading, body }) => {
+        const id = heading.toLowerCase();
+        return (
+          <section class="section" aria-labelledby={id}>
+            <h2 id={id} class="hl">
+              {heading}
+            </h2>
+            <p>{body}</p>
+          </section>
+        );
+      })
+    }
+
+    <div class="metrics">
+      {
+        metrics.map(([figure, label]) => (
+          <div>
+            <p class="metric-figure">{figure}</p>
+            <p class="metric-label mono">{label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <nav class="page-nav mono" aria-label="Case study">
+      <a href={routes.works}>← back to folders</a>
+      <a href={routes.design}>how I design →</a>
+    </nav>
+  </article>
+</Base>

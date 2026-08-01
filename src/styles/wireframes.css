@@ -1,0 +1,298 @@
+/*
+ * The wireframe sheets are content, not chrome: they are artefacts of the
+ * design process, reproduced sketchy styling and all. They stay white with
+ * dark ink in both themes because they are pictures of paper — only the notes
+ * printed *outside* a sheet follow the theme.
+ */
+
+.wf-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.wf-pill {
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px dotted var(--line);
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.wf-pill[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.wf-tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.wf-stage {
+  display: flex;
+  gap: 24px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* --------------------------------------------------------------- the sheet */
+
+.wf-sheet {
+  flex: none;
+  width: 430px;
+  background: #fff;
+  color: #333;
+  border: 1.5px solid #333;
+  box-shadow: 0 8px 18px rgba(23, 24, 26, 0.18);
+  font-family: var(--font-hand);
+  padding: 16px 16px 20px;
+}
+
+.wf-sheet > * + * {
+  margin-top: 8px;
+}
+
+.wf-crumb {
+  font: 500 14px/1 var(--font-hand);
+  color: #6d6d6d;
+}
+
+.wf-title {
+  font: 600 34px/1.05 var(--font-hand);
+}
+
+.wf-title--big {
+  font-size: 40px;
+}
+
+.wf-sub {
+  font: 500 15px/1.25 var(--font-hand);
+  color: #555;
+}
+
+/* Margin notes printed inside a sheet. #c2410c measures 5.2:1 on white. */
+.wf-note {
+  font: 600 14px/1.2 var(--font-hand);
+  color: #c2410c;
+  transform: rotate(-1deg);
+}
+
+.wf-note--right {
+  text-align: right;
+  transform: rotate(1deg);
+}
+
+.wf-box {
+  border: 1.5px solid #333;
+  padding: 5px 7px;
+  font: 500 13px/1.25 var(--font-hand);
+}
+
+.wf-row {
+  display: grid;
+  gap: 6px;
+}
+
+.wf-row--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.wf-row--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.wf-strip {
+  height: 22px;
+  border: 1.5px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 13px/1 var(--font-hand);
+}
+
+.wf-strip--accent {
+  background: #f3e14f;
+}
+
+/* Diagonal-cross image placeholder, drawn the way you would sketch one. */
+.wf-img {
+  border: 1.5px solid #999;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), #bbb 50%, transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), #bbb 50%, transparent calc(50% + 1px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px;
+  font: 600 15px/1.2 var(--font-hand);
+  color: #6d6d6d;
+}
+
+.wf-bar {
+  border-left: 4px solid #f3e14f;
+  padding: 6px 10px;
+  font: 600 17px/1.15 var(--font-hand);
+}
+
+.wf-bar span {
+  font-weight: 500;
+  color: #777;
+}
+
+.wf-folder {
+  border: 1.5px solid #333;
+  padding: 6px 8px;
+  font: 600 15px/1.2 var(--font-hand);
+}
+
+.wf-folder--accent {
+  background: #f3e14f;
+}
+
+.wf-folder span {
+  display: block;
+  font-weight: 500;
+  font-size: 13px;
+  color: #555;
+}
+
+.wf-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.wf-metrics div {
+  border: 1.5px dashed #333;
+  padding: 5px;
+  text-align: center;
+  font: 600 18px/1.1 var(--font-hand);
+}
+
+.wf-metrics span {
+  display: block;
+  font-weight: 500;
+  font-size: 13px;
+  color: #666;
+}
+
+.wf-pins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.wf-pin {
+  border: 1.5px dashed #333;
+  padding: 6px 8px;
+  font: 500 14px/1.2 var(--font-hand);
+  display: flex;
+  gap: 8px;
+}
+
+.wf-pin b {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #f3e14f;
+  border: 1.5px solid #333;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+.wf-foot {
+  display: flex;
+  justify-content: space-between;
+  font: 500 14px/1 var(--font-hand);
+  color: #555;
+}
+
+/* ------------------------------------------------------- follow-a-link rail */
+/*
+ * These notes sit on the page background rather than on a sheet, so they take
+ * a themed orange: #b03a08 on light, #ff9c73 on dark.
+ */
+
+.wf-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 260px;
+  --note-ink: #b03a08;
+}
+
+:root[data-theme='dark'] .wf-links {
+  --note-ink: #ff9c73;
+}
+
+/* In high contrast the themed orange is replaced by the plain ink colour,
+   which is guaranteed to be pure black or pure white. */
+:root[data-contrast='high'] .wf-links {
+  --note-ink: var(--ink);
+}
+
+.wf-links-title {
+  font: 600 18px/1.3 var(--font-hand);
+  color: var(--note-ink);
+}
+
+.wf-chip {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: none;
+  border: 1.5px dashed var(--note-ink);
+  color: var(--note-ink);
+  font: 600 16px/1 var(--font-hand);
+  text-align: left;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------ page by page */
+
+.wf-all {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 22px;
+}
+
+/* flex:none — otherwise the five figures shrink below the sheet width to fit
+   the row instead of wrapping. */
+.wf-all figure {
+  margin: 0;
+  flex: none;
+}
+
+/* Prototype mode shows one sheet at 430px; page-by-page shows all five at
+   400px. Only the outer width changes — everything inside a sheet is fluid,
+   so there is one set of measurements, not two. */
+.wf-all .wf-sheet {
+  width: 400px;
+}
+
+.wf-all figcaption {
+  margin-top: 10px;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+@media (max-width: 620px) {
+  .wf-sheet,
+  .wf-all .wf-sheet {
+    width: 100%;
+  }
+}

@@ -1,0 +1,273 @@
+/* Shared styles for the reading pages: case study, about, accessibility. */
+
+.reading {
+  padding: 48px 0 64px;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.page-h1 {
+  margin-top: 18px;
+  font-size: 54px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin-top: 20px;
+  max-width: 58ch;
+  font-size: calc(18px * var(--ts));
+  line-height: 1.7;
+  color: var(--body);
+}
+
+/* ------------------------------------------------------------- meta grid */
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 34px;
+}
+
+.meta-grid > div {
+  border: 1px solid var(--line);
+  /* Collapse the shared edges so the four cells read as one ruled block. */
+  margin-left: -1px;
+  padding: 14px 16px;
+}
+
+.meta-grid > div:first-child {
+  margin-left: 0;
+}
+
+.meta-grid dt {
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.meta-grid dd {
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ----------------------------------------------------------- image slots */
+
+.slot {
+  margin-top: 34px;
+}
+
+.slot-16-8 {
+  aspect-ratio: 16 / 8;
+}
+
+.slot-3-4 {
+  aspect-ratio: 3 / 4;
+}
+
+.slot-caption {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* -------------------------------------------------------------- sections */
+
+.section {
+  margin-top: 44px;
+}
+
+.section h2 {
+  display: inline;
+  font-size: 32px;
+  line-height: 1.3;
+  --hl-depth: 10px;
+}
+
+.section p {
+  margin-top: 16px;
+  font-size: calc(17px * var(--ts));
+  line-height: 1.7;
+  color: var(--body);
+}
+
+/* --------------------------------------------------------------- metrics */
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 52px;
+}
+
+.metrics > div {
+  border: 1px dashed var(--line);
+  padding: 20px;
+}
+
+.metric-figure {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.metric-label {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------- page footer nav */
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 56px;
+  padding-top: 22px;
+  border-top: 1px dotted var(--line);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.page-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------------------- about */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 36px;
+  padding: 48px 0 64px;
+}
+
+.about-dl,
+.contact-dl {
+  display: grid;
+  gap: 10px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.about-dl {
+  grid-template-columns: 90px 1fr;
+  margin-top: 18px;
+}
+
+.contact-dl {
+  grid-template-columns: 110px 1fr;
+  margin-top: 30px;
+}
+
+.about-dl dt,
+.contact-dl dt {
+  color: var(--muted);
+  text-transform: lowercase;
+}
+
+.about-dl dd,
+.contact-dl dd {
+  margin: 0;
+}
+
+.about-h1 {
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.about-h1 .quiet {
+  color: var(--muted);
+}
+
+.about-body p {
+  margin-top: 20px;
+  max-width: 58ch;
+  font-size: calc(18px * var(--ts));
+  line-height: 1.7;
+  color: var(--body);
+}
+
+/* --------------------------------------------------- accessibility table */
+
+.a11y-table {
+  margin-top: 34px;
+  border: 1px solid var(--line);
+}
+
+.a11y-table > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 18px;
+  border-top: 1px dotted var(--line);
+}
+
+.a11y-table > div:first-child {
+  border-top: none;
+}
+
+.a11y-table dt {
+  font-size: calc(15px * var(--ts));
+  color: var(--body);
+}
+
+.a11y-table dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.a11y-note {
+  margin-top: 34px;
+  padding: 18px 22px;
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+  font-size: calc(16px * var(--ts));
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* ---------------------------------------------------------------- narrow */
+
+@media (max-width: 760px) {
+  .page-h1 {
+    font-size: 36px;
+  }
+
+  .about-h1 {
+    font-size: 44px;
+  }
+
+  .meta-grid,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .meta-grid > div {
+    margin-left: 0;
+    margin-top: -1px;
+  }
+
+  .about-grid,
+  .a11y-table > div {
+    grid-template-columns: 1fr;
+  }
+}

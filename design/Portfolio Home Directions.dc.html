@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:'IBM Plex Sans',system-ui,sans-serif}
+a{color:#1a4fd6}a:hover{color:#0b2f8f}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+a:focus-visible,button:focus-visible{outline:3px solid #1a4fd6;outline-offset:3px}
+</style></helmet>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">"How I design" - the wireframes from <a class="dv-oid" href="#4a">4a</a>–<a class="dv-oid" href="#4e">4e</a> become a page of the site</span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="5a">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>How I design - process page in the Folder style, wireframes pinned as evidence</div>
+<div class="dv-card" style="width:1420px">
+<div style="background:#f3f0e8;color:#1b1a17;font-family:'IBM Plex Sans',sans-serif">
+<header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:1px dotted rgba(27,26,23,.35)">
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Narges Mirheydari</span>
+<nav aria-label="Primary" style="display:flex;gap:36px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">
+<a href="#5a" style="color:#1b1a17;text-decoration:none">Home</a>
+<a href="#5a" style="color:#1b1a17;text-decoration:none">Works</a>
+<a href="#5a" style="color:#1b1a17;text-decoration:none;box-shadow:inset 0 -8px 0 #f3e14f">How I design</a>
+<a href="#5a" style="color:#1b1a17;text-decoration:none">About</a>
+<a href="#5a" style="color:#1b1a17;text-decoration:none">Contact</a>
+</nav>
+</header>
+<main style="padding:44px 48px 56px">
+<h1 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:72px;line-height:.98;letter-spacing:-.03em">How I <span style="box-shadow:inset 0 -18px 0 #f3e14f">design</span></h1>
+<p style="margin:20px 0 0;max-width:62ch;font:400 18px/1.65 'IBM Plex Sans',sans-serif;color:#3c392f;text-wrap:pretty">Every page of this site started as a wireframe with accessibility decisions written in the margins. Here they are, unpolished on purpose - the orange notes are the actual reasoning, kept in the open.</p>
+<p style="margin:10px 0 0;font:400 13px/1.6 'IBM Plex Mono',monospace;color:#6f685c">wireframe → decide the tab order → write the whys → then make it pretty. never the other way around.</p>
+<div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+<div style="flex:none;width:400px;transform:rotate(-1.2deg)">
+<div style="background:#fff;border:1.5px solid #333;box-shadow:0 8px 18px rgba(27,26,23,.18)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1.5px dashed #999;background:#f7f5ee"><span style="font:600 18px/1 Caveat,cursive;color:#333">Home</span><span style="font:500 13px/1.2 Caveat,cursive;color:#c2410c">folders as the front door - one link per folder, one tab stop</span></div>
+
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px;position:relative">
+<div style="display:flex;justify-content:space-between;align-items:center;border:1.5px solid #333;padding:8px 12px">
+<span style="font:600 17px/1 Caveat,cursive">Narges Mirheydari</span>
+<span style="font:500 15px/1 Caveat,cursive">home · works · about · access · contact</span>
+</div>
+<div style="margin-top:14px;font:600 44px/1 Caveat,cursive">Works <span style="color:#bbb">Archive</span></div>
+<div style="margin-top:6px;min-height:34px;border:1.5px dashed #999;display:flex;align-items:center;padding:6px 10px;font:500 15px/1.3 Caveat,cursive;color:#777">Product designer in Toronto - behavioural research + WCAG, for the people most products forget</div>
+<p style="margin:10px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1.5deg)">19 words, real sentence - recruiters scan. plain language is an accessibility feature too (WCAG 3.1)</p>
+<div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#f3e14f;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#f3e14f;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">01 accessibility<div style="margin-top:6px;font:500 13px/1.3 Caveat,cursive;color:#555">audits + remediation, freelance 2022– · 4 audits, 2 redesigns</div></div></div>
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#e4e0d4;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#e4e0d4;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">02 product<div style="margin-top:6px;font:500 13px/1.3 Caveat,cursive;color:#555">nibbit.ai 2023–24 · keyboard parity rebuild</div></div></div>
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#eeeae0;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#eeeae0;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">03 research</div></div>
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#d8d4c6;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#d8d4c6;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">04 archive</div></div>
+</div>
+<div style="margin-top:14px;border-top:1.5px dotted #999;padding-top:8px;font:500 15px/1.4 Caveat,cursive;color:#777">about strips: experiences / skillsets / profile ↓ (accordion)</div>
+<p style="margin:2px 0 4px;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(1deg)">folders = your 4 buckets, yellow first - it's the thesis. black-on-yellow ≈ 12:1 contrast, and each folder is ONE link (one tab stop, not five)</p>
+<div style="margin-top:4px;display:grid;gap:5px">
+<div style="height:22px;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive">EXPERIENCES - tap to view</div>
+<div style="height:22px;background:#f3e14f;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive">SKILLSETS - tap to view</div>
+<div style="height:22px;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive">PROFILE - open by default</div>
+</div>
+<p style="margin:8px 0 0;text-align:right;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1deg)">reading tabs (Aa / ◐ / ≡) on the right edge - real buttons with aria-pressed, ≥44px, they remember your choice</p>
+</div>
+
+</div></div>
+<div style="flex:none;width:400px;transform:rotate(1deg)">
+<div style="background:#fff;border:1.5px solid #333;box-shadow:0 8px 18px rgba(27,26,23,.18)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1.5px dashed #999;background:#f7f5ee"><span style="font:600 18px/1 Caveat,cursive;color:#333">Case study</span><span style="font:500 13px/1.2 Caveat,cursive;color:#c2410c">the outcome in the title, receipts in the metrics</span></div>
+
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px">
+<div style="font:500 14px/1 Caveat,cursive;color:#777">works / 01 accessibility / <span style="color:#333;font-weight:600">audit-01</span></div>
+<div style="margin-top:10px;font:600 34px/1.05 Caveat,cursive">nibbit.ai: giving keyboard users the same path as mouse users</div>
+<p style="margin:6px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1deg)">title = the outcome, not the project name - screen-reader users hear it out of context in a headings list</p>
+<div style="margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">Product Designer (solo)</div>
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">Jan 2023 – Nov 2024</div>
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">early-stage startup</div>
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">WCAG 2.2 AA target</div>
+</div>
+<div style="margin-top:10px;height:120px;border:1.5px solid #999;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));display:flex;align-items:center;justify-content:center;font:600 16px/1 Caveat,cursive;color:#777">before/after of the core flow - with full alt text, not "image1"</div>
+<div style="margin-top:12px;display:grid;gap:8px">
+<div style="border-left:4px solid #f3e14f;padding:6px 10px;font:600 17px/1 Caveat,cursive">problem <span style="font-weight:500;color:#777">- tab order followed the DOM, not the visual flow; keyboard users hit dead ends</span></div>
+<div style="border-left:4px solid #f3e14f;padding:6px 10px;font:600 17px/1 Caveat,cursive">process <span style="font-weight:500;color:#777">- audit every stop → rebuild in screen-reader order → test with VoiceOver + NVDA</span></div>
+<div style="border-left:4px solid #f3e14f;padding:6px 10px;font:600 17px/1 Caveat,cursive">outcome <span style="font-weight:500;color:#777">- every mouse path got a keyboard twin; shipped across the consumer app</span></div>
+</div>
+<p style="margin:8px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(1.2deg)">3 numbers max, all verifiable - inflated metrics read as inaccessible-to-truth. these are yours:</p>
+<div style="margin-top:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+<div style="border:1.5px dashed #999;padding:8px;text-align:center;font:600 20px/1 Caveat,cursive">23 mo<div style="font:500 12px/1.2 Caveat,cursive;color:#777">on the product</div></div>
+<div style="border:1.5px dashed #999;padding:8px;text-align:center;font:600 20px/1 Caveat,cursive">100%<div style="font:500 12px/1.2 Caveat,cursive;color:#777">keyboard coverage</div></div>
+<div style="border:1.5px dashed #999;padding:8px;text-align:center;font:600 20px/1 Caveat,cursive">2<div style="font:500 12px/1.2 Caveat,cursive;color:#777">screen readers tested</div></div>
+</div>
+<div style="margin-top:12px;border:1.5px solid #333;padding:8px;display:flex;justify-content:space-between;font:600 15px/1 Caveat,cursive"><span>← back to folder</span><span>next file →</span></div>
+</div>
+
+</div></div>
+<div style="flex:none;width:400px;transform:rotate(-.8deg)">
+<div style="background:#fff;border:1.5px solid #333;box-shadow:0 8px 18px rgba(27,26,23,.18)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1.5px dashed #999;background:#f7f5ee"><span style="font:600 18px/1 Caveat,cursive;color:#333">About</span><span style="font:500 13px/1.2 Caveat,cursive;color:#c2410c">file rows - landmarks repeat so you learn the layout once</span></div>
+
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px">
+<div style="font:600 40px/1 Caveat,cursive">About <span style="color:#bbb">me</span></div>
+<div style="margin-top:12px;border:1.5px solid #333">
+<div style="padding:5px;text-align:center;font:600 12px/1 Caveat,cursive;background:#eee;border-bottom:1.5px solid #333">EXPERIENCES</div>
+<div style="display:grid;grid-template-columns:1fr 2fr 1fr;padding:6px 8px;border-bottom:1.5px dotted #999;font:500 14px/1.2 Caveat,cursive"><span style="font-weight:600">Apple</span><span>Solutions Consultant</span><span style="text-align:right;color:#777">2026–</span></div>
+<div style="display:grid;grid-template-columns:1fr 2fr 1fr;padding:6px 8px;border-bottom:1.5px dotted #999;font:500 14px/1.2 Caveat,cursive"><span style="font-weight:600">nibbit.ai</span><span>Product Designer</span><span style="text-align:right;color:#777">2023–24</span></div>
+<div style="display:grid;grid-template-columns:1fr 2fr 1fr;padding:6px 8px;font:500 14px/1.2 Caveat,cursive"><span style="font-weight:600">Freelance</span><span>Design + a11y</span><span style="text-align:right;color:#777">2022–</span></div>
+</div>
+<div style="margin-top:8px;border:1.5px solid #333">
+<div style="padding:5px;text-align:center;font:600 12px/1 Caveat,cursive;background:#f3e14f;border-bottom:1.5px solid #333">SKILLSETS</div>
+<div style="padding:6px 8px;font:500 14px/1.5 Caveat,cursive">01 WCAG conformance · 02 behavioural research · 03 road mapping · 04 documentation</div>
+</div>
+<div style="margin-top:8px;border:1.5px solid #333;display:grid;grid-template-columns:90px 1fr">
+<div style="border-right:1.5px solid #333;padding:6px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive;color:#777">photo</div>
+<div style="padding:8px;font:500 14px/1.4 Caveat,cursive;color:#555">Honours BSc Cognitive Science &amp; Psychology, UofT. Solutions Consultant at Apple. Persian &amp; English. Product design diploma, Shomal University.<br><span style="font-weight:600;color:#333">narges.mirheydari@gmail.com · /in/nargesmirheydari · github/Nargesmhd</span></div>
+</div>
+<p style="margin:10px 0 0;font:600 15px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-2deg)">↑ same paper-strip pattern as home - consistent landmarks mean screen-reader users learn the layout once</p>
+</div>
+
+</div></div>
+<div style="flex:none;width:400px;transform:rotate(1.1deg)">
+<div style="background:#fff;border:1.5px solid #333;box-shadow:0 8px 18px rgba(27,26,23,.18)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1.5px dashed #999;background:#f7f5ee"><span style="font:600 18px/1 Caveat,cursive;color:#333">Accessibility statement</span><span style="font:500 13px/1.2 Caveat,cursive;color:#c2410c">the receipts page - claim only what was measured</span></div>
+
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px">
+<div style="font:600 34px/1.05 Caveat,cursive">How this site is built</div>
+<div style="margin-top:8px;height:40px;border:1.5px dashed #999;padding:6px 10px;font:500 14px/1.3 Caveat,cursive;color:#777">"This site targets WCAG 2.2 AA. Last self-audit: July 2026. Every page, both themes."</div>
+<p style="margin:4px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1deg)">this page IS your differentiator - a11y teams WILL check it. claim only what you measured</p>
+<div style="margin-top:10px;border:1.5px solid #333">
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;border-bottom:1.5px dotted #999;font:500 13px/1.2 Caveat,cursive"><span>body contrast</span><span style="text-align:right;font-weight:600">11.4:1</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;border-bottom:1.5px dotted #999;font:500 13px/1.2 Caveat,cursive"><span>hit targets</span><span style="text-align:right;font-weight:600">≥44px</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;border-bottom:1.5px dotted #999;font:500 13px/1.2 Caveat,cursive"><span>keyboard path</span><span style="text-align:right;font-weight:600">complete</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;font:500 13px/1.2 Caveat,cursive"><span>screen readers</span><span style="text-align:right;font-weight:600">VO · NVDA</span></div>
+</div>
+<div style="margin-top:10px;display:flex;gap:6px">
+<div style="flex:1;border:1.5px solid #333;padding:6px;text-align:center;font:600 13px/1 Caveat,cursive">Aa text</div>
+<div style="flex:1;background:#f3e14f;border:1.5px solid #333;padding:6px;text-align:center;font:600 13px/1 Caveat,cursive">◐ contrast</div>
+<div style="flex:1;border:1.5px solid #333;padding:6px;text-align:center;font:600 13px/1 Caveat,cursive">≡ plain</div>
+</div>
+<p style="margin:6px 0 0;font:500 13px/1.3 Caveat,cursive;color:#777">↑ live demo of the reading tabs - larger text bumps base size 18→22px, plain layout drops decoration, not content</p>
+<div style="margin-top:10px;border-left:4px solid #f3e14f;padding:6px 10px;font:500 14px/1.4 Caveat,cursive;color:#555">"Found a barrier? Email me - I'll reply within 3 days." (mailto link)</div>
+<p style="margin:6px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(1deg)">3 days is a promise you can keep - a broken a11y promise is worse than none</p>
+</div>
+
+</div></div>
+<div style="flex:none;width:400px;transform:rotate(-1deg)">
+<div style="background:#fff;border:1.5px solid #333;box-shadow:0 8px 18px rgba(27,26,23,.18)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1.5px dashed #999;background:#f7f5ee"><span style="font:600 18px/1 Caveat,cursive;color:#333">Playground</span><span style="font:500 13px/1.2 Caveat,cursive;color:#c2410c">loose ideas, visible tab order</span></div>
+
+<div style="background:#f0efec;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px;background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:22px 22px">
+<div style="font:600 34px/1.05 Caveat,cursive">Playground</div>
+<div style="margin-top:4px;font:500 14px/1.3 Caveat,cursive;color:#777">explorations + concept shots · pins 1–4 = real tab order</div>
+<p style="margin:4px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1.2deg)">unfinished is fine - label each with what you learned. pins make focus order visible: the page teaches a11y by showing it</p>
+<div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div style="position:relative;background:#fff;border:1.5px solid #333;padding:8px;transform:rotate(-1.5deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">1</span><div style="height:64px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));border:1px solid #bbb"></div><div style="margin-top:5px;font:600 14px/1.2 Caveat,cursive">contrast experiments - theme pairs</div></div>
+<div style="position:relative;background:#fff;border:1.5px solid #333;padding:8px;transform:rotate(1deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">2</span><div style="height:64px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));border:1px solid #bbb"></div><div style="margin-top:5px;font:600 14px/1.2 Caveat,cursive">nibbit onboarding, unshipped round</div></div>
+<div style="position:relative;background:#f3e14f;border:1.5px solid #333;padding:8px;transform:rotate(.8deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">3</span><div style="font:600 15px/1.3 Caveat,cursive">cog-sci note: attention is a budget - every extra control spends it</div></div>
+<div style="position:relative;background:#fff;border:1.5px solid #333;padding:8px;transform:rotate(-.8deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">4</span><div style="height:64px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));border:1px solid #bbb"></div><div style="margin-top:5px;font:600 14px/1.2 Caveat,cursive">focus-order sketches, on paper</div></div>
+</div>
+<div style="margin-top:14px;border-top:1.5px dotted #999;padding-top:10px;font:600 15px/1 Caveat,cursive">start a convo:</div>
+<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">
+<span style="border:1.5px dashed #333;border-radius:99px;padding:4px 10px;font:500 13px/1 Caveat,cursive">"how do you audit?"</span>
+<span style="border:1.5px dashed #333;border-radius:99px;padding:4px 10px;font:500 13px/1 Caveat,cursive">"cog sci + design?"</span>
+<span style="border:1.5px dashed #333;border-radius:99px;padding:4px 10px;font:500 13px/1 Caveat,cursive">"the nibbit rebuild"</span>
+</div>
+<p style="margin:8px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(.8deg)">chips open a pre-filled email - one action, no form to fail. forms are where accessibility usually breaks</p>
+</div>
+
+</div></div>
+</div>
+</main>
+<footer style="padding:24px 48px;border-top:1px dotted rgba(27,26,23,.4);display:flex;justify-content:space-between;font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#5e5a4d">
+<span>Toronto, ON</span>
+<span>Built and tested to WCAG 2.2 AA</span>
+</footer>
+</div>
+</div>
+</div>
+</div>
+<p class="dv-next">Try next: "add this link to the other homepages" &#183; "write the process steps as numbered stages" &#183; "hi-fi the case study next"</p>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Wireframes - the full site mapped from the Folder direction (<a class="dv-oid" href="#2a">2a</a>/<a class="dv-oid" href="#3a">3a</a>)</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Home - folders as the front door</div>
+<div class="dv-card" style="width:400px">
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px;position:relative">
+<div style="display:flex;justify-content:space-between;align-items:center;border:1.5px solid #333;padding:8px 12px">
+<span style="font:600 17px/1 Caveat,cursive">Narges Mirheydari</span>
+<span style="font:500 15px/1 Caveat,cursive">home · works · about · access · contact</span>
+</div>
+<div style="margin-top:14px;font:600 44px/1 Caveat,cursive">Works <span style="color:#bbb">Archive</span></div>
+<div style="margin-top:6px;min-height:34px;border:1.5px dashed #999;display:flex;align-items:center;padding:6px 10px;font:500 15px/1.3 Caveat,cursive;color:#777">Product designer in Toronto - behavioural research + WCAG, for the people most products forget</div>
+<p style="margin:10px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1.5deg)">19 words, real sentence - recruiters scan. plain language is an accessibility feature too (WCAG 3.1)</p>
+<div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#f3e14f;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#f3e14f;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">01 accessibility<div style="margin-top:6px;font:500 13px/1.3 Caveat,cursive;color:#555">audits + remediation, freelance 2022– · 4 audits, 2 redesigns</div></div></div>
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#e4e0d4;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#e4e0d4;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">02 product<div style="margin-top:6px;font:500 13px/1.3 Caveat,cursive;color:#555">nibbit.ai 2023–24 · keyboard parity rebuild</div></div></div>
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#eeeae0;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#eeeae0;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">03 research</div></div>
+<div style="position:relative;padding-top:14px"><span style="position:absolute;top:0;left:0;width:60%;height:14px;background:#d8d4c6;clip-path:polygon(0 0,84% 0,100% 100%,0 100%)"></span><div style="background:#d8d4c6;height:96px;padding:8px;font:600 20px/1 Caveat,cursive">04 archive</div></div>
+</div>
+<div style="margin-top:14px;border-top:1.5px dotted #999;padding-top:8px;font:500 15px/1.4 Caveat,cursive;color:#777">about strips: experiences / skillsets / profile ↓ (accordion)</div>
+<p style="margin:2px 0 4px;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(1deg)">folders = your 4 buckets, yellow first - it's the thesis. black-on-yellow ≈ 12:1 contrast, and each folder is ONE link (one tab stop, not five)</p>
+<div style="margin-top:4px;display:grid;gap:5px">
+<div style="height:22px;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive">EXPERIENCES - tap to view</div>
+<div style="height:22px;background:#f3e14f;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive">SKILLSETS - tap to view</div>
+<div style="height:22px;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive">PROFILE - open by default</div>
+</div>
+<p style="margin:8px 0 0;text-align:right;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1deg)">reading tabs (Aa / ◐ / ≡) on the right edge - real buttons with aria-pressed, ≥44px, they remember your choice</p>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4b">
+<div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Case study - inside a folder</div>
+<div class="dv-card" style="width:400px">
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px">
+<div style="font:500 14px/1 Caveat,cursive;color:#777">works / 01 accessibility / <span style="color:#333;font-weight:600">audit-01</span></div>
+<div style="margin-top:10px;font:600 34px/1.05 Caveat,cursive">nibbit.ai: giving keyboard users the same path as mouse users</div>
+<p style="margin:6px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1deg)">title = the outcome, not the project name - screen-reader users hear it out of context in a headings list</p>
+<div style="margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">Product Designer (solo)</div>
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">Jan 2023 – Nov 2024</div>
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">early-stage startup</div>
+<div style="border:1.5px solid #333;padding:5px;font:500 12px/1.2 Caveat,cursive">WCAG 2.2 AA target</div>
+</div>
+<div style="margin-top:10px;height:120px;border:1.5px solid #999;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));display:flex;align-items:center;justify-content:center;font:600 16px/1 Caveat,cursive;color:#777">before/after of the core flow - with full alt text, not "image1"</div>
+<div style="margin-top:12px;display:grid;gap:8px">
+<div style="border-left:4px solid #f3e14f;padding:6px 10px;font:600 17px/1 Caveat,cursive">problem <span style="font-weight:500;color:#777">- tab order followed the DOM, not the visual flow; keyboard users hit dead ends</span></div>
+<div style="border-left:4px solid #f3e14f;padding:6px 10px;font:600 17px/1 Caveat,cursive">process <span style="font-weight:500;color:#777">- audit every stop → rebuild in screen-reader order → test with VoiceOver + NVDA</span></div>
+<div style="border-left:4px solid #f3e14f;padding:6px 10px;font:600 17px/1 Caveat,cursive">outcome <span style="font-weight:500;color:#777">- every mouse path got a keyboard twin; shipped across the consumer app</span></div>
+</div>
+<p style="margin:8px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(1.2deg)">3 numbers max, all verifiable - inflated metrics read as inaccessible-to-truth. these are yours:</p>
+<div style="margin-top:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+<div style="border:1.5px dashed #999;padding:8px;text-align:center;font:600 20px/1 Caveat,cursive">23 mo<div style="font:500 12px/1.2 Caveat,cursive;color:#777">on the product</div></div>
+<div style="border:1.5px dashed #999;padding:8px;text-align:center;font:600 20px/1 Caveat,cursive">100%<div style="font:500 12px/1.2 Caveat,cursive;color:#777">keyboard coverage</div></div>
+<div style="border:1.5px dashed #999;padding:8px;text-align:center;font:600 20px/1 Caveat,cursive">2<div style="font:500 12px/1.2 Caveat,cursive;color:#777">screen readers tested</div></div>
+</div>
+<div style="margin-top:12px;border:1.5px solid #333;padding:8px;display:flex;justify-content:space-between;font:600 15px/1 Caveat,cursive"><span>← back to folder</span><span>next file →</span></div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4c">
+<div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>About - file rows</div>
+<div class="dv-card" style="width:400px">
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px">
+<div style="font:600 40px/1 Caveat,cursive">About <span style="color:#bbb">me</span></div>
+<div style="margin-top:12px;border:1.5px solid #333">
+<div style="padding:5px;text-align:center;font:600 12px/1 Caveat,cursive;background:#eee;border-bottom:1.5px solid #333">EXPERIENCES</div>
+<div style="display:grid;grid-template-columns:1fr 2fr 1fr;padding:6px 8px;border-bottom:1.5px dotted #999;font:500 14px/1.2 Caveat,cursive"><span style="font-weight:600">Apple</span><span>Solutions Consultant</span><span style="text-align:right;color:#777">2026–</span></div>
+<div style="display:grid;grid-template-columns:1fr 2fr 1fr;padding:6px 8px;border-bottom:1.5px dotted #999;font:500 14px/1.2 Caveat,cursive"><span style="font-weight:600">nibbit.ai</span><span>Product Designer</span><span style="text-align:right;color:#777">2023–24</span></div>
+<div style="display:grid;grid-template-columns:1fr 2fr 1fr;padding:6px 8px;font:500 14px/1.2 Caveat,cursive"><span style="font-weight:600">Freelance</span><span>Design + a11y</span><span style="text-align:right;color:#777">2022–</span></div>
+</div>
+<div style="margin-top:8px;border:1.5px solid #333">
+<div style="padding:5px;text-align:center;font:600 12px/1 Caveat,cursive;background:#f3e14f;border-bottom:1.5px solid #333">SKILLSETS</div>
+<div style="padding:6px 8px;font:500 14px/1.5 Caveat,cursive">01 WCAG conformance · 02 behavioural research · 03 road mapping · 04 documentation</div>
+</div>
+<div style="margin-top:8px;border:1.5px solid #333;display:grid;grid-template-columns:90px 1fr">
+<div style="border-right:1.5px solid #333;padding:6px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));display:flex;align-items:center;justify-content:center;font:600 13px/1 Caveat,cursive;color:#777">photo</div>
+<div style="padding:8px;font:500 14px/1.4 Caveat,cursive;color:#555">Honours BSc Cognitive Science &amp; Psychology, UofT. Solutions Consultant at Apple. Persian &amp; English. Product design diploma, Shomal University.<br><span style="font-weight:600;color:#333">narges.mirheydari@gmail.com · /in/nargesmirheydari · github/Nargesmhd</span></div>
+</div>
+<p style="margin:10px 0 0;font:600 15px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-2deg)">↑ same paper-strip pattern as home - consistent landmarks mean screen-reader users learn the layout once</p>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4d">
+<div class="dv-olabel"><a class="dv-oid" href="#4d">4d</a>Accessibility statement - the receipts page</div>
+<div class="dv-card" style="width:400px">
+<div style="background:#fff;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px">
+<div style="font:600 34px/1.05 Caveat,cursive">How this site is built</div>
+<div style="margin-top:8px;height:40px;border:1.5px dashed #999;padding:6px 10px;font:500 14px/1.3 Caveat,cursive;color:#777">"This site targets WCAG 2.2 AA. Last self-audit: July 2026. Every page, both themes."</div>
+<p style="margin:4px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1deg)">this page IS your differentiator - a11y teams WILL check it. claim only what you measured</p>
+<div style="margin-top:10px;border:1.5px solid #333">
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;border-bottom:1.5px dotted #999;font:500 13px/1.2 Caveat,cursive"><span>body contrast</span><span style="text-align:right;font-weight:600">11.4:1</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;border-bottom:1.5px dotted #999;font:500 13px/1.2 Caveat,cursive"><span>hit targets</span><span style="text-align:right;font-weight:600">≥44px</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;border-bottom:1.5px dotted #999;font:500 13px/1.2 Caveat,cursive"><span>keyboard path</span><span style="text-align:right;font-weight:600">complete</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;padding:5px 8px;font:500 13px/1.2 Caveat,cursive"><span>screen readers</span><span style="text-align:right;font-weight:600">VO · NVDA</span></div>
+</div>
+<div style="margin-top:10px;display:flex;gap:6px">
+<div style="flex:1;border:1.5px solid #333;padding:6px;text-align:center;font:600 13px/1 Caveat,cursive">Aa text</div>
+<div style="flex:1;background:#f3e14f;border:1.5px solid #333;padding:6px;text-align:center;font:600 13px/1 Caveat,cursive">◐ contrast</div>
+<div style="flex:1;border:1.5px solid #333;padding:6px;text-align:center;font:600 13px/1 Caveat,cursive">≡ plain</div>
+</div>
+<p style="margin:6px 0 0;font:500 13px/1.3 Caveat,cursive;color:#777">↑ live demo of the reading tabs - larger text bumps base size 18→22px, plain layout drops decoration, not content</p>
+<div style="margin-top:10px;border-left:4px solid #f3e14f;padding:6px 10px;font:500 14px/1.4 Caveat,cursive;color:#555">"Found a barrier? Email me - I'll reply within 3 days." (mailto link)</div>
+<p style="margin:6px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(1deg)">3 days is a promise you can keep - a broken a11y promise is worse than none</p>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4e">
+<div class="dv-olabel"><a class="dv-oid" href="#4e">4e</a>Playground - the loose-ideas drawer</div>
+<div class="dv-card" style="width:400px">
+<div style="background:#f0efec;color:#333;font-family:Caveat,cursive;padding:16px 16px 20px;background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:22px 22px">
+<div style="font:600 34px/1.05 Caveat,cursive">Playground</div>
+<div style="margin-top:4px;font:500 14px/1.3 Caveat,cursive;color:#777">explorations + concept shots · pins 1–4 = real tab order</div>
+<p style="margin:4px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(-1.2deg)">unfinished is fine - label each with what you learned. pins make focus order visible: the page teaches a11y by showing it</p>
+<div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div style="position:relative;background:#fff;border:1.5px solid #333;padding:8px;transform:rotate(-1.5deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">1</span><div style="height:64px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));border:1px solid #bbb"></div><div style="margin-top:5px;font:600 14px/1.2 Caveat,cursive">contrast experiments - theme pairs</div></div>
+<div style="position:relative;background:#fff;border:1.5px solid #333;padding:8px;transform:rotate(1deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">2</span><div style="height:64px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));border:1px solid #bbb"></div><div style="margin-top:5px;font:600 14px/1.2 Caveat,cursive">nibbit onboarding, unshipped round</div></div>
+<div style="position:relative;background:#f3e14f;border:1.5px solid #333;padding:8px;transform:rotate(.8deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">3</span><div style="font:600 15px/1.3 Caveat,cursive">cog-sci note: attention is a budget - every extra control spends it</div></div>
+<div style="position:relative;background:#fff;border:1.5px solid #333;padding:8px;transform:rotate(-.8deg)"><span style="position:absolute;top:-9px;left:-8px;width:20px;height:20px;border-radius:99px;background:#333;color:#fff;display:flex;align-items:center;justify-content:center;font:600 12px/1 Caveat,cursive">4</span><div style="height:64px;background:linear-gradient(to top right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#bbb 50%,transparent calc(50% + 1px));border:1px solid #bbb"></div><div style="margin-top:5px;font:600 14px/1.2 Caveat,cursive">focus-order sketches, on paper</div></div>
+</div>
+<div style="margin-top:14px;border-top:1.5px dotted #999;padding-top:10px;font:600 15px/1 Caveat,cursive">start a convo:</div>
+<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">
+<span style="border:1.5px dashed #333;border-radius:99px;padding:4px 10px;font:500 13px/1 Caveat,cursive">"how do you audit?"</span>
+<span style="border:1.5px dashed #333;border-radius:99px;padding:4px 10px;font:500 13px/1 Caveat,cursive">"cog sci + design?"</span>
+<span style="border:1.5px dashed #333;border-radius:99px;padding:4px 10px;font:500 13px/1 Caveat,cursive">"the nibbit rebuild"</span>
+</div>
+<p style="margin:8px 0 0;font:600 14px/1.2 Caveat,cursive;color:#c2410c;transform:rotate(.8deg)">chips open a pre-filled email - one action, no form to fail. forms are where accessibility usually breaks</p>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "hi-fi the case study (<a class="dv-oid" href="#4b">4b</a>) in the <a class="dv-oid" href="#2a">2a</a> style" · "wireframe mobile versions" · "reorder the home page sections"</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Dark &amp; light modes - <a class="dv-oid" href="#2a">2a</a> gets a dark theme, <a class="dv-oid" href="#2b">2b</a> gets a light one</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>The Folder - dark mode (paper at night)</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#1a1914;color:#ece8db;font-family:'IBM Plex Sans',sans-serif;position:relative">
+
+<div role="group" aria-label="Reading settings" style="position:absolute;top:170px;right:0;display:flex;flex-direction:column;gap:6px;z-index:2">
+<button type="button" aria-pressed="false" style="min-height:46px;padding:0 14px 0 18px;background:#24231b;border:1px dotted rgba(236,232,219,.45);border-right:none;border-radius:8px 0 0 8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#ece8db;cursor:pointer">Aa larger text</button>
+<button type="button" aria-pressed="false" style="min-height:46px;padding:0 14px 0 18px;background:#f3e14f;border:1px dotted rgba(236,232,219,.45);border-right:none;border-radius:8px 0 0 8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#1b1a17;cursor:pointer">◐ high contrast</button>
+<button type="button" aria-pressed="true" style="min-height:46px;padding:0 14px 0 18px;background:#24231b;border:1px dotted rgba(236,232,219,.45);border-right:none;border-radius:8px 0 0 8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#ece8db;cursor:pointer">☾ dark mode</button>
+</div>
+
+<header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:1px dotted rgba(236,232,219,.4)">
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Narges Mirheydari</span>
+<div style="display:flex;align-items:center;gap:32px">
+<nav aria-label="Primary" style="display:flex;gap:36px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">
+<a href="#3a" style="color:#ece8db;text-decoration:none;box-shadow:inset 0 -8px 0 rgba(243,225,79,.45)">Home</a>
+<a href="#3a" style="color:#ece8db;text-decoration:none">Works</a>
+<a href="#3a" style="color:#ece8db;text-decoration:none">About</a>
+<a href="#3a" style="color:#ece8db;text-decoration:none">Contact</a>
+</nav>
+<sc-if value="{{ toggleSubtle }}" hint-placeholder-val="{{ false }}"><button type="button" role="switch" aria-checked="true" aria-label="Dark mode" style="display:flex;align-items:center;gap:8px;min-height:44px;padding:0 8px 0 14px;background:#24231b;border:1px dotted rgba(236,232,219,.45);border-radius:999px;color:#ece8db;font:500 12px/1 'IBM Plex Mono',monospace;cursor:pointer">☾<span style="width:26px;height:26px;border-radius:999px;background:#f3e14f;display:block"></span></button></sc-if>
+<sc-if value="{{ toggleLabeled }}" hint-placeholder-val="{{ false }}"><button type="button" role="switch" aria-checked="true" style="display:flex;align-items:center;gap:10px;min-height:44px;padding:0 10px 0 16px;background:#24231b;border:1px dotted rgba(236,232,219,.55);border-radius:999px;color:#ece8db;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;cursor:pointer">DARK MODE<span style="width:26px;height:26px;border-radius:999px;background:#f3e14f;display:block"></span></button></sc-if>
+<sc-if value="{{ toggleHigh }}" hint-placeholder-val="{{ true }}"><button type="button" role="switch" aria-checked="true" style="display:flex;align-items:center;gap:12px;min-height:50px;padding:0 12px 0 20px;background:#f3e14f;border:2px solid #ece8db;border-radius:999px;color:#1b1a17;font:600 14px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;cursor:pointer;box-shadow:0 0 0 3px rgba(243,225,79,.25)">☾ DARK: ON<span style="width:30px;height:30px;border-radius:999px;background:#1b1a17;display:block;border:2px solid #f3e14f"></span></button></sc-if>
+</div>
+</header>
+
+<main style="padding:44px 48px 0">
+<div style="display:flex;align-items:baseline;gap:26px">
+<h1 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:92px;line-height:.95;letter-spacing:-.03em">Works</h1>
+<p style="margin:0;font-family:Newsreader,Georgia,serif;font-size:92px;line-height:.95;letter-spacing:-.03em;color:#8b8676">Archive</p>
+</div>
+<p style="margin:22px 0 0;max-width:58ch;font:400 19px/1.6 'IBM Plex Sans',sans-serif;color:#c8c3b2;text-wrap:pretty">Product designer in Toronto. I use behavioural research and WCAG standards to build things that work for everyone - including the people most products forget.</p>
+
+<div role="list" aria-label="Work folders" style="margin:46px -48px 0;display:grid;grid-template-columns:1fr 1fr">
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#f3e14f;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1b1a17;box-sizing:border-box">01</span>
+<a href="#3a" style="display:block;background:#f3e14f;padding:26px 20px 30px;text-decoration:none;color:#1b1a17;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">accessibility</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch">Audits and remediation for small teams - contrast, focus order, form semantics, plus the docs that stop regressions.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(27,26,23,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#4a463a">FILE CONTENTS: 4 audits · 2 redesigns - checked against WCAG 2.2 ✓</span>
+</a>
+</div>
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#333127;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#ece8db;box-sizing:border-box">02</span>
+<a href="#3a" style="display:block;background:#333127;padding:26px 20px 30px;text-decoration:none;color:#ece8db;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">product design</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch;color:#d4cfbe">nibbit.ai, 2023–24. Core consumer flow rebuilt around screen-reader order and keyboard parity.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(236,232,219,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#b3ad9a">FILE CONTENTS: 1 case study · flows · before/after ✓</span>
+</a>
+</div>
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#2a2820;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#ece8db;box-sizing:border-box">03</span>
+<a href="#3a" style="display:block;background:#2a2820;padding:26px 20px 30px;text-decoration:none;color:#ece8db;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">research</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch;color:#d4cfbe">Cognitive science coursework applied to interfaces: attention, memory load, error recovery.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(236,232,219,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#b3ad9a">FILE CONTENTS: 3 notes · 1 study summary ✓</span>
+</a>
+</div>
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#3c3a2f;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#ece8db;box-sizing:border-box">04</span>
+<a href="#3a" style="display:block;background:#3c3a2f;padding:26px 20px 30px;text-decoration:none;color:#ece8db;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">archive</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch;color:#d4cfbe">Older explorations, drafting work, and side projects - kept because the thinking still counts.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(236,232,219,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#b3ad9a">FILE CONTENTS: drafting · retail years · misc ✓</span>
+</a>
+</div>
+</div>
+
+<div style="margin:0 -48px;padding:26px 48px 34px;background:#201f18;border-top:1px dotted rgba(236,232,219,.4);display:flex;justify-content:space-between;align-items:center;gap:30px">
+<p style="margin:0;font:400 17px/1.6 'IBM Plex Sans',sans-serif;color:#c8c3b2;max-width:52ch;text-wrap:pretty">Dark mode isn't an inversion filter - folder colours, dotted rules and the highlighter yellow are re-tuned so every pairing still clears WCAG 2.2 AA.</p>
+<a href="mailto:narges.mirheydari@gmail.com" style="flex:none;min-height:48px;display:inline-flex;align-items:center;padding:0 24px;background:#f3e14f;color:#1b1a17;font:500 15px/1 'IBM Plex Sans',sans-serif;text-decoration:none;border-radius:2px">Get in touch</a>
+</div>
+</main>
+
+<footer style="padding:24px 48px;border-top:1px dotted rgba(236,232,219,.4);display:flex;justify-content:space-between;font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#b3ad9a">
+<span>Toronto, ON</span>
+<span>Built and tested to WCAG 2.2 AA - in both themes</span>
+</footer>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>The Playground - light mode (pinboard in daylight)</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#efece4;color:#16171a;font-family:'Work Sans',system-ui,sans-serif;background-image:linear-gradient(rgba(22,23,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,23,26,.07) 1px,transparent 1px);background-size:44px 44px">
+
+<header style="display:flex;justify-content:space-between;align-items:center;padding:22px 44px">
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase">Narges Mirheydari</span>
+<div style="display:flex;align-items:center;gap:16px">
+<nav aria-label="Primary" style="display:flex;gap:8px">
+<a href="#3b" style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;background:#16171a;color:#efece4;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-decoration:none">WORK</a>
+<a href="#3b" style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;border:1px solid rgba(22,23,26,.4);color:#16171a;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-decoration:none">PLAYGROUND</a>
+<a href="#3b" style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;border:1px solid rgba(22,23,26,.4);color:#16171a;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-decoration:none">ACCESS</a>
+</nav>
+<sc-if value="{{ toggleSubtle }}" hint-placeholder-val="{{ false }}"><button type="button" role="switch" aria-checked="false" aria-label="Dark mode" style="display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 8px;background:#fff;border:1px solid rgba(22,23,26,.4);border-radius:999px;color:#16171a;font:500 12px/1 'IBM Plex Mono',monospace;cursor:pointer"><span style="width:26px;height:26px;border-radius:999px;background:#16171a;display:block"></span>☀</button></sc-if>
+<sc-if value="{{ toggleLabeled }}" hint-placeholder-val="{{ false }}"><button type="button" role="switch" aria-checked="false" style="display:flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 10px;background:#fff;border:1px solid rgba(22,23,26,.5);border-radius:999px;color:#16171a;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;cursor:pointer"><span style="width:26px;height:26px;border-radius:999px;background:#16171a;display:block"></span>LIGHT MODE</button></sc-if>
+<sc-if value="{{ toggleHigh }}" hint-placeholder-val="{{ true }}"><button type="button" role="switch" aria-checked="false" style="display:flex;align-items:center;gap:12px;min-height:50px;padding:0 20px 0 12px;background:#16171a;border:2px solid #16171a;border-radius:999px;color:#efece4;font:600 14px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;cursor:pointer;box-shadow:0 0 0 3px rgba(22,23,26,.18)"><span style="width:30px;height:30px;border-radius:999px;background:#efece4;display:block;border:2px solid #16171a"></span>☀ LIGHT: ON</button></sc-if>
+</div>
+</header>
+
+<main style="padding:48px 44px 0">
+<h1 style="margin:0;max-width:24ch;font:600 74px/1.02 'Work Sans',sans-serif;letter-spacing:-.035em;text-wrap:balance">Designer, researcher, <span style="color:#b8401d">accessibility</span> obsessive.</h1>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:30px;padding-bottom:26px;border-bottom:1px solid rgba(22,23,26,.25)">
+<p style="margin:0;max-width:52ch;font:400 19px/1.6 'Work Sans',sans-serif;color:#43443f;text-wrap:pretty">Behavioural research plus WCAG standards, aimed at the people most products forget. Toronto.</p>
+<p style="margin:0;text-align:right;font:500 12px/1.5 'IBM Plex Mono',monospace;letter-spacing:.1em">AVAILABLE FOR<br>ROLES &amp; COLLABS</p>
+</div>
+
+<section aria-labelledby="3b-play" style="padding:36px 0 40px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px">
+<h2 id="3b-play" style="margin:0;font:600 13px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase">Playground - where the ideas live</h2>
+<p style="margin:0;font:400 13px/1 'IBM Plex Mono',monospace;color:#5f6058">numbered pins = the order your Tab key visits them</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:18px">
+
+<a href="#3b" style="grid-column:span 3;text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(22,23,26,.14);border-radius:2px;padding:14px;display:block;box-shadow:0 10px 22px rgba(22,23,26,.14);position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #efece4;color:#efece4;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">1</span>
+<span style="display:block;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#e8e4d8 0 8px,#f1ede2 8px 16px)"></span>
+<span style="display:block;margin-top:12px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#5f6058">01 · NIBBIT.AI</span>
+<span style="display:block;margin-top:8px;font:600 25px/1.2 'Work Sans',sans-serif;letter-spacing:-.02em">Keyboard parity in the core flow</span>
+<span style="display:block;margin-top:8px;font:400 15px/1.55 'Work Sans',sans-serif;color:#43443f">Rebuilt so every mouse path had a keyboard twin, in screen-reader order.</span>
+</a>
+
+<a href="#3b" style="grid-column:span 3;text-decoration:none;color:inherit;background:#b8401d;border-radius:2px;padding:14px;display:block;box-shadow:0 10px 22px rgba(22,23,26,.14);position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #efece4;color:#efece4;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">2</span>
+<span style="display:block;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,rgba(255,255,255,.18) 0 8px,rgba(255,255,255,.07) 8px 16px)"></span>
+<span style="display:block;margin-top:12px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#fff7f4">02 · FREELANCE</span>
+<span style="display:block;margin-top:8px;font:600 25px/1.2 'Work Sans',sans-serif;letter-spacing:-.02em;color:#fff">Accessibility remediation</span>
+<span style="display:block;margin-top:8px;font:400 15px/1.55 'Work Sans',sans-serif;color:#fff7f4">Audits, fixes and documentation for teams without an a11y lead.</span>
+</a>
+
+<a href="#3b" style="grid-column:span 2;text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(22,23,26,.14);border-radius:2px;padding:12px;display:block;position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #efece4;color:#efece4;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">3</span>
+<span style="display:block;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#e8e4d8 0 8px,#f1ede2 8px 16px)"></span>
+<span style="display:block;margin-top:10px;font:600 18px/1.25 'Work Sans',sans-serif">Contrast experiments</span>
+<span style="display:block;margin-top:4px;font:400 13px/1.5 'IBM Plex Mono',monospace;color:#5f6058">exploration</span>
+</a>
+
+<a href="#3b" style="grid-column:span 2;text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(22,23,26,.14);border-radius:2px;padding:12px;display:block;position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #efece4;color:#efece4;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">4</span>
+<span style="display:block;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#e8e4d8 0 8px,#f1ede2 8px 16px)"></span>
+<span style="display:block;margin-top:10px;font:600 18px/1.25 'Work Sans',sans-serif">Focus-order sketches</span>
+<span style="display:block;margin-top:4px;font:400 13px/1.5 'IBM Plex Mono',monospace;color:#5f6058">process</span>
+</a>
+
+<a href="#3b" style="grid-column:span 2;text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(22,23,26,.14);border-radius:2px;padding:12px;display:block;position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #efece4;color:#efece4;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">5</span>
+<span style="display:block;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#e8e4d8 0 8px,#f1ede2 8px 16px)"></span>
+<span style="display:block;margin-top:10px;font:600 18px/1.25 'Work Sans',sans-serif">Cog-sci reading notes</span>
+<span style="display:block;margin-top:4px;font:400 13px/1.5 'IBM Plex Mono',monospace;color:#5f6058">writing</span>
+</a>
+</div>
+</section>
+
+<section aria-labelledby="3b-convo" style="border-top:1px solid rgba(22,23,26,.25);padding:34px 0 42px">
+<h2 id="3b-convo" style="margin:0 0 18px;font:600 13px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase">Start a conversation</h2>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<a href="mailto:narges.mirheydari@gmail.com?subject=How%20do%20you%20audit%20a%20flow%3F" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#fff;border:1px dashed rgba(22,23,26,.5);color:#16171a;font:400 15px/1 'Work Sans',sans-serif;text-decoration:none">"How do you audit a flow?"</a>
+<a href="mailto:narges.mirheydari@gmail.com?subject=What%20did%20cog%20sci%20change%20about%20your%20design%3F" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#fff;border:1px dashed rgba(22,23,26,.5);color:#16171a;font:400 15px/1 'Work Sans',sans-serif;text-decoration:none">"What did cog sci change about your design?"</a>
+<a href="mailto:narges.mirheydari@gmail.com?subject=Tell%20me%20about%20the%20nibbit%20rebuild" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#fff;border:1px dashed rgba(22,23,26,.5);color:#16171a;font:400 15px/1 'Work Sans',sans-serif;text-decoration:none">"Tell me about the nibbit rebuild"</a>
+</div>
+</section>
+</main>
+
+<footer style="padding:22px 44px;border-top:1px solid rgba(22,23,26,.25);display:flex;justify-content:space-between;font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#5f6058">
+<span>© 2026</span>
+<span>WCAG 2.2 AA · motion follows your system setting</span>
+</footer>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "build <a class="dv-oid" href="#2a">2a</a>+<a class="dv-oid" href="#3a">3a</a> as one site with a working theme toggle" · "playground pair (<a class="dv-oid" href="#2b">2b</a>/<a class="dv-oid" href="#3b">3b</a>) instead" · "tweak the dark folder colours"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">From your moodboard - the folder, the playground, the convo-starter</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>The Folder - paper filing system: easy to find, easy to understand</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#f3f0e8;color:#1b1a17;font-family:'IBM Plex Sans',sans-serif;position:relative">
+
+<div role="group" aria-label="Reading settings" style="position:absolute;top:170px;right:0;display:flex;flex-direction:column;gap:6px;z-index:2">
+<button type="button" aria-pressed="false" style="min-height:46px;padding:0 14px 0 18px;background:#f7f5ee;border:1px dotted rgba(27,26,23,.45);border-right:none;border-radius:8px 0 0 8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#1b1a17;cursor:pointer;box-shadow:-2px 2px 0 rgba(27,26,23,.08)">Aa larger text</button>
+<button type="button" aria-pressed="false" style="min-height:46px;padding:0 14px 0 18px;background:#f3e14f;border:1px dotted rgba(27,26,23,.45);border-right:none;border-radius:8px 0 0 8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#1b1a17;cursor:pointer;box-shadow:-2px 2px 0 rgba(27,26,23,.08)">◐ high contrast</button>
+<button type="button" aria-pressed="false" style="min-height:46px;padding:0 14px 0 18px;background:#f7f5ee;border:1px dotted rgba(27,26,23,.45);border-right:none;border-radius:8px 0 0 8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#1b1a17;cursor:pointer;box-shadow:-2px 2px 0 rgba(27,26,23,.08)">≡ plain layout</button>
+<span style="padding:8px 14px 0 18px;font:400 10px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d;max-width:120px">index tabs - the page adjusts to you</span>
+</div>
+
+<header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:1px dotted rgba(27,26,23,.35)">
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Narges Mirheydari</span>
+<nav aria-label="Primary" style="display:flex;gap:36px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase">
+<a href="#2a" style="color:#1b1a17;text-decoration:none;box-shadow:inset 0 -8px 0 #f3e14f">Home</a>
+<a href="#2a" style="color:#1b1a17;text-decoration:none">Works</a>
+<a href="#2a" style="color:#1b1a17;text-decoration:none">About</a>
+<a href="#2a" style="color:#1b1a17;text-decoration:none">Access</a>
+<a href="#2a" style="color:#1b1a17;text-decoration:none">Contact</a>
+</nav>
+</header>
+
+<main style="padding:44px 48px 0">
+<div style="display:flex;align-items:baseline;gap:26px">
+<h1 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:92px;line-height:.95;letter-spacing:-.03em">Works</h1>
+<p style="margin:0;font-family:Newsreader,Georgia,serif;font-size:92px;line-height:.95;letter-spacing:-.03em;color:#8b8676">Archive</p>
+</div>
+<p style="margin:22px 0 0;max-width:58ch;font:400 19px/1.6 'IBM Plex Sans',sans-serif;color:#3c392f;text-wrap:pretty">Product designer in Toronto. I use behavioural research and WCAG standards to build things that work for everyone - including the people most products forget.</p>
+
+<div role="list" aria-label="Work folders" style="margin:46px -48px 0;display:grid;grid-template-columns:1fr 1fr">
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#f3e14f;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1b1a17;box-sizing:border-box">01</span>
+<a href="#2a" style="display:block;background:#f3e14f;padding:26px 20px 30px;text-decoration:none;color:#1b1a17;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">accessibility</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch">Audits and remediation for small teams - contrast, focus order, form semantics, plus the docs that stop regressions.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(27,26,23,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#4a463a">FILE CONTENTS: 4 audits · 2 redesigns - checked against WCAG 2.2 ✓</span>
+</a>
+</div>
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#dedbd0;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1b1a17;box-sizing:border-box">02</span>
+<a href="#2a" style="display:block;background:#dedbd0;padding:26px 20px 30px;text-decoration:none;color:#1b1a17;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">product design</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch">nibbit.ai, 2023–24. Core consumer flow rebuilt around screen-reader order and keyboard parity.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(27,26,23,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#4a463a">FILE CONTENTS: 1 case study · flows · before/after ✓</span>
+</a>
+</div>
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#e9e6dc;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1b1a17;box-sizing:border-box">03</span>
+<a href="#2a" style="display:block;background:#e9e6dc;padding:26px 20px 30px;text-decoration:none;color:#1b1a17;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">research</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch">Cognitive science coursework applied to interfaces: attention, memory load, error recovery.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(27,26,23,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#4a463a">FILE CONTENTS: 3 notes · 1 study summary ✓</span>
+</a>
+</div>
+
+<div role="listitem" style="position:relative;padding-top:26px">
+<span style="position:absolute;top:0;left:0;width:210px;height:26px;background:#c9c5b8;clip-path:polygon(0 0,84% 0,100% 100%,0 100%);display:flex;align-items:center;padding-left:20px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#1b1a17;box-sizing:border-box">04</span>
+<a href="#2a" style="display:block;background:#c9c5b8;padding:26px 20px 30px;text-decoration:none;color:#1b1a17;min-height:150px;box-sizing:border-box">
+<span style="display:block;font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.02;letter-spacing:-.02em">archive</span>
+<span style="display:block;margin-top:12px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;max-width:40ch">Older explorations, drafting work, and side projects - kept because the thinking still counts.</span>
+<span style="display:block;margin-top:16px;padding-top:10px;border-top:1px dotted rgba(27,26,23,.4);font:400 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.05em;color:#4a463a">FILE CONTENTS: drafting · retail years · misc ✓</span>
+</a>
+</div>
+</div>
+
+<section aria-labelledby="2a-about" style="margin:0 -48px">
+<h2 id="2a-about" style="margin:0;padding:34px 48px 14px;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:56px;line-height:1;letter-spacing:-.025em">About <span style="color:#8b8676">me</span></h2>
+
+<div style="border-top:1px dotted rgba(27,26,23,.4)">
+<p style="margin:0;padding:8px 48px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#5e5a4d;text-align:center;background:#eae7dd">Experiences</p>
+<div style="display:grid;grid-template-columns:180px 1fr 130px;gap:20px;padding:16px 48px;border-bottom:1px dotted rgba(27,26,23,.3);align-items:baseline;background:#f7f5ee">
+<span style="font:400 22px/1.2 Newsreader,Georgia,serif">Apple</span>
+<span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#3c392f">Solutions Consultant</span>
+<span style="font:400 13px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d">2026–</span>
+</div>
+<div style="display:grid;grid-template-columns:180px 1fr 130px;gap:20px;padding:16px 48px;border-bottom:1px dotted rgba(27,26,23,.3);align-items:baseline;background:#f7f5ee">
+<span style="font:400 22px/1.2 Newsreader,Georgia,serif">nibbit.ai</span>
+<span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#3c392f">Product Designer</span>
+<span style="font:400 13px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d">2023–24</span>
+</div>
+<div style="display:grid;grid-template-columns:180px 1fr 130px;gap:20px;padding:16px 48px;align-items:baseline;background:#f7f5ee">
+<span style="font:400 22px/1.2 Newsreader,Georgia,serif">Freelance</span>
+<span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#3c392f">Product design &amp; accessibility remediation</span>
+<span style="font:400 13px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d">2022–</span>
+</div>
+
+<p style="margin:0;padding:8px 48px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#1b1a17;text-align:center;background:#f3e14f">Skillsets</p>
+<ol style="list-style:none;margin:0;padding:0;background:#f7f5ee">
+<li style="display:grid;grid-template-columns:70px 1fr;padding:13px 48px;border-bottom:1px dotted rgba(27,26,23,.3)"><span style="font:400 20px/1.2 'IBM Plex Mono',monospace;color:#5e5a4d">01</span><span style="font:400 26px/1.2 Newsreader,Georgia,serif">WCAG 2.2 conformance</span></li>
+<li style="display:grid;grid-template-columns:70px 1fr;padding:13px 48px;border-bottom:1px dotted rgba(27,26,23,.3)"><span style="font:400 20px/1.2 'IBM Plex Mono',monospace;color:#5e5a4d">02</span><span style="font:400 26px/1.2 Newsreader,Georgia,serif">Behavioural research</span></li>
+<li style="display:grid;grid-template-columns:70px 1fr;padding:13px 48px;border-bottom:1px dotted rgba(27,26,23,.3)"><span style="font:400 20px/1.2 'IBM Plex Mono',monospace;color:#5e5a4d">03</span><span style="font:400 26px/1.2 Newsreader,Georgia,serif">Product road mapping</span></li>
+<li style="display:grid;grid-template-columns:70px 1fr;padding:13px 48px"><span style="font:400 20px/1.2 'IBM Plex Mono',monospace;color:#5e5a4d">04</span><span style="font:400 26px/1.2 Newsreader,Georgia,serif">Design documentation</span></li>
+</ol>
+
+<p style="margin:0;padding:8px 48px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#5e5a4d;text-align:center;background:#eae7dd">Profile</p>
+<div style="display:grid;grid-template-columns:230px 1fr;gap:36px;padding:26px 48px 34px;background:#f7f5ee">
+<div>
+<p style="margin:0;font:400 34px/1.05 Newsreader,Georgia,serif">Narges<br>Mirheydari</p>
+<div style="margin-top:16px;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#e2ded2 0 8px,#eae7dd 8px 16px);display:flex;align-items:flex-end;padding:10px"><span style="font:400 10px/1.3 'IBM Plex Mono',monospace;color:#5e5a4d">portrait</span></div>
+</div>
+<div>
+<p style="margin:0;font:400 17px/1.7 'IBM Plex Sans',sans-serif;color:#2c2a23;max-width:56ch;text-wrap:pretty">I'm a product designer in Toronto, finishing an Honours BSc in Cognitive Science &amp; Psychology at the University of Toronto and working as a Solutions Consultant at Apple. Before that: product design at nibbit.ai, freelance design since 2022, and a product design diploma from Shomal University.</p>
+<p style="margin:18px 0 0;font:400 17px/1.7 'IBM Plex Sans',sans-serif;color:#2c2a23;max-width:56ch;text-wrap:pretty">Cognitive science taught me how attention and memory actually behave. WCAG taught me that most products ignore it. I design in the gap between the two.</p>
+<dl style="margin:24px 0 0;display:grid;grid-template-columns:110px 1fr;gap:10px 20px;font:400 15px/1.5 'IBM Plex Sans',sans-serif">
+<dt style="font:400 14px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d">email</dt><dd style="margin:0"><a href="mailto:narges.mirheydari@gmail.com" style="color:#1b1a17">narges.mirheydari@gmail.com</a></dd>
+<dt style="font:400 14px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d">linkedin</dt><dd style="margin:0"><a href="https://www.linkedin.com/in/nargesmirheydari" style="color:#1b1a17">/in/nargesmirheydari</a></dd>
+<dt style="font:400 14px/1.5 'IBM Plex Mono',monospace;color:#5e5a4d">github</dt><dd style="margin:0"><a href="https://github.com/Nargesmhd" style="color:#1b1a17">Nargesmhd</a></dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="padding:24px 48px;border-top:1px dotted rgba(27,26,23,.4);display:flex;justify-content:space-between;font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#5e5a4d">
+<span>Toronto, ON</span>
+<span>Built and tested to WCAG 2.2 AA</span>
+</footer>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>The Playground - pinboard of ideas, plus a "start a convo" strip</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#16171a;color:#f2f1ee;font-family:'Work Sans',system-ui,sans-serif;background-image:linear-gradient(rgba(242,241,238,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,241,238,.055) 1px,transparent 1px);background-size:44px 44px">
+
+<header style="display:flex;justify-content:space-between;align-items:center;padding:22px 44px">
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase">Narges Mirheydari</span>
+<nav aria-label="Primary" style="display:flex;gap:8px">
+<a href="#2b" style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;background:#f2f1ee;color:#16171a;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-decoration:none">WORK</a>
+<a href="#2b" style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;border:1px solid rgba(242,241,238,.35);color:#f2f1ee;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-decoration:none">PLAYGROUND</a>
+<a href="#2b" style="min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;border:1px solid rgba(242,241,238,.35);color:#f2f1ee;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-decoration:none">ACCESS</a>
+</nav>
+</header>
+
+<main style="padding:48px 44px 0">
+<h1 style="margin:0;max-width:24ch;font:600 74px/1.02 'Work Sans',sans-serif;letter-spacing:-.035em;text-wrap:balance">Designer, researcher, <span style="color:#e2582f">accessibility</span> obsessive.</h1>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:30px;padding-bottom:26px;border-bottom:1px solid rgba(242,241,238,.18)">
+<p style="margin:0;max-width:52ch;font:400 19px/1.6 'Work Sans',sans-serif;color:#c3c1bb;text-wrap:pretty">Behavioural research plus WCAG standards, aimed at the people most products forget. Toronto.</p>
+<p style="margin:0;text-align:right;font:500 12px/1.5 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#f2f1ee">AVAILABLE FOR<br>ROLES &amp; COLLABS</p>
+</div>
+
+<section aria-labelledby="2b-now" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(242,241,238,.18)">
+<h2 id="2b-now" style="position:absolute;left:-9999px">Now and next</h2>
+<div style="padding:30px 40px 34px 0;border-right:1px solid rgba(242,241,238,.18)">
+<p style="margin:0 0 14px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#8e8b84">WHAT I'M DOING NOW</p>
+<p style="margin:0;font:400 26px/1.35 'Work Sans',sans-serif;letter-spacing:-.015em;max-width:34ch;text-wrap:pretty">Solutions Consultant at Apple, and finishing an Honours BSc in Cognitive Science &amp; Psychology at UofT.</p>
+</div>
+<div style="padding:30px 0 34px 40px">
+<p style="margin:0 0 14px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#8e8b84">WHAT I WANT TO DO</p>
+<p style="margin:0;font:400 26px/1.35 'Work Sans',sans-serif;letter-spacing:-.015em;max-width:34ch;text-wrap:pretty">Product design on a team that treats accessibility as the brief, not the audit at the end.</p>
+</div>
+</section>
+
+<section aria-labelledby="2b-play" style="padding:36px 0 40px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px">
+<h2 id="2b-play" style="margin:0;font:600 13px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase">Playground - where the ideas live</h2>
+<p style="margin:0;font:400 13px/1 'IBM Plex Mono',monospace;color:#a5a29a">numbered pins = the order your Tab key visits them</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:18px">
+
+<a href="#2b" style="grid-column:span 3;text-decoration:none;color:inherit;background:#f6f1e6;border-radius:2px;padding:14px;display:block;box-shadow:0 12px 26px rgba(0,0,0,.35);position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #f2f1ee;color:#f2f1ee;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">1</span>
+<span style="display:block;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#e3ddcd 0 8px,#eee8d9 8px 16px)"></span>
+<span style="display:block;margin-top:12px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#67614f">01 · NIBBIT.AI</span>
+<span style="display:block;margin-top:8px;font:600 25px/1.2 'Work Sans',sans-serif;letter-spacing:-.02em;color:#16171a">Keyboard parity in the core flow</span>
+<span style="display:block;margin-top:8px;font:400 15px/1.55 'Work Sans',sans-serif;color:#45423a">Rebuilt so every mouse path had a keyboard twin, in screen-reader order.</span>
+</a>
+
+<a href="#2b" style="grid-column:span 3;text-decoration:none;color:inherit;background:#b8401d;border-radius:2px;padding:14px;display:block;box-shadow:0 12px 26px rgba(0,0,0,.35);position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #f2f1ee;color:#f2f1ee;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">2</span>
+<span style="display:block;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,rgba(255,255,255,.16) 0 8px,rgba(255,255,255,.06) 8px 16px)"></span>
+<span style="display:block;margin-top:12px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#fff7f4">02 · FREELANCE</span>
+<span style="display:block;margin-top:8px;font:600 25px/1.2 'Work Sans',sans-serif;letter-spacing:-.02em;color:#fff">Accessibility remediation</span>
+<span style="display:block;margin-top:8px;font:400 15px/1.55 'Work Sans',sans-serif;color:#fff7f4">Audits, fixes and documentation for teams without an a11y lead.</span>
+</a>
+
+<a href="#2b" style="grid-column:span 2;text-decoration:none;color:inherit;background:#f6f1e6;border-radius:2px;padding:12px;display:block;position:relative">
+<span style="display:block;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#e3ddcd 0 8px,#eee8d9 8px 16px)"></span>
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #f2f1ee;color:#f2f1ee;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">3</span>
+<span style="display:block;margin-top:10px;font:600 18px/1.25 'Work Sans',sans-serif;color:#16171a">Contrast experiments</span>
+<span style="display:block;margin-top:4px;font:400 13px/1.5 'IBM Plex Mono',monospace;color:#67614f">exploration</span>
+</a>
+
+<a href="#2b" style="grid-column:span 2;text-decoration:none;color:inherit;background:#f6f1e6;border-radius:2px;padding:12px;display:block;position:relative">
+<span style="display:block;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#e3ddcd 0 8px,#eee8d9 8px 16px)"></span>
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #f2f1ee;color:#f2f1ee;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">4</span>
+<span style="display:block;margin-top:10px;font:600 18px/1.25 'Work Sans',sans-serif;color:#16171a">Focus-order sketches</span>
+<span style="display:block;margin-top:4px;font:400 13px/1.5 'IBM Plex Mono',monospace;color:#67614f">process</span>
+</a>
+
+<a href="#2b" style="grid-column:span 2;text-decoration:none;color:inherit;background:#f6f1e6;border-radius:2px;padding:12px;display:block;position:relative">
+<span style="display:block;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#e3ddcd 0 8px,#eee8d9 8px 16px)"></span>
+<span aria-hidden="true" style="position:absolute;top:-12px;left:-10px;width:30px;height:30px;border-radius:999px;background:#16171a;border:2px solid #f2f1ee;color:#f2f1ee;display:flex;align-items:center;justify-content:center;font:600 13px/1 'IBM Plex Mono',monospace">5</span>
+<span style="display:block;margin-top:10px;font:600 18px/1.25 'Work Sans',sans-serif;color:#16171a">Cog-sci reading notes</span>
+<span style="display:block;margin-top:4px;font:400 13px/1.5 'IBM Plex Mono',monospace;color:#67614f">writing</span>
+</a>
+</div>
+</section>
+
+<section aria-labelledby="2b-convo" style="border-top:1px solid rgba(242,241,238,.18);padding:34px 0 42px">
+<h2 id="2b-convo" style="margin:0 0 22px;font:600 13px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase">Start a conversation</h2>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px">
+<a href="mailto:narges.mirheydari@gmail.com?subject=How%20do%20you%20audit%20a%20flow%3F" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#22242a;border:1px dashed rgba(242,241,238,.45);color:#f2f1ee;font:400 15px/1 'Work Sans',sans-serif;text-decoration:none">"How do you audit a flow?"</a>
+<a href="mailto:narges.mirheydari@gmail.com?subject=What%20did%20cog%20sci%20change%20about%20your%20design%3F" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#22242a;border:1px dashed rgba(242,241,238,.45);color:#f2f1ee;font:400 15px/1 'Work Sans',sans-serif;text-decoration:none">"What did cog sci change about your design?"</a>
+<a href="mailto:narges.mirheydari@gmail.com?subject=Tell%20me%20about%20the%20nibbit%20rebuild" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#22242a;border:1px dashed rgba(242,241,238,.45);color:#f2f1ee;font:400 15px/1 'Work Sans',sans-serif;text-decoration:none">"Tell me about the nibbit rebuild"</a>
+</div>
+<p style="margin:-16px 0 26px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#a5a29a">pick one - it opens an email with the subject already filled in</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(242,241,238,.18)">
+<div style="padding:26px 34px 26px 0;border-right:1px solid rgba(242,241,238,.18)">
+<p style="margin:0;font:400 22px/1.35 'Work Sans',sans-serif;max-width:26ch;text-wrap:pretty">Outside of work I'm bilingual in Persian and unreasonably invested in good form design.</p>
+</div>
+<div style="padding:26px 34px;border-right:1px solid rgba(242,241,238,.18)">
+<p style="margin:0;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8e8b84">READING</p>
+<p style="margin:10px 0 0;font:400 20px/1.4 'Work Sans',sans-serif;color:#e6e4df">Placeholder - tell me what you're actually reading and I'll swap it in.</p>
+</div>
+<div style="padding:26px 0 26px 34px">
+<p style="margin:0;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8e8b84">LEARNING</p>
+<p style="margin:10px 0 0;font:400 20px/1.4 'Work Sans',sans-serif;color:#e6e4df">Placeholder - a course, a tool, a language.</p>
+</div>
+</div>
+<div style="display:flex;gap:12px;margin-top:30px">
+<a href="mailto:narges.mirheydari@gmail.com" style="min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:999px;background:#f2f1ee;color:#16171a;font:600 16px/1 'Work Sans',sans-serif;text-decoration:none">Email me</a>
+<a href="https://www.linkedin.com/in/nargesmirheydari" style="min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:999px;border:1px solid rgba(242,241,238,.4);color:#f2f1ee;font:600 16px/1 'Work Sans',sans-serif;text-decoration:none">LinkedIn</a>
+<a href="https://github.com/Nargesmhd" style="min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:999px;border:1px solid rgba(242,241,238,.4);color:#f2f1ee;font:600 16px/1 'Work Sans',sans-serif;text-decoration:none">GitHub</a>
+</div>
+</section>
+</main>
+
+<footer style="padding:22px 44px;border-top:1px solid rgba(242,241,238,.18);display:flex;justify-content:space-between;font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8e8b84">
+<span>© 2026</span>
+<span>WCAG 2.2 AA · motion follows your system setting</span>
+</footer>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "build <a class="dv-oid" href="#2a">2a</a> out as the full site" · "give <a class="dv-oid" href="#2b">2b</a> the paper folders from <a class="dv-oid" href="#2a">2a</a>" · "make the playground collage messier"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Three homepage directions - accessibility-first portfolio</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Editorial - serif, text-forward, the writing is the work</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#f8f6f1;color:#171512;font-family:'IBM Plex Sans',sans-serif">
+
+<a href="#1a-main" style="position:absolute;left:-9999px;background:#171512;color:#fff;padding:10px 16px;font:500 13px/1 'IBM Plex Sans',sans-serif;text-decoration:none">Skip to content</a>
+
+<header style="display:flex;justify-content:space-between;align-items:center;padding:26px 56px;border-bottom:1px solid rgba(23,21,18,.12)">
+<span style="font:500 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Narges Mirheydari</span>
+<nav aria-label="Primary" style="display:flex;gap:28px;font:400 14px/1 'IBM Plex Sans',sans-serif">
+<a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid rgba(23,21,18,.3);padding-bottom:3px">Work</a>
+<a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px">Approach</a>
+<a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px">About</a>
+<a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px">Accessibility</a>
+</nav>
+</header>
+
+<main id="1a-main" style="padding:80px 56px 64px">
+<p style="margin:0 0 28px;font:400 13px/1 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:#5c554a">Product designer · Toronto</p>
+<h1 style="margin:0;max-width:20ch;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:78px;line-height:1.02;letter-spacing:-.02em;text-wrap:balance">Design for the people most products forget.</h1>
+<p style="margin:34px 0 0;max-width:56ch;font:400 21px/1.6 'IBM Plex Sans',sans-serif;color:#3a352e;text-wrap:pretty">I use behavioural research and WCAG standards to build interfaces that work for everyone. Cognitive science &amp; psychology at UofT; solutions consultant at Apple.</p>
+<div style="display:flex;gap:14px;margin-top:38px">
+<a href="mailto:narges.mirheydari@gmail.com" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;background:#171512;color:#f8f6f1;font:500 15px/1 'IBM Plex Sans',sans-serif;text-decoration:none;border-radius:2px">Get in touch</a>
+<a href="#1a" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border:1px solid rgba(23,21,18,.35);color:#171512;font:500 15px/1 'IBM Plex Sans',sans-serif;text-decoration:none;border-radius:2px">Read the work</a>
+</div>
+</main>
+
+<section aria-labelledby="1a-work" style="padding:0 56px 72px">
+<h2 id="1a-work" style="margin:0 0 4px;font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:#5c554a">Selected work</h2>
+<ul style="list-style:none;margin:0;padding:0;display:grid;gap:0">
+
+<li style="display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;padding:38px 0;border-top:1px solid rgba(23,21,18,.14)">
+<div>
+<h3 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:38px;line-height:1.1;letter-spacing:-.015em"><a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid rgba(23,21,18,.25)">nibbit.ai</a></h3>
+<p style="margin:14px 0 0;max-width:52ch;font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#3a352e;text-wrap:pretty">Product design across the consumer app, 2023–2024. Rebuilt the core flow around screen-reader order and a keyboard path that matched the mouse path.</p>
+<p style="margin:16px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f685c">needs your case-study copy</p>
+</div>
+<div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#eae6dd 0 8px,#f2eee6 8px 16px);border:1px solid rgba(23,21,18,.12);display:flex;align-items:flex-end;padding:12px"><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#6b6459">nibbit.ai - product shot</span></div>
+</li>
+
+<li style="display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;padding:38px 0;border-top:1px solid rgba(23,21,18,.14)">
+<div>
+<h3 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:38px;line-height:1.1;letter-spacing:-.015em"><a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid rgba(23,21,18,.25)">Accessibility remediation, freelance</a></h3>
+<p style="margin:14px 0 0;max-width:52ch;font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#3a352e;text-wrap:pretty">Audits and redesigns for small teams since 2022 - contrast, focus management, form semantics, and the documentation that keeps it from regressing.</p>
+<p style="margin:16px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f685c">needs your case-study copy</p>
+</div>
+<div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#eae6dd 0 8px,#f2eee6 8px 16px);border:1px solid rgba(23,21,18,.12);display:flex;align-items:flex-end;padding:12px"><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#6b6459">before / after audit</span></div>
+</li>
+
+<li style="display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;padding:38px 0;border-top:1px solid rgba(23,21,18,.14);border-bottom:1px solid rgba(23,21,18,.14)">
+<div>
+<h3 style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:38px;line-height:1.1;letter-spacing:-.015em"><a href="#1a" style="color:#171512;text-decoration:none;border-bottom:1px solid rgba(23,21,18,.25)">Third project</a></h3>
+<p style="margin:14px 0 0;max-width:52ch;font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#3a352e;text-wrap:pretty">Placeholder slot for the research-led piece - send me the one you're proudest of and I'll write this to match.</p>
+<p style="margin:16px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f685c">needs your case-study copy</p>
+</div>
+<div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#eae6dd 0 8px,#f2eee6 8px 16px);border:1px solid rgba(23,21,18,.12);display:flex;align-items:flex-end;padding:12px"><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#6b6459">project shot</span></div>
+</li>
+</ul>
+</section>
+
+<section aria-labelledby="1a-a11y" style="padding:56px;background:#171512;color:#f4f1ea;display:grid;grid-template-columns:1fr 1.3fr;gap:56px">
+<div>
+<h2 id="1a-a11y" style="margin:0;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:40px;line-height:1.1;letter-spacing:-.015em">This site is the first case study.</h2>
+<p style="margin:18px 0 0;font:400 16px/1.65 'IBM Plex Sans',sans-serif;color:#c9c3b7;text-wrap:pretty">Built and tested to WCAG 2.2 AA. Keyboard-complete, screen-reader tested, motion honours your system setting.</p>
+</div>
+<dl style="margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:26px 40px">
+<div><dt style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#9c9488">Body contrast</dt><dd style="margin:8px 0 0;font-family:Newsreader,Georgia,serif;font-size:30px;line-height:1">11.4:1</dd></div>
+<div><dt style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#9c9488">Focus targets</dt><dd style="margin:8px 0 0;font-family:Newsreader,Georgia,serif;font-size:30px;line-height:1">48px min</dd></div>
+<div><dt style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#9c9488">Reduced motion</dt><dd style="margin:8px 0 0;font-family:Newsreader,Georgia,serif;font-size:30px;line-height:1">Respected</dd></div>
+<div><dt style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#9c9488">Landmarks</dt><dd style="margin:8px 0 0;font-family:Newsreader,Georgia,serif;font-size:30px;line-height:1">Full set</dd></div>
+</dl>
+</section>
+
+<footer style="padding:34px 56px;display:flex;justify-content:space-between;align-items:center;font:400 14px/1 'IBM Plex Sans',sans-serif;color:#3a352e;background:#f8f6f1">
+<span>Toronto, Canada</span>
+<div style="display:flex;gap:24px">
+<a href="mailto:narges.mirheydari@gmail.com" style="color:#171512">Email</a>
+<a href="https://www.linkedin.com/in/nargesmirheydari" style="color:#171512">LinkedIn</a>
+<a href="https://github.com/Nargesmhd" style="color:#171512">GitHub</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Systematic - reads like documentation, a11y controls in the open</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#fcfcfb;color:#14161a;font-family:'IBM Plex Sans',sans-serif">
+
+<div style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:12px 40px;background:#14161a;color:#f2f3f5">
+<p style="margin:0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em">Display controls - change the page to suit you</p>
+<div role="group" aria-label="Display controls" style="display:flex;gap:8px">
+<button type="button" aria-pressed="false" style="min-height:36px;padding:0 14px;background:transparent;border:1px solid rgba(242,243,245,.4);color:#f2f3f5;font:500 12px/1 'IBM Plex Mono',monospace;border-radius:2px;cursor:pointer">Larger text</button>
+<button type="button" aria-pressed="false" style="min-height:36px;padding:0 14px;background:transparent;border:1px solid rgba(242,243,245,.4);color:#f2f3f5;font:500 12px/1 'IBM Plex Mono',monospace;border-radius:2px;cursor:pointer">High contrast</button>
+<button type="button" aria-pressed="true" style="min-height:36px;padding:0 14px;background:#f2f3f5;border:1px solid #f2f3f5;color:#14161a;font:500 12px/1 'IBM Plex Mono',monospace;border-radius:2px;cursor:pointer">Motion off</button>
+</div>
+</div>
+
+<header style="display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid #14161a">
+<div style="padding:22px 24px 22px 40px;border-right:1px solid rgba(20,22,26,.14);font:500 13px/1.4 'IBM Plex Mono',monospace">NM<br><span style="color:#5b6068">/ index</span></div>
+<nav aria-label="Primary" style="display:flex;align-items:center;gap:0;padding:0 40px 0 0">
+<a href="#1b" style="padding:22px 22px;font:500 13px/1 'IBM Plex Mono',monospace;color:#14161a;text-decoration:none;background:#eef0f3">01 work</a>
+<a href="#1b" style="padding:22px 22px;font:500 13px/1 'IBM Plex Mono',monospace;color:#14161a;text-decoration:none">02 method</a>
+<a href="#1b" style="padding:22px 22px;font:500 13px/1 'IBM Plex Mono',monospace;color:#14161a;text-decoration:none">03 about</a>
+<a href="#1b" style="padding:22px 22px;font:500 13px/1 'IBM Plex Mono',monospace;color:#14161a;text-decoration:none">04 a11y statement</a>
+</nav>
+</header>
+
+<main style="display:grid;grid-template-columns:200px 1fr">
+<div style="border-right:1px solid rgba(20,22,26,.14);padding:40px 24px 40px 40px">
+<dl style="margin:0;display:grid;gap:22px;font:400 12px/1.5 'IBM Plex Mono',monospace">
+<div><dt style="color:#5b6068">Role</dt><dd style="margin:4px 0 0">Product designer</dd></div>
+<div><dt style="color:#5b6068">Base</dt><dd style="margin:4px 0 0">Toronto, CA</dd></div>
+<div><dt style="color:#5b6068">Now</dt><dd style="margin:4px 0 0">Apple, Solutions Consultant</dd></div>
+<div><dt style="color:#5b6068">Study</dt><dd style="margin:4px 0 0">Cog sci &amp; psych, UofT</dd></div>
+<div><dt style="color:#5b6068">Standard</dt><dd style="margin:4px 0 0">WCAG 2.2 AA</dd></div>
+</dl>
+</div>
+
+<div style="padding:40px">
+<h1 style="margin:0;max-width:26ch;font:600 54px/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;text-wrap:balance">Behavioural research and WCAG standards, applied to real products.</h1>
+<p style="margin:26px 0 0;max-width:62ch;font:400 19px/1.65 'IBM Plex Sans',sans-serif;color:#333840;text-wrap:pretty">I design things that work for everyone, including the people most products forget. Below: what I made, how I tested it, and what changed as a result.</p>
+
+<div style="margin-top:44px;border-top:1px solid #14161a">
+<div style="display:grid;grid-template-columns:1.2fr 1fr 130px;gap:24px;padding:12px 0;border-bottom:1px solid rgba(20,22,26,.2);font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#5b6068">
+<span>Project</span><span>Outcome</span><span>Year</span>
+</div>
+
+<article style="display:grid;grid-template-columns:1.2fr 1fr 130px;gap:24px;padding:26px 0;border-bottom:1px solid rgba(20,22,26,.14)">
+<div>
+<h2 style="margin:0;font:600 24px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.015em"><a href="#1b" style="color:#14161a;text-decoration:none;border-bottom:2px solid #1a4fd6">nibbit.ai</a></h2>
+<p style="margin:10px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#333840;text-wrap:pretty">Core consumer flow rebuilt around screen-reader order and keyboard parity.</p>
+</div>
+<p style="margin:0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#333840">Placeholder metric - send me the real one.</p>
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Mono',monospace;color:#5b6068">2023–24</p>
+</article>
+
+<article style="display:grid;grid-template-columns:1.2fr 1fr 130px;gap:24px;padding:26px 0;border-bottom:1px solid rgba(20,22,26,.14)">
+<div>
+<h2 style="margin:0;font:600 24px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.015em"><a href="#1b" style="color:#14161a;text-decoration:none;border-bottom:2px solid #1a4fd6">Accessibility remediation</a></h2>
+<p style="margin:10px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#333840;text-wrap:pretty">Freelance audits: contrast, focus management, form semantics, docs.</p>
+</div>
+<p style="margin:0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#333840">Placeholder metric - send me the real one.</p>
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Mono',monospace;color:#5b6068">2022–</p>
+</article>
+
+<article style="display:grid;grid-template-columns:1.2fr 1fr 130px;gap:24px;padding:26px 0;border-bottom:1px solid #14161a">
+<div>
+<h2 style="margin:0;font:600 24px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.015em"><a href="#1b" style="color:#14161a;text-decoration:none;border-bottom:2px solid #1a4fd6">Third project</a></h2>
+<p style="margin:10px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#333840;text-wrap:pretty">Open slot for the research-led piece.</p>
+</div>
+<p style="margin:0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#333840">Placeholder metric - send me the real one.</p>
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Mono',monospace;color:#5b6068">-</p>
+</article>
+</div>
+
+<div style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(20,22,26,.14);border:1px solid rgba(20,22,26,.14)">
+<div style="background:#fcfcfb;padding:22px"><p style="margin:0;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#5b6068">Contrast, body</p><p style="margin:10px 0 0;font:600 28px/1 'IBM Plex Sans',sans-serif">10.9:1</p></div>
+<div style="background:#fcfcfb;padding:22px"><p style="margin:0;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#5b6068">Keyboard path</p><p style="margin:10px 0 0;font:600 28px/1 'IBM Plex Sans',sans-serif">Complete</p></div>
+<div style="background:#fcfcfb;padding:22px"><p style="margin:0;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#5b6068">Tested with</p><p style="margin:10px 0 0;font:600 28px/1 'IBM Plex Sans',sans-serif">VO · NVDA</p></div>
+</div>
+</div>
+</main>
+
+<footer style="display:grid;grid-template-columns:200px 1fr;border-top:1px solid #14161a">
+<div style="padding:22px 24px 22px 40px;border-right:1px solid rgba(20,22,26,.14);font:400 12px/1.4 'IBM Plex Mono',monospace;color:#5b6068">© 2026</div>
+<div style="padding:22px 40px;display:flex;gap:26px;font:400 13px/1 'IBM Plex Mono',monospace">
+<a href="mailto:narges.mirheydari@gmail.com" style="color:#1a4fd6">email</a>
+<a href="https://www.linkedin.com/in/nargesmirheydari" style="color:#1a4fd6">linkedin</a>
+<a href="https://github.com/Nargesmhd" style="color:#1a4fd6">github</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Warm - human, generous type, one clay accent</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#f7f1e8;color:#20180f;font-family:'Work Sans',system-ui,sans-serif">
+
+<header style="display:flex;justify-content:space-between;align-items:center;padding:28px 56px">
+<span style="font:600 16px/1 'Work Sans',sans-serif;letter-spacing:-.01em">Narges</span>
+<nav aria-label="Primary" style="display:flex;gap:10px">
+<a href="#1c" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#20180f;color:#f7f1e8;font:500 14px/1 'Work Sans',sans-serif;text-decoration:none">Work</a>
+<a href="#1c" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;color:#20180f;font:500 14px/1 'Work Sans',sans-serif;text-decoration:none">About</a>
+<a href="#1c" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;color:#20180f;font:500 14px/1 'Work Sans',sans-serif;text-decoration:none">Accessibility</a>
+<a href="mailto:narges.mirheydari@gmail.com" style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;border:1.5px solid #20180f;color:#20180f;font:500 14px/1 'Work Sans',sans-serif;text-decoration:none">Say hello</a>
+</nav>
+</header>
+
+<main style="padding:56px 56px 64px">
+<div style="display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center">
+<div>
+<p style="margin:0 0 20px;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:#e7d9c6;font:500 13px/1 'Work Sans',sans-serif;color:#5c4326">Open to product design roles</p>
+<h1 style="margin:0;font:700 66px/1.06 'Work Sans',sans-serif;letter-spacing:-.03em;max-width:18ch;text-wrap:balance">Hi, I'm Narges. I design for <span style="font-family:Newsreader,Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.01em">everyone</span>.</h1>
+<p style="margin:28px 0 0;max-width:50ch;font:400 20px/1.65 'Work Sans',sans-serif;color:#463523;text-wrap:pretty">Product designer in Toronto. Cognitive science &amp; psychology at UofT, solutions consultant at Apple. I pair behavioural research with WCAG standards so the people products usually forget get a first-class experience.</p>
+<div style="display:flex;gap:12px;margin-top:34px">
+<a href="#1c" style="min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:999px;background:#a9491f;color:#fff;font:600 16px/1 'Work Sans',sans-serif;text-decoration:none">See my work</a>
+<a href="#1c" style="min-height:52px;display:inline-flex;align-items:center;padding:0 26px;border-radius:999px;background:#efe3d3;color:#20180f;font:600 16px/1 'Work Sans',sans-serif;text-decoration:none">Read my a11y notes</a>
+</div>
+</div>
+<div style="aspect-ratio:4/5;border-radius:14px;background:repeating-linear-gradient(135deg,#eadcc9 0 9px,#f2e7d8 9px 18px);display:flex;align-items:flex-end;padding:16px"><span style="font:400 12px/1.4 'IBM Plex Mono',monospace;color:#6e5a41">portrait - drop photo here</span></div>
+</div>
+
+<section aria-labelledby="1c-work" style="margin-top:76px">
+<h2 id="1c-work" style="margin:0 0 24px;font:600 15px/1 'Work Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6e5a41">Selected work</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+
+<article style="background:#fffaf3;border:1px solid #e2d4c0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+<div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#eadcc9 0 9px,#f2e7d8 9px 18px);display:flex;align-items:flex-end;padding:12px"><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#6e5a41">nibbit.ai - product shot</span></div>
+<div style="padding:22px;display:flex;flex-direction:column;gap:10px;flex:1">
+<p style="margin:0;font:500 12px/1 'IBM Plex Mono',monospace;color:#6d5a44">2023–24 · nibbit.ai</p>
+<h3 style="margin:0;font:600 23px/1.25 'Work Sans',sans-serif;letter-spacing:-.015em"><a href="#1c" style="color:#20180f;text-decoration:none">Keyboard parity in the core flow</a></h3>
+<p style="margin:0;font:400 15px/1.6 'Work Sans',sans-serif;color:#463523;text-wrap:pretty">Rebuilt around screen-reader order so every mouse path had a keyboard twin.</p>
+<a href="#1c" style="margin-top:auto;font:600 15px/1 'Work Sans',sans-serif;color:#a9491f">Read case study →</a>
+</div>
+</article>
+
+<article style="background:#fffaf3;border:1px solid #e2d4c0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+<div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#eadcc9 0 9px,#f2e7d8 9px 18px);display:flex;align-items:flex-end;padding:12px"><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#6e5a41">before / after audit</span></div>
+<div style="padding:22px;display:flex;flex-direction:column;gap:10px;flex:1">
+<p style="margin:0;font:500 12px/1 'IBM Plex Mono',monospace;color:#6d5a44">2022– · Freelance</p>
+<h3 style="margin:0;font:600 23px/1.25 'Work Sans',sans-serif;letter-spacing:-.015em"><a href="#1c" style="color:#20180f;text-decoration:none">Accessibility remediation</a></h3>
+<p style="margin:0;font:400 15px/1.6 'Work Sans',sans-serif;color:#463523;text-wrap:pretty">Audits and fixes for small teams, plus docs so it doesn't regress.</p>
+<a href="#1c" style="margin-top:auto;font:600 15px/1 'Work Sans',sans-serif;color:#a9491f">Read case study →</a>
+</div>
+</article>
+
+<article style="background:#fffaf3;border:1px solid #e2d4c0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+<div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#eadcc9 0 9px,#f2e7d8 9px 18px);display:flex;align-items:flex-end;padding:12px"><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#6e5a41">project shot</span></div>
+<div style="padding:22px;display:flex;flex-direction:column;gap:10px;flex:1">
+<p style="margin:0;font:500 12px/1 'IBM Plex Mono',monospace;color:#6d5a44">needs your copy</p>
+<h3 style="margin:0;font:600 23px/1.25 'Work Sans',sans-serif;letter-spacing:-.015em"><a href="#1c" style="color:#20180f;text-decoration:none">Third project</a></h3>
+<p style="margin:0;font:400 15px/1.6 'Work Sans',sans-serif;color:#463523;text-wrap:pretty">Send the research-led piece you're proudest of and this becomes it.</p>
+<a href="#1c" style="margin-top:auto;font:600 15px/1 'Work Sans',sans-serif;color:#a9491f">Read case study →</a>
+</div>
+</article>
+</div>
+</section>
+
+<section aria-labelledby="1c-a11y" style="margin-top:72px;background:#20180f;color:#f7f1e8;border-radius:18px;padding:44px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+<div>
+<h2 id="1c-a11y" style="margin:0;font:700 34px/1.15 'Work Sans',sans-serif;letter-spacing:-.02em">Accessibility isn't a section. It's the method.</h2>
+<p style="margin:16px 0 0;font:400 17px/1.65 'Work Sans',sans-serif;color:#d6c8b4;text-wrap:pretty">Every page here meets WCAG 2.2 AA, with a complete keyboard path and motion that follows your system setting.</p>
+</div>
+<ul style="list-style:none;margin:0;padding:0;display:grid;gap:14px">
+<li style="display:flex;justify-content:space-between;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(247,241,232,.2);font:400 16px/1.4 'Work Sans',sans-serif"><span>Body text contrast</span><strong style="font-weight:600">12.1:1</strong></li>
+<li style="display:flex;justify-content:space-between;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(247,241,232,.2);font:400 16px/1.4 'Work Sans',sans-serif"><span>Minimum hit target</span><strong style="font-weight:600">44px</strong></li>
+<li style="display:flex;justify-content:space-between;gap:20px;font:400 16px/1.4 'Work Sans',sans-serif"><span>Screen readers tested</span><strong style="font-weight:600">VoiceOver, NVDA</strong></li>
+</ul>
+</section>
+</main>
+
+<footer style="padding:34px 56px 40px;display:flex;justify-content:space-between;align-items:center;font:400 15px/1 'Work Sans',sans-serif;color:#463523">
+<span>Toronto · narges.mirheydari@gmail.com</span>
+<div style="display:flex;gap:22px">
+<a href="https://www.linkedin.com/in/nargesmirheydari" style="color:#a9491f">LinkedIn</a>
+<a href="https://github.com/Nargesmhd" style="color:#a9491f">GitHub</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "build out <a class="dv-oid" href="#1b">1b</a> as the full site" · "<a class="dv-oid" href="#1a">1a</a> but with the clay accent from <a class="dv-oid" href="#1c">1c</a>" · "new directions"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;togglePresentation&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;subtle&quot;,&quot;labeled&quot;,&quot;high-visibility&quot;],&quot;default&quot;:&quot;high-visibility&quot;,&quot;tsType&quot;:&quot;'subtle'|'labeled'|'high-visibility'&quot;,&quot;section&quot;:&quot;Theme toggle&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props.togglePresentation ?? 'high-visibility';
+    return {
+      toggleSubtle: p === 'subtle',
+      toggleLabeled: p === 'labeled',
+      toggleHigh: p === 'high-visibility',
+    };
+  }
+}
+</script>
+</body>
+</html>

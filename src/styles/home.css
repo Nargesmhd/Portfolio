@@ -1,0 +1,456 @@
+/* Works (home): masthead, rotator, ticker, folder stack, accordion strips. */
+
+.home {
+  padding: 48px 0 64px;
+}
+
+/* --------------------------------------------------------------- masthead */
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.masthead h1,
+.masthead .archive {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 88px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.masthead .archive {
+  color: var(--muted);
+}
+
+.intro {
+  margin-top: 22px;
+  max-width: 58ch;
+  font-size: calc(19px * var(--ts));
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* ---------------------------------------------------------------- rotator */
+
+.rotator {
+  margin-top: 26px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.rotator-brackets {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+.rotator-word {
+  color: var(--ink);
+  box-shadow: inset 0 -9px 0 var(--accent);
+}
+
+/* -------------------------------------------------------------- scroll cue */
+
+.scroll-cue {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.scroll-cue span {
+  display: inline-block;
+  animation: cue 1.8s ease-in-out infinite;
+}
+
+@keyframes cue {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ---------------------------------------------------------------- marquee */
+
+.marquee {
+  margin-top: 40px;
+  overflow: hidden;
+  padding: 12px 0;
+  border-top: 1px dotted var(--line);
+  border-bottom: 1px dotted var(--line);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+
+.marquee-run {
+  font: 500 13px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ----------------------------------------------------------- folder stack */
+
+.stack {
+  margin-top: 40px;
+  position: relative;
+}
+
+.stack-caption {
+  margin-bottom: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.folder {
+  /* --folder-tone is set inline per folder; --folder-bg is derived here so
+     the open state can override it. Colours travel with the folder so the
+     open (yellow) state recolours its contents without each child knowing. */
+  --folder-bg: var(--folder-tone);
+  --f-ink: var(--ink);
+  --f-body: var(--body);
+  --f-meta: var(--muted);
+
+  position: relative;
+  filter: drop-shadow(0 -3px 8px rgba(23, 24, 26, 0.14));
+  transition: transform 180ms ease;
+}
+
+/* Each folder laps the one above it, so the pile reads as physical. */
+.folder + .folder {
+  margin-top: -14px;
+}
+
+.folder-tab {
+  width: 186px;
+  height: 28px;
+  margin-left: var(--tab-offset);
+  background: var(--folder-bg);
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+  border-radius: 5px 8px 0 0;
+  transition: background-color 250ms ease;
+}
+
+.folder-body {
+  margin-top: -1px;
+  background: var(--folder-bg);
+  border-radius: 0 6px 3px 3px;
+  transition: background-color 250ms ease;
+}
+
+.folder-head {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 24px 18px;
+  text-align: left;
+  color: var(--f-ink);
+}
+
+.folder-head-left {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.folder-num {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--f-meta);
+}
+
+.folder-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.folder-state {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--f-meta);
+  white-space: nowrap;
+}
+
+.folder-panel {
+  margin: 0 24px;
+  padding: 18px 0 24px;
+  border-top: 1px dotted var(--line);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .folder-panel {
+    animation: panel-in 250ms ease;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.folder-desc {
+  max-width: 56ch;
+  font-size: calc(16px * var(--ts));
+  line-height: 1.6;
+  color: var(--f-body);
+}
+
+.folder-meta {
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--f-meta);
+}
+
+.folder-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  margin-top: 18px;
+  padding: 0 22px;
+  background: var(--ink);
+  color: var(--folder-bg);
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* Hover and focus are identical, so a keyboard user gets the same affordance
+   a mouse user does. focus-within rather than focus because the shift belongs
+   to the whole folder, not the button inside it. */
+.folder:hover,
+.folder:focus-within {
+  transform: translateX(14px);
+}
+
+/* The open folder turns yellow and steps further out of the pile. Listed
+   after hover so opening wins over pointing. */
+.folder.is-open {
+  --folder-bg: var(--accent);
+  --f-ink: #17181a;
+  --f-body: #17181a;
+  --f-meta: #43443c;
+}
+
+.folder.is-open,
+.folder.is-open:hover,
+.folder.is-open:focus-within {
+  transform: translateX(52px);
+}
+
+/* "Pulled from the pile" — plays once, then navigation happens. */
+.folder.is-pulled,
+.folder.is-pulled:hover,
+.folder.is-pulled:focus-within {
+  transform: translateX(240px) rotate(-1.4deg);
+  transition: transform 420ms cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+/* ------------------------------------------------------------ plain layout */
+/* Same content, no pile. Decoration is removed; information is not. */
+
+.plain-list {
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.plain-list li {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.plain-num {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  padding-top: 6px;
+}
+
+.plain-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.plain-desc {
+  margin-top: 8px;
+  max-width: 56ch;
+  font-size: calc(16px * var(--ts));
+  color: var(--body);
+}
+
+.plain-meta {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.plain-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  margin-top: 14px;
+  padding: 0 22px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------------ strips */
+
+.strips {
+  margin-top: 56px;
+}
+
+.strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 20px;
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1px dotted var(--line);
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.strip--accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.strip-hint {
+  text-transform: none;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.strip-panel {
+  padding: 22px 20px 28px;
+  border-top: 1px dotted var(--line);
+}
+
+.exp-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 110px;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--line);
+}
+
+.exp-row dt {
+  font-weight: 600;
+}
+
+.exp-row dd {
+  margin: 0;
+  color: var(--body);
+}
+
+.exp-years {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.skills li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 10px 0;
+}
+
+.skills-num {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.skills-label {
+  font-family: var(--font-serif);
+  font-size: 24px;
+}
+
+/* ------------------------------------------------------------------ narrow */
+
+@media (max-width: 700px) {
+  .masthead h1,
+  .masthead .archive {
+    font-size: 56px;
+  }
+
+  .rotator {
+    font-size: 26px;
+  }
+
+  .rotator-brackets {
+    font-size: 20px;
+  }
+
+  .folder-title {
+    font-size: 30px;
+  }
+
+  .exp-row,
+  .skills li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

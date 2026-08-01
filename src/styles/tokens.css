@@ -1,0 +1,164 @@
+/*
+ * Design tokens.
+ *
+ * Four palettes ship; `sky` (ink & sky) is the default. Each has a light and a
+ * dark set. High contrast is an override layered on top of whichever theme is
+ * active, so it composes with all four palettes rather than replacing them.
+ *
+ * Selection happens through attributes on <html>, written by the preferences
+ * script before first paint:
+ *   data-theme="light|dark"  data-palette="sky|white|moss|clay"
+ *   data-contrast="high"     data-text="large"     data-plain="on"
+ */
+
+:root {
+  /* The yellow highlighter is constant across every palette and both themes.
+     --accent-ink is the only text colour ever placed on it (12.1:1). */
+  --accent: #f3e14f;
+  --accent-ink: #17181a;
+
+  /* Focus ring. Orange rather than the accent so it never disappears against
+     a highlighted or yellow-backgrounded element. */
+  --focus: #c2410c;
+
+  /* Text scale. Every scalable size is authored calc(Npx * var(--ts)). */
+  --ts: 1;
+
+  --line-light: rgba(23, 24, 26, 0.4);
+  --line-dark: rgba(235, 236, 238, 0.4);
+}
+
+:root[data-text='large'] {
+  --ts: 1.22;
+}
+
+/* ---------------------------------------------------------------- palettes */
+
+/* ink & sky — default */
+:root,
+:root[data-palette='sky'] {
+  --bg: #f2f5f8;
+  --ink: #12181f;
+  --body: #33404d;
+  --muted: #455462;
+  --paper: #e4ebf2;
+  --f2: #d5e0ea;
+  --f3: #e9eff5;
+  --f4: #c0cfdd;
+  --line: var(--line-light);
+}
+
+:root[data-theme='dark'],
+:root[data-theme='dark'][data-palette='sky'] {
+  --bg: #101619;
+  --ink: #e8eef3;
+  --body: #bfcbd6;
+  --muted: #9aa8b5;
+  --paper: #182027;
+  --f2: #222d36;
+  --f3: #1b242b;
+  --f4: #2c3944;
+  --line: var(--line-dark);
+}
+
+/* cool white */
+:root[data-palette='white'] {
+  --bg: #f4f4f5;
+  --ink: #17181a;
+  --body: #3a3b40;
+  --muted: #4e5058;
+  --paper: #e9e9ec;
+  --f2: #dcdde2;
+  --f3: #e7e8ec;
+  --f4: #c8c9d1;
+  --line: var(--line-light);
+}
+
+:root[data-theme='dark'][data-palette='white'] {
+  --bg: #17181a;
+  --ink: #ebecee;
+  --body: #c4c6cc;
+  --muted: #a3a5ad;
+  --paper: #1e1f23;
+  --f2: #2e2f35;
+  --f3: #26272c;
+  --f4: #383941;
+  --line: var(--line-dark);
+}
+
+/* ink & moss */
+:root[data-palette='moss'] {
+  --bg: #f3f5f1;
+  --ink: #161a15;
+  --body: #3a423a;
+  --muted: #4b544a;
+  --paper: #e6ebe2;
+  --f2: #d8e0d2;
+  --f3: #eaefe6;
+  --f4: #c4cfbc;
+  --line: var(--line-light);
+}
+
+:root[data-theme='dark'][data-palette='moss'] {
+  --bg: #14170f;
+  --ink: #eaeee6;
+  --body: #c3cabd;
+  --muted: #a0a89a;
+  --paper: #1c2018;
+  --f2: #272d22;
+  --f3: #1f241a;
+  --f4: #333a2c;
+  --line: var(--line-dark);
+}
+
+/* ink & clay */
+:root[data-palette='clay'] {
+  --bg: #f7f3f1;
+  --ink: #1a1614;
+  --body: #443b37;
+  --muted: #584c47;
+  --paper: #efe6e2;
+  --f2: #e6d9d3;
+  --f3: #f2eae6;
+  --f4: #d6c3bb;
+  --line: var(--line-light);
+}
+
+:root[data-theme='dark'][data-palette='clay'] {
+  --bg: #17130f;
+  --ink: #f0e9e5;
+  --body: #cdc1ba;
+  --muted: #a89a92;
+  --paper: #211b17;
+  --f2: #2e2620;
+  --f3: #241d19;
+  --f4: #3b312a;
+  --line: var(--line-dark);
+}
+
+/* ----------------------------------------------------------- high contrast */
+/* Layered last so it wins over any palette, in either theme. */
+
+:root[data-contrast='high'] {
+  --bg: #ffffff;
+  --ink: #000000;
+  --body: #111111;
+  --muted: #3d3a33;
+  --paper: #f0f0f0;
+  --f2: #e8e8e8;
+  --f3: #f2f2f2;
+  --f4: #d8d8d8;
+  --line: #000000;
+}
+
+:root[data-theme='dark'][data-contrast='high'] {
+  --bg: #000000;
+  --ink: #ffffff;
+  --body: #eeeeee;
+  --muted: #cfcabb;
+  --paper: #161616;
+  --f2: #1e1e1e;
+  --f3: #161616;
+  --f4: #262626;
+  --line: #ffffff;
+}

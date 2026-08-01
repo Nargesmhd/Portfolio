@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import Wireframes from '../components/Wireframes.tsx';
+import '../styles/pages.css';
+import '../styles/wireframes.css';
+
+/*
+ * Deliberately unnumbered. These are not steps in a process — they are five
+ * things that are all true at once.
+ */
+const philosophy = [
+  {
+    title: 'Everyone means everyone',
+    body: 'Most products are built for the person holding the mouse, in good light, with time to spare. I design for the person using a keyboard, a screen reader, a cracked phone on a moving bus. When it works for them, it works better for everyone else too.',
+  },
+  {
+    title: 'Behaviour before decoration',
+    body: 'Cognitive science taught me that attention is a budget and memory is unreliable. So structure comes first: what can be reached, in what order, with how much effort. Colour and type arrive only once the page makes sense in black and white.',
+  },
+  {
+    title: 'The path is the product',
+    body: 'A keyboard path is designed, not inherited. Every route a mouse can take gets a keyboard twin, every screen reads aloud in the order it appears, and nothing important hides behind a hover.',
+  },
+  {
+    title: 'Show the reasoning',
+    body: 'Every decision on this site has a why written next to it, in plain language. If I cannot explain a choice to someone outside design, the choice goes.',
+  },
+  {
+    title: 'Honesty is an accessibility feature',
+    body: 'I claim only what I have measured, promise only what I can keep, and leave the process visible - wireframes, margin notes and all.',
+  },
+];
+---
+
+<Base title="How I design — Narges Mirheydari" current="design">
+  <div class="reading">
+    <h1 class="design-h1">
+      How I <span class="hl">design</span>
+    </h1>
+
+    <p class="lede">
+      Accessibility is not a checklist I run at the end. It is the brief itself:
+      if someone cannot reach it, read it, or understand it, it is not designed
+      yet.
+    </p>
+
+    <div class="philosophy">
+      {
+        philosophy.map(({ title, body }) => (
+          <div class="philosophy-row">
+            <p class="philosophy-title">
+              <span class="hl">{title}</span>
+            </p>
+            <p class="philosophy-body">{body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <section class="made" aria-labelledby="hiw">
+      <h2 id="hiw" class="made-h2">How I designed my Portfolio</h2>
+
+      <p class="made-intro">
+        These are the actual wireframes behind the site you're using - orange
+        notes and all. Walk them as a click-through prototype, or lay every page
+        out side by side.
+      </p>
+
+      <Wireframes client:load />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .design-h1 {
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    --hl-depth: 12px;
+  }
+
+  .philosophy {
+    margin-top: 48px;
+  }
+
+  .philosophy-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px dotted var(--line);
+  }
+
+  .philosophy-row:last-child {
+    border-bottom: 1px dotted var(--line);
+  }
+
+  .philosophy-title {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .philosophy-body {
+    max-width: 58ch;
+    font-size: calc(17px * var(--ts));
+    line-height: 1.7;
+    color: var(--body);
+  }
+
+  .made {
+    margin-top: 56px;
+    padding-top: 38px;
+    border-top: 1px dotted var(--line);
+  }
+
+  .made-h2 {
+    font-size: 44px;
+    letter-spacing: -0.02em;
+  }
+
+  .made-intro {
+    margin-top: 14px;
+    max-width: 62ch;
+    font-size: calc(17px * var(--ts));
+    line-height: 1.65;
+    color: var(--body);
+  }
+
+  @media (max-width: 760px) {
+    .design-h1 {
+      font-size: 40px;
+    }
+
+    .made-h2 {
+      font-size: 30px;
+    }
+
+    .philosophy-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+</style>

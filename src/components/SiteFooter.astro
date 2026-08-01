@@ -1,0 +1,17 @@
+---
+import { routes, contact } from '../lib/routes';
+---
+
+<footer class="site-footer">
+  <p>
+    Toronto, ON · <a href={`mailto:${contact.email}`}>email</a> ·
+    <a href={contact.linkedin.href}>linkedin</a> ·
+    <a href={contact.github.href}>github</a>
+  </p>
+
+  <p>
+    {/* Deliberately not in the primary nav — reached from here instead. */}
+    <a href={routes.accessibility}>Accessibility statement</a> · Built and
+    tested to WCAG 2.2 AA - in both themes
+  </p>
+</footer>

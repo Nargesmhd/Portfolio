@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact } from '../lib/routes';
+import '../styles/pages.css';
+---
+
+<Base title="About — Narges Mirheydari" current="about">
+  <div class="about-grid col-900">
+    <div>
+      <div class="stripe slot-3-4"></div>
+      <p class="slot-caption mono">portrait - drop a photograph here</p>
+
+      <dl class="about-dl">
+        <dt>languages</dt>
+        <dd>Persian · English</dd>
+        <dt>base</dt>
+        <dd>Toronto, ON</dd>
+      </dl>
+    </div>
+
+    <div class="about-body">
+      <h1 class="about-h1">About <span class="quiet">me</span></h1>
+
+      <p>
+        I'm a product designer finishing an Honours BSc in Cognitive Science &
+        Psychology at the University of Toronto, working as a Solutions
+        Consultant at Apple.
+      </p>
+
+      <p>
+        Cognitive science taught me how attention and memory actually behave.
+        WCAG taught me that most products ignore it. I design in the gap between
+        the two.
+      </p>
+
+      <dl class="contact-dl">
+        <dt>email</dt>
+        <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
+
+        <dt>linkedin</dt>
+        <dd><a href={contact.linkedin.href}>{contact.linkedin.label}</a></dd>
+
+        <dt>github</dt>
+        <dd><a href={contact.github.href}>{contact.github.label}</a></dd>
+      </dl>
+    </div>
+  </div>
+</Base>
