@@ -7,7 +7,7 @@ const INTERVAL_MS = 2600;
  * "Designing for < word >", cycling.
  *
  * aria-live="polite" so the change is announced without interrupting, and the
- * interval is never scheduled at all under reduced motion — stopping the CSS
+ * interval is never scheduled at all under reduced motion - stopping the CSS
  * animation would not stop the text from changing underneath someone.
  */
 export default function RotatingWord() {

@@ -34,7 +34,7 @@
 
 /* ---------------------------------------------------------------- palettes */
 
-/* ink & sky — default */
+/* ink & sky - default */
 :root,
 :root[data-palette='sky'] {
   --bg: #f2f5f8;

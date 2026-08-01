@@ -5,7 +5,7 @@ export type Folder = {
   num: string;
   title: string;
   description: string;
-  /** The mono line under the description — reads like a label on a real file. */
+  /** The mono line under the description - reads like a label on a real file. */
   contents: string;
   cta: string;
   href: string;

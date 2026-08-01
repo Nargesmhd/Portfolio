@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react';
 import { readPrefs, subscribe, type Prefs } from './prefs';
 
 /*
- * useSyncExternalStore requires a referentially stable snapshot — returning a
+ * useSyncExternalStore requires a referentially stable snapshot - returning a
  * fresh object from readPrefs() on every call would loop forever. So the
  * snapshot is cached and only re-read when a change event fires.
  */

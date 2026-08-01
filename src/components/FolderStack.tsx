@@ -16,7 +16,7 @@ function prefersReducedMotion(): boolean {
  * folder turns yellow and slides out of the stack. Activating its CTA pulls
  * the folder from the pile before navigating.
  *
- * Under "plain layout" the same content renders as a flat bordered list —
+ * Under "plain layout" the same content renders as a flat bordered list -
  * the decoration goes, nothing else does.
  */
 export default function FolderStack() {
@@ -79,7 +79,7 @@ export default function FolderStack() {
         four folders, stacked. open one to see what is inside.
       </p>
 
-      {/* A list rather than loose divs — the caption sits outside it so the
+      {/* A list rather than loose divs - the caption sits outside it so the
           list has only listitem children. */}
       <div role="list" aria-label="Work folders">
         {folders.map((f, i) => {
@@ -97,7 +97,7 @@ export default function FolderStack() {
             style={
               {
                 // The closed-state tone only. --folder-bg is derived from it
-                // in CSS so the open state can override it — an inline
+                // in CSS so the open state can override it - an inline
                 // --folder-bg would outrank any stylesheet rule.
                 '--folder-tone': f.tone,
                 '--tab-offset': `${f.tabOffset}px`,
