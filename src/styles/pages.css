@@ -96,6 +96,119 @@
   color: var(--muted);
 }
 
+/* ----------------------------------------------------------- screenshots */
+
+.shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  /* Held while the file loads, so the caption below it does not jump. */
+  background: var(--paper);
+}
+
+/* auto-fit, so a lone screenshot fills the column instead of sitting in a
+   half-width cell waiting for a partner that never arrives. */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+}
+
+/* Detail crops are small on purpose - stretching them to a full column would
+   flatter the very contrast they exist to indict. */
+.shots-crop {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+}
+
+.shot-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.shot-tag {
+  padding: 1px 5px;
+  border: 1px solid var(--line);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* The verdict is spelled out in the text of the chip. Colour alone would fail
+   the criterion these two figures are reporting on. */
+.ratio {
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.ratio-fail {
+  border-color: var(--accent-ink);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* --------------------------------------------------------- counted tables */
+
+.table-wrap {
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  overflow-x: auto;
+}
+
+.counted {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.counted caption {
+  padding: 14px 18px 0;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.counted th,
+.counted td {
+  padding: 14px 18px;
+  border-top: 1px dotted var(--line);
+  vertical-align: top;
+}
+
+.counted thead th {
+  border-top: none;
+  padding-bottom: 4px;
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.counted tbody th {
+  font-size: calc(15px * var(--ts));
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.counted td {
+  font-size: calc(15px * var(--ts));
+  color: var(--body);
+}
+
 /* -------------------------------------------------------------- sections */
 
 .section {

@@ -9,6 +9,54 @@
  * the copy and delete the flag — or delete the entry.
  */
 
+/**
+ * An image file. `alt` is required and never decorative — a case study about
+ * accessibility cannot ship an unlabelled image. `w`/`h` are the file's real
+ * pixel dimensions, so the browser reserves the space before the image loads
+ * and nothing below it jumps.
+ */
+export type Img = {
+  /** Path under /public. */
+  src: string;
+  /** What the picture shows, written for someone who cannot see it. */
+  alt: string;
+  w: number;
+  h: number;
+};
+
+/** An image inside a section, captioned in its own right. */
+export type Shot = Img & {
+  /** Short mono label at the head of the caption — 'light', 'dark'. */
+  tag?: string;
+  caption: string;
+  /** A measured value printed beside the caption, e.g. a contrast ratio. */
+  figure?: string;
+  /** Whether that value meets the standard. Decides the chip. */
+  pass?: boolean;
+  /** Detail crops sit narrower than full screens. */
+  crop?: boolean;
+};
+
+/** A small ruled table of counted things. Figures only, never estimates. */
+export type Table = {
+  caption: string;
+  head: string[];
+  rows: string[][];
+};
+
+/**
+ * Evidence hangs off the section it belongs to, so the reading order is the
+ * order in this array and a project with nothing to show just omits it.
+ */
+export type Section = {
+  /** One word. [slug].astro lowercases it into an id for aria-labelledby, and
+      an id with a space in it would break the reference. */
+  heading: string;
+  body: string;
+  shots?: Shot[];
+  table?: Table;
+};
+
 export type Project = {
   /** URL segment. Lowercase, hyphenated, stable — it is a public link. */
   slug: string;
@@ -22,9 +70,11 @@ export type Project = {
   headline: string;
   /** Four cells: role, timeline, team, standard. */
   meta: [label: string, value: string][];
-  /** What belongs in the hero image slot, until a real screen lands there. */
+  /** The opening image. Without one the slot renders a placeholder stripe. */
+  hero?: Img;
+  /** Caption for the hero — or, with no hero, what belongs in the slot. */
   heroCaption: string;
-  sections: { heading: string; body: string }[];
+  sections: Section[];
   /** Three figures. Measured values only — the site claims nothing it has not counted. */
   metrics: [figure: string, label: string][];
   draft?: boolean;
@@ -78,15 +128,87 @@ export const projects: Project[] = [
       ['Team', 'Solo project'],
       ['Standard', 'WCAG 2.2 AA'],
     ],
-    heroCaption: 'the same Search button in both themes - 15.3:1 and 1.05:1',
+    hero: {
+      src: '/work/bookloop/home-light.jpg',
+      alt: "BookLoop's home page in light theme: a cream background, the headline 'Your book club, in one loop', and a card showing Dune by Frank Herbert being read right now by the Sci-Fi Explorers club.",
+      w: 1400,
+      h: 765,
+    },
+    heroCaption: 'home - the club reading Dune this week',
     sections: [
       {
         heading: 'Problem',
         body: 'BookLoop is a book club app where progress, posts and votes update live. It had two accessibility problems and only one of them was visible. The first was ordinary and severe: 73 of its 110 form controls had no accessible name, because labels were written as siblings of their inputs rather than linked to them - including the Email and Password fields on the sign-in screen, the first thing anyone touches. The second was that the product assumed an uninterrupted reader. You read fifteen pages on a Tuesday, nothing for nine days, then an hour on a plane, and by the time you finish, the thing you wanted to say about chapter three is gone. That gap hits everyone, and it hits people with ADHD, brain fog or fluctuating capacity considerably harder.',
+        shots: [
+          {
+            src: '/work/bookloop/home-dark.jpg',
+            alt: 'The same BookLoop home page in dark theme: a near-black background with cream text, carrying the same Dune card and headline.',
+            w: 1400,
+            h: 765,
+            tag: 'dark',
+            caption:
+              'the same page, second theme. Both were designed rather than inverted, and both render the label bug perfectly.',
+          },
+        ],
       },
       {
         heading: 'Process',
         body: 'Two passes, because the two kinds of defect hide from different tools. A static scan of every component file checked each control for an accessible name and each label for a real association - that is where the 73 came from, and the 30 labels attached to nothing at all. Then I ran the app locally against its own database and measured contrast on the rendered elements in both themes rather than reading it off the palette. That is how the dark-mode Search button turned up at 1.05:1, white on cream, from a hardcoded text-white sitting next to a background token that flips from navy to cream between themes - a pairing that appears 98 times. The remaining four defects were found by using the product, not by scanning it.',
+        shots: [
+          {
+            src: '/work/bookloop/find-a-club-light.jpg',
+            alt: "BookLoop's Find a club page in light theme: white cards on cream, six public book clubs with genre and pace chips, and a dark navy Search button.",
+            w: 1400,
+            h: 787,
+            tag: 'light',
+            caption: 'find a club',
+          },
+          {
+            src: '/work/bookloop/find-a-club-dark.jpg',
+            alt: 'The same Find a club page in dark theme: dark cards on near-black. The Search button is now a pale cream pill whose white label is barely readable.',
+            w: 1400,
+            h: 787,
+            tag: 'dark',
+            caption: 'the same page - look at the Search button',
+          },
+        ],
+      },
+      {
+        heading: 'System',
+        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it.',
+        shots: [
+          {
+            src: '/work/bookloop/search-button-light.png',
+            alt: 'Close-up of the Search button in light theme: white text and a magnifier icon on a deep navy pill, clearly legible.',
+            w: 504,
+            h: 280,
+            tag: 'light',
+            caption: 'white on navy',
+            figure: '15.3:1',
+            pass: true,
+            crop: true,
+          },
+          {
+            src: '/work/bookloop/search-button-dark.png',
+            alt: 'Close-up of the same Search button in dark theme: the pill is pale cream and the white label is almost invisible against it.',
+            w: 504,
+            h: 280,
+            tag: 'dark',
+            caption: 'white on cream',
+            figure: '1.05:1',
+            pass: false,
+            crop: true,
+          },
+        ],
+        table: {
+          caption: 'design-system adoption, counted from the codebase',
+          head: ['Primitive', 'Files importing it', 'Result'],
+          rows: [
+            ['Card', '26', 'Working as intended'],
+            ['Button', '0', 'Dead code - every button is hand-styled'],
+            ['Hand-styled buttons', '78 elements, 55 class signatures', 'No single place to fix contrast'],
+          ],
+        },
       },
       {
         heading: 'Outcome',
@@ -94,7 +216,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'Strategy',
-        body: 'Two things this project taught me. An unadopted primitive is worse than none: BookLoop had a shared Button component added specifically so contrast could be fixed in one place, and nothing ever imported it - 78 hand-styled buttons across 55 class signatures instead, which is why every fix cost 15 files rather than one line. And cognitive accessibility is product strategy, not an accommodation bolted on. Progress is stored as a percent rather than a page, which is the only unit that means the same thing to a paperback, an ebook and a fourteen-hour audiobook, and it is also what lets notes anchor to a place in the book and stay sealed until you reach them - so you can open a three-week-old club thread without being spoiled. That is not a feature for a minority. It is the reason someone is still in the club in week six.',
+        body: 'That table is the whole lesson about design systems: an unadopted primitive is worse than none, because it creates the belief that contrast is centralised when it is actually spread across 55 hand-written variants. The other lesson is that cognitive accessibility is product strategy, not an accommodation bolted on afterwards. Progress is stored as a percent rather than a page, which is the only unit that means the same thing to a paperback, an ebook and a fourteen-hour audiobook, and it is also what lets a note anchor to a place in the book and stay sealed until you reach it - so you can open a three-week-old club thread without being spoiled. That is not a feature for a minority. It is the reason someone is still in the club in week six.',
       },
     ],
     metrics: [

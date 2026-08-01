@@ -58,12 +58,24 @@ const { project, next } = Astro.props;
     </dl>
 
     <figure class="slot">
-      <div class="stripe slot-16-8"></div>
+      {
+        project.hero ? (
+          <img
+            class="shot-img"
+            src={project.hero.src}
+            alt={project.hero.alt}
+            width={project.hero.w}
+            height={project.hero.h}
+          />
+        ) : (
+          <div class="stripe slot-16-8" />
+        )
+      }
       <figcaption class="slot-caption mono">{project.heroCaption}</figcaption>
     </figure>
 
     {
-      project.sections.map(({ heading, body }) => {
+      project.sections.map(({ heading, body, shots, table }) => {
         const id = heading.toLowerCase();
         return (
           <section class="section" aria-labelledby={id}>
@@ -71,6 +83,69 @@ const { project, next } = Astro.props;
               {heading}
             </h2>
             <p>{body}</p>
+
+            {
+              /* Crops are detail shots, so they sit narrower than full screens
+                 and never stretch to fill the column. */
+              shots && (
+                <div class:list={['shots', shots.every((s) => s.crop) && 'shots-crop']}>
+                  {shots.map((shot) => (
+                    <figure>
+                      <img
+                        class="shot-img"
+                        src={shot.src}
+                        alt={shot.alt}
+                        width={shot.w}
+                        height={shot.h}
+                        loading="lazy"
+                      />
+                      <figcaption class="shot-caption mono">
+                        {shot.tag && <b class="shot-tag">{shot.tag}</b>}
+                        <span>{shot.caption}</span>
+                        {/* The ratio carries its own verdict in text, because a
+                            red/green chip alone would fail the criterion this
+                            very figure is about. */}
+                        {shot.figure && (
+                          <b class:list={['ratio', shot.pass ? 'ratio-pass' : 'ratio-fail']}>
+                            {shot.figure} {shot.pass ? 'passes' : 'fails'}
+                          </b>
+                        )}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )
+            }
+
+            {
+              table && (
+                /* The wrapper scrolls on narrow screens, so it is a labelled
+                   region with a tab stop - otherwise a keyboard user can see
+                   the overflow and has no way to reach it. */
+                <div class="table-wrap" role="region" aria-label={table.caption} tabindex="0">
+                  <table class="counted">
+                    <caption class="mono">{table.caption}</caption>
+                    <thead>
+                      <tr>
+                        {table.head.map((cell) => (
+                          <th scope="col">{cell}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table.rows.map(([first, ...rest]) => (
+                        <tr>
+                          <th scope="row">{first}</th>
+                          {rest.map((cell) => (
+                            <td>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )
+            }
           </section>
         );
       })
