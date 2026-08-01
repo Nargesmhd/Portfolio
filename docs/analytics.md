@@ -15,6 +15,15 @@ The shape is deliberate: **the browser never holds a credential that can read
 the analytics.** The only token that ships in the page is the write-only beacon
 tag, which cannot read anything back.
 
+> **The admin page is not published until you say so.** A static site serves
+> every file in `dist/` to anyone who asks; there is no request-time check to
+> refuse them. So until Cloudflare Access is actually in front of the path,
+> `/admin` is left out of the build entirely and returns a 404 in production.
+> It still works in `npm run dev`, where only localhost can reach it.
+>
+> Turn it on by building with `ENABLE_ADMIN=1` — step 6 below. Do that *after*
+> step 4, not before.
+
 ```
 visitor → beacon.min.js ──────────────→ Cloudflare Web Analytics
                                                  │
@@ -31,12 +40,31 @@ written and waiting on the five values you collect below.
 ### 1. Put the domain behind Cloudflare
 
 Add `nargesmirheydari.com` to Cloudflare and change the nameservers at your
-registrar to the pair Cloudflare gives you. Keep the existing GitHub Pages
-records, and make sure the record for the apex is **proxied** (orange cloud) —
-Access and Workers only apply to proxied traffic.
+registrar (Namecheap) to the pair Cloudflare gives you. Make sure the record for
+the apex is **proxied** (orange cloud) — Access and Workers only apply to
+proxied traffic.
 
-Nothing about the deploy changes. GitHub Pages stays the origin, and
-`.github/workflows/deploy.yml` is untouched.
+> **Copy your email records across first.** Changing nameservers moves *all*
+> DNS to Cloudflare, not just the website. This domain currently uses Namecheap
+> email forwarding, and those records do not come with it. Recreate them in
+> Cloudflare before flipping the nameservers, or mail to your domain stops
+> being delivered:
+>
+> | Type | Name | Value | Priority |
+> | --- | --- | --- | --- |
+> | MX | `@` | `eforward1.registrar-servers.com` | 10 |
+> | MX | `@` | `eforward2.registrar-servers.com` | 10 |
+> | MX | `@` | `eforward3.registrar-servers.com` | 10 |
+> | MX | `@` | `eforward4.registrar-servers.com` | 15 |
+> | MX | `@` | `eforward5.registrar-servers.com` | 20 |
+> | TXT | `@` | `v=spf1 include:spf.efwd.registrar-servers.com ~all` | — |
+>
+> Also keep the four GitHub Pages A records (`185.199.108–111.153`) and the
+> `www` CNAME to `nargesmhd.github.io`. Cloudflare's scan usually imports these
+> automatically — check them against the list before you switch.
+
+Nothing about the deploy changes. GitHub Pages stays the origin, and the
+workflow is untouched.
 
 ### 2. Turn on Web Analytics
 
@@ -112,11 +140,27 @@ npm install && npx wrangler secret put CF_API_TOKEN && npx wrangler deploy
 `wrangler secret put` prompts for the token from step 3 and stores it encrypted
 on Cloudflare. It never enters the repo.
 
-### 6. Check it
+### 6. Publish the page, then check it
 
-Open `https://nargesmirheydari.com/admin`. You should be asked for a one-time
-PIN, then see the dashboard. Data takes a few minutes to first appear, and the
-page will honestly say it has nothing yet until then.
+Only now is it safe to put `/admin` on the live site. In
+`.github/workflows/deploy.yml`, add `ENABLE_ADMIN` to the build step:
+
+```yaml
+      - run: npm run build
+        env:
+          PUBLIC_CF_BEACON_TOKEN: ${{ secrets.PUBLIC_CF_BEACON_TOKEN }}
+          ENABLE_ADMIN: '1'
+```
+
+Push, and once the deploy finishes open `https://nargesmirheydari.com/admin`.
+You should be asked for a one-time PIN, then see the dashboard. Data takes a few
+minutes to first appear, and the page will honestly say it has nothing yet until
+then.
+
+Confirm the lock works by opening the same URL in a private window: it should
+stop at the Cloudflare login and never reach the page. If it loads without
+asking, the Access application is not matching the path — fix that before
+leaving it up.
 
 ## How access is actually enforced
 
