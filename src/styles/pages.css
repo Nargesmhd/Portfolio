@@ -25,6 +25,23 @@
   color: var(--body);
 }
 
+/* Same shape as the accessibility note: a bordered aside that says one thing
+   plainly. Sits directly under the H1 so it is read before any of the claims
+   it qualifies. */
+.draft-note {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+  font-size: calc(16px * var(--ts));
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.draft-note strong {
+  color: var(--ink);
+}
+
 /* ------------------------------------------------------------- meta grid */
 
 .meta-grid {

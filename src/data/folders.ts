@@ -1,19 +1,8 @@
-import { routes } from '../lib/routes';
+import type { FolderItem } from '../components/FolderStack';
+import { projectUrl, routes } from '../lib/routes';
+import { projects } from './projects';
 
-export type Folder = {
-  key: string;
-  num: string;
-  title: string;
-  description: string;
-  /** The mono line under the description — reads like a label on a real file. */
-  contents: string;
-  cta: string;
-  href: string;
-  /** Closed-state background token. The open folder always turns yellow. */
-  tone: string;
-  /** Tab offset, so the four tabs form a staircase. */
-  tabOffset: number;
-};
+export type Folder = FolderItem;
 
 export const folders: Folder[] = [
   {
@@ -24,7 +13,7 @@ export const folders: Folder[] = [
       'Audits and remediation for small teams - contrast, focus order, form semantics, plus the docs that stop regressions.',
     contents: '4 audits · 2 redesigns · checked against WCAG 2.2',
     cta: 'Open the case study →',
-    href: routes.caseStudy,
+    href: projectUrl('nibbit-ai'),
     tone: 'var(--f3)',
     tabOffset: 0,
   },
@@ -33,10 +22,11 @@ export const folders: Folder[] = [
     num: '02',
     title: 'product design',
     description:
-      'nibbit.ai, 2023-24. Core consumer flow rebuilt around screen-reader order and keyboard parity.',
-    contents: '1 case study · flows · before/after',
-    cta: 'Open the case study →',
-    href: routes.caseStudy,
+      'Consumer flows rebuilt so the keyboard path, the screen-reader order and the visual order are the same order. One folder per project inside.',
+    // Counted from the data, so adding a project cannot leave this line lying.
+    contents: `${projects.length} projects · flows · before/after`,
+    cta: 'Open the projects →',
+    href: routes.productDesign,
     tone: 'var(--f2)',
     tabOffset: 172,
   },
@@ -60,7 +50,7 @@ export const folders: Folder[] = [
       'Older explorations, drafting work, and side projects - kept because the thinking still counts.',
     contents: 'drafting · retail years · misc',
     cta: 'Open the archive →',
-    href: routes.caseStudy,
+    href: projectUrl('nibbit-ai'),
     tone: 'var(--f4)',
     tabOffset: 516,
   },

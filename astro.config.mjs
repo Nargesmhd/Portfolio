@@ -9,5 +9,11 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://nargesmirheydari.com',
-  integrations: [react()]
+  integrations: [react()],
+  // The nibbit.ai write-up used to be the site's only case study and lived at
+  // its own route. It is now one project among several under /work/, so the
+  // old link keeps working rather than 404ing on anyone who saved it.
+  redirects: {
+    '/case-study': '/work/nibbit-ai/'
+  }
 });

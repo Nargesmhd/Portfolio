@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import { projects, type Project } from '../../data/projects';
+import { projectUrl, routes } from '../../lib/routes';
+import '../../styles/pages.css';
+
+export function getStaticPaths() {
+  return projects.map((project, i) => ({
+    params: { slug: project.slug },
+    // The pile has an order, so a case study knows what comes after it.
+    props: { project, next: projects[i + 1] ?? null },
+  }));
+}
+
+interface Props {
+  project: Project;
+  next: Project | null;
+}
+
+const { project, next } = Astro.props;
+---
+
+<Base
+  title={`${project.title} — Narges Mirheydari`}
+  description={project.summary}
+  noindex={project.draft}
+>
+  <article class="reading col-820">
+    <p class="breadcrumb mono">
+      {/* One line on purpose: a newline between the separator and the link
+          collapses away, and the crumbs run together. */}
+      <a href={routes.works}>works</a> / <a href={routes.productDesign}>product design</a> / {project.title}
+    </p>
+
+    <h1 class="page-h1">{project.headline}</h1>
+
+    {
+      /* Said once, plainly, above everything it applies to. An unfinished page
+         that looks finished is the one thing this site cannot ship. */
+      project.draft && (
+        <p class="draft-note">
+          <strong>This case study is a draft.</strong> The structure is in
+          place; the writing is not. Nothing on this page should be read as a
+          claim yet.
+        </p>
+      )
+    }
+
+    <dl class="meta-grid">
+      {
+        project.meta.map(([label, value]) => (
+          <div>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <figure class="slot">
+      <div class="stripe slot-16-8"></div>
+      <figcaption class="slot-caption mono">{project.heroCaption}</figcaption>
+    </figure>
+
+    {
+      project.sections.map(({ heading, body }) => {
+        const id = heading.toLowerCase();
+        return (
+          <section class="section" aria-labelledby={id}>
+            <h2 id={id} class="hl">
+              {heading}
+            </h2>
+            <p>{body}</p>
+          </section>
+        );
+      })
+    }
+
+    <div class="metrics">
+      {
+        project.metrics.map(([figure, label]) => (
+          <div>
+            <p class="metric-figure">{figure}</p>
+            <p class="metric-label mono">{label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <nav class="page-nav mono" aria-label="Case study">
+      <a href={routes.productDesign}>← back to product design</a>
+      {
+        next ? (
+          <a href={projectUrl(next.slug)}>next: {next.title} →</a>
+        ) : (
+          <a href={routes.design}>how I design →</a>
+        )
+      }
+    </nav>
+  </article>
+</Base>

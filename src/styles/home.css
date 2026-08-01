@@ -219,6 +219,26 @@
   letter-spacing: -0.02em;
 }
 
+/*
+ * Marks a project whose write-up is not finished. Outlined rather than filled
+ * so it works on any folder tone: --f-ink is the one colour guaranteed to
+ * oppose --folder-bg in every state, and outside a folder (the plain list) it
+ * falls back to the page ink.
+ */
+.folder-badge {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  color: var(--f-ink, var(--ink));
+  font-size: calc(11px * var(--ts));
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  /* Holds the chip on its own line height inside a baseline-aligned row. */
+  vertical-align: middle;
+}
+
 /* The open/close cue is the only text carrying the folder's state, so it takes
    the same 12px floor as every other control label rather than 11px. */
 .folder-state {

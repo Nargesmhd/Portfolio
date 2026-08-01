@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import FolderStack, { type FolderItem } from '../components/FolderStack.tsx';
+import { projects } from '../data/projects';
+import { projectUrl, routes } from '../lib/routes';
+import '../styles/pages.css';
+import '../styles/home.css';
+
+/*
+ * The visual side of a project — number, colour, tab position — is decided
+ * here rather than in the data, so the file Narges edits stays about the work.
+ * Tones alternate and offsets step by 172px, the same staircase the home
+ * stack uses, however many projects there are.
+ */
+const TONES = ['var(--f3)', 'var(--f2)'];
+
+const items: FolderItem[] = projects.map((p, i) => ({
+  key: p.slug,
+  num: String(i + 1).padStart(2, '0'),
+  title: p.title,
+  description: p.summary,
+  contents: p.contents,
+  cta: p.draft ? 'Read the draft →' : 'Open the case study →',
+  href: projectUrl(p.slug),
+  tone: TONES[i % TONES.length],
+  tabOffset: i * 172,
+  badge: p.draft ? 'DRAFT' : undefined,
+}));
+---
+
+<Base
+  title="Product design — Narges Mirheydari"
+  description="Product design projects: consumer flows rebuilt so the keyboard path, the screen-reader order and the visual order match."
+  current="works"
+>
+  <div class="home">
+    <p class="breadcrumb mono">
+      <a href={routes.works}>works</a> / product design
+    </p>
+
+    <h1 class="page-h1">Product design</h1>
+
+    <p class="lede">
+      Every project here started the same way: find out who could not get
+      through the flow, then rebuild it so they can. Open a folder to read how
+      each one went.
+    </p>
+
+    <FolderStack
+      client:load
+      items={items}
+      caption="one folder per project. open one to read the case study."
+      label="Product design projects"
+    />
+
+    <nav class="page-nav mono" aria-label="Product design">
+      <a href={routes.works}>← back to folders</a>
+      <a href={routes.design}>how I design →</a>
+    </nav>
+  </div>
+</Base>

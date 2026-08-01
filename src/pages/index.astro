@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import RotatingWord from '../components/RotatingWord.tsx';
 import Marquee from '../components/Marquee.tsx';
 import FolderStack from '../components/FolderStack.tsx';
+import { folders } from '../data/folders';
 import AboutAccordion from '../components/AboutAccordion.tsx';
 import { url } from '../lib/routes';
 import '../styles/home.css';
@@ -41,7 +42,12 @@ import '../styles/home.css';
 
     <Marquee client:load />
 
-    <FolderStack client:load />
+    <FolderStack
+      client:load
+      items={folders}
+      caption="four folders, stacked. open one to see what is inside."
+      label="Work folders"
+    />
 
     <AboutAccordion client:load />
   </div>

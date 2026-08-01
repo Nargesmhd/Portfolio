@@ -13,9 +13,14 @@ export function url(path: string): string {
   return `${base}${rest}` || '/';
 }
 
+/** Every project case study lives under /work/, one page per project. */
+export function projectUrl(slug: string): string {
+  return url(`/work/${slug}/`);
+}
+
 export const routes = {
   works: url('/'),
-  caseStudy: url('/case-study/'),
+  productDesign: url('/product-design/'),
   design: url('/how-i-design/'),
   about: url('/about/'),
   accessibility: url('/accessibility/'),

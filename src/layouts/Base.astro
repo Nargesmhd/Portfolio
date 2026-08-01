@@ -20,9 +20,12 @@ interface Props {
   current?: 'works' | 'about' | 'design';
   /**
    * Keeps the page out of search results *and* out of its own analytics.
-   * The two belong together: a page nobody should find is also a page whose
-   * views would only ever be mine, and counting those would corrupt the very
-   * numbers the admin page exists to report.
+   * The two belong together: a page nobody should find yet is also a page
+   * whose views would tell me nothing, and counting them would corrupt the
+   * very numbers the admin page exists to report.
+   *
+   * Set on the admin page, which is private, and on draft case studies,
+   * which are reachable but not finished.
    */
   noindex?: boolean;
 }
