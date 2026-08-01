@@ -2,7 +2,7 @@
 
 /* ------------------------------------------------------------------ shell */
 /*
- * One column for every page. The right padding is not decoration — it reserves
+ * One column for every page. The right padding is not decoration - it reserves
  * the strip the fixed reading rail occupies, so the rail can never cover text
  * at any viewport width. Reading pages narrow their own content inside this
  * shell rather than changing it.
@@ -44,7 +44,7 @@
  *
  * Control labels are authored calc(Npx * var(--ts)), exactly like running
  * copy. "Larger text" is an accessibility setting, and a reader who needs it
- * needs it on the navigation as much as on the prose — leaving the chrome
+ * needs it on the navigation as much as on the prose - leaving the chrome
  * pinned at 12px would hand them a bigger page they still cannot steer.
  */
 .site-header .wordmark {

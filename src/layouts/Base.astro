@@ -79,7 +79,7 @@ const beacon = !noindex && beaconToken ? beaconToken : null;
     {/*
       Runs before first paint so the saved theme and reading settings are
       already on <html> when the page renders. Without this the page would
-      flash the default light theme before React hydrated — which is worst
+      flash the default light theme before React hydrated - which is worst
       for exactly the users these settings exist for.
     */}
     <script is:inline>
@@ -122,7 +122,7 @@ const beacon = !noindex && beaconToken ? beaconToken : null;
     <style>
       /* Off-screen until focused, then pinned top-left. Kept in the layout
          because it must be the first focusable element in the document. */
-      /* The handoff specifies 12px/18px padding, which lands at 37px tall —
+      /* The handoff specifies 12px/18px padding, which lands at 37px tall -
          under the 44px minimum the site claims. Kept the visual padding and
          set an explicit min-height so the target actually meets the claim. */
       .skip {
@@ -144,7 +144,7 @@ const beacon = !noindex && beaconToken ? beaconToken : null;
         top: 12px;
       }
 
-      /* main is focusable only as the skip-link target — never a tab stop. */
+      /* main is focusable only as the skip-link target - never a tab stop. */
       main:focus {
         outline: none;
       }

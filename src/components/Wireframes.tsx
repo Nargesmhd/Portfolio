@@ -22,7 +22,7 @@ const SHEETS: {
   {
     id: 'home',
     tab: 'home',
-    caption: '01 — home',
+    caption: '01 - home',
     Sheet: HomeSheet,
     chips: [
       { label: 'tap a folder → case study', to: 'case' },
@@ -32,7 +32,7 @@ const SHEETS: {
   {
     id: 'case',
     tab: 'case study',
-    caption: '02 — case study',
+    caption: '02 - case study',
     Sheet: CaseSheet,
     chips: [
       { label: '← back to folders', to: 'home' },
@@ -42,7 +42,7 @@ const SHEETS: {
   {
     id: 'about',
     tab: 'about',
-    caption: '03 — about',
+    caption: '03 - about',
     Sheet: AboutSheet,
     chips: [
       { label: '← home', to: 'home' },
@@ -52,7 +52,7 @@ const SHEETS: {
   {
     id: 'access',
     tab: 'a11y statement',
-    caption: '04 — accessibility statement',
+    caption: '04 - accessibility statement',
     Sheet: AccessSheet,
     chips: [
       { label: '"found a barrier?" → email', href: `mailto:${contact.email}` },
@@ -62,7 +62,7 @@ const SHEETS: {
   {
     id: 'play',
     tab: 'playground',
-    caption: '05 — playground',
+    caption: '05 - playground',
     Sheet: PlaySheet,
     chips: [
       { label: 'convo chip → email', href: `mailto:${contact.email}` },
@@ -73,7 +73,7 @@ const SHEETS: {
 
 /**
  * Two ways to read the same five sheets: walk them like a visitor would, or
- * lay them all out at once. Both are the same content — the switcher changes
+ * lay them all out at once. Both are the same content - the switcher changes
  * presentation only, so nobody has to use the interactive mode to see it all.
  */
 export default function Wireframes() {

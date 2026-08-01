@@ -44,7 +44,7 @@ function prefersReducedMotion(): boolean {
  * projects one level down. The stack is the site's way of saying "there is
  * more inside", so it is the same object at both depths.
  *
- * Under "plain layout" the same content renders as a flat bordered list —
+ * Under "plain layout" the same content renders as a flat bordered list -
  * the decoration goes, nothing else does.
  */
 export default function FolderStack({ items, caption, label }: Props) {
@@ -110,7 +110,7 @@ export default function FolderStack({ items, caption, label }: Props) {
     <div className="stack">
       <p className="stack-caption mono">{caption}</p>
 
-      {/* A list rather than loose divs — the caption sits outside it so the
+      {/* A list rather than loose divs - the caption sits outside it so the
           list has only listitem children. */}
       <div role="list" aria-label={label}>
         {items.map((f, i) => {
@@ -128,7 +128,7 @@ export default function FolderStack({ items, caption, label }: Props) {
             style={
               {
                 // The closed-state tone only. --folder-bg is derived from it
-                // in CSS so the open state can override it — an inline
+                // in CSS so the open state can override it - an inline
                 // --folder-bg would outrank any stylesheet rule.
                 '--folder-tone': f.tone,
                 '--tab-offset': `${f.tabOffset}px`,
