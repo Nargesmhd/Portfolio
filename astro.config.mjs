@@ -9,10 +9,9 @@ import react from '@astrojs/react';
  *
  * This matters because the site is static. A page under src/pages/ becomes a
  * file in dist/, and every file in dist/ is served to anyone who asks — there
- * is no request-time check available to refuse them. So while the domain has
- * nothing in front of it, the only way to keep /admin private is to not
- * publish it. Moving to Cloudflare Pages does not change that on its own —
- * what changes it is the Access application, which is a later step.
+ * is no request-time check available to refuse them. So while the domain sits
+ * on GitHub Pages with nothing in front of it, the only way to keep /admin
+ * private is to not publish it.
  *
  * Set ENABLE_ADMIN=1 once Cloudflare Access is actually protecting the path.
  * Until then the route exists in development, where it is only ever reachable
@@ -47,8 +46,8 @@ const adminRoute = {
 };
 
 // Served from the apex domain, so the site sits at the root — no `base`.
-// The domain binding is a setting on the Cloudflare Pages project, not a file
-// in the build; see docs/hosting.md.
+// The domain binding itself lives in public/CNAME, which GitHub Pages reads
+// out of the build artifact on every deploy.
 // https://astro.build/config
 export default defineConfig({
   site: 'https://nargesmirheydari.com',

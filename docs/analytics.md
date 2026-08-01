@@ -1,7 +1,7 @@
 # Visit analytics and the admin page
 
-The site is a static build on Cloudflare Pages, which means it has no server,
-no database, and no logs to read. Counting visitors and restricting a page to one
+The site is a static build on GitHub Pages, which means it has no server, no
+database, and no logs to read. Counting visitors and restricting a page to one
 person both need something the static host cannot provide, so both come from
 Cloudflare:
 
@@ -39,13 +39,32 @@ written and waiting on the five values you collect below.
 
 ### 1. Put the domain behind Cloudflare
 
-This is now the first step of [hosting.md](hosting.md) as well — the site
-itself moved to Cloudflare Pages, so the domain has to be on Cloudflare before
-either the site or these numbers work. Do it there (including the email records
-it warns about), then come back.
+Add `nargesmirheydari.com` to Cloudflare and change the nameservers at your
+registrar (Namecheap) to the pair Cloudflare gives you. Make sure the record for
+the apex is **proxied** (orange cloud) — Access and Workers only apply to
+proxied traffic.
 
-The one thing to carry back here: keep the apex **proxied** (orange cloud).
-Access and Workers only apply to proxied traffic.
+> **Copy your email records across first.** Changing nameservers moves *all*
+> DNS to Cloudflare, not just the website. This domain currently uses Namecheap
+> email forwarding, and those records do not come with it. Recreate them in
+> Cloudflare before flipping the nameservers, or mail to your domain stops
+> being delivered:
+>
+> | Type | Name | Value | Priority |
+> | --- | --- | --- | --- |
+> | MX | `@` | `eforward1.registrar-servers.com` | 10 |
+> | MX | `@` | `eforward2.registrar-servers.com` | 10 |
+> | MX | `@` | `eforward3.registrar-servers.com` | 10 |
+> | MX | `@` | `eforward4.registrar-servers.com` | 15 |
+> | MX | `@` | `eforward5.registrar-servers.com` | 20 |
+> | TXT | `@` | `v=spf1 include:spf.efwd.registrar-servers.com ~all` | — |
+>
+> Also keep the four GitHub Pages A records (`185.199.108–111.153`) and the
+> `www` CNAME to `nargesmhd.github.io`. Cloudflare's scan usually imports these
+> automatically — check them against the list before you switch.
+
+Nothing about the deploy changes. GitHub Pages stays the origin, and the
+workflow is untouched.
 
 ### 2. Turn on Web Analytics
 
@@ -149,7 +168,7 @@ Two independent layers, because one of them is a configuration setting and
 configuration drifts:
 
 1. **Cloudflare Access** blocks unauthenticated requests at the edge, before
-   they reach the Pages deployment or the Worker.
+   they reach GitHub Pages or the Worker.
 2. **The Worker verifies the Access JWT itself** — signature against your team's
    public keys, audience, issuer, and expiry (`worker/src/access.ts`). If the
    route were ever misconfigured so that Access didn't cover it, the data stays

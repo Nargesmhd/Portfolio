@@ -1,9 +1,0 @@
-# Cloudflare Pages redirects. One rule per line: from, to, status.
-#
-# Astro also emits a meta-refresh page for this route (see `redirects` in
-# astro.config.mjs), which is what a plain static host can do. Cloudflare can
-# do better, so it answers with a real 301 before that page is ever served.
-# Both are kept: the HTML is the fallback if this file is ever dropped.
-
-/case-study     /work/nibbit-ai/     301
-/case-study/    /work/nibbit-ai/     301

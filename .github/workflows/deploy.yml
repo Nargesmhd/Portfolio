@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -12,14 +12,13 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-# Only the checkout needs anything. The old GitHub Pages deploy needed
-# `pages: write` and `id-token: write`; Cloudflare authenticates with its own
-# API token instead, so those are gone.
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,14 +41,16 @@ jobs:
         env:
           PUBLIC_CF_BEACON_TOKEN: ${{ secrets.PUBLIC_CF_BEACON_TOKEN }}
 
-      # Direct upload: Cloudflare never reads the repository, so the repo can
-      # stay private without costing anything. The API token is scoped to
-      # Cloudflare Pages · Edit and nothing else. See docs/hosting.md.
-      - uses: cloudflare/wrangler-action@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # --branch=main marks this the production deployment. Without it
-          # Cloudflare would treat the upload as a preview and leave the
-          # custom domain pointing at the previous build.
-          command: pages deploy dist --project-name=portfolio --branch=main
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
