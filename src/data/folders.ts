@@ -1,5 +1,5 @@
 import type { FolderItem } from '../components/FolderStack';
-import { projectUrl, routes } from '../lib/routes';
+import { routes } from '../lib/routes';
 import { projects } from './projects';
 
 export type Folder = FolderItem;
@@ -10,10 +10,13 @@ export const folders: Folder[] = [
     num: '01',
     title: 'accessibility',
     description:
-      'Audits and remediation for small teams - contrast, focus order, form semantics, plus the docs that stop regressions.',
-    contents: '4 audits · 2 redesigns · checked against WCAG 2.2',
-    cta: 'Open the case study →',
-    href: projectUrl('nibbit-ai'),
+      'Audits and remediation for small teams - contrast, focus order, form semantics. And where all of that sits now that models write the interface.',
+    contents: 'position piece · WCAG 2.2 · what changed with AI',
+    // Was a deep link into the Nibbit case study, which is not what a folder
+    // labelled "accessibility" promises. That case study is still one click
+    // away inside folder 02.
+    cta: 'Read the piece →',
+    href: routes.accessibility,
     tone: 'var(--f3)',
     tabOffset: 0,
   },
