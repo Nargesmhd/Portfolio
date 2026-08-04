@@ -9,9 +9,10 @@ export type FolderItem = {
   title: string;
   description: string;
   /** The mono line under the description - reads like a label on a real file. */
-  contents: string;
-  cta: string;
-  href: string;
+  contents?: string;
+  /** Both omitted while a folder has nothing to open yet. */
+  cta?: string;
+  href?: string;
   /** Closed-state background token. The open folder always turns yellow. */
   tone: string;
   /** Tab offset, so the tabs form a staircase. */
@@ -95,10 +96,12 @@ export default function FolderStack({ items, caption, label }: Props) {
                 ) : null}
               </h3>
               <p className="plain-desc">{f.description}</p>
-              <p className="plain-meta mono">{f.contents}</p>
-              <a className="plain-cta mono" href={f.href}>
-                {f.cta}
-              </a>
+              {f.contents ? <p className="plain-meta mono">{f.contents}</p> : null}
+              {f.href && f.cta ? (
+                <a className="plain-cta mono" href={f.href}>
+                  {f.cta}
+                </a>
+              ) : null}
             </div>
           </li>
         ))}
@@ -162,14 +165,18 @@ export default function FolderStack({ items, caption, label }: Props) {
 
               <div id={panelId} className="folder-panel" hidden={!isOpen}>
                 <p className="folder-desc">{f.description}</p>
-                <p className="folder-meta mono">{f.contents}</p>
-                <a
-                  className="folder-cta mono"
-                  href={f.href}
-                  onClick={(e) => handleCta(e, f.key)}
-                >
-                  {f.cta}
-                </a>
+                {f.contents ? (
+                  <p className="folder-meta mono">{f.contents}</p>
+                ) : null}
+                {f.href && f.cta ? (
+                  <a
+                    className="folder-cta mono"
+                    href={f.href}
+                    onClick={(e) => handleCta(e, f.key)}
+                  >
+                    {f.cta}
+                  </a>
+                ) : null}
               </div>
             </div>
           </div>
