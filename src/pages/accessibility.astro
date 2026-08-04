@@ -1,59 +1,255 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact } from '../lib/routes';
+import { contact, routes } from '../lib/routes';
 import '../styles/pages.css';
 
 /*
- * Every value below is a measured claim, not a marketing line. If the design
- * changes, re-measure before editing these - the page is only worth anything
- * if the numbers are true.
+ * This page used to be the site's accessibility statement - a table of
+ * measured claims about this build. It is now a position piece: what product
+ * design has to do differently now that models write the interface, and where
+ * accessibility sits in that. The measured claims still live in the footer
+ * line and in the case studies, which is where they can be kept honest.
  *
- * Contrast figures are the *worst* case across all four palettes in both
- * themes, so the claim holds whichever combination a visitor is looking at.
- * The handoff's draft said 11.4:1; the palettes as built measure 9.47:1 at
- * their weakest (ink & moss, light), so the lower number is the honest one.
- *
- * TODO before launch: the "Screen readers tested" row is not yet true of this
- * build. Run the five pages through VoiceOver and NVDA, or drop the row. An
- * untested claim on this page in particular undoes the point of the page.
+ * One external number is cited below (WebAIM's annual scan of the top million
+ * home pages). It is quoted as "about 95%, every year the scan has run"
+ * because that has held across every published year; re-check the current
+ * report before tightening it into a single figure. Same rule as always: no
+ * claim on this site that I have not checked.
  */
-const rows = [
-  ['Body text contrast', '9.4:1 minimum · 18.1:1 in high contrast'],
-  // Inline links inside a sentence (the footer row) are exempt from WCAG 2.2
-  // SC 2.5.8 by the inline exception, so the claim is scoped to controls.
-  ['Minimum hit target', '44 px - every control'],
-  ['Keyboard path', 'complete - try Tab now'],
-  ['Screen readers tested', 'VoiceOver · NVDA'],
-  ['Motion', 'follows your system setting'],
+
+const sections = [
+  {
+    id: 'cost',
+    heading: 'The cost of making moved, the standard did not',
+    body: [
+      'Producing an interface is close to free now. A screen that took a week of front-end takes an afternoon, and a rough version of almost anything is one prompt away. What did not get cheaper is deciding what should exist and judging whether the thing that came out is any good.',
+      'So the centre of gravity in product design moves from making to judging. Less time drawing the fourth variant, more time saying precisely what separates a good one from a bad one - precisely enough that the answer holds when a hundred variants arrive instead of four.',
+    ],
+  },
+  {
+    id: 'median',
+    heading: 'A model writes the median web, and the median web fails',
+    body: [
+      "Models learn from what has been built. WebAIM scans the top million home pages every year, and every year it finds detectable WCAG failures on about 95% of them. That is the corpus. So a model reaches for a div with a click handler as readily as a button, writes a placeholder where a label belongs, signals state with colour alone, and ships icon buttons with no accessible name. Not carelessness - an accurate average.",
+      'The defect rate per screen stays roughly what it always was. The number of screens goes up by an order of magnitude. The number of barriers shipped is the product of the two, and only one of those terms is falling.',
+    ],
+  },
+  {
+    id: 'audit',
+    heading: 'You cannot audit a surface that is different every time',
+    body: [
+      'The whole audit tradition assumes a fixed screen: open the page, walk it with a keyboard, check the contrast, write the report. Generative interfaces break that assumption. The output differs per user, per run, per prompt. There is no page to open.',
+      'Accessibility has to become a property you specify and then evaluate against, run after run, the way teams already evaluate safety or accuracy. That is an evals problem, and it means the requirement has to be written down in a form a machine can check.',
+    ],
+  },
+];
+
+/* New surfaces, and the specific thing that breaks on each. Kept as a table
+   because these are the checks I would actually run, not a mood. */
+const surfaces = [
+  [
+    'Streaming text',
+    'aria-live=assertive floods, polite goes silent. Nobody has settled what "finished" sounds like.',
+  ],
+  [
+    'The blank prompt box',
+    'No affordances, nothing discoverable, no way to see what is possible. Highest cognitive load of any input we ship.',
+  ],
+  [
+    'Voice-first',
+    'Assumes fluent speech, an expected accent, a quiet room, and hearing the reply.',
+  ],
+  [
+    'Agents acting for you',
+    'State changes the person did not initiate. Consent, announcement and undo stop being polish.',
+  ],
+  [
+    'Confidently wrong output',
+    'Invented alt text is worse than none: the person relying on it is the one who cannot check it.',
+  ],
+  [
+    'Latency',
+    'Eight seconds of waiting is eight seconds of working memory the interface did not earn.',
+  ],
+];
+
+const closing = [
+  'Put the standard inside the generator, not the review. Component library, system prompt, lint in CI: producing an unlabelled control should be the harder path.',
+  'Test the generated output with the assistive technology, not the design file. The file was never the thing anyone used.',
+  'Write each accessibility requirement as something that can be run, and run it every build.',
 ];
 
 const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(
-  'Accessibility barrier on your site',
+  'Accessibility and AI',
 )}`;
 ---
 
-<Base title="Accessibility statement - Narges Mirheydari">
+<Base
+  title="Accessibility and AI - Narges Mirheydari"
+  description="What product design has to do differently now that models write the interface, and where accessibility sits in that."
+>
   <article class="reading col-820">
-    <h1 class="page-h1">How this site is built</h1>
+    <h1 class="page-h1">
+      Accessibility, <span class="hl">after AI</span>
+    </h1>
 
     <p class="lede">
-      This site targets WCAG 2.2 AA on every page, in both themes and in
-      high-contrast mode. Last audited July 2026.
+      Generating an interface got cheap. Knowing whether it is any good did not.
+      Accessibility is the part of our craft that already learned to write down
+      what good means precisely enough to test - which is exactly the skill this
+      moment is asking for.
     </p>
 
-    <dl class="a11y-table">
-      {
-        rows.map(([label, value]) => (
-          <div>
-            <dt>{label}</dt>
-            <dd class="mono">{value}</dd>
-          </div>
-        ))
-      }
-    </dl>
+    {
+      sections.map(({ id, heading, body }) => (
+        <section class="essay" aria-labelledby={id}>
+          <h2 id={id}>{heading}</h2>
+          {body.map((p) => (
+            <p>{p}</p>
+          ))}
+        </section>
+      ))
+    }
+
+    <section class="essay" aria-labelledby="surfaces">
+      <h2 id="surfaces">The new surfaces have new failure modes</h2>
+      <p>
+        None of these are covered by the habits that got us through a decade of
+        pages and forms. They are where I would spend the audit hours now.
+      </p>
+
+      <dl class="a11y-table">
+        {
+          surfaces.map(([label, value]) => (
+            <div>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="essay" aria-labelledby="gain">
+      <h2 id="gain">It is also the largest access gain in a decade</h2>
+      <p>
+        This has to be said plainly, because the criticism above is worth
+        nothing without it. Image description on demand, live captioning,
+        plain-language rewriting, a form filled in by describing what you want,
+        code that explains itself back to you: these are real, and for a lot of
+        people they are the difference between using a product and not.
+      </p>
+      <p>
+        The catch is structural. Assistive AI puts a probabilistic layer between
+        a person and the truth of the interface, and the people who depend on it
+        most are the ones least able to verify it. So the accuracy bar for an
+        assistive feature is higher than for a convenience feature, not lower,
+        and the honest version of it says when it is unsure.
+      </p>
+    </section>
+
+    <section class="essay" aria-labelledby="sits">
+      <h2 id="sits">Where accessibility sits in all this</h2>
+      <p>
+        Not as a subplot, and not as the compliance step at the end. WCAG is the
+        industry's longest-running attempt to state what good means in terms
+        specific enough to be tested by someone who was not in the room. Focus
+        order, accessible name, contrast ratio, error recovery: requirements
+        written to be checked rather than admired.
+      </p>
+      <p>
+        That is the same work AI product design now needs everywhere. If you
+        have written acceptance criteria for a keyboard path, you have written
+        an eval. Accessibility is not competing with the AI work for attention;
+        it is the rehearsal for it.
+      </p>
+      <ul class="closing-list">
+        {closing.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
 
     <p class="a11y-note">
-      Found a barrier? <a href={mailto}>Email me</a> - I'll reply within 3 days.
+      Building something in this shape, or found a barrier on this site? <a
+        href={mailto}>Email me</a
+      > - I'll reply within 3 days.
     </p>
+
+    <nav class="page-nav mono" aria-label="Accessibility">
+      <a href={routes.works}>← back to folders</a>
+      <a href={routes.design}>how I design →</a>
+    </nav>
   </article>
 </Base>
+
+<style>
+  .page-h1 {
+    --hl-depth: 12px;
+  }
+
+  .essay {
+    margin-top: 44px;
+    padding-top: 26px;
+    border-top: 1px dotted var(--line);
+  }
+
+  .essay h2 {
+    max-width: 30ch;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .essay p {
+    margin-top: 18px;
+    max-width: 62ch;
+    font-size: calc(17px * var(--ts));
+    line-height: 1.7;
+    color: var(--body);
+  }
+
+  /* The old statement put a short measurement in each cell, so an even split
+     was right. These values are sentences, so the label column gets only what
+     a label needs and the prose gets the rest. */
+  .essay :global(.a11y-table > div) {
+    grid-template-columns: 220px 1fr;
+  }
+
+  /* The surface table is prose, not measurements, so the mono treatment the
+     old statement used would be the wrong signal here. */
+  .essay :global(.a11y-table dd) {
+    font-family: inherit;
+    font-size: calc(15px * var(--ts));
+    letter-spacing: 0;
+    line-height: 1.6;
+    color: var(--body);
+  }
+
+  .essay :global(.a11y-table dt) {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .closing-list {
+    margin-top: 22px;
+    padding-left: 20px;
+    max-width: 62ch;
+    font-size: calc(17px * var(--ts));
+    line-height: 1.7;
+    color: var(--body);
+  }
+
+  .closing-list li {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 760px) {
+    .essay h2 {
+      font-size: 24px;
+    }
+
+    /* Re-state the collapse from pages.css, which the rule above outranks. */
+    .essay :global(.a11y-table > div) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
