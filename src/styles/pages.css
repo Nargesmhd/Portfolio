@@ -286,6 +286,17 @@
   padding: 48px 0 64px;
 }
 
+.about-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  /* Held while the file loads, so the caption below it does not jump. */
+  background: var(--f3);
+}
+
 .about-dl,
 .contact-dl {
   display: grid;
@@ -399,5 +410,11 @@
   .about-grid,
   .a11y-table > div {
     grid-template-columns: 1fr;
+  }
+
+  /* Once the grid collapses the portrait has a whole page to swell into.
+     Cap it near its column width instead. */
+  .about-portrait {
+    max-width: 260px;
   }
 }
