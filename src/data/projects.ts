@@ -108,6 +108,10 @@ export const projects: Project[] = [
         heading: 'Outcome',
         body: 'Every mouse path got a keyboard twin. The rebuilt flow shipped across the consumer app.',
       },
+      {
+        heading: 'Strategy',
+        body: 'Tab order that follows the DOM instead of the layout is one problem written twice: the page ends up with two orders, the one you see and the one the browser reports, and only a sighted mouse user gets the good one. Rebuilding the flow so those two agree leaves a single sequence for everything else to read - keyboard focus, reading mode, translation, and any test that walks the page from top to bottom. Curb cuts get told as a happy accident that turned out to help people with strollers and delivery carts; in fact disabled activists poured their own concrete ramps in the seventies because cities would not, and the spillover arrived only because someone forced the design to exist first. Keyboard parity has the same shape. It gets built when someone treats it as the brief, and then it quietly serves everyone who is not holding a mouse.',
+      },
     ],
     metrics: [
       ['23 mo', 'on the product'],
