@@ -174,7 +174,9 @@
 .folder-tab {
   width: 186px;
   height: 28px;
-  margin-left: var(--tab-offset);
+  /* The staircase offset is authored for a wide stack; the cap keeps the
+     last tabs inside the folder at any width in between. */
+  margin-left: min(var(--tab-offset), calc(100% - 186px));
   background: var(--folder-bg);
   clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
   border-radius: 5px 8px 0 0;
@@ -492,6 +494,15 @@
 
   .folder-title {
     font-size: 30px;
+  }
+
+  /* A phone screen can't hold the full 172px staircase; shrink the tabs and
+     compress the steps so the pile still reads as a pile without spilling
+     past the page edge. */
+  .folder-tab {
+    width: 120px;
+    height: 24px;
+    margin-left: min(calc(var(--tab-offset) * 0.35), calc(100% - 120px));
   }
 
   .exp-row,
