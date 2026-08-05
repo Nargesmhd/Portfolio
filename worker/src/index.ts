@@ -1,14 +1,14 @@
 /*
  * The read side of the admin dashboard.
  *
- * It sits on nargesmirheydari.com/admin/api/* — deliberately *inside* the path
+ * It sits on nargesmirheydari.com/admin/api/* - deliberately *inside* the path
  * the Access application protects, so the same login that gates the dashboard
  * page gates its data, and the browser sends the Access cookie on a same-origin
  * fetch without any token handling in the page.
  *
  * The site itself stays a plain static build on GitHub Pages. This is the only
- * server-side piece, and it exists because the alternative — shipping a read
- * token to the browser — would put the analytics behind a lock whose key is
+ * server-side piece, and it exists because the alternative - shipping a read
+ * token to the browser - would put the analytics behind a lock whose key is
  * printed on the door.
  */
 

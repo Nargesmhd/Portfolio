@@ -1,7 +1,7 @@
 /*
  * The wireframe sheets are content, not chrome: they are artefacts of the
  * design process, reproduced sketchy styling and all. They stay white with
- * dark ink in both themes because they are pictures of paper — only the notes
+ * dark ink in both themes because they are pictures of paper - only the notes
  * printed *outside* a sheet follow the theme.
  */
 
@@ -271,7 +271,7 @@
   margin-top: 22px;
 }
 
-/* flex:none — otherwise the five figures shrink below the sheet width to fit
+/* flex:none - otherwise the five figures shrink below the sheet width to fit
    the row instead of wrapping. */
 .wf-all figure {
   margin: 0;
@@ -279,7 +279,7 @@
 }
 
 /* Prototype mode shows one sheet at 430px; page-by-page shows all five at
-   400px. Only the outer width changes — everything inside a sheet is fluid,
+   400px. Only the outer width changes - everything inside a sheet is fluid,
    so there is one set of measurements, not two. */
 .wf-all .wf-sheet {
   width: 400px;

@@ -288,7 +288,7 @@
 /*
  * The label is the folder's own colour, knocked out of a dark pill. The pill
  * takes --f-ink rather than --ink: --f-ink is the one value guaranteed to
- * oppose --folder-bg in every state. --ink is not — the open folder turns
+ * oppose --folder-bg in every state. --ink is not - the open folder turns
  * --folder-bg yellow, and in a dark theme --ink is a near-white, which put
  * pale yellow on white (1.1:1) and left the primary CTA invisible.
  */
@@ -329,7 +329,7 @@
   transform: translateX(52px);
 }
 
-/* "Pulled from the pile" — plays once, then navigation happens. */
+/* "Pulled from the pile" - plays once, then navigation happens. */
 .folder.is-pulled,
 .folder.is-pulled:hover,
 .folder.is-pulled:focus-within {

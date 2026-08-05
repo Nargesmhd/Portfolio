@@ -6,7 +6,7 @@ const STRIP =
 
 /**
  * Decorative ticker. aria-hidden because every term in it appears as real
- * content elsewhere on the site — nothing is only here.
+ * content elsewhere on the site - nothing is only here.
  *
  * Two identical spans translate -50% together so the loop is seamless.
  */

@@ -4,8 +4,8 @@
  * Access already blocks unauthenticated requests at the edge, so in the happy
  * path this code never rejects anything. It exists for the unhappy path: if the
  * Worker route is ever reachable by some path that does not pass through the
- * Access application — a misconfigured route, a workers.dev subdomain left on,
- * an Access policy edited in a hurry — the edge check is gone and this is the
+ * Access application - a misconfigured route, a workers.dev subdomain left on,
+ * an Access policy edited in a hurry - the edge check is gone and this is the
  * only thing standing between the internet and the stats.
  *
  * Checking the header is present is not enough, because a header is trivially

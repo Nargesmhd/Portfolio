@@ -1,12 +1,12 @@
 /*
  * Reads Cloudflare Web Analytics through the GraphQL Analytics API.
  *
- * The dataset is `rumPageloadEventsAdaptiveGroups` — Real User Monitoring, the
+ * The dataset is `rumPageloadEventsAdaptiveGroups` - Real User Monitoring, the
  * numbers the beacon script reports. Two metrics matter and they are not the
  * same thing:
  *
- *   count         page views — one per page load
- *   sum { visits } visits — a page load that did not come from this same site,
+ *   count         page views - one per page load
+ *   sum { visits } visits - a page load that did not come from this same site,
  *                  i.e. someone arriving, not someone clicking through
  *
  * "How many people have visited" is closest to visits, so visits leads on the
@@ -19,7 +19,7 @@
  */
 
 export interface Env {
-  /** Secret. Scoped read-only token — see docs/analytics.md. */
+  /** Secret. Scoped read-only token - see docs/analytics.md. */
   CF_API_TOKEN: string;
   CF_ACCOUNT_ID: string;
   /** The Web Analytics site tag, from the dashboard. */
@@ -194,7 +194,7 @@ export async function fetchStats(env: Env, days: number): Promise<Stats> {
     referrers: account.referrers.map((row) => ({
       /* An empty referer host means the visitor typed the address, used a
          bookmark, or came from an app that strips the header. "Direct" is the
-         honest label for that bucket — it is not a website. */
+         honest label for that bucket - it is not a website. */
       host: row.dimensions?.refererHost || 'Direct',
       pageViews: row.count,
     })),

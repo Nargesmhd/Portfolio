@@ -4,7 +4,7 @@ import { setPrefs, type Prefs } from '../lib/prefs';
 /**
  * The three reading controls, docked to the right edge of the viewport.
  *
- * These are real toggles (aria-pressed), not links or menu items — the state
+ * These are real toggles (aria-pressed), not links or menu items - the state
  * is the point, and it has to be announced. Page content reserves 190px of
  * right padding so the rail never sits on top of text; below 900px the rail
  * unpins and sits inline under the header instead.

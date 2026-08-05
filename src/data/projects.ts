@@ -1,16 +1,16 @@
 /*
  * One entry per product-design project. Each becomes a folder on
- * /product-design/ and a case study at /work/<slug>/ — adding a project here
+ * /product-design/ and a case study at /work/<slug>/ - adding a project here
  * is the whole job; no route or component needs touching.
  *
  * Entries marked `draft: true` are unfinished: the shape is real, the copy is
  * a prompt. They render with a DRAFT chip on the folder and a notice at the
  * top of the case study, so nothing unwritten can pass for a claim. Replace
- * the copy and delete the flag — or delete the entry.
+ * the copy and delete the flag - or delete the entry.
  */
 
 /**
- * An image file. `alt` is required and never decorative — a case study about
+ * An image file. `alt` is required and never decorative - a case study about
  * accessibility cannot ship an unlabelled image. `w`/`h` are the file's real
  * pixel dimensions, so the browser reserves the space before the image loads
  * and nothing below it jumps.
@@ -26,7 +26,7 @@ export type Img = {
 
 /** An image inside a section, captioned in its own right. */
 export type Shot = Img & {
-  /** Short mono label at the head of the caption — 'light', 'dark'. */
+  /** Short mono label at the head of the caption - 'light', 'dark'. */
   tag?: string;
   caption: string;
   /** A measured value printed beside the caption, e.g. a contrast ratio. */
@@ -46,7 +46,7 @@ export type Table = {
 
 /**
  * What a screen reader says, before and after. Some defects have no visual
- * symptom at all — a label attached to nothing renders perfectly — so the
+ * symptom at all, a label attached to nothing renders perfectly, so the
  * only way to show one on a page is to quote the speech.
  */
 export type Spoken = {
@@ -70,11 +70,11 @@ export type Section = {
 };
 
 export type Project = {
-  /** URL segment. Lowercase, hyphenated, stable — it is a public link. */
+  /** URL segment. Lowercase, hyphenated, stable - it is a public link. */
   slug: string;
   /** Folder title. Lowercase, matching the folders on the home page. */
   title: string;
-  /** Folder-panel summary — what the project was, in one or two lines. */
+  /** Folder-panel summary - what the project was, in one or two lines. */
   summary: string;
   /** The mono line under the summary, reading like a label on a real file. */
   contents: string;
@@ -84,10 +84,10 @@ export type Project = {
   meta: [label: string, value: string][];
   /** The opening image. Without one the slot renders a placeholder stripe. */
   hero?: Img;
-  /** Caption for the hero — or, with no hero, what belongs in the slot. */
+  /** Caption for the hero - or, with no hero, what belongs in the slot. */
   heroCaption: string;
   sections: Section[];
-  /** Three figures. Measured values only — the site claims nothing it has not counted. */
+  /** Three figures. Measured values only - the site claims nothing it has not counted. */
   metrics: [figure: string, label: string][];
   draft?: boolean;
 };
@@ -410,9 +410,9 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      ['—', 'fill in'],
-      ['—', 'fill in'],
-      ['—', 'fill in'],
+      ['-', 'fill in'],
+      ['-', 'fill in'],
+      ['-', 'fill in'],
     ],
   },
 ];
