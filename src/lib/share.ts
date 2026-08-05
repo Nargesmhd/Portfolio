@@ -85,14 +85,30 @@ const pages: ShareCard[] = [
   },
 ];
 
+/** Two lines at 25px across 30em. Past this the card clamps the text away. */
+const subBudget = 125;
+
 /**
- * The opening clause of a project summary. A summary runs longer than a card
- * can hold, and a card that simply cuts it off stops mid-sentence, so the
- * card takes the first clause whole and lets the page carry the rest.
+ * The opening of a project summary. A summary runs longer than a card can
+ * hold, and a card that simply cuts it off stops mid-sentence, so this keeps
+ * whole clauses up to the budget and lets the page carry the rest.
+ *
+ * Clauses are found by their commas, which is why the budget is a character
+ * count rather than a delimiter: a summary that never reaches one falls back
+ * to a hard cut on a word boundary, still punctuated, never mid-word.
  */
 function opening(summary: string): string {
-  const [clause] = summary.split(' - ');
-  return /[.!?]$/.test(clause) ? clause : `${clause}.`;
+  const close = (text: string) =>
+    /[.!?]$/.test(text) ? text : `${text.replace(/[,;:]$/, '')}.`;
+
+  if (summary.length <= subBudget) return close(summary);
+
+  const room = summary.slice(0, subBudget);
+  const clause = room.lastIndexOf(', ');
+  if (clause > 0) return close(room.slice(0, clause));
+
+  const word = room.lastIndexOf(' ');
+  return close(word > 0 ? room.slice(0, word) : room);
 }
 
 /*
