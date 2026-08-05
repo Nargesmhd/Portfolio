@@ -103,7 +103,7 @@ export const projects: Project[] = [
     meta: [
       ['Role', 'Product Designer (site & brand)'],
       ['Timeline', 'Feb – Aug 2023'],
-      ['Team', '8 people, 3 of them designers'],
+      ['Team', '8 people'],
       ['Scope', 'Marketing site, brand, comms'],
     ],
     hero: {
@@ -225,27 +225,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'Brand',
-        body: 'The mark is a chicken head in a ring, and measured out of the SVG it is stricter than it looks. Every path in it is stroked at one weight, 27.964, with the enclosing circle at 55.929 - exactly double - and a single lighter 16.45 around the eye. That discipline is what does the work, because the colour cannot: the comb red is 3.38:1 against white and the beak yellow is 1.19:1, which is to say the yellow is invisible on its own and only exists because a black outline is holding it. A mark built that way can be dropped onto near-black, onto cream, and onto a purple hero without anyone drawing a second version, and that is what let one file carry the site, the letterhead, the welcome email and the recruiting artwork. The hiring poster is my favourite object in the set: it advertises for an illustrator, and the app screen inside it carries a placeholder that reads "This place needs a vector". The ad is honest about the hole it is trying to fill.',
-        shots: [
-          {
-            src: '/work/nibbit-ai/welcome-email.jpg',
-            alt: 'The Welcome to habbit email: a headline, an illustration of three figures holding a Welcome sign, then three feature blocks paired with phone screenshots - building good habits and quitting bad ones, talking with Pebble the AI companion, and gamifying habit-building with a chick avatar and trophies.',
-            w: 658,
-            h: 2253,
-            tag: 'email',
-            caption: 'the welcome email - three promises, each with the screen that would keep it',
-            crop: true,
-          },
-          {
-            src: '/work/nibbit-ai/hiring.jpg',
-            alt: 'A dark recruiting poster in Persian announcing that nibbit needs a skilled illustrator and inviting portfolios. It shows a phone running the Habbit onboarding screen, where the illustration slot is filled by red placeholder text reading "This place needs a vector". The chicken-head logo and the nibbit.ai wordmark sit at the bottom.',
-            w: 675,
-            h: 1200,
-            tag: 'hiring',
-            caption: 'recruiting an illustrator with the empty slot left in on purpose',
-            crop: true,
-          },
-        ],
+        body: 'The mark is a chicken head in a ring, and measured out of the SVG it is stricter than it looks. Every path in it is stroked at one weight, 27.964, with the enclosing circle at 55.929 - exactly double - and a single lighter 16.45 around the eye. That discipline is what does the work, because the colour cannot: the comb red is 3.38:1 against white and the beak yellow is 1.19:1, which is to say the yellow is invisible on its own and only exists because a black outline is holding it. A mark built that way can be dropped onto near-black, onto cream, and onto a purple hero without anyone drawing a second version, and that is what let one file carry the site, the letterhead, the welcome email and the recruiting artwork. The recruiting poster is the one I would defend hardest: it went out to hire an illustrator, and rather than dress the app up for the ad, it ran the real onboarding screen with the empty illustration slot still in, filled with placeholder text reading "This place needs a vector". The ad is honest about the hole it is trying to fill.',
         table: {
           caption: 'the mark, measured out of the SVG',
           head: ['Property', 'Value', 'Consequence'],
@@ -261,6 +241,14 @@ export const projects: Project[] = [
         heading: 'Outcome',
         body: 'Delivered: home and about in two themes at three widths, six error screens, a 25-node sitemap, the mark and its letterhead, a welcome email, and the recruiting artwork. Not everything cleared. The commitments section - five of them, one reading "Community:" with nothing after the colon - is filed as not approved and never went up, which is what it looks like when a layout is finished before its content exists and the content never arrives. And the site itself is gone: nibbit.ai today serves a seven-line poem about a species that grew confident enough to fly and is now falling. So this case study is evidence of a design process and a review round that can be checked line by line against the file. It is not evidence of traffic, and I would rather say that than imply otherwise.',
         shots: [
+          {
+            src: '/work/nibbit-ai/welcome-email.jpg',
+            alt: 'The Welcome to habbit email: a headline, an illustration of three figures holding a Welcome sign, then three feature blocks paired with phone screenshots - building good habits and quitting bad ones, talking with Pebble the AI companion, and gamifying habit-building with a chick avatar and trophies.',
+            w: 658,
+            h: 2253,
+            tag: 'email',
+            caption: 'the welcome email - three promises, each with the screen that would keep it',
+          },
           {
             src: '/work/nibbit-ai/commitments.jpg',
             alt: 'The commitments section on a near-black background: a heading reading "Our commitments" above a card listing five bulleted commitments - Humata, Huxta, Huvarshta; Trust; Community, with nothing written after the colon; Open Source; and Teapot.',
