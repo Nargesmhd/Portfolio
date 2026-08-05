@@ -102,7 +102,7 @@ export const projects: Project[] = [
     headline: 'The accessibility gaps I found in 26 competitors became the rules',
     meta: [
       ['Role', 'Product Designer'],
-      ['Timeline', 'Feb – Nov 2023'],
+      ['Timeline', 'Feb, Nov 2023'],
       ['Team', '8 people'],
       ['Scope', 'Product design and marketing'],
     ],
@@ -231,7 +231,7 @@ export const projects: Project[] = [
     ],
     metrics: [
       ['26', 'competitors audited, three markets'],
-      ['10–30', 'people interviewed and surveyed'],
+      ['10,30', 'people interviewed and surveyed'],
       ['5', 'states drawn per checkbox'],
     ],
   },
