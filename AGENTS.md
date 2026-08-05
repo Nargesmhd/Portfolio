@@ -21,6 +21,16 @@ npm run share-cards
 Skipping it leaves the old words in the picture while the meta tags carry the
 new ones.
 
+## Favicon
+
+`public/favicon.svg` is the NM monogram, and it is the source. `public/favicon.ico`
+is packed from it for the browsers and scrapers that ask for that name instead,
+so after editing the SVG, repack:
+
+```
+npm run favicon
+```
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
