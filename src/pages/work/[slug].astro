@@ -75,7 +75,7 @@ const { project, next } = Astro.props;
     </figure>
 
     {
-      project.sections.map(({ heading, body, shots, table }) => {
+      project.sections.map(({ heading, body, shots, spoken, table }) => {
         const id = heading.toLowerCase();
         return (
           <section class="section" aria-labelledby={id}>
@@ -83,6 +83,27 @@ const { project, next } = Astro.props;
               {heading}
             </h2>
             <p>{body}</p>
+
+            {
+              /* Speech, so it is a definition list rather than a table: each
+                 state has one utterance, and <q> supplies the quote marks so
+                 they are punctuation rather than characters in the string. */
+              spoken && (
+                <figure class="spoken">
+                  <figcaption class="spoken-action mono">{spoken.action}</figcaption>
+                  <dl>
+                    {spoken.lines.map(({ when, says }) => (
+                      <div>
+                        <dt class="mono">{when}</dt>
+                        <dd>
+                          <q>{says}</q>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </figure>
+              )
+            }
 
             {
               /* Crops are detail shots, so they sit narrower than full screens

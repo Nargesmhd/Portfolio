@@ -159,6 +159,47 @@
   color: var(--accent-ink);
 }
 
+/* ---------------------------------------------------- screen-reader speech */
+
+.spoken {
+  margin: 28px 0 0;
+  padding: 18px 22px;
+  background: var(--paper);
+  border-left: 4px solid var(--accent);
+}
+
+.spoken-action {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.spoken dl {
+  display: grid;
+  gap: 8px 16px;
+  margin: 12px 0 0;
+}
+
+.spoken dl > div {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.spoken dt {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.spoken dd {
+  margin: 0;
+  font-size: calc(16px * var(--ts));
+  line-height: 1.5;
+  color: var(--ink);
+}
+
 /* --------------------------------------------------------- counted tables */
 
 .table-wrap {
@@ -397,7 +438,12 @@
   }
 
   .about-grid,
-  .a11y-table > div {
+  .a11y-table > div,
+  .spoken dl > div {
     grid-template-columns: 1fr;
+  }
+
+  .spoken dl {
+    gap: 14px;
   }
 }

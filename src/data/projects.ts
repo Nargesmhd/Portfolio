@@ -45,6 +45,17 @@ export type Table = {
 };
 
 /**
+ * What a screen reader says, before and after. Some defects have no visual
+ * symptom at all — a label attached to nothing renders perfectly — so the
+ * only way to show one on a page is to quote the speech.
+ */
+export type Spoken = {
+  /** What the user did to hear it. */
+  action: string;
+  lines: { when: string; says: string }[];
+};
+
+/**
  * Evidence hangs off the section it belongs to, so the reading order is the
  * order in this array and a project with nothing to show just omits it.
  */
@@ -54,6 +65,7 @@ export type Section = {
   heading: string;
   body: string;
   shots?: Shot[];
+  spoken?: Spoken;
   table?: Table;
 };
 
@@ -120,7 +132,7 @@ export const projects: Project[] = [
     title: 'bookloop',
     summary:
       'Audit and remediation of a live social book club app - form semantics, dark-mode contrast, and a keyboard defect that was quietly changing which books clubs read.',
-    contents: 'audit · 110 controls · both themes · WCAG 2.2 AA',
+    contents: 'audit · 110 controls · 13 findings · WCAG 2.2 AA',
     headline: 'An accessibility audit that changed the product, not just the markup',
     meta: [
       ['Role', 'Product Designer (solo)'],
@@ -150,10 +162,17 @@ export const projects: Project[] = [
               'the same page, second theme. Both were designed rather than inverted, and both render the label bug perfectly.',
           },
         ],
+        spoken: {
+          action: 'tabbing into the email field on the sign-in screen',
+          lines: [
+            { when: 'now', says: 'edit, blank' },
+            { when: 'once linked', says: 'Email, edit, blank' },
+          ],
+        },
       },
       {
         heading: 'Process',
-        body: 'Two passes, because the two kinds of defect hide from different tools. A static scan of every component file checked each control for an accessible name and each label for a real association - that is where the 73 came from, and the 30 labels attached to nothing at all. Then I ran the app locally against its own database and measured contrast on the rendered elements in both themes rather than reading it off the palette. That is how the dark-mode Search button turned up at 1.05:1, white on cream, from a hardcoded text-white sitting next to a background token that flips from navy to cream between themes - a pairing that appears 98 times. The remaining four defects were found by using the product, not by scanning it.',
+        body: 'Two passes, because the two kinds of defect hide from different tools. A static scan of every component file checked each control for an accessible name and each label for a real association - that is where the 73 came from, and the 30 labels attached to nothing at all. Then I ran the app locally against its own database and measured contrast on the rendered elements in both themes rather than reading it off the palette. That is how the dark-mode Search button turned up at 1.05:1, white on cream, from a hardcoded text-white sitting next to a background token that flips from navy to cream between themes - a pairing that appears 98 times. Both counts come from short scripts that re-run against the repo, so every figure on this page can be checked rather than taken on trust. The remaining four defects were found by using the product, not by scanning it.',
         shots: [
           {
             src: '/work/bookloop/find-a-club-light.jpg',
@@ -175,7 +194,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'System',
-        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it.',
+        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Three decisions went the other way, and none of them were filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; the datetime pickers are the native ones, kept rather than rebuilt, which keeps the platform behaviour nobody reimplements correctly - including native clear; and user-facing copy replaces em dashes with commas, because screen readers pronounce an em dash inconsistently and a comma is just a pause. Small calls, all three, and each one is a decision not to reinvent something the platform already does accessibly.',
         shots: [
           {
             src: '/work/bookloop/search-button-light.png',
@@ -212,17 +231,153 @@ export const projects: Project[] = [
       },
       {
         heading: 'Outcome',
-        body: 'Four defects fixed. The one worth naming looked like a keyboard bug and was corrupting data: half-star ratings were chosen by cursor position, and keyboard activation reports a cursor position of zero, so keyboard users could set 2.5 stars but never 3. Club ballots are decided by average stars, so keyboard votes ran half a star low and could change which book a club read. The fix changed the design rather than the markup - five focusable stars became one slider with the stars decorative, five tab stops down to one, arrows previewing and Enter committing so a trip from 1 to 5 does not fire five writes at everyone watching the ballot. Contrast, focus order and modal keyboard handling were fixed across 15 files and 36 controls. The open findings are documented with severity, WCAG criterion and a plan ordered by impact per hour.',
+        body: 'Four defects fixed. The one worth naming looked like a keyboard bug and was corrupting data: half-star ratings were chosen by cursor position, and keyboard activation reports a cursor position of zero, so keyboard users could set 2.5 stars but never 3. Club ballots are decided by average stars, so keyboard votes ran half a star low and could change which book a club read. The fix changed the design rather than the markup - five focusable stars became one slider with the stars decorative, five tab stops down to one, arrows previewing and Enter committing so a trip from 1 to 5 does not fire five writes at everyone watching the ballot. Contrast, focus order and modal keyboard handling were fixed across 15 files and 36 controls - and the focus work standardised on focus-visible rather than focus, so the ring stops appearing on mouse clicks and nobody is tempted to delete it again. An accessible option that fights the design gets removed eventually.',
+      },
+      {
+        heading: 'Open',
+        body: 'Nine findings are still unfixed, and a case study that only lists the wins is a brochure. The two Critical ones are the two described above; they are repeated here because an open list that quietly drops its worst items is not an open list. The live-region gap is the one that needs a decision rather than a patch: a club with eight active members would be unusable if every event announced itself, so some events should speak politely, some should stay visual, and some should batch. The recap-card finding was not in the original audit at all - it surfaced afterwards, which is the best argument on this page for the last row of the table.',
+        table: {
+          caption: 'open findings, at the time of writing',
+          head: ['Finding', 'Detail', 'Severity'],
+          rows: [
+            [
+              'Labels that label nothing',
+              '73 of 110 controls have no accessible name; 30 labels are attached to no control at all',
+              'Critical',
+            ],
+            [
+              'Dark-mode button contrast',
+              'White on cream at 1.05:1, in 98 places. Light theme is fine, which is why it survived',
+              'Critical',
+            ],
+            [
+              'A live app that never speaks',
+              'Two status regions, in a product whose posts, tallies and presence all stream over websockets',
+              'Serious',
+            ],
+            [
+              'One dialog still is not one',
+              'The nominate-and-vote panel is marked as a dialog but never got the keyboard hook the other two use - no Escape, no focus trap',
+              'Serious',
+            ],
+            [
+              'Recap cards are pictures of text',
+              'The monthly and year-in-books cards are canvas-rendered, across five themes. Canvas text carries no accessible name, so a shared recap is unreadable to assistive technology unless it is described separately',
+              'Serious',
+            ],
+            [
+              'Dead token classes',
+              'Nine tokens declared only for dark, generating no utilities. Every hover state written against them does nothing',
+              'Moderate',
+            ],
+            [
+              'No skip link',
+              'Keyboard users tab the full nav on every page, though the landmarks already exist',
+              'Moderate',
+            ],
+            [
+              'Motion mostly unguarded',
+              'One reduced-motion check in the whole app, in the celebration overlay',
+              'Moderate',
+            ],
+            [
+              'Nothing is watching',
+              '90 test suites, no accessibility tests, no automated checks in CI. Every defect here was found by a person',
+              'Moderate',
+            ],
+          ],
+        },
+      },
+      {
+        heading: 'Next',
+        body: 'Ordered by impact per hour rather than by severity, because a plan sorted by severity puts the hardest thing first and stalls. The first item is ten minutes of work on the screen every single user meets, and the last is not a patch at all.',
+        table: {
+          caption: 'what I would do next, in this order',
+          head: ['When', 'Do', 'Why this order'],
+          rows: [
+            [
+              'First',
+              'Link the sign-in labels to their inputs',
+              'Two labels, two inputs, on the highest-traffic screen in the product',
+            ],
+            [
+              'Same day',
+              'Make the dark-mode button legible',
+              'Swap the hardcoded white for the token that already exists - and promote that token so it compiles at all',
+            ],
+            [
+              'Same day',
+              'Add one automated check, failing only on unnamed controls',
+              'Scoping to a single rule makes it adoptable today, and stops the other 72 coming back',
+            ],
+            [
+              'This week',
+              'Adopt the Button primitive, or delete it',
+              '55 hand-written variants is why every fix costs 15 files. Either the abstraction earns its place or it stops implying safety it does not provide',
+            ],
+            [
+              'This week',
+              'Prefill the review from your own notes',
+              'A read query and a prefill. It turns recall into recognition, and needs no new data',
+            ],
+            [
+              'Design work',
+              'Decide what realtime says out loud',
+              'Which events announce, which stay visual, which batch. A product decision, not a patch',
+            ],
+          ],
+        },
       },
       {
         heading: 'Strategy',
-        body: 'That table is the whole lesson about design systems: an unadopted primitive is worse than none, because it creates the belief that contrast is centralised when it is actually spread across 55 hand-written variants. The other lesson is that cognitive accessibility is product strategy, not an accommodation bolted on afterwards. Progress is stored as a percent rather than a page, which is the only unit that means the same thing to a paperback, an ebook and a fourteen-hour audiobook, and it is also what lets a note anchor to a place in the book and stay sealed until you reach it - so you can open a three-week-old club thread without being spoiled. That is not a feature for a minority. It is the reason someone is still in the club in week six.',
+        body: 'The design-system lesson here is not "write a design system" - BookLoop did. It is that an unadopted primitive is worse than none, because it creates the belief that contrast is centralised when it is actually spread across 55 hand-written variants. The other lesson is the one I would defend hardest: cognitive accessibility is product strategy, not an accommodation bolted on afterwards. The product is built for someone who forgets the book, and the mechanisms below are shipped rather than proposed - which matters, because this is the argument people assume is aspirational. Every one of them is a reason someone is still in the club in week six.',
+        table: {
+          caption: 'interruption tolerance, as shipped',
+          head: ['Decision', 'What it does', 'Who it protects'],
+          rows: [
+            [
+              'Progress is a percent, not a page',
+              'The only unit that means the same thing to a paperback, an ebook and a fourteen-hour audiobook',
+              'Audiobook readers, whom a page count renders as nothing at all',
+            ],
+            [
+              'Notes carry an anchor',
+              'A note holds the place you had the thought, and anything anchored past your position stays sealed until you reach it',
+              'Anyone opening a three-week-old thread who does not want it spoiled',
+            ],
+            [
+              'Sealing fails closed',
+              'When two anchors cannot be compared, the note stays hidden rather than leaking. Finishing the book unseals everything',
+              'Everyone - a spoiler shown once cannot be taken back',
+            ],
+            [
+              'Yesterday still holds the streak',
+              'Reading days bucket in UTC, and yesterday sustains the streak until today ends',
+              'Bursty readers, whom a strict streak punishes for the pattern they already have',
+            ],
+            [
+              'Two taps to log progress',
+              'Page logging sits on the home screen instead of behind the book',
+              'Anyone for whom the logging tax is the first thing they stop paying',
+            ],
+            [
+              'Capture without opening the app',
+              'A bearer-token endpoint takes notes from Siri, Shortcuts or a Kobo',
+              'Motor impairments, and anyone whose thought arrives mid-chapter',
+            ],
+            [
+              'Abandoned setup resumes',
+              'A resume link and a recovery email pick the wizard up where it stopped',
+              'Interrupted attention - the case setup would otherwise lose outright',
+            ],
+          ],
+        },
       },
     ],
     metrics: [
-      ['73/110', 'controls with no name'],
-      ['1.05:1', 'dark-mode button contrast'],
-      ['4', 'defects found and fixed'],
+      ['73/110', 'controls with no accessible name'],
+      ['1.05:1', 'the dark-mode Search button'],
+      ['4', 'defects fixed - and 9 left open'],
     ],
   },
   {
