@@ -177,17 +177,19 @@ export const projects: Project[] = [
       },
       {
         heading: 'System',
-        body: 'The design system reached v2.1 before the MVP shipped, and its cover states the goal in the team\'s own words: an accessible system with meaningful elements. What makes it usable is that it is drawn for the states nobody enjoys drawing - checkboxes in five, radios in four, every indicator in both light and dark. That last one is why two themes were a build decision rather than a retrofit. Type was chosen the same way: six candidates set in one specimen line, with Poppins taking it.',
-        shots: [
-          {
-            src: '/work/nibbit-ai/habbit-system.jpg',
-            alt: 'A page of the Habbit design system on a periwinkle background, headed "style guid": columns of components drawn in every state - checkboxes checked, undetermined, error, unchecked and checked-disabled; radio buttons; switches; avatars as initials and photos in three sizes; badges, tags and chips; progress bars, sliders, a calendar, a table and tabs; and indicators shown in both light and dark.',
-            w: 773,
-            h: 1200,
-            tag: 'v2.1',
-            caption: 'the system at v2.1 - every control drawn in the states nobody enjoys drawing',
-          },
-        ],
+        body: 'The design system reached v2.1 before the MVP shipped, and its cover states the goal in the team\'s own words: an accessible system with meaningful elements. What makes it usable is that it is drawn for the states nobody enjoys drawing - checkboxes in five, radios in four, every indicator in both light and dark. That last one is why two themes were a build decision rather than a retrofit. Type is split by job, after six candidates were set in one specimen line and compared: Poppins carries the headings, Roboto everything you actually read.',
+        table: {
+          caption: 'the type scale - two families, split by the job each does',
+          head: ['Style', 'Face', 'Size / line height'],
+          rows: [
+            ['H1', 'Poppins Bold', '60 / 72'],
+            ['H3', 'Poppins Bold', '48 / 60'],
+            ['H5', 'Poppins Bold', '24 / 36'],
+            ['Body large', 'Roboto Regular', '16 / 24'],
+            ['Body', 'Roboto Regular', '14 / 20'],
+            ['Caption', 'Roboto Regular', '12 / 18'],
+          ],
+        },
       },
       {
         heading: 'Product',
