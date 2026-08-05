@@ -116,7 +116,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: 'Problem',
-        body: 'nibbit had no product. A habit tracker called Habbit and an AI companion called Pebble were both months out, so the site had one job: make a promise worth waiting for. The first direction spent that credit on a joke - "We are making an app for those who chicken out", and under it, in the same weight as the pitch, "Don\'t bother us. seriously. We get easily distracted." Funny in a room. On a page it is a shrug from a company asking strangers to trust it with their habits, and it never says what the product does. The pun was the brand and worth keeping. The shrug is what the rest of the work replaced.',
+        body: 'nibbit was building two things and neither existed yet. Habbit set out to gamify habit-building across different habits at once - build one, quit another, and have both feed the same streaks, levels and trophies, collected by an avatar you level up. Pebble was the AI companion you talked to about that progress. Gamification is a retention argument: it exists to make coming back worth something, which is where a habit app is won or lost. Both products were months out, so the site had one job - make that promise worth waiting for. The first direction spent the credit on a joke instead - "We are making an app for those who chicken out", and under it, in the same weight as the pitch, "Don\'t bother us. seriously. We get easily distracted." Funny in a room. On a page it is a shrug from a company asking strangers to trust it with their habits, and it never says what the product does. The pun was the brand and worth keeping. The shrug is what the rest of the work replaced.',
         shots: [
           {
             src: '/work/nibbit-ai/concept-chicken.jpg',
@@ -163,17 +163,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'Potential',
-        body: 'The sitemap is where the ambition shows, and where it costs. Twenty-five nodes, sixteen of them behind Account, with sign-up alone a five-screen chain - Create Account, Choose Name and Username, Add Contact Information, Set Password, Confirm Account - beside trophies, avatars and application details, all drawn for a product the same site called available soon. Read generously, that is a team mapping the thing it intends to build. Read plainly, it is five screens of effort charged to someone who has not been given a reason yet, and effort is what filters people out first: anyone tired, distracted, short on time or short on attention. The front page could not shorten the chain, so it did the next best thing - one button and one email field, and everything else kept behind them.',
-        shots: [
-          {
-            src: '/work/nibbit-ai/sitemap.jpg',
-            alt: 'The nibbit.ai sitemap on a pale blue board: Home at the top branching to Products, About, Contact us and Account. Products leads to AI Bots and Applications, then to Pebble and Habbit. Account fans out to Edit Profile, Login, Create Account, My Applications, My Trophies, Settings and Log out, with Create Account descending through Choose Name and Username, Add Contact Information, Set Password and Confirm Account.',
-            w: 1600,
-            h: 1100,
-            tag: 'ia',
-            caption: '25 nodes, 16 of them behind an account nobody could use yet',
-          },
-        ],
+        body: 'The information architecture is where the ambition shows, and where it costs. Twenty-five nodes, sixteen of them behind Account, with sign-up alone a five-screen chain - Create Account, Choose Name and Username, Add Contact Information, Set Password, Confirm Account - beside trophies, avatars and application details, all drawn for a product the same site called available soon. Read generously, that is a team mapping the thing it intends to build. Read plainly, it is five screens of effort charged to someone who has not been given a reason yet, and effort is what filters people out first: anyone tired, distracted, short on time or short on attention. The front page could not shorten the chain, so it did the next best thing - one button and one email field, and everything else kept behind them.',
       },
       {
         heading: 'Outcome',
@@ -194,7 +184,7 @@ export const projects: Project[] = [
     metrics: [
       ['2', 'themes drawn, not inverted'],
       ['390px', 'narrowest layout designed'],
-      ['16 of 25', 'sitemap nodes behind a sign-up'],
+      ['16 of 25', 'pages behind a sign-up'],
     ],
   },
   {
