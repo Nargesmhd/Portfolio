@@ -102,7 +102,7 @@ export const projects: Project[] = [
     headline: 'A launch site for a product that did not exist yet',
     meta: [
       ['Role', 'Product Designer (site & brand)'],
-      ['Timeline', 'Feb – Aug 2023'],
+      ['Timeline', 'Feb, Aug 2023'],
       ['Team', '8 people'],
       ['Scope', 'Marketing site, brand, comms'],
     ],

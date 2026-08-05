@@ -32,11 +32,11 @@ export function HomeSheet() {
       <div className="wf-row">
         <div className="wf-folder wf-folder--accent">
           01 accessibility
-          <span>audits + remediation, freelance 2022– · 4 audits, 2 redesigns</span>
+          <span>audits + remediation, freelance 2022, · 4 audits, 2 redesigns</span>
         </div>
         <div className="wf-folder">
           02 product
-          <span>nibbit.ai 2023–24 · keyboard parity rebuild</span>
+          <span>nibbit.ai 2023,24 · keyboard parity rebuild</span>
         </div>
         <div className="wf-folder">03 research</div>
         <div className="wf-folder">04 archive</div>
@@ -84,7 +84,7 @@ export function CaseSheet() {
 
       <div className="wf-row wf-row--4">
         <div className="wf-box">Product Designer (solo)</div>
-        <div className="wf-box">Jan 2023 – Nov 2024</div>
+        <div className="wf-box">Jan 2023, Nov 2024</div>
         <div className="wf-box">early-stage startup</div>
         <div className="wf-box">WCAG 2.2 AA target</div>
       </div>
@@ -163,9 +163,9 @@ export function AboutSheet() {
       <div className="wf-strip">EXPERIENCES</div>
 
       <div className="wf-row">
-        <div className="wf-box">Apple · Solutions Consultant · 2026–</div>
-        <div className="wf-box">nibbit.ai · Product Designer · 2023–24</div>
-        <div className="wf-box">Freelance · Design + a11y · 2022–</div>
+        <div className="wf-box">Apple · Solutions Consultant · 2026,</div>
+        <div className="wf-box">nibbit.ai · Product Designer · 2023,24</div>
+        <div className="wf-box">Freelance · Design + a11y · 2022,</div>
       </div>
 
       <div className="wf-strip wf-strip--accent">SKILLSETS</div>
@@ -246,7 +246,7 @@ export function PlaySheet() {
       <div className="wf-title wf-title--big">Playground</div>
 
       <div className="wf-sub">
-        explorations + concept shots · pins 1–4 = real tab order
+        explorations + concept shots · pins 1,4 = real tab order
       </div>
 
       <p className="wf-note">
