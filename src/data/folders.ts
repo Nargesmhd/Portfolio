@@ -1,35 +1,42 @@
 import type { FolderItem } from '../components/FolderStack';
-import { projectUrl, routes } from '../lib/routes';
-import { projects } from './projects';
+import { projectUrl } from '../lib/routes';
+import { findProject } from './projects';
 
 export type Folder = FolderItem;
 
-export const folders: Folder[] = [
-  {
-    key: 'accessibility',
-    num: '01',
-    title: 'accessibility',
-    description:
-      'Audits and remediation for small teams - contrast, focus order, form semantics, plus the docs that stop regressions.',
-    contents: '4 audits · 2 redesigns · checked against WCAG 2.2',
+/*
+ * The front page opens straight onto the projects. The copy for those two
+ * folders is read out of projects.ts rather than retyped here, so a folder and
+ * the case study it opens cannot drift apart; the number, colour and tab
+ * position are decided below because they are layout, not work.
+ */
+function projectFolder(
+  slug: string,
+  num: string,
+  tone: string,
+  tabOffset: number,
+): Folder {
+  const project = findProject(slug);
+  // Loud at build time, because a silently missing folder would just be a
+  // hole in the stack.
+  if (!project) throw new Error(`folders.ts names a project that does not exist: ${slug}`);
+
+  return {
+    key: project.slug,
+    num,
+    title: project.title,
+    description: project.summary,
+    contents: project.contents,
     cta: 'Open the case study →',
-    href: projectUrl('nibbit-ai'),
-    tone: 'var(--f3)',
-    tabOffset: 0,
-  },
-  {
-    key: 'product',
-    num: '02',
-    title: 'product design',
-    description:
-      'Consumer flows rebuilt so the keyboard path, the screen-reader order and the visual order are the same order. One folder per project inside.',
-    // Counted from the data, so adding a project cannot leave this line lying.
-    contents: `${projects.length} projects · flows · before/after`,
-    cta: 'Open the projects →',
-    href: routes.productDesign,
-    tone: 'var(--f2)',
-    tabOffset: 172,
-  },
+    href: projectUrl(project.slug),
+    tone,
+    tabOffset,
+  };
+}
+
+export const folders: Folder[] = [
+  projectFolder('nibbit-ai', '01', 'var(--f3)', 0),
+  projectFolder('bookloop', '02', 'var(--f2)', 172),
   {
     key: 'research',
     num: '03',
