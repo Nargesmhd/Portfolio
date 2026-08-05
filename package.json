@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "share-cards": "node tools/share-cards.mjs",
     "astro": "astro"
   },
   "dependencies": {

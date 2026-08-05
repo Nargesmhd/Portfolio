@@ -8,6 +8,19 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Share cards
+
+The link-preview images in `public/og/` are committed files drawn from
+`src/lib/share.ts` by headless Chrome. After adding a project, or editing a
+card entry or a project's `headline`, `summary` or `contents`, redraw them:
+
+```
+npm run share-cards
+```
+
+Skipping it leaves the old words in the picture while the meta tags carry the
+new ones.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
