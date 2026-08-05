@@ -11,6 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "share-cards": "node tools/share-cards.mjs",
+    "favicon": "node tools/favicon-ico.mjs",
     "astro": "astro"
   },
   "dependencies": {
