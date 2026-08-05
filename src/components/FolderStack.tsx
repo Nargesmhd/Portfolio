@@ -8,7 +8,7 @@ export type FolderItem = {
   num: string;
   title: string;
   description: string;
-  /** The mono line under the description - reads like a label on a real file. */
+  /** The mono line under the description, reads like a label on a real file. */
   contents?: string;
   /** Both omitted while a folder has nothing to open yet. */
   cta?: string;
@@ -17,7 +17,7 @@ export type FolderItem = {
   tone: string;
   /** Tab offset, so the tabs form a staircase. */
   tabOffset: number;
-  /** Optional short status word - shown beside the title, e.g. DRAFT. */
+  /** Optional short status word, shown beside the title, e.g. DRAFT. */
   badge?: string;
 };
 
@@ -25,7 +25,7 @@ type Props = {
   items: FolderItem[];
   /** Sits above the pile, outside the list. */
   caption: string;
-  /** Names the list for screen readers - a page can hold more than one stack. */
+  /** Names the list for screen readers, a page can hold more than one stack. */
   label: string;
 };
 
@@ -113,7 +113,7 @@ export default function FolderStack({ items, caption, label }: Props) {
     <div className="stack">
       <p className="stack-caption mono">{caption}</p>
 
-      {/* A list rather than loose divs - the caption sits outside it so the
+      {/* A list rather than loose divs, the caption sits outside it so the
           list has only listitem children. */}
       <div role="list" aria-label={label}>
         {items.map((f, i) => {
@@ -131,7 +131,7 @@ export default function FolderStack({ items, caption, label }: Props) {
             style={
               {
                 // The closed-state tone only. --folder-bg is derived from it
-                // in CSS so the open state can override it - an inline
+                // in CSS so the open state can override it, an inline
                 // --folder-bg would outrank any stylesheet rule.
                 '--folder-tone': f.tone,
                 '--tab-offset': `${f.tabOffset}px`,

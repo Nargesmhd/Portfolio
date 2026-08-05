@@ -2,7 +2,7 @@
  * The five wireframe sheets, reproduced as they were drawn.
  *
  * These are deliberately low-fidelity: they are evidence of the process, not
- * UI. The orange notes are the point - each one records the accessibility
+ * UI. The orange notes are the point, each one records the accessibility
  * reasoning behind a decision on that screen.
  *
  * Everything here is decorative-adjacent but readable, so it stays real text

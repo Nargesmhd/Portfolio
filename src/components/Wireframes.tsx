@@ -73,7 +73,7 @@ const SHEETS: {
 
 /**
  * Two ways to read the same five sheets: walk them like a visitor would, or
- * lay them all out at once. Both are the same content - the switcher changes
+ * lay them all out at once. Both are the same content, the switcher changes
  * presentation only, so nobody has to use the interactive mode to see it all.
  */
 export default function Wireframes() {

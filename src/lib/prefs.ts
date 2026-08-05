@@ -7,7 +7,7 @@
  * boot script (which runs before React exists) and the React controls are
  * reading and writing exactly the same thing, so they cannot disagree.
  *
- * These are accessibility settings, not cosmetic ones - they must survive
+ * These are accessibility settings, not cosmetic ones, they must survive
  * navigation and reload, so nothing here is component state.
  */
 
