@@ -20,12 +20,12 @@ export function HomeSheet() {
       </div>
 
       <div className="wf-sub">
-        Product designer in Toronto - behavioural research + WCAG, for the
+        Product designer in Toronto, behavioural research + WCAG, for the
         people most products forget
       </div>
 
       <p className="wf-note">
-        19 words, real sentence - recruiters scan. plain language is an
+        19 words, real sentence, recruiters scan. plain language is an
         accessibility feature too (WCAG 3.1)
       </p>
 
@@ -43,7 +43,7 @@ export function HomeSheet() {
       </div>
 
       <p className="wf-note">
-        folders = your 4 buckets, yellow first - it's the thesis. black-on-yellow
+        folders = your 4 buckets, yellow first, it's the thesis. black-on-yellow
         ≈ 12:1 contrast, and each folder is ONE link (one tab stop, not five)
       </p>
 
@@ -52,13 +52,13 @@ export function HomeSheet() {
       </div>
 
       <div className="wf-row">
-        <div className="wf-strip">EXPERIENCES - tap to view</div>
-        <div className="wf-strip wf-strip--accent">SKILLSETS - tap to view</div>
-        <div className="wf-strip">PROFILE - open by default</div>
+        <div className="wf-strip">EXPERIENCES, tap to view</div>
+        <div className="wf-strip wf-strip--accent">SKILLSETS, tap to view</div>
+        <div className="wf-strip">PROFILE, open by default</div>
       </div>
 
       <p className="wf-note wf-note--right">
-        reading tabs (Aa / ◐ / ≡) on the right edge - real buttons with
+        reading tabs (Aa / ◐ / ≡) on the right edge, real buttons with
         aria-pressed, ≥44px, they remember your choice
       </p>
     </div>
@@ -78,7 +78,7 @@ export function CaseSheet() {
       </div>
 
       <p className="wf-note">
-        title = the outcome, not the project name - screen-reader users hear it
+        title = the outcome, not the project name, screen-reader users hear it
         out of context in a headings list
       </p>
 
@@ -90,35 +90,35 @@ export function CaseSheet() {
       </div>
 
       <div className="wf-img" style={{ height: 120 }}>
-        before/after of the core flow - with full alt text, not "image1"
+        before/after of the core flow, with full alt text, not "image1"
       </div>
 
       <div className="wf-row">
         <div className="wf-bar">
-          problem{' '}
+          problem
           <span>
-            - tab order followed the DOM, not the visual flow; keyboard users hit
+            , tab order followed the DOM, not the visual flow; keyboard users hit
             dead ends
           </span>
         </div>
         <div className="wf-bar">
-          process{' '}
+          process
           <span>
-            - audit every stop → rebuild in screen-reader order → test with
+            , audit every stop → rebuild in screen-reader order → test with
             VoiceOver + NVDA
           </span>
         </div>
         <div className="wf-bar">
-          outcome{' '}
+          outcome
           <span>
-            - every mouse path got a keyboard twin; shipped across the consumer
+            , every mouse path got a keyboard twin; shipped across the consumer
             app
           </span>
         </div>
       </div>
 
       <p className="wf-note">
-        3 numbers max, all verifiable - inflated metrics read as
+        3 numbers max, all verifiable, inflated metrics read as
         inaccessible-to-truth. these are yours:
       </p>
 
@@ -180,7 +180,7 @@ export function AboutSheet() {
       </div>
 
       <p className="wf-note">
-        ↑ same paper-strip pattern as home - consistent landmarks mean
+        ↑ same paper-strip pattern as home, consistent landmarks mean
         screen-reader users learn the layout once
       </p>
     </div>
@@ -198,7 +198,7 @@ export function AccessSheet() {
       </div>
 
       <p className="wf-note">
-        this page IS your differentiator - a11y teams WILL check it. claim only
+        this page IS your differentiator, a11y teams WILL check it. claim only
         what you measured
       </p>
 
@@ -224,16 +224,16 @@ export function AccessSheet() {
       </div>
 
       <p className="wf-note">
-        ↑ live demo of the reading tabs - larger text bumps base size 18→22px,
+        ↑ live demo of the reading tabs, larger text bumps base size 18→22px,
         plain layout drops decoration, not content
       </p>
 
       <div className="wf-bar">
-        "Found a barrier? Email me - I'll reply within 3 days." (mailto link)
+        "Found a barrier? Email me, I'll reply within 3 days." (mailto link)
       </div>
 
       <p className="wf-note">
-        3 days is a promise you can keep - a broken a11y promise is worse than
+        3 days is a promise you can keep, a broken a11y promise is worse than
         none
       </p>
     </div>
@@ -250,19 +250,19 @@ export function PlaySheet() {
       </div>
 
       <p className="wf-note">
-        unfinished is fine - label each with what you learned. pins make focus
+        unfinished is fine, label each with what you learned. pins make focus
         order visible: the page teaches a11y by showing it
       </p>
 
       <div className="wf-pins">
         <div className="wf-pin">
-          <b>1</b>contrast experiments - theme pairs
+          <b>1</b>contrast experiments, theme pairs
         </div>
         <div className="wf-pin">
           <b>2</b>nibbit onboarding, unshipped round
         </div>
         <div className="wf-pin">
-          <b>3</b>cog-sci note: attention is a budget - every extra control
+          <b>3</b>cog-sci note: attention is a budget, every extra control
           spends it
         </div>
         <div className="wf-pin">
@@ -279,7 +279,7 @@ export function PlaySheet() {
       </div>
 
       <p className="wf-note">
-        chips open a pre-filled email - one action, no form to fail. forms are
+        chips open a pre-filled email, one action, no form to fail. forms are
         where accessibility usually breaks
       </p>
     </div>
