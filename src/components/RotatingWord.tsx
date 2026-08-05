@@ -1,6 +1,22 @@
 import { useEffect, useState } from 'react';
 
-const WORDS = ['keyboard users', 'screen readers', 'low vision', 'everyone'];
+/*
+ * Assistive tech first, then the ordinary conditions everyone designs around
+ * badly - a tired brain, a split attention, a second language, bad signal -
+ * then the thing the market is scrambling to get right. 'everyone' stays last
+ * because it is the claim the rest of the list has to earn.
+ */
+const WORDS = [
+  'keyboard users',
+  'screen readers',
+  'low vision',
+  'tired brains',
+  'divided attention',
+  'second languages',
+  'one bar of signal',
+  'AI you can question',
+  'everyone',
+];
 const INTERVAL_MS = 2600;
 
 /**
