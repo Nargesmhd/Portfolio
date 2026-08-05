@@ -97,14 +97,14 @@ export const projects: Project[] = [
     slug: 'nibbit-ai',
     title: 'nibbit.ai',
     summary:
-      'The launch site, brand and comms for a pre-product AI startup - two themes, three widths, and a seven-item review round I can show you the receipts for.',
-    contents: 'audit · sitemap · 2 themes · 3 widths',
-    headline: 'A launch site for a product that did not exist yet',
+      'Research, a design system and app screens for a gamified habit tracker, plus the launch site and brand around it - with the accessibility failures found across 26 competitors turned into the product\'s own rules.',
+    contents: '26 competitors · design system · 2 themes · keyboard tested',
+    headline: 'The accessibility gaps I found in 26 competitors became the rules',
     meta: [
-      ['Role', 'Product Designer (site & brand)'],
-      ['Timeline', 'Feb, Aug 2023'],
+      ['Role', 'Product Designer'],
+      ['Timeline', 'Feb, Nov 2023'],
       ['Team', '8 people'],
-      ['Scope', 'Marketing site, brand, comms'],
+      ['Scope', 'Product design and marketing'],
     ],
     hero: {
       src: '/work/nibbit-ai/home-light.jpg',
@@ -112,11 +112,11 @@ export const projects: Project[] = [
       w: 1444,
       h: 1278,
     },
-    heroCaption: 'home, light - the version that came out of the review',
+    heroCaption: 'home, light - the page the work settled on',
     sections: [
       {
         heading: 'Problem',
-        body: 'nibbit was building two things that did not exist yet: a habit tracker called Habbit and an AI companion called Pebble. Neither was shippable, so the site had one job - make a promise credible enough that a stranger would hand over an email address and wait. The first direction did the opposite. It was headlined "We are making an app for those who chicken out", and under it, in the same weight as the product pitch, sat "Don\'t bother us. seriously. We get easily distracted." It is funny in a room. On a page it is a joke at the visitor\'s expense, told by a company asking that visitor to trust it with their habits, and it never says what the product does. The chicken pun was the brand and worth keeping; the shrug was not.',
+        body: 'People rarely fail at habits because they picked the wrong one. They fail around week two, when the novelty goes and nothing replaces it. Interviews and a survey kept returning the same two complaints: motivation runs out, and quitting a bad habit gets no help, because nearly every app is built to add. Habbit answered both - building and quitting feeding one system of streaks, levels and trophies, with an AI companion called Pebble to talk to about the progress. The launch site had to carry that promise before any of it existed, and its first concept did not.',
         shots: [
           {
             src: '/work/nibbit-ai/concept-chicken.jpg',
@@ -130,35 +130,20 @@ export const projects: Project[] = [
       },
       {
         heading: 'Research',
-        body: 'The competitive audit covered four companies across sixteen dimensions each, and the most useful thing it produced was the admission at the top of every row: relation, indirect. Microsoft, Stability, Observe.ai and ChatGPT were not competitors to a habit app, because in early 2023 there was no comparable product to point at. All four also scored "Good" on website experience, which is what a benchmark says when it cannot tell you anything. So I stopped reading it as a scorecard and started reading the negatives column, which is where the audit was actually specific - button heights that hurt reach, a gradient that did not match itself, surplus colour, vocabulary written for people who already knew the answer. That column is a list of things not to do, and it is the part that made it into the design.',
+        body: 'Habbit was three products wearing one name - a habit tracker, a game, and a conversation with an AI - so the audit covered all three markets rather than the one on the label. Interviews, a survey, personas and journey maps ran alongside it, and usability testing followed on the screens that came out. The habit trackers were the least surprising and the most useful: not one of them was built around the week-two problem.',
         table: {
-          caption: 'competitive audit - 4 companies, 16 dimensions, not one of them a direct competitor',
-          head: ['Company', 'Relation', 'What the audit could actually use'],
+          caption: 'the audit - 26 competitors across three markets, 16 dimensions each',
+          head: ['Market', 'Audited', 'What it was there to answer'],
           rows: [
-            ['Microsoft', 'Indirect', 'Multiple sign-up and recovery routes; its own note that unsuitable button heights hurt accessibility'],
-            ['Stability', 'Indirect', 'A free tier generous enough to be an onboarding argument; specialist vocabulary as a warning'],
-            ['Observe.ai', 'Indirect', 'Naming customers to borrow their trust; mismatched gradients and surplus colour to avoid'],
-            ['ChatGPT', 'Indirect', 'How to describe a model honestly - including that it cannot read emotion'],
+            ['Habit trackers', '6', 'The direct comparison - pricing, streaks, and where each one loses people'],
+            ['Gaming', '7', 'How returning is made to feel like a reward rather than a duty'],
+            ['AI chat', '13', 'How a companion talks without pretending to be a person'],
           ],
         },
       },
       {
-        heading: 'Structure',
-        body: 'The sitemap is 25 nodes and 16 of them sit under Account. Creating one was a five-screen chain - Create Account, Choose Name and Username, Add Contact Information, Set Password, Confirm Account - beside Edit Profile, Add/Edit Avatar, Settings, My Applications, Application Details, My Trophies and Trophy Details. All of it for a product the same site described as available soon. Read plainly, that is a product\'s account system with a marketing page attached, not a marketing site, and it is the shape a pre-launch team draws when sign-ups are the number being watched. The page itself started on paper - a ballpoint wireframe with the sections named down the margin, hero, features, subscribe, footer - and what that layout could decide, it did: the front page asks a first-time visitor for exactly two things, one button and one email field, and the five-screen chain lives behind the button instead of in the navigation.',
-        shots: [
-          {
-            src: '/work/nibbit-ai/sitemap.jpg',
-            alt: 'The nibbit.ai sitemap on a pale blue board: Home at the top branching to Products, About, Contact us and Account. Products leads to AI Bots and Applications, then to Pebble and Habbit. Account fans out to Edit Profile, Login, Create Account, My Applications, My Trophies, Settings and Log out, with Create Account descending through Choose Name and Username, Add Contact Information, Set Password and Confirm Account.',
-            w: 1600,
-            h: 1100,
-            tag: 'ia',
-            caption: '25 nodes, 16 of them behind an account nobody could use yet',
-          },
-        ],
-      },
-      {
-        heading: 'Design',
-        body: 'Two themes at three widths - 1440, 768 and 390 - drawn as separate designs rather than one inverted. That distinction is the whole reason the dark version holds: the illustration keeps its own value range instead of being dimmed with everything else, and the quote card becomes a raised dark surface rather than a white card with the lights turned off. Six error screens came with it, four of them different takes on 404, because a pre-launch site is mostly a set of pages that do not exist yet and the 404 is a page real visitors will actually reach. At 390 the nav collapses to one control and the hero, quote and subscribe block stack in the order they are read, which is the order they were already in on desktop.',
+        heading: 'Accessibility',
+        body: 'Accessibility was one of the sixteen columns, so all twenty-six products were read for it - and the same failures kept coming back. Those complaints became the rules, for the app and the site alike. The site was then tabbed end to end: keyboard only, no screen reader, and I will not claim otherwise. The palette was measured rather than assumed - the mark carries 16.3:1 on its outline, so the colour is decoration and the black line is doing the work.',
         shots: [
           {
             src: '/work/nibbit-ai/home-phone-light.jpg',
@@ -179,67 +164,58 @@ export const projects: Project[] = [
             crop: true,
           },
         ],
+        table: {
+          caption: 'what the audit found in competitors, and what it changed here',
+          head: ['Found in a competitor', 'Rule it became'],
+          rows: [
+            ['Titles built as text tags, not headings - in both leading habit trackers', 'Structure written as structure, so assistive tech gets a real outline'],
+            ['No features for audio or visual impairment, and English only', 'Short plain copy, and a layout built to take a second language'],
+            ['A text field under half the standard size', 'Controls sized to be hit rather than aimed at'],
+            ['Dark theme only, noted as making some people uncomfortable', 'Two themes, drawn separately rather than one inverted'],
+          ],
+        },
       },
       {
-        heading: 'Review',
-        body: 'The review arrived as seven lines in one message, and it is the best evidence in this project because both ends of it survive: the note, and the file it changed. Five of the seven are in the final design. One was resolved differently - the "meet the team" link never appeared in the nav because the team already lived on About, which was already in the nav. One simply did not make it: the quote still opens "We\'re working on a product", not "first, we\'re working on". And one landed and then drifted. The lowercase wordmark was applied, the name later moved to nibbit.id, and the header and footer logos both followed it while the copyright line underneath did not - so the finished file says nibbit.id twice and nibbit.ai once. Nobody re-read the footer after a change that was about the header. That is the ordinary way a review round leaks, and it is in the file I signed off.',
+        heading: 'System',
+        body: 'The design system reached v2.1 before the MVP shipped, and its cover states the goal in the team\'s own words: an accessible system with meaningful elements. What makes it usable is that it is drawn for the states nobody enjoys drawing - checkboxes in five, radios in four, every indicator in both light and dark. That last one is why two themes were a build decision rather than a retrofit. Type was chosen the same way: six candidates set in one specimen line, with Poppins taking it.',
         shots: [
           {
-            src: '/work/nibbit-ai/home-before.jpg',
-            alt: 'The homepage before the review, in dark theme: the wordmark reads "Nibbit .ai" in title case, the headline is "Making habits everyday" with "habits" in yellow, a yellow "Subscribe our newsletters" block sits at the bottom, and a footer strip reads "Made with love by ChatGPT".',
-            w: 1440,
-            h: 1165,
-            tag: 'before',
-            caption: 'before - title-case wordmark, yellow accent, ChatGPT credit strip',
-          },
-          {
-            src: '/work/nibbit-ai/home-dark.jpg',
-            alt: 'The same page after the review, in dark theme: the wordmark is lowercase with the chicken-head mark beside it, the headline reads "Take on life a nibb at a time", the accent has moved from yellow to purple on a Create account button, and the ChatGPT credit strip is gone.',
-            w: 1444,
-            h: 1278,
-            tag: 'after',
-            caption: 'after - same page, same theme, five of the seven notes carried',
-          },
-          {
-            src: '/work/nibbit-ai/review-notes.jpg',
-            alt: 'A screenshot of the review message: seven plain-text instructions, including changing "making habits everyday" to "take on life a nibb at a time", rewording the newsletter block, always lowercasing nibbit.ai, removing the made-with-love-by-ChatGPT section, reopening the quote with "first, we\'re working on", using the chicken head logo, and adding a "meet the team" link.',
-            w: 1008,
-            h: 582,
-            tag: 'note',
-            caption: 'the seven lines, as they were sent',
+            src: '/work/nibbit-ai/habbit-system.jpg',
+            alt: 'A page of the Habbit design system on a periwinkle background, headed "style guid": columns of components drawn in every state - checkboxes checked, undetermined, error, unchecked and checked-disabled; radio buttons; switches; avatars as initials and photos in three sizes; badges, tags and chips; progress bars, sliders, a calendar, a table and tabs; and indicators shown in both light and dark.',
+            w: 773,
+            h: 1200,
+            tag: 'v2.1',
+            caption: 'the system at v2.1 - every control drawn in the states nobody enjoys drawing',
           },
         ],
-        table: {
-          caption: 'the seven review notes, against what the final file actually does',
-          head: ['Note', 'What happened'],
-          rows: [
-            ['Rewrite the headline', 'Done - "Making habits everyday" became "Take on life a nibb at a time"'],
-            ['Rewrite the subscribe block', 'Done, reworded - asked for product updates, shipped as "Subscribe to receive team updates"'],
-            ['Always lowercase the name', 'Done - and then outrun by a rename the copyright line never got'],
-            ['Drop the ChatGPT credit strip', 'Done - gone from every page'],
-            ['Open the quote with "first, …"', 'Not carried - the quote still opens "We\'re working on a product"'],
-            ['Use the chicken-head logo', 'Done - the mark replaced the wordmark-only lockup'],
-            ['Add a "meet the team" link', 'Resolved differently - the team sits on About, already in the nav'],
-          ],
-        },
       },
       {
-        heading: 'Brand',
-        body: 'The mark is a chicken head in a ring, and measured out of the SVG it is stricter than it looks. Every path in it is stroked at one weight, 27.964, with the enclosing circle at 55.929 - exactly double - and a single lighter 16.45 around the eye. That discipline is what does the work, because the colour cannot: the comb red is 3.38:1 against white and the beak yellow is 1.19:1, which is to say the yellow is invisible on its own and only exists because a black outline is holding it. A mark built that way can be dropped onto near-black, onto cream, and onto a purple hero without anyone drawing a second version, and that is what let one file carry the site, the letterhead, the welcome email and the recruiting artwork. The recruiting poster is the one I would defend hardest: it went out to hire an illustrator, and rather than dress the app up for the ad, it ran the real onboarding screen with the empty illustration slot still in, filled with placeholder text reading "This place needs a vector". The ad is honest about the hole it is trying to fill.',
-        table: {
-          caption: 'the mark, measured out of the SVG',
-          head: ['Property', 'Value', 'Consequence'],
-          rows: [
-            ['Stroke weight', '27.964 on every path', 'One weight throughout - nothing in it reads as an accident'],
-            ['Enclosing ring', '55.929, exactly double', 'The circle still reads when the head goes small'],
-            ['Comb red on white', '3.38:1', 'Clears 3:1 for graphics, nowhere near 4.5:1 for text'],
-            ['Beak yellow on white', '1.19:1', 'Invisible by itself - the outline is carrying it'],
-          ],
-        },
+        heading: 'Product',
+        body: 'Two screens carry the argument. Pebble opens by admitting what it does not know, then offers habits as cards you add with one tap. Each card already carries its category, time and days, so agreeing to a habit and scheduling it are the same action. The success screen is where the gamification and the accessibility meet: completed days are marked with a tick as well as a filled ring, so the state is never carried by colour alone.',
+        shots: [
+          {
+            src: '/work/nibbit-ai/habbit-pebble.jpg',
+            alt: 'The Habbit conversation screen on a phone: Pebble says that since the user did not mention what kind of habit they prefer, it can recommend some life-changing ones. Below sit suggestion cards - Meditate under Mental health, five times a week, at 9pm on Monday to Friday, each with an Add button - and a message field with the keyboard open.',
+            w: 780,
+            h: 1688,
+            tag: 'pebble',
+            caption: 'the companion suggests, and adding is one tap - habit and schedule together',
+            crop: true,
+          },
+          {
+            src: '/work/nibbit-ai/habbit-success.jpg',
+            alt: 'The Habbit success screen: a chick sitting in a gold trophy with confetti, the heading "Succeed!", and the line "You have completed your daily habit, good job." Under it the habit "Read Homo Sapiens" with a Tuesday-to-Saturday strip where completed days carry both a filled ring and a tick, and a Done button.',
+            w: 780,
+            h: 1688,
+            tag: 'reward',
+            caption: 'completed days carry a tick as well as a ring - never colour alone',
+            crop: true,
+          },
+        ],
       },
       {
         heading: 'Outcome',
-        body: 'Delivered: home and about in two themes at three widths, six error screens, a 25-node sitemap, the mark and its letterhead, a welcome email, and the recruiting artwork. Not everything cleared. The commitments section - five of them, one reading "Community:" with nothing after the colon - is filed as not approved and never went up, which is what it looks like when a layout is finished before its content exists and the content never arrives. And the site itself is gone: nibbit.ai today serves a seven-line poem about a species that grew confident enough to fly and is now falling. So this case study is evidence of a design process and a review round that can be checked line by line against the file. It is not evidence of traffic, and I would rather say that than imply otherwise.',
+        body: 'Both halves shipped as designs: the research, the system, the app screens, and the launch site and brand around them. Not all of it was finished - the commitments section went into the final About page still carrying a bullet that reads "Community:" with nothing after the colon. And the site itself is gone; nibbit.ai today serves a seven-line poem. The work stands on its judgement rather than its traffic, which is the honest claim for a product that never reached the people it was researched for.',
         shots: [
           {
             src: '/work/nibbit-ai/welcome-email.jpg',
@@ -248,22 +224,15 @@ export const projects: Project[] = [
             h: 2253,
             tag: 'email',
             caption: 'the welcome email - three promises, each with the screen that would keep it',
-          },
-          {
-            src: '/work/nibbit-ai/commitments.jpg',
-            alt: 'The commitments section on a near-black background: a heading reading "Our commitments" above a card listing five bulleted commitments - Humata, Huxta, Huvarshta; Trust; Community, with nothing written after the colon; Open Source; and Teapot.',
-            w: 1440,
-            h: 676,
-            tag: 'unapproved',
-            caption: 'laid out, never approved - note the commitment with nothing after the colon',
+            crop: true,
           },
         ],
       },
     ],
     metrics: [
-      ['16 of 25', 'sitemap nodes behind an account'],
-      ['5 of 7', 'review notes in the final file'],
-      ['6', 'layouts per page: 2 themes × 3 widths'],
+      ['26', 'competitors audited, three markets'],
+      ['10,30', 'people interviewed and surveyed'],
+      ['5', 'states drawn per checkbox'],
     ],
   },
   {
@@ -271,7 +240,7 @@ export const projects: Project[] = [
     title: 'bookloop',
     summary:
       'Audit and remediation of a live social book club app - form semantics, dark-mode contrast, and a keyboard defect that was quietly changing which books clubs read.',
-    contents: 'audit · 110 controls · 13 findings · WCAG 2.2 AA',
+    contents: 'audit · 110 controls · 14 findings · WCAG 2.2 AA',
     headline: 'An accessibility audit that changed the product, not just the markup',
     meta: [
       ['Role', 'Product Designer (solo)'],
@@ -285,7 +254,7 @@ export const projects: Project[] = [
       w: 1400,
       h: 765,
     },
-    heroCaption: 'home - the club reading Dune this week',
+    heroCaption: 'home, on seeded demo data captured locally - the clubs and cover art are seed content, not live users',
     sections: [
       {
         heading: 'Problem',
@@ -333,7 +302,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'System',
-        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Three decisions went the other way, and none of them were filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; the datetime pickers are the native ones, kept rather than rebuilt, which keeps the platform behaviour nobody reimplements correctly - including native clear; and user-facing copy replaces em dashes with commas, because screen readers pronounce an em dash inconsistently and a comma is just a pause. Small calls, all three, and each one is a decision not to reinvent something the platform already does accessibly.',
+        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Three decisions went the other way, and none of them were filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; the datetime pickers are the native ones, kept rather than rebuilt, which keeps the platform behaviour nobody reimplements correctly - including native clear;. Small calls, both, and each one is a decision not to reinvent something the platform already does accessibly.',
         shots: [
           {
             src: '/work/bookloop/search-button-light.png',
@@ -374,7 +343,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'Open',
-        body: 'Nine findings are still unfixed, and a case study that only lists the wins is a brochure. The two Critical ones are the two described above; they are repeated here because an open list that quietly drops its worst items is not an open list. The live-region gap is the one that needs a decision rather than a patch: a club with eight active members would be unusable if every event announced itself, so some events should speak politely, some should stay visual, and some should batch. The recap-card finding was not in the original audit at all - it surfaced afterwards, which is the best argument on this page for the last row of the table.',
+        body: 'Ten findings are still unfixed, and a case study that only lists the wins is a brochure. The two Critical ones are the two described above; they are repeated here because an open list that quietly drops its worst items is not an open list. The live-region gap is the one that needs a decision rather than a patch: a club with eight active members would be unusable if every event announced itself, so some events should speak politely, some should stay visual, and some should batch. The last two were not in the original audit at all - both surfaced later, and the broken cover turned up only because someone looked closely at a screenshot. That is the best argument on this page for the last row of the table.',
         table: {
           caption: 'open findings, at the time of writing',
           head: ['Finding', 'Detail', 'Severity'],
@@ -398,6 +367,11 @@ export const projects: Project[] = [
               'One dialog still is not one',
               'The nominate-and-vote panel is marked as a dialog but never got the keyboard hook the other two use - no Escape, no focus trap',
               'Serious',
+            ],
+            [
+              'Club covers are hotlinked, and one is gone',
+              'Seed club avatars point at a third-party image host. One photo has since been deleted, and the card falls back only when the URL is missing, not when the image fails to load - so a dead URL is truthy, the img renders, and the browser paints its own broken-image glyph in the card',
+              'Moderate',
             ],
             [
               'Recap cards are pictures of text',
@@ -516,7 +490,7 @@ export const projects: Project[] = [
     metrics: [
       ['73/110', 'controls with no accessible name'],
       ['1.05:1', 'the dark-mode Search button'],
-      ['4', 'defects fixed - and 9 left open'],
+      ['4', 'defects fixed - and 10 left open'],
     ],
   },
   {

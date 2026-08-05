@@ -12,6 +12,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ReadingRail from '../components/ReadingRail.tsx';
 import { url } from '../lib/routes';
+import { cardAlt, cardFile, cardFor, cardLayout } from '../lib/share';
 
 interface Props {
   title: string;
@@ -48,6 +49,23 @@ const {
  */
 const beaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 const beacon = !noindex && beaconToken ? beaconToken : null;
+
+/*
+ * Link preview. Absolute URLs throughout: a pasted link is unfurled by a
+ * server somewhere else, which has no page to resolve a relative path against
+ * and will simply drop the image.
+ *
+ * The card itself is a committed picture drawn by `npm run share-cards`; the
+ * text below comes from the same entry, so the preview and the page always
+ * say the same thing. See src/lib/share.ts.
+ */
+const card = cardFor(Astro.url.pathname);
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const shareImage = new URL(`/og/${cardFile(card.path)}.png`, Astro.site).href;
+const shareSize = {
+  width: String(cardLayout.width * cardLayout.scale),
+  height: String(cardLayout.height * cardLayout.scale),
+};
 ---
 
 <!doctype html>
@@ -58,7 +76,30 @@ const beacon = !noindex && beaconToken ? beaconToken : null;
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+
+    {/*
+      Open Graph is what Slack, LinkedIn, iMessage and the rest read; the
+      twitter:card line is the one extra tag that makes them show the picture
+      full-width instead of as a thumbnail. og:image:alt is not decoration -
+      several clients read it out, and it is the only description a person
+      using a screen reader gets of the card.
+    */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Narges Mirheydari" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content={shareSize.width} />
+    <meta property="og:image:height" content={shareSize.height} />
+    <meta property="og:image:alt" content={cardAlt(card)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImage} />
+    <meta name="twitter:image:alt" content={cardAlt(card)} />
 
     {
       /*
