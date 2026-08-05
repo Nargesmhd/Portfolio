@@ -132,7 +132,7 @@ export const projects: Project[] = [
     title: 'bookloop',
     summary:
       'Audit and remediation of a live social book club app - form semantics, dark-mode contrast, and a keyboard defect that was quietly changing which books clubs read.',
-    contents: 'audit · 110 controls · 13 findings · WCAG 2.2 AA',
+    contents: 'audit · 110 controls · 14 findings · WCAG 2.2 AA',
     headline: 'An accessibility audit that changed the product, not just the markup',
     meta: [
       ['Role', 'Product Designer (solo)'],
@@ -146,7 +146,7 @@ export const projects: Project[] = [
       w: 1400,
       h: 765,
     },
-    heroCaption: 'home - the club reading Dune this week',
+    heroCaption: 'home, on seeded demo data captured locally - the clubs and cover art are seed content, not live users',
     sections: [
       {
         heading: 'Problem',
@@ -194,7 +194,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'System',
-        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Three decisions went the other way, and none of them were filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; the datetime pickers are the native ones, kept rather than rebuilt, which keeps the platform behaviour nobody reimplements correctly - including native clear; and user-facing copy replaces em dashes with commas, because screen readers pronounce an em dash inconsistently and a comma is just a pause. Small calls, all three, and each one is a decision not to reinvent something the platform already does accessibly.',
+        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them - including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Three decisions went the other way, and none of them were filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; the datetime pickers are the native ones, kept rather than rebuilt, which keeps the platform behaviour nobody reimplements correctly - including native clear;. Small calls, both, and each one is a decision not to reinvent something the platform already does accessibly.',
         shots: [
           {
             src: '/work/bookloop/search-button-light.png',
@@ -235,7 +235,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'Open',
-        body: 'Nine findings are still unfixed, and a case study that only lists the wins is a brochure. The two Critical ones are the two described above; they are repeated here because an open list that quietly drops its worst items is not an open list. The live-region gap is the one that needs a decision rather than a patch: a club with eight active members would be unusable if every event announced itself, so some events should speak politely, some should stay visual, and some should batch. The recap-card finding was not in the original audit at all - it surfaced afterwards, which is the best argument on this page for the last row of the table.',
+        body: 'Ten findings are still unfixed, and a case study that only lists the wins is a brochure. The two Critical ones are the two described above; they are repeated here because an open list that quietly drops its worst items is not an open list. The live-region gap is the one that needs a decision rather than a patch: a club with eight active members would be unusable if every event announced itself, so some events should speak politely, some should stay visual, and some should batch. The last two were not in the original audit at all - both surfaced later, and the broken cover turned up only because someone looked closely at a screenshot. That is the best argument on this page for the last row of the table.',
         table: {
           caption: 'open findings, at the time of writing',
           head: ['Finding', 'Detail', 'Severity'],
@@ -259,6 +259,11 @@ export const projects: Project[] = [
               'One dialog still is not one',
               'The nominate-and-vote panel is marked as a dialog but never got the keyboard hook the other two use - no Escape, no focus trap',
               'Serious',
+            ],
+            [
+              'Club covers are hotlinked, and one is gone',
+              'Seed club avatars point at a third-party image host. One photo has since been deleted, and the card falls back only when the URL is missing, not when the image fails to load - so a dead URL is truthy, the img renders, and the browser paints its own broken-image glyph in the card',
+              'Moderate',
             ],
             [
               'Recap cards are pictures of text',
@@ -377,7 +382,7 @@ export const projects: Project[] = [
     metrics: [
       ['73/110', 'controls with no accessible name'],
       ['1.05:1', 'the dark-mode Search button'],
-      ['4', 'defects fixed - and 9 left open'],
+      ['4', 'defects fixed - and 10 left open'],
     ],
   },
   {
