@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 /*
  * Assistive tech first, then the ordinary conditions everyone designs around
- * badly - a tired brain, a split attention, a second language, bad signal -
+ * badly, a tired brain, a split attention, a second language, bad signal -
  * then the thing the market is scrambling to get right. 'everyone' stays last
  * because it is the claim the rest of the list has to earn.
  */
@@ -23,7 +23,7 @@ const INTERVAL_MS = 2600;
  * "Designing for < word >", cycling.
  *
  * aria-live="polite" so the change is announced without interrupting, and the
- * interval is never scheduled at all under reduced motion - stopping the CSS
+ * interval is never scheduled at all under reduced motion, stopping the CSS
  * animation would not stop the text from changing underneath someone.
  */
 export default function RotatingWord() {

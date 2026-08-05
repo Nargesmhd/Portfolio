@@ -1,12 +1,12 @@
 /*
- * Link previews - the card a page turns into when someone pastes its URL into
+ * Link previews, the card a page turns into when someone pastes its URL into
  * Slack, LinkedIn, iMessage or a DM.
  *
  * With nothing in <head> a shared link renders as a bare domain and a grey
  * box, which is the one thing a portfolio link cannot afford: the moment it is
  * most likely to be seen by a stranger is the moment it says least.
  *
- * This file is the single source for both halves of the card - the picture in
+ * This file is the single source for both halves of the card, the picture in
  * public/og/ and the meta tags in the layout. Keeping them together is the
  * point: a card cannot end up describing a page differently from the page
  * itself, because both read the same entry.
@@ -17,13 +17,13 @@
  */
 
 // Explicit .ts because tools/share-cards.mjs runs this file straight through
-// node, which - unlike Vite - will not guess the extension.
+// node, which, unlike Vite, will not guess the extension.
 import { projects } from '../data/projects.ts';
 
 /*
  * The size every platform crops to, and the factor the picture is actually
  * drawn at so it stays sharp on a retina screen. The meta tags report the
- * file's real pixels - width times scale - because a scraper told the wrong
+ * file's real pixels, width times scale, because a scraper told the wrong
  * dimensions can crop the card on the strength of them.
  */
 export const cardLayout = { width: 1200, height: 630, scale: 2 } as const;
@@ -36,12 +36,12 @@ export type ShareCard = {
   /** The headline, set in Newsreader under the yellow highlighter. */
   title: string;
   /**
-   * One supporting sentence. The card gives it two lines - about 125
-   * characters - and clips whatever runs past them, so write to the budget
+   * One supporting sentence. The card gives it two lines, about 125
+   * characters, and clips whatever runs past them, so write to the budget
    * rather than trusting the clip to land somewhere sensible.
    */
   sub?: string;
-  /** Mono line along the bottom - counted things, never claims. */
+  /** Mono line along the bottom, counted things, never claims. */
   kicker?: string;
 };
 
@@ -87,7 +87,7 @@ const pages: ShareCard[] = [
 
 /**
  * The opening clause of a project summary. A summary runs longer than a card
- * can hold, and a card that simply cuts it off stops mid-sentence - so the
+ * can hold, and a card that simply cuts it off stops mid-sentence, so the
  * card takes the first clause whole and lets the page carry the rest.
  */
 function opening(summary: string): string {
@@ -127,7 +127,7 @@ export function cardFor(path: string): ShareCard {
 
 /**
  * What the card says, for someone who cannot see it. Built from the card
- * rather than written per page, so it cannot drift out of date - and never
+ * rather than written per page, so it cannot drift out of date, and never
  * omitted, since an image with no alt text on an accessibility portfolio
  * would undercut the page it is advertising.
  */

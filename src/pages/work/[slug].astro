@@ -141,7 +141,7 @@ const { project, next } = Astro.props;
             {
               table && (
                 /* The wrapper scrolls on narrow screens, so it is a labelled
-                   region with a tab stop - otherwise a keyboard user can see
+                   region with a tab stop, otherwise a keyboard user can see
                    the overflow and has no way to reach it. */
                 <div class="table-wrap" role="region" aria-label={table.caption} tabindex="0">
                   <table class="counted">

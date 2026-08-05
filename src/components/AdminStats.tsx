@@ -35,8 +35,8 @@ type State =
 const numberFormat = new Intl.NumberFormat('en-CA');
 
 /* Dates from the API are calendar days in UTC. Formatting them in the local
-   zone would slide them a day for anyone west of Greenwich - including here in
-   Toronto - so the timezone is pinned to match the bucket. */
+   zone would slide them a day for anyone west of Greenwich, including here in
+   Toronto, so the timezone is pinned to match the bucket. */
 const dayFormat = new Intl.DateTimeFormat('en-CA', {
   month: 'short',
   day: 'numeric',
@@ -89,7 +89,7 @@ export default function AdminStats() {
 
       /* There is no Worker in front of `astro dev`, so locally this always
          fails. Rather than leaving the page undesignable offline, dev falls
-         back to sample numbers - loudly labelled, and impossible in a
+         back to sample numbers, loudly labelled, and impossible in a
          production build because the branch is compiled out. */
       if (import.meta.env.DEV) {
         setState({ status: 'ready', stats: sampleStats(days), sample: true });
@@ -284,7 +284,7 @@ function DailyChart({
         {/*
           A real description, not "chart of visits". Someone who cannot see the
           bars should finish this sentence knowing what the bars would have told
-          them, which means the shape of the period and its peak - not a label.
+          them, which means the shape of the period and its peak, not a label.
         */}
         <p>
           {first && last
