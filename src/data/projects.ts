@@ -97,12 +97,12 @@ export const projects: Project[] = [
     slug: 'nibbit-ai',
     title: 'nibbit.ai',
     summary:
-      'The launch site and brand for a pre-product AI startup - accessibility written into the research criteria, two themes drawn separately, and a sign-up path that asked for more than it had earned.',
-    contents: 'audit · 2 themes · 390px · contrast measured',
-    headline: 'Putting accessibility in the brief before there was a product',
+      'Research, a design system and app screens for a gamified habit tracker, plus the launch site and brand around it - with the accessibility failures found across 26 competitors turned into the product\'s own rules.',
+    contents: '26 competitors · design system · 2 themes · keyboard tested',
+    headline: 'The accessibility gaps I found in 26 competitors became the rules',
     meta: [
       ['Role', 'Product Designer'],
-      ['Timeline', 'Feb – Aug 2023'],
+      ['Timeline', 'Feb – Nov 2023'],
       ['Team', '8 people'],
       ['Scope', 'Product design and marketing'],
     ],
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: 'Problem',
-        body: 'nibbit was building two things and neither existed yet. Habbit set out to gamify habit-building across different habits at once - build one, quit another, and have both feed the same streaks, levels and trophies, collected by an avatar you level up. Pebble was the AI companion you talked to about that progress. Gamification is a retention argument: it exists to make coming back worth something, which is where a habit app is won or lost. Both products were months out, so the site had one job - make that promise worth waiting for. The first direction spent the credit on a joke instead - "We are making an app for those who chicken out", and under it, in the same weight as the pitch, "Don\'t bother us. seriously. We get easily distracted." Funny in a room. On a page it is a shrug from a company asking strangers to trust it with their habits, and it never says what the product does. The pun was the brand and worth keeping. The shrug is what the rest of the work replaced.',
+        body: 'People rarely fail at habits because they picked the wrong one. They fail around week two, when the novelty goes and nothing replaces it. Interviews and a survey kept returning the same two complaints: motivation runs out, and quitting a bad habit gets no help, because nearly every app is built to add. Habbit answered both - building and quitting feeding one system of streaks, levels and trophies, with an AI companion called Pebble to talk to about the progress. The launch site had to carry that promise before any of it existed, and its first concept did not.',
         shots: [
           {
             src: '/work/nibbit-ai/concept-chicken.jpg',
@@ -129,8 +129,21 @@ export const projects: Project[] = [
         ],
       },
       {
+        heading: 'Research',
+        body: 'Habbit was three products wearing one name - a habit tracker, a game, and a conversation with an AI - so the audit covered all three markets rather than the one on the label. Interviews, a survey, personas and journey maps ran alongside it, and usability testing followed on the screens that came out. The habit trackers were the least surprising and the most useful: not one of them was built around the week-two problem.',
+        table: {
+          caption: 'the audit - 26 competitors across three markets, 16 dimensions each',
+          head: ['Market', 'Audited', 'What it was there to answer'],
+          rows: [
+            ['Habit trackers', '6', 'The direct comparison - pricing, streaks, and where each one loses people'],
+            ['Gaming', '7', 'How returning is made to feel like a reward rather than a duty'],
+            ['AI chat', '13', 'How a companion talks without pretending to be a person'],
+          ],
+        },
+      },
+      {
         heading: 'Accessibility',
-        body: 'Accessibility was one of the sixteen columns in the competitive audit, which is to say it was a criterion before it was a decision - and the audit\'s own complaint against Microsoft, that unsuitable button heights hurt reach, is the sort of note that only turns up when somebody is looking for it. Three things followed from having that column. Light and dark were drawn as two designs rather than one inverted, so the illustration keeps its own value range instead of being dimmed along with the page behind it. The layout goes down to 390px with the reading order unchanged from desktop, so nothing reshuffles itself on the way to a phone. And the palette was measured rather than assumed, which is how I know the brand colours are not what makes the mark readable - the outline is.',
+        body: 'Accessibility was one of the sixteen columns, so all twenty-six products were read for it - and the same failures kept coming back. Those complaints became the rules, for the app and the site alike. The site was then tabbed end to end: keyboard only, no screen reader, and I will not claim otherwise. The palette was measured rather than assumed - the mark carries 16.3:1 on its outline, so the colour is decoration and the black line is doing the work.',
         shots: [
           {
             src: '/work/nibbit-ai/home-phone-light.jpg',
@@ -152,22 +165,57 @@ export const projects: Project[] = [
           },
         ],
         table: {
-          caption: 'the mark\'s palette, measured out of the SVG',
-          head: ['Pairing', 'Ratio', 'What it means'],
+          caption: 'what the audit found in competitors, and what it changed here',
+          head: ['Found in a competitor', 'Rule it became'],
           rows: [
-            ['Outline on white', '16.3:1', 'The shape is legible with no colour at all'],
-            ['Comb red on white', '3.38:1', 'Clears 3:1 for graphics, nowhere near 4.5:1 for text'],
-            ['Beak yellow on white', '1.19:1', 'Invisible unaided - the outline is holding it up'],
+            ['Titles built as text tags, not headings - in both leading habit trackers', 'Structure written as structure, so assistive tech gets a real outline'],
+            ['No features for audio or visual impairment, and English only', 'Short plain copy, and a layout built to take a second language'],
+            ['A text field under half the standard size', 'Controls sized to be hit rather than aimed at'],
+            ['Dark theme only, noted as making some people uncomfortable', 'Two themes, drawn separately rather than one inverted'],
           ],
         },
       },
       {
-        heading: 'Potential',
-        body: 'The information architecture is where the ambition shows, and where it costs. Twenty-five nodes, sixteen of them behind Account, with sign-up alone a five-screen chain - Create Account, Choose Name and Username, Add Contact Information, Set Password, Confirm Account - beside trophies, avatars and application details, all drawn for a product the same site called available soon. Read generously, that is a team mapping the thing it intends to build. Read plainly, it is five screens of effort charged to someone who has not been given a reason yet, and effort is what filters people out first: anyone tired, distracted, short on time or short on attention. The front page could not shorten the chain, so it did the next best thing - one button and one email field, and everything else kept behind them.',
+        heading: 'System',
+        body: 'The design system reached v2.1 before the MVP shipped, and its cover states the goal in the team\'s own words: an accessible system with meaningful elements. What makes it usable is that it is drawn for the states nobody enjoys drawing - checkboxes in five, radios in four, every indicator in both light and dark. That last one is why two themes were a build decision rather than a retrofit. Type was chosen the same way: six candidates set in one specimen line, with Poppins taking it.',
+        shots: [
+          {
+            src: '/work/nibbit-ai/habbit-system.jpg',
+            alt: 'A page of the Habbit design system on a periwinkle background, headed "style guid": columns of components drawn in every state - checkboxes checked, undetermined, error, unchecked and checked-disabled; radio buttons; switches; avatars as initials and photos in three sizes; badges, tags and chips; progress bars, sliders, a calendar, a table and tabs; and indicators shown in both light and dark.',
+            w: 773,
+            h: 1200,
+            tag: 'v2.1',
+            caption: 'the system at v2.1 - every control drawn in the states nobody enjoys drawing',
+          },
+        ],
+      },
+      {
+        heading: 'Product',
+        body: 'Two screens carry the argument. Pebble opens by admitting what it does not know, then offers habits as cards you add with one tap. Each card already carries its category, time and days, so agreeing to a habit and scheduling it are the same action. The success screen is where the gamification and the accessibility meet: completed days are marked with a tick as well as a filled ring, so the state is never carried by colour alone.',
+        shots: [
+          {
+            src: '/work/nibbit-ai/habbit-pebble.jpg',
+            alt: 'The Habbit conversation screen on a phone: Pebble says that since the user did not mention what kind of habit they prefer, it can recommend some life-changing ones. Below sit suggestion cards - Meditate under Mental health, five times a week, at 9pm on Monday to Friday, each with an Add button - and a message field with the keyboard open.',
+            w: 780,
+            h: 1688,
+            tag: 'pebble',
+            caption: 'the companion suggests, and adding is one tap - habit and schedule together',
+            crop: true,
+          },
+          {
+            src: '/work/nibbit-ai/habbit-success.jpg',
+            alt: 'The Habbit success screen: a chick sitting in a gold trophy with confetti, the heading "Succeed!", and the line "You have completed your daily habit, good job." Under it the habit "Read Homo Sapiens" with a Tuesday-to-Saturday strip where completed days carry both a filled ring and a tick, and a Done button.',
+            w: 780,
+            h: 1688,
+            tag: 'reward',
+            caption: 'completed days carry a tick as well as a ring - never colour alone',
+            crop: true,
+          },
+        ],
       },
       {
         heading: 'Outcome',
-        body: 'Delivered: home and about in two themes at three widths, six error screens, the mark and its letterhead, a welcome email, and the artwork that went out to hire an illustrator. Not all of it cleared - a commitments section was laid out and never approved, one of its five bullets still reading "Community:" with nothing after the colon, which is what a layout finished ahead of its content looks like when the content never arrives. And the site is gone: nibbit.ai today serves a seven-line poem about a species that grew confident enough to fly and is now falling. So this is evidence of judgement rather than of traffic - what it looks like when accessibility is a criterion at the research stage, on a project where nobody was checking.',
+        body: 'Both halves shipped as designs: the research, the system, the app screens, and the launch site and brand around them. Not all of it was finished - the commitments section went into the final About page still carrying a bullet that reads "Community:" with nothing after the colon. And the site itself is gone; nibbit.ai today serves a seven-line poem. The work stands on its judgement rather than its traffic, which is the honest claim for a product that never reached the people it was researched for.',
         shots: [
           {
             src: '/work/nibbit-ai/welcome-email.jpg',
@@ -182,9 +230,9 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      ['2', 'themes drawn, not inverted'],
-      ['390px', 'narrowest layout designed'],
-      ['16 of 25', 'pages behind a sign-up'],
+      ['26', 'competitors audited, three markets'],
+      ['10–30', 'people interviewed and surveyed'],
+      ['5', 'states drawn per checkbox'],
     ],
   },
   {
