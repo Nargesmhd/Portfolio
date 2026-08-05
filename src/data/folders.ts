@@ -35,8 +35,8 @@ function projectFolder(
 }
 
 export const folders: Folder[] = [
-  projectFolder('nibbit-ai', '01', 'var(--f3)', 0),
-  projectFolder('bookloop', '02', 'var(--f2)', 172),
+  projectFolder('bookloop', '01', 'var(--f3)', 0),
+  projectFolder('nibbit-ai', '02', 'var(--f2)', 172),
   {
     key: 'research',
     num: '03',
