@@ -103,7 +103,7 @@ export const projects: Project[] = [
     meta: [
       ['Role', 'Product Designer (site & brand)'],
       ['Timeline', 'Feb – Aug 2023'],
-      ['Team', '8 people, 3 of them designers'],
+      ['Team', '8 people'],
       ['Scope', 'Marketing site, brand, comms'],
     ],
     hero: {
