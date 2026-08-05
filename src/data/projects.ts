@@ -525,9 +525,9 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      ['-', 'fill in'],
-      ['-', 'fill in'],
-      ['-', 'fill in'],
+      [',', 'fill in'],
+      [',', 'fill in'],
+      [',', 'fill in'],
     ],
   },
 ];
