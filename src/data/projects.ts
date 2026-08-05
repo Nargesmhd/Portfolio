@@ -101,10 +101,10 @@ export const projects: Project[] = [
     contents: 'audit · 2 themes · 390px · contrast measured',
     headline: 'Putting accessibility in the brief before there was a product',
     meta: [
-      ['Role', 'Product Designer (site & brand)'],
+      ['Role', 'Product Designer'],
       ['Timeline', 'Feb – Aug 2023'],
       ['Team', '8 people'],
-      ['Scope', 'Marketing site, brand, comms'],
+      ['Scope', 'Product design and marketing'],
     ],
     hero: {
       src: '/work/nibbit-ai/home-light.jpg',
