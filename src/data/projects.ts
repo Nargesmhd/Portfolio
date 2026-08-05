@@ -97,9 +97,9 @@ export const projects: Project[] = [
     slug: 'nibbit-ai',
     title: 'nibbit.ai',
     summary:
-      'The launch site, brand and comms for a pre-product AI startup - two themes, three widths, and a seven-item review round I can show you the receipts for.',
-    contents: 'audit · sitemap · 2 themes · 3 widths',
-    headline: 'A launch site for a product that did not exist yet',
+      'The launch site and brand for a pre-product AI startup - accessibility written into the research criteria, two themes drawn separately, and a sign-up path that asked for more than it had earned.',
+    contents: 'audit · 2 themes · 390px · contrast measured',
+    headline: 'Putting accessibility in the brief before there was a product',
     meta: [
       ['Role', 'Product Designer (site & brand)'],
       ['Timeline', 'Feb – Aug 2023'],
@@ -112,11 +112,11 @@ export const projects: Project[] = [
       w: 1444,
       h: 1278,
     },
-    heroCaption: 'home, light - the version that came out of the review',
+    heroCaption: 'home, light - the page the work settled on',
     sections: [
       {
         heading: 'Problem',
-        body: 'nibbit was building two things that did not exist yet: a habit tracker called Habbit and an AI companion called Pebble. Neither was shippable, so the site had one job - make a promise credible enough that a stranger would hand over an email address and wait. The first direction did the opposite. It was headlined "We are making an app for those who chicken out", and under it, in the same weight as the product pitch, sat "Don\'t bother us. seriously. We get easily distracted." It is funny in a room. On a page it is a joke at the visitor\'s expense, told by a company asking that visitor to trust it with their habits, and it never says what the product does. The chicken pun was the brand and worth keeping; the shrug was not.',
+        body: 'nibbit had no product. A habit tracker called Habbit and an AI companion called Pebble were both months out, so the site had one job: make a promise worth waiting for. The first direction spent that credit on a joke - "We are making an app for those who chicken out", and under it, in the same weight as the pitch, "Don\'t bother us. seriously. We get easily distracted." Funny in a room. On a page it is a shrug from a company asking strangers to trust it with their habits, and it never says what the product does. The pun was the brand and worth keeping. The shrug is what the rest of the work replaced.',
         shots: [
           {
             src: '/work/nibbit-ai/concept-chicken.jpg',
@@ -129,36 +129,8 @@ export const projects: Project[] = [
         ],
       },
       {
-        heading: 'Research',
-        body: 'The competitive audit covered four companies across sixteen dimensions each, and the most useful thing it produced was the admission at the top of every row: relation, indirect. Microsoft, Stability, Observe.ai and ChatGPT were not competitors to a habit app, because in early 2023 there was no comparable product to point at. All four also scored "Good" on website experience, which is what a benchmark says when it cannot tell you anything. So I stopped reading it as a scorecard and started reading the negatives column, which is where the audit was actually specific - button heights that hurt reach, a gradient that did not match itself, surplus colour, vocabulary written for people who already knew the answer. That column is a list of things not to do, and it is the part that made it into the design.',
-        table: {
-          caption: 'competitive audit - 4 companies, 16 dimensions, not one of them a direct competitor',
-          head: ['Company', 'Relation', 'What the audit could actually use'],
-          rows: [
-            ['Microsoft', 'Indirect', 'Multiple sign-up and recovery routes; its own note that unsuitable button heights hurt accessibility'],
-            ['Stability', 'Indirect', 'A free tier generous enough to be an onboarding argument; specialist vocabulary as a warning'],
-            ['Observe.ai', 'Indirect', 'Naming customers to borrow their trust; mismatched gradients and surplus colour to avoid'],
-            ['ChatGPT', 'Indirect', 'How to describe a model honestly - including that it cannot read emotion'],
-          ],
-        },
-      },
-      {
-        heading: 'Structure',
-        body: 'The sitemap is 25 nodes and 16 of them sit under Account. Creating one was a five-screen chain - Create Account, Choose Name and Username, Add Contact Information, Set Password, Confirm Account - beside Edit Profile, Add/Edit Avatar, Settings, My Applications, Application Details, My Trophies and Trophy Details. All of it for a product the same site described as available soon. Read plainly, that is a product\'s account system with a marketing page attached, not a marketing site, and it is the shape a pre-launch team draws when sign-ups are the number being watched. The page itself started on paper - a ballpoint wireframe with the sections named down the margin, hero, features, subscribe, footer - and what that layout could decide, it did: the front page asks a first-time visitor for exactly two things, one button and one email field, and the five-screen chain lives behind the button instead of in the navigation.',
-        shots: [
-          {
-            src: '/work/nibbit-ai/sitemap.jpg',
-            alt: 'The nibbit.ai sitemap on a pale blue board: Home at the top branching to Products, About, Contact us and Account. Products leads to AI Bots and Applications, then to Pebble and Habbit. Account fans out to Edit Profile, Login, Create Account, My Applications, My Trophies, Settings and Log out, with Create Account descending through Choose Name and Username, Add Contact Information, Set Password and Confirm Account.',
-            w: 1600,
-            h: 1100,
-            tag: 'ia',
-            caption: '25 nodes, 16 of them behind an account nobody could use yet',
-          },
-        ],
-      },
-      {
-        heading: 'Design',
-        body: 'Two themes at three widths - 1440, 768 and 390 - drawn as separate designs rather than one inverted. That distinction is the whole reason the dark version holds: the illustration keeps its own value range instead of being dimmed with everything else, and the quote card becomes a raised dark surface rather than a white card with the lights turned off. Six error screens came with it, four of them different takes on 404, because a pre-launch site is mostly a set of pages that do not exist yet and the 404 is a page real visitors will actually reach. At 390 the nav collapses to one control and the hero, quote and subscribe block stack in the order they are read, which is the order they were already in on desktop.',
+        heading: 'Accessibility',
+        body: 'Accessibility was one of the sixteen columns in the competitive audit, which is to say it was a criterion before it was a decision - and the audit\'s own complaint against Microsoft, that unsuitable button heights hurt reach, is the sort of note that only turns up when somebody is looking for it. Three things followed from having that column. Light and dark were drawn as two designs rather than one inverted, so the illustration keeps its own value range instead of being dimmed along with the page behind it. The layout goes down to 390px with the reading order unchanged from desktop, so nothing reshuffles itself on the way to a phone. And the palette was measured rather than assumed, which is how I know the brand colours are not what makes the mark readable - the outline is.',
         shots: [
           {
             src: '/work/nibbit-ai/home-phone-light.jpg',
@@ -179,67 +151,33 @@ export const projects: Project[] = [
             crop: true,
           },
         ],
+        table: {
+          caption: 'the mark\'s palette, measured out of the SVG',
+          head: ['Pairing', 'Ratio', 'What it means'],
+          rows: [
+            ['Outline on white', '16.3:1', 'The shape is legible with no colour at all'],
+            ['Comb red on white', '3.38:1', 'Clears 3:1 for graphics, nowhere near 4.5:1 for text'],
+            ['Beak yellow on white', '1.19:1', 'Invisible unaided - the outline is holding it up'],
+          ],
+        },
       },
       {
-        heading: 'Review',
-        body: 'The review arrived as seven lines in one message, and it is the best evidence in this project because both ends of it survive: the note, and the file it changed. Five of the seven are in the final design. One was resolved differently - the "meet the team" link never appeared in the nav because the team already lived on About, which was already in the nav. One simply did not make it: the quote still opens "We\'re working on a product", not "first, we\'re working on". And one landed and then drifted. The lowercase wordmark was applied, the name later moved to nibbit.id, and the header and footer logos both followed it while the copyright line underneath did not - so the finished file says nibbit.id twice and nibbit.ai once. Nobody re-read the footer after a change that was about the header. That is the ordinary way a review round leaks, and it is in the file I signed off.',
+        heading: 'Potential',
+        body: 'The sitemap is where the ambition shows, and where it costs. Twenty-five nodes, sixteen of them behind Account, with sign-up alone a five-screen chain - Create Account, Choose Name and Username, Add Contact Information, Set Password, Confirm Account - beside trophies, avatars and application details, all drawn for a product the same site called available soon. Read generously, that is a team mapping the thing it intends to build. Read plainly, it is five screens of effort charged to someone who has not been given a reason yet, and effort is what filters people out first: anyone tired, distracted, short on time or short on attention. The front page could not shorten the chain, so it did the next best thing - one button and one email field, and everything else kept behind them.',
         shots: [
           {
-            src: '/work/nibbit-ai/home-before.jpg',
-            alt: 'The homepage before the review, in dark theme: the wordmark reads "Nibbit .ai" in title case, the headline is "Making habits everyday" with "habits" in yellow, a yellow "Subscribe our newsletters" block sits at the bottom, and a footer strip reads "Made with love by ChatGPT".',
-            w: 1440,
-            h: 1165,
-            tag: 'before',
-            caption: 'before - title-case wordmark, yellow accent, ChatGPT credit strip',
-          },
-          {
-            src: '/work/nibbit-ai/home-dark.jpg',
-            alt: 'The same page after the review, in dark theme: the wordmark is lowercase with the chicken-head mark beside it, the headline reads "Take on life a nibb at a time", the accent has moved from yellow to purple on a Create account button, and the ChatGPT credit strip is gone.',
-            w: 1444,
-            h: 1278,
-            tag: 'after',
-            caption: 'after - same page, same theme, five of the seven notes carried',
-          },
-          {
-            src: '/work/nibbit-ai/review-notes.jpg',
-            alt: 'A screenshot of the review message: seven plain-text instructions, including changing "making habits everyday" to "take on life a nibb at a time", rewording the newsletter block, always lowercasing nibbit.ai, removing the made-with-love-by-ChatGPT section, reopening the quote with "first, we\'re working on", using the chicken head logo, and adding a "meet the team" link.',
-            w: 1008,
-            h: 582,
-            tag: 'note',
-            caption: 'the seven lines, as they were sent',
+            src: '/work/nibbit-ai/sitemap.jpg',
+            alt: 'The nibbit.ai sitemap on a pale blue board: Home at the top branching to Products, About, Contact us and Account. Products leads to AI Bots and Applications, then to Pebble and Habbit. Account fans out to Edit Profile, Login, Create Account, My Applications, My Trophies, Settings and Log out, with Create Account descending through Choose Name and Username, Add Contact Information, Set Password and Confirm Account.',
+            w: 1600,
+            h: 1100,
+            tag: 'ia',
+            caption: '25 nodes, 16 of them behind an account nobody could use yet',
           },
         ],
-        table: {
-          caption: 'the seven review notes, against what the final file actually does',
-          head: ['Note', 'What happened'],
-          rows: [
-            ['Rewrite the headline', 'Done - "Making habits everyday" became "Take on life a nibb at a time"'],
-            ['Rewrite the subscribe block', 'Done, reworded - asked for product updates, shipped as "Subscribe to receive team updates"'],
-            ['Always lowercase the name', 'Done - and then outrun by a rename the copyright line never got'],
-            ['Drop the ChatGPT credit strip', 'Done - gone from every page'],
-            ['Open the quote with "first, …"', 'Not carried - the quote still opens "We\'re working on a product"'],
-            ['Use the chicken-head logo', 'Done - the mark replaced the wordmark-only lockup'],
-            ['Add a "meet the team" link', 'Resolved differently - the team sits on About, already in the nav'],
-          ],
-        },
-      },
-      {
-        heading: 'Brand',
-        body: 'The mark is a chicken head in a ring, and measured out of the SVG it is stricter than it looks. Every path in it is stroked at one weight, 27.964, with the enclosing circle at 55.929 - exactly double - and a single lighter 16.45 around the eye. That discipline is what does the work, because the colour cannot: the comb red is 3.38:1 against white and the beak yellow is 1.19:1, which is to say the yellow is invisible on its own and only exists because a black outline is holding it. A mark built that way can be dropped onto near-black, onto cream, and onto a purple hero without anyone drawing a second version, and that is what let one file carry the site, the letterhead, the welcome email and the recruiting artwork. The recruiting poster is the one I would defend hardest: it went out to hire an illustrator, and rather than dress the app up for the ad, it ran the real onboarding screen with the empty illustration slot still in, filled with placeholder text reading "This place needs a vector". The ad is honest about the hole it is trying to fill.',
-        table: {
-          caption: 'the mark, measured out of the SVG',
-          head: ['Property', 'Value', 'Consequence'],
-          rows: [
-            ['Stroke weight', '27.964 on every path', 'One weight throughout - nothing in it reads as an accident'],
-            ['Enclosing ring', '55.929, exactly double', 'The circle still reads when the head goes small'],
-            ['Comb red on white', '3.38:1', 'Clears 3:1 for graphics, nowhere near 4.5:1 for text'],
-            ['Beak yellow on white', '1.19:1', 'Invisible by itself - the outline is carrying it'],
-          ],
-        },
       },
       {
         heading: 'Outcome',
-        body: 'Delivered: home and about in two themes at three widths, six error screens, a 25-node sitemap, the mark and its letterhead, a welcome email, and the recruiting artwork. Not everything cleared. The commitments section - five of them, one reading "Community:" with nothing after the colon - is filed as not approved and never went up, which is what it looks like when a layout is finished before its content exists and the content never arrives. And the site itself is gone: nibbit.ai today serves a seven-line poem about a species that grew confident enough to fly and is now falling. So this case study is evidence of a design process and a review round that can be checked line by line against the file. It is not evidence of traffic, and I would rather say that than imply otherwise.',
+        body: 'Delivered: home and about in two themes at three widths, six error screens, the mark and its letterhead, a welcome email, and the artwork that went out to hire an illustrator. Not all of it cleared - a commitments section was laid out and never approved, one of its five bullets still reading "Community:" with nothing after the colon, which is what a layout finished ahead of its content looks like when the content never arrives. And the site is gone: nibbit.ai today serves a seven-line poem about a species that grew confident enough to fly and is now falling. So this is evidence of judgement rather than of traffic - what it looks like when accessibility is a criterion at the research stage, on a project where nobody was checking.',
         shots: [
           {
             src: '/work/nibbit-ai/welcome-email.jpg',
@@ -248,22 +186,15 @@ export const projects: Project[] = [
             h: 2253,
             tag: 'email',
             caption: 'the welcome email - three promises, each with the screen that would keep it',
-          },
-          {
-            src: '/work/nibbit-ai/commitments.jpg',
-            alt: 'The commitments section on a near-black background: a heading reading "Our commitments" above a card listing five bulleted commitments - Humata, Huxta, Huvarshta; Trust; Community, with nothing written after the colon; Open Source; and Teapot.',
-            w: 1440,
-            h: 676,
-            tag: 'unapproved',
-            caption: 'laid out, never approved - note the commitment with nothing after the colon',
+            crop: true,
           },
         ],
       },
     ],
     metrics: [
-      ['16 of 25', 'sitemap nodes behind an account'],
-      ['5 of 7', 'review notes in the final file'],
-      ['6', 'layouts per page: 2 themes × 3 widths'],
+      ['2', 'themes drawn, not inverted'],
+      ['390px', 'narrowest layout designed'],
+      ['16 of 25', 'sitemap nodes behind a sign-up'],
     ],
   },
   {
