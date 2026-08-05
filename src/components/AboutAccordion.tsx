@@ -3,8 +3,8 @@ import { routes } from '../lib/routes';
 
 const EXPERIENCES = [
   ['Apple', 'Solutions Consultant', '2026,'],
-  ['nibbit.ai', 'Product Designer', '2023,24'],
   ['Freelance', 'Product design & accessibility remediation', '2022,'],
+  ['nibbit.ai', 'Product Designer', '2023,24'],
 ];
 
 const SKILLS = [
