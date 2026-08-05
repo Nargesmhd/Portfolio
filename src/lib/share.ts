@@ -54,7 +54,7 @@ const pages: ShareCard[] = [
     path: '/',
     eyebrow: 'Product designer · Toronto',
     title: 'Hi, I am Narges.',
-    sub: 'Behavioural research and WCAG standards, applied to things that work for everyone - including the people most products forget.',
+    sub: 'Behavioural research and WCAG standards, applied to things that work for everyone, including the people most products forget.',
     kicker: 'works · about · how i design',
   },
   {

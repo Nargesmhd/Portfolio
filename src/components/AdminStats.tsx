@@ -196,7 +196,7 @@ function Report({ stats }: { stats: Stats }) {
         <h2>Nothing recorded yet</h2>
         <p>
           No page views in the last {range.days} days. If the site has had
-          traffic, the analytics beacon may not be running - check that{' '}
+          traffic, the analytics beacon may not be running, check that{' '}
           <code>PUBLIC_CF_BEACON_TOKEN</code> was set when the site was built.
         </p>
       </div>
