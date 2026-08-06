@@ -275,14 +275,14 @@ export const projects: Project[] = [
         spoken: {
           action: 'tabbing into the email field on the sign-in screen',
           lines: [
-            { when: 'now', says: 'edit, blank' },
-            { when: 'once linked', says: 'Email, edit, blank' },
+            { when: 'before', says: 'edit, blank' },
+            { when: 'now', says: 'Email, edit, blank' },
           ],
         },
       },
       {
         heading: 'Process',
-        body: 'Two passes, because the two kinds of defect hide from different tools. A static scan of every component file checked each control for an accessible name and each label for a real association, that is where the 73 came from, and the 30 labels attached to nothing at all. Then I ran the app locally against its own database and measured contrast on the rendered elements in both themes rather than reading it off the palette. That is how the dark-mode Search button turned up at 1.05:1, white on cream, from a hardcoded text-white sitting next to a background token that flips from navy to cream between themes, a pairing that appears 98 times. Both counts come from short scripts that re-run against the repo, so every figure on this page can be checked rather than taken on trust. The remaining four defects were found by using the product, not by scanning it.',
+        body: 'Two passes, because the two kinds of defect hide from different tools. A static scan of every component file checked each control for an accessible name and each label for a real association, that is where the 73 came from, and the 30 labels attached to nothing at all. Then I ran the app locally against its own database and measured contrast on the rendered elements in both themes rather than reading it off the palette. That is how the dark-mode Search button turned up at 1.05:1, white on cream, from a hardcoded text-white sitting next to a background token that flips from navy to cream between themes, a pairing that appeared 98 times. Both counts come from short scripts that re-run against the repo, so every figure on this page can be checked rather than taken on trust. The remaining four defects were found by using the product, not by scanning it.',
         shots: [
           {
             src: '/work/bookloop/find-a-club-light.jpg',
@@ -304,7 +304,7 @@ export const projects: Project[] = [
       },
       {
         heading: 'System',
-        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens are declared only inside the dark block and never in the theme block, so the build emits no utility class for them, including the near-black foreground that would give 8.7:1 where white currently gives 2.2:1. Those nine exist, they are correct, and no markup can reach them; every hover state written against them silently does nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Three decisions went the other way, and none of them were filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; the datetime pickers are the native ones, kept rather than rebuilt, which keeps the platform behaviour nobody reimplements correctly, including native clear;. Small calls, both, and each one is a decision not to reinvent something the platform already does accessibly.',
+        body: 'The design system is real: semantic colour tokens, a full second set for dark, and shared Card, Avatar and Button primitives. It failed in two ways at once. Nine of its tokens were declared only inside the dark block and never in the theme block, so the build emitted no utility class for them, including the near-black foreground that would give 8.7:1 where white gave 2.2:1. Those nine existed, they were correct, and no markup could reach them; every hover state written against them silently did nothing, in both themes. The other failure is adoption. A shared Button component was added specifically so this class of bug could be fixed in one place, and its own comment says so. Nothing ever imported it. Two decisions went the other way, and neither was filed as accessibility work: the type is the system font stack, so OS text settings apply without a webfont overriding them; and the datetime pickers are the native ones, kept rather than rebuilt, which preserves the platform behaviour nobody reimplements correctly, native clear included. Small calls, both, and each one is a decision not to reinvent something the platform already does accessibly.',
         shots: [
           {
             src: '/work/bookloop/search-button-light.png',
@@ -330,122 +330,62 @@ export const projects: Project[] = [
           },
         ],
         table: {
-          caption: 'design-system adoption, counted from the codebase',
-          head: ['Primitive', 'Files importing it', 'Result'],
+          caption: 'design-system adoption, counted from the codebase, at audit and after adoption',
+          head: ['Primitive', 'At audit', 'Now'],
           rows: [
-            ['Card', '26', 'Working as intended'],
-            ['Button', '0', 'Dead code, every button is hand-styled'],
-            ['Hand-styled buttons', '78 elements, 55 class signatures', 'No single place to fix contrast'],
+            ['Card', '26 files importing it', 'Unchanged, working as intended'],
+            ['Button', '0 files, dead code, every button hand-styled', '48 files, 112 buttons, one place to fix contrast'],
+            ['Hand-styled buttons', '78 elements, 55 class signatures', '156 remain by design: tabs, chips, icon buttons, toggles'],
           ],
         },
       },
       {
         heading: 'Outcome',
-        body: 'Four defects fixed. The one worth naming looked like a keyboard bug and was corrupting data: half-star ratings were chosen by cursor position, and keyboard activation reports a cursor position of zero, so keyboard users could set 2.5 stars but never 3. Club ballots are decided by average stars, so keyboard votes ran half a star low and could change which book a club read. The fix changed the design rather than the markup, five focusable stars became one slider with the stars decorative, five tab stops down to one, arrows previewing and Enter committing so a trip from 1 to 5 does not fire five writes at everyone watching the ballot. Contrast, focus order and modal keyboard handling were fixed across 15 files and 36 controls, and the focus work standardised on focus-visible rather than focus, so the ring stops appearing on mouse clicks and nobody is tempted to delete it again. An accessible option that fights the design gets removed eventually.',
+        body: 'Every finding is fixed, four during the audit, ten more in the remediation pass that followed, and the whole of it shipped as v0.18.0, verified from the outside by reading the Button primitive\'s class signature off the live Search button, because a green deploy job is a claim and the served page is a fact. Two of the fourteen were never in the original audit at all: the recap cards and the broken club cover surfaced later, the cover only because someone looked closely at a screenshot on this very page. A list that grows after you stop looking is why the pass ended with a gate rather than a celebration: the audit\'s scan scripts became a CI test with a 99-finding baseline, the baseline was ratcheted to zero, and a regression now fails a build instead of waiting for a person to notice. Two fixes are worth telling in full. The first looked like a keyboard bug and was corrupting data: half-star ratings were chosen by cursor position, and keyboard activation reports a cursor position of zero, so keyboard users could set 2.5 stars but never 3. Club ballots are decided by average stars, so keyboard votes ran half a star low and could change which book a club read. The fix changed the design rather than the markup, five focusable stars became one slider with the stars decorative, arrows previewing and Enter committing so a trip from 1 to 5 does not fire five writes at everyone watching the ballot. The second is the one the audit filed as a decision rather than a patch: the live app that never spoke. Announcing everything would have been worse than announcing nothing, a polite live region queues rather than drops, so a club with eight active members would put a screen reader minutes behind the screen. Instead every streamed event is classified one of three ways: the rare and consequential speak on arrival, a ballot closing with the winning title, a meeting being scheduled; real content batches, coalescing over a ten-second window into one line, five new posts and a member joined; and ambient telemetry stays silent, presence, typing, ticking tallies, because the screen already carries it. The rest closed the way a list should: a name on every control including the 31 that had only a placeholder, legible dark-mode fills, self-hosted covers that fall back when a load fails, a text alternative on the recap cards, Escape and a focus trap on the last dialog, a skip link, reduced motion honoured across the app, and nine dead tokens finally compiling. The plan shipped too: the Button primitive went from zero importers to 48 files, 112 buttons in one pass, and adopting it caught two ways the unused abstraction had rotted, no focus-visible ring and invisible to the CI scanner, while the audit\'s own count of 78 hand-styled elements turned out to be an undercount, the migration found 280. And the review composer now shows your own notes on the book in reading order, each one tap from becoming the draft. Recall became recognition, as proposed.',
       },
       {
         heading: 'Open',
-        body: 'Ten findings are still unfixed, and a case study that only lists the wins is a brochure. The two Critical ones are the two described above; they are repeated here because an open list that quietly drops its worst items is not an open list. The live-region gap is the one that needs a decision rather than a patch: a club with eight active members would be unusable if every event announced itself, so some events should speak politely, some should stay visual, and some should batch. The last two were not in the original audit at all, both surfaced later, and the broken cover turned up only because someone looked closely at a screenshot. That is the best argument on this page for the last row of the table.',
+        body: 'Nothing from the audit is open, and nothing from the plan is either, the section above ate both. Two things are still true, and this section exists to say them. Three buttons have no home in the primitive: an amber flag-for-review and two outline-danger actions that no variant fits, exceptions on purpose until a warning variant earns its place. And the merged-but-unreleased gap is structural rather than solved: four minutes after the v0.18.0 tag, the next feature had already merged onto main, real again, and live on nobody\'s phone again. A release closes the gap; only cadence keeps it closed.',
         table: {
-          caption: 'open findings, at the time of writing',
-          head: ['Finding', 'Detail', 'Severity'],
+          caption: 'what remains, at the time of writing',
+          head: ['Remaining', 'Detail', 'Kind'],
           rows: [
             [
-              'Labels that label nothing',
-              '73 of 110 controls have no accessible name; 30 labels are attached to no control at all',
-              'Critical',
+              'Three buttons without a variant',
+              'An amber flag-for-review and two outline-danger actions; a warning variant would home them',
+              'Structural debt',
             ],
             [
-              'Dark-mode button contrast',
-              'White on cream at 1.05:1, in 98 places. Light theme is fine, which is why it survived',
-              'Critical',
-            ],
-            [
-              'A live app that never speaks',
-              'Two status regions, in a product whose posts, tallies and presence all stream over websockets',
-              'Serious',
-            ],
-            [
-              'One dialog still is not one',
-              'The nominate-and-vote panel is marked as a dialog but never got the keyboard hook the other two use, no Escape, no focus trap',
-              'Serious',
-            ],
-            [
-              'Club covers are hotlinked, and one is gone',
-              'Seed club avatars point at a third-party image host. One photo has since been deleted, and the card falls back only when the URL is missing, not when the image fails to load, so a dead URL is truthy, the img renders, and the browser paints its own broken-image glyph in the card',
-              'Moderate',
-            ],
-            [
-              'Recap cards are pictures of text',
-              'The monthly and year-in-books cards are canvas-rendered, across five themes. Canvas text carries no accessible name, so a shared recap is unreadable to assistive technology unless it is described separately',
-              'Serious',
-            ],
-            [
-              'Dead token classes',
-              'Nine tokens declared only for dark, generating no utilities. Every hover state written against them does nothing',
-              'Moderate',
-            ],
-            [
-              'No skip link',
-              'Keyboard users tab the full nav on every page, though the landmarks already exist',
-              'Moderate',
-            ],
-            [
-              'Motion mostly unguarded',
-              'One reduced-motion check in the whole app, in the celebration overlay',
-              'Moderate',
-            ],
-            [
-              'Nothing is watching',
-              '90 test suites, no accessibility tests, no automated checks in CI. Every defect here was found by a person',
-              'Moderate',
+              'The release gap re-opens',
+              'Four minutes after the v0.18.0 tag, the next merge was once more live on nobody\'s phone',
+              'Cadence',
             ],
           ],
         },
       },
       {
         heading: 'Next',
-        body: 'Ordered by impact per hour rather than by severity, because a plan sorted by severity puts the hardest thing first and stalls. The first item is ten minutes of work on the screen every single user meets, and the last is not a patch at all.',
+        body: 'Short, which is what a plan should be after it has mostly happened.',
         table: {
           caption: 'what I would do next, in this order',
           head: ['When', 'Do', 'Why this order'],
           rows: [
             [
-              'First',
-              'Link the sign-in labels to their inputs',
-              'Two labels, two inputs, on the highest-traffic screen in the product',
-            ],
-            [
-              'Same day',
-              'Make the dark-mode button legible',
-              'Swap the hardcoded white for the token that already exists, and promote that token so it compiles at all',
-            ],
-            [
-              'Same day',
-              'Add one automated check, failing only on unnamed controls',
-              'Scoping to a single rule makes it adoptable today, and stops the other 72 coming back',
-            ],
-            [
               'This week',
-              'Adopt the Button primitive, or delete it',
-              '55 hand-written variants is why every fix costs 15 files. Either the abstraction earns its place or it stops implying safety it does not provide',
+              'Home the three exception buttons, or bless them',
+              'A warning variant, or a comment saying why not, either ends the ambiguity',
             ],
             [
-              'This week',
-              'Prefill the review from your own notes',
-              'A read query and a prefill. It turns recall into recognition, and needs no new data',
-            ],
-            [
-              'Design work',
-              'Decide what realtime says out loud',
-              'Which events announce, which stay visual, which batch. A product decision, not a patch',
+              'Ongoing',
+              'Keep releases boring and frequent',
+              'The merged-but-unreleased gap re-opens with every merge; cadence is the only fix that stays fixed',
             ],
           ],
         },
       },
       {
         heading: 'Strategy',
-        body: 'The design-system lesson here is not "write a design system", BookLoop did. It is that an unadopted primitive is worse than none, because it creates the belief that contrast is centralised when it is actually spread across 55 hand-written variants. The other lesson is the one I would defend hardest: cognitive accessibility is product strategy, not an accommodation bolted on afterwards. The product is built for someone who forgets the book, and the mechanisms below are shipped rather than proposed, which matters, because this is the argument people assume is aspirational. Every one of them is a reason someone is still in the club in week six.',
+        body: 'The design-system lesson here is not "write a design system", BookLoop did. It is that an unadopted primitive is worse than none: it created the belief that contrast was centralised while the truth was 55 hand-written variants, and while it sat unused it rotted, no focus ring, invisible to the scanner, so adoption had to begin by fixing the abstraction it was adopting. The other lesson is the one I would defend hardest: cognitive accessibility is product strategy, not an accommodation bolted on afterwards. The product is built for someone who forgets the book, and the mechanisms below are shipped rather than proposed, which matters, because this is the argument people assume is aspirational. Every one of them is a reason someone is still in the club in week six. The last lesson is quieter: the fastest way to keep a fixed thing fixed was to let the audit\'s own scripts keep running, the same counts that opened this page now fail a build when they move.',
         table: {
           caption: 'interruption tolerance, as shipped',
           head: ['Decision', 'What it does', 'Who it protects'],
@@ -471,6 +411,11 @@ export const projects: Project[] = [
               'Bursty readers, whom a strict streak punishes for the pattern they already have',
             ],
             [
+              'A behind-pace clubmate gets a poke',
+              'Anyone in the club can nudge whoever has fallen behind the pace goal, from the club page or the book page, and the confirmation is spoken as well as shown',
+              'The week-six lapser, whom silence would lose for good',
+            ],
+            [
               'Two taps to log progress',
               'Page logging sits on the home screen instead of behind the book',
               'Anyone for whom the logging tax is the first thing they stop paying',
@@ -490,9 +435,9 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      ['73/110', 'controls with no accessible name'],
-      ['1.05:1', 'the dark-mode Search button'],
-      ['4', 'defects fixed, and 10 left open'],
+      ['73/110', 'controls with no accessible name, at audit'],
+      ['1.05:1', 'the dark-mode Search button, at audit'],
+      ['99 → 0', 'the CI baseline, shipped live in v0.18.0'],
     ],
   },
   {
