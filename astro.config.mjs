@@ -57,5 +57,17 @@ export default defineConfig({
   // old link keeps working rather than 404ing on anyone who saved it.
   redirects: {
     '/case-study': '/work/nibbit-ai/'
-  }
+  },
+  vite: {
+    server: {
+      fs: {
+        // Git worktrees under .claude/worktrees/ borrow the main checkout's
+        // node_modules, which sits outside Vite's default allow list (the
+        // worktree root). Without this, fonts and hydration scripts 403 in
+        // dev. The default root stays allowed; from the main checkout the
+        // extra path points at nothing and changes nothing.
+        allow: ['.', '../../../node_modules'],
+      },
+    },
+  },
 });
