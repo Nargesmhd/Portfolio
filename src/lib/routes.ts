@@ -21,6 +21,7 @@ export function projectUrl(slug: string): string {
 export const routes = {
   works: url('/'),
   productDesign: url('/product-design/'),
+  research: url('/research/'),
   design: url('/how-i-design/'),
   about: url('/about/'),
   accessibility: url('/accessibility/'),

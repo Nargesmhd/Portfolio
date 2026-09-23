@@ -1,5 +1,5 @@
 import type { FolderItem } from '../components/FolderStack';
-import { projectUrl } from '../lib/routes';
+import { projectUrl, routes } from '../lib/routes';
 import { findProject } from './projects';
 
 export type Folder = FolderItem;
@@ -45,7 +45,20 @@ export const folders: Folder[] = [
   },
   projectFolder('bookloop', '02', 'var(--f3)', 172),
   projectFolder('nibbit-ai', '03', 'var(--f2)', 344),
-  projectFolder('dyslexia-across-languages', '04', 'var(--f3)', 516),
+  // A shelf rather than a project: it opens the research page, which holds
+  // the case studies as folders of their own.
+  {
+    key: 'research',
+    num: '04',
+    title: 'research',
+    description:
+      'UX research on the people products forget, starting with where phones fail bilingual adults with dyslexia.',
+    contents: '3 scripts · 9 sources · interviews next',
+    cta: 'Open the folder →',
+    href: routes.research,
+    tone: 'var(--f3)',
+    tabOffset: 516,
+  },
   {
     key: 'archive',
     num: '05',

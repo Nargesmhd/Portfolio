@@ -1,15 +1,19 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { projects, type Project } from '../../data/projects';
+import { projects, kindOf, projectsOf, type Project } from '../../data/projects';
 import { projectUrl, routes } from '../../lib/routes';
 import '../../styles/pages.css';
 
 export function getStaticPaths() {
-  return projects.map((project, i) => ({
-    params: { slug: project.slug },
-    // The pile has an order, so a case study knows what comes after it.
-    props: { project, next: projects[i + 1] ?? null },
-  }));
+  return projects.map((project) => {
+    // The pile has an order, so a case study knows what comes after it on
+    // its own shelf.
+    const shelf = projectsOf(kindOf(project));
+    return {
+      params: { slug: project.slug },
+      props: { project, next: shelf[shelf.indexOf(project) + 1] ?? null },
+    };
+  });
 }
 
 interface Props {
@@ -18,6 +22,10 @@ interface Props {
 }
 
 const { project, next } = Astro.props;
+const shelf =
+  kindOf(project) === 'research'
+    ? { name: 'research', href: routes.research }
+    : { name: 'product design', href: routes.productDesign };
 ---
 
 <Base
@@ -29,7 +37,7 @@ const { project, next } = Astro.props;
     <p class="breadcrumb mono">
       {/* One line on purpose: a newline between the separator and the link
           collapses away, and the crumbs run together. */}
-      <a href={routes.works}>works</a> / <a href={routes.productDesign}>product design</a> / {project.title}
+      <a href={routes.works}>works</a> / <a href={shelf.href}>{shelf.name}</a> / {project.title}
     </p>
 
     <h1 class="page-h1">{project.headline}</h1>
@@ -203,7 +211,7 @@ const { project, next } = Astro.props;
     </div>
 
     <nav class="page-nav mono" aria-label="Case study">
-      <a href={routes.productDesign}>← back to product design</a>
+      <a href={shelf.href}>← back to {shelf.name}</a>
       {
         next ? (
           <a href={projectUrl(next.slug)}>next: {next.title} →</a>
