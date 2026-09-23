@@ -62,7 +62,14 @@ const pages: ShareCard[] = [
     eyebrow: 'Work',
     title: 'Product design',
     sub: 'Consumer flows rebuilt so the keyboard path, the screen-reader order and the visual order match.',
-    kicker: `${projects.filter((p) => !p.draft).length} case studies · WCAG 2.2 AA`,
+    kicker: `${projects.filter((p) => !p.draft && p.kind !== 'research').length} case studies · WCAG 2.2 AA`,
+  },
+  {
+    path: '/research/',
+    eyebrow: 'Work',
+    title: 'Research',
+    sub: 'Research into the people products forget, done before anything gets designed.',
+    kicker: 'secondary research · interviews next',
   },
   {
     path: '/about/',

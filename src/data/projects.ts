@@ -103,8 +103,22 @@ export type Project = {
   sections: Section[];
   /** Three figures. Measured values only, the site claims nothing it has not counted. */
   metrics: [figure: string, label: string][];
+  /** Which shelf the project sits on. Product design unless it says otherwise. */
+  kind?: Kind;
   draft?: boolean;
 };
+
+/** The two shelves of work, each with its own page of folders. */
+export type Kind = 'product-design' | 'research';
+
+export function kindOf(project: Project): Kind {
+  return project.kind ?? 'product-design';
+}
+
+/** The projects on one shelf, in pile order. */
+export function projectsOf(kind: Kind): Project[] {
+  return projects.filter((p) => kindOf(p) === kind);
+}
 
 export const projects: Project[] = [
   {
@@ -456,6 +470,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'dyslexia-across-languages',
+    kind: 'research',
     title: 'dyslexia across languages',
     summary:
       'A UX research case study on where phones fail bilingual adults with dyslexia, and what to build instead, from nine peer-reviewed sources, with an interview study designed and ready to run.',
