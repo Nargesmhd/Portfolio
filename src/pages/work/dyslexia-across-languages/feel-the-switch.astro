@@ -1,0 +1,267 @@
+---
+import Piece from '../../../layouts/Piece.astro';
+---
+
+<Piece
+  project="dyslexia-across-languages"
+  title="feel the switch"
+  headline="Your keyboard switches languages in one tap. Dyslexia does not."
+  lede="Three short trials. Each one puts you inside a moment that bilingual people with dyslexia hit every day, in Farsi, Mandarin and English. About two minutes."
+  description="Three two-minute trials: read Farsi without vowels, pick between look-alike Chinese characters, and type a mixed-language text while autocorrect fights you."
+  next={{ href: '/work/dyslexia-across-languages/friction-map/', title: 'friction map' }}
+>
+  <section class="section trial" aria-labelledby="t1-h">
+    <p class="trial-step mono">trial 1 of 3, farsi</p>
+    <h2 id="t1-h" class="hl">Read this sentence out loud.</h2>
+    <p>
+      Everyday written Farsi leaves out most vowel marks. Readers fill them in from memory. Here is
+      what that feels like in English.
+    </p>
+    <p class="task task-big">Ths s wht wrttn Frs fls lk. Th vwls r gn, nd y hv t gss thm.</p>
+    <div class="trial-row">
+      <button type="button" class="piece-btn" id="t1-btn">Show the vowels</button>
+      <span class="trial-note" id="t1-time" aria-live="polite"></span>
+    </div>
+    <div class="reveal" id="t1-rev" hidden>
+      <p>
+        <strong>This is what written Farsi feels like. The vowels are gone, and you have to guess them.</strong>
+      </p>
+      <p>The real thing, first as people usually write it, then with vowel marks added:</p>
+      <p class="task task-big fa" lang="fa">سلام، حالت چطوره؟ فردا میبینمت.</p>
+      <p class="task task-big fa" lang="fa">سَلام، حالَت چِطورِه؟ فَردا میبینَمَت.</p>
+      <p class="trial-note">Meaning: “Hi, how are you? See you tomorrow.”</p>
+      <div class="finding">
+        <b>What research says</b>
+        Vowel-free Persian behaves like an opaque script: readers decode letter by letter, which is
+        exactly the process dyslexia disrupts (Pouretemad et al., 2011). No keyboard or reading mode
+        offers an optional vowel-mark view.
+      </div>
+    </div>
+  </section>
+
+  <section class="section trial" aria-labelledby="t2-h">
+    <p class="trial-step mono">trial 2 of 3, mandarin</p>
+    <h2 id="t2-h" class="hl">Pick the right character.</h2>
+    <p>
+      Typing Chinese on a phone means typing the sound in letters (pinyin), then choosing the
+      character from a pop-up list. Every option below has the same sound.
+    </p>
+    <p class="task">You typed <strong>yǐ</strong>. You mean <strong>“already”</strong>. Which one is it?</p>
+    <div class="choices" id="t2-a" role="group" aria-label="Characters for yǐ">
+      <button type="button" class="choice zh" lang="zh" data-v="0">己</button>
+      <button type="button" class="choice zh" lang="zh" data-v="1">已</button>
+      <button type="button" class="choice zh" lang="zh" data-v="0">巳</button>
+    </div>
+    <p class="trial-msg" id="t2-m1" aria-live="polite"></p>
+    <div class="reveal" id="t2-rev" hidden>
+      <p>One more. You typed <strong>wèi</strong>. You mean <strong>“not yet”</strong>.</p>
+      <div class="choices" id="t2-b" role="group" aria-label="Characters for wèi">
+        <button type="button" class="choice zh" lang="zh" data-v="0">末</button>
+        <button type="button" class="choice zh" lang="zh" data-v="1">未</button>
+        <button type="button" class="choice zh" lang="zh" data-v="0">味</button>
+      </div>
+      <p class="trial-msg" id="t2-m2" aria-live="polite"></p>
+      <div class="reveal" id="t2-rev2" hidden>
+        <p>
+          The difference between <span class="zh" lang="zh">己 已 巳</span> is a single stroke length.
+          Between <span class="zh" lang="zh">末</span> and <span class="zh" lang="zh">未</span>, which of
+          two lines is longer.
+        </p>
+        <div class="finding">
+          <b>What research says</b>
+          Dyslexia in Chinese involves the visual processing of character shape, and uses different
+          brain regions than dyslexia in alphabetic scripts (Siok, Perfetti, Jin &amp; Tan,
+          <em>Nature</em>, 2004). Pinyin input moves the whole difficulty into this one picker step,
+          and heavy pinyin use is linked to weaker character reading (PNAS). The picker shows shapes
+          only. It could show meanings.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section trial" aria-labelledby="t3-h">
+    <p class="trial-step mono">trial 3 of 3, the switch</p>
+    <h2 id="t3-h" class="hl">Text a Farsi-speaking friend, in English letters.</h2>
+    <p>
+      Many people write Farsi this way. Type the message below one word at a time, pressing space
+      after each word. Autocorrect is set to English. Watch what it does to the Farsi.
+    </p>
+    <p class="task">salam, khoobi? see you at 5, merci</p>
+    <div class="phone" role="group" aria-label="Simulated phone messaging screen">
+      <div class="phone-screen" aria-live="polite">
+        <span class="bubble" id="t3-bubble"></span>
+      </div>
+      <div class="predict" id="t3-pred" aria-hidden="true">
+        <span class="lang">EN</span><span>the</span><span>I</span><span>see</span>
+      </div>
+      <div class="phone-input">
+        <input
+          type="text"
+          id="t3-in"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder="type a word, then space"
+          aria-label="Message"
+        />
+        <button type="button" class="piece-btn piece-btn-quiet" id="t3-send">Send</button>
+      </div>
+    </div>
+    <div class="counter">
+      <div><b id="c-words">0</b>words typed</div>
+      <div><b id="c-fix">0</b>changed by autocorrect</div>
+      <div><b id="c-sw">0</b>times the prediction language flipped</div>
+    </div>
+    <div class="reveal" id="t3-rev" hidden>
+      <p>
+        Every Farsi word became a different English word. A dyslexic writer often cannot tell which
+        word autocorrect replaced, because the replacement looks about as plausible as what they typed.
+      </p>
+      <div class="finding">
+        <b>What research says</b>
+        Adults with dyslexia make more spelling errors in a second language and type more slowly, less
+        accurately, with more visual checking (<em>Annals of Dyslexia</em>, 2025; <em>Reading and
+        Writing</em>, 2025). Dyslexic error patterns differ by language (<em>Language Resources and
+        Evaluation</em>, 2022). Keyboard, autocorrect and predictions each guess the language
+        separately. Nobody owns the switch.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="adds-up">
+    <h2 id="adds-up" class="hl">What this adds up to</h2>
+    <ol>
+      <li>Dyslexia does not transfer between scripts. Accessibility settings should be per language, not per account.</li>
+      <li>The switch moment is unowned. Keyboard, autocorrect and predictions need one shared active-language signal.</li>
+      <li>Each script breaks at a different step: decoding, spelling, picking. One dyslexia mode cannot cover all three.</li>
+      <li>No peer-reviewed study has asked bilingual adults with dyslexia about their phones. That is the study to run next.</li>
+    </ol>
+  </section>
+</Piece>
+
+<script>
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  // Trial 1: time how long one vowel-less sentence took.
+  const started = Date.now();
+  const t1 = $<HTMLButtonElement>('t1-btn');
+  t1.addEventListener('click', () => {
+    const secs = Math.max(1, Math.round((Date.now() - started) / 1000));
+    $('t1-time').textContent = `You spent about ${secs} second${secs === 1 ? '' : 's'} on one sentence.`;
+    $('t1-rev').hidden = false;
+    t1.disabled = true;
+  });
+
+  // Trial 2: pick the character; a right answer opens the next step.
+  function wire(groupId: string, msgId: string, next: string, rightText: string) {
+    let done = false;
+    $(groupId).addEventListener('click', (event) => {
+      const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('.choice');
+      if (!btn || done) return;
+      const msg = $(msgId);
+      if (btn.dataset.v === '1') {
+        done = true;
+        btn.classList.add('is-right');
+        btn.setAttribute('aria-label', `${btn.textContent}, correct`);
+        msg.textContent = rightText;
+        $(next).hidden = false;
+      } else {
+        btn.classList.add('is-wrong');
+        btn.setAttribute('aria-label', `${btn.textContent}, wrong`);
+        msg.textContent = 'That one means something else. Try again.';
+      }
+    });
+  }
+  wire('t2-a', 't2-m1', 't2-rev', 'Right. Now try the next one.');
+  wire('t2-b', 't2-m2', 't2-rev2', 'Right.');
+
+  // Trial 3: English autocorrect meets Farsi written in Latin letters.
+  const fixes: Record<string, string> = {
+    salam: 'salad',
+    khoobi: 'hobby',
+    merci: 'mercy',
+    chetori: 'cheerio',
+    mamnoon: 'monsoon',
+    khodafez: 'khakis',
+  };
+  const preds = { en: ['the', 'I', 'see'], fa: ['salam', 'khoobi', 'merci'] };
+  let words = 0;
+  let fixed = 0;
+  let flips = 0;
+  let lastLang: 'en' | 'fa' = 'en';
+  let sent = false;
+
+  const input = $<HTMLInputElement>('t3-in');
+  const bubble = $('t3-bubble');
+  const pred = $('t3-pred');
+
+  function setPred(lang: 'en' | 'fa') {
+    if (lang !== lastLang) {
+      flips++;
+      lastLang = lang;
+      $('c-sw').textContent = String(flips);
+    }
+    pred.replaceChildren(
+      Object.assign(document.createElement('span'), { className: 'lang', textContent: lang.toUpperCase() }),
+      ...preds[lang].map((w) => Object.assign(document.createElement('span'), { textContent: w })),
+    );
+  }
+
+  function commit(word: string) {
+    if (!word) return;
+    words++;
+    $('c-words').textContent = String(words);
+    const bare = word.toLowerCase().replace(/[,.?!]/g, '');
+    const punct = word.slice(bare.length);
+    if (bubble.childNodes.length) bubble.append(' ');
+    if (fixes[bare]) {
+      fixed++;
+      $('c-fix').textContent = String(fixed);
+      bubble.append(Object.assign(document.createElement('span'), { className: 'fix', textContent: fixes[bare] }), punct);
+    } else {
+      bubble.append(word);
+    }
+    setPred(bare in fixes ? 'fa' : 'en');
+  }
+
+  function send() {
+    if (sent) return;
+    commit(input.value.trim());
+    input.value = '';
+    sent = true;
+    input.disabled = true;
+    $<HTMLButtonElement>('t3-send').disabled = true;
+    if (!bubble.childNodes.length) bubble.textContent = '(empty message)';
+    $('t3-rev').hidden = false;
+  }
+
+  input.addEventListener('keydown', (event) => {
+    if (sent) return;
+    if (event.key === ' ') {
+      event.preventDefault();
+      commit(input.value.trim());
+      input.value = '';
+    }
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      send();
+    }
+  });
+
+  // Phones often send no space keydown, so a typed space in the value counts too.
+  input.addEventListener('input', () => {
+    if (sent) return;
+    if (input.value.endsWith(' ')) {
+      commit(input.value.trim());
+      input.value = '';
+      return;
+    }
+    const v = input.value.trim().toLowerCase();
+    if (v.length > 1) {
+      const lang = pred.querySelector('.lang');
+      if (lang) lang.textContent = Object.keys(fixes).some((w) => w.startsWith(v)) ? 'FA?' : 'EN';
+    }
+  });
+
+  $('t3-send').addEventListener('click', send);
+</script>
