@@ -75,7 +75,7 @@ const { project, next } = Astro.props;
     </figure>
 
     {
-      project.sections.map(({ heading, body, shots, spoken, table }) => {
+      project.sections.map(({ heading, body, shots, spoken, table, pieces }) => {
         const id = heading.toLowerCase();
         return (
           <section class="section" aria-labelledby={id}>
@@ -135,6 +135,25 @@ const { project, next } = Astro.props;
                     </figure>
                   ))}
                 </div>
+              )
+            }
+
+            {
+              /* A list, so a screen reader announces how many there are. The
+                 whole card is the link, and its name is the title, not the
+                 sentence under it. */
+              pieces && (
+                <ul class="pieces">
+                  {pieces.map((piece) => (
+                    <li>
+                      <a class="piece" href={piece.href}>
+                        <b class="piece-title">{piece.title}</b>
+                        <span class="piece-body">{piece.body}</span>
+                        {piece.note && <span class="piece-note mono">{piece.note}</span>}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               )
             }
 
