@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case study — Dyslexia Across Languages</title>
+<link href="fonts.css" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#EEF0F4;--card:#FFFFFF;--ink:#1B2130;--muted:#5B6474;--line:#D3D8E2;--accent:#2451D6;--shade:#E2E5EC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#151923;--card:#1F2531;--ink:#EEF1F6;--muted:#A3ACBC;--line:#343C4B;--accent:#7A9BFF;--shade:#2A3140}}
+:root[data-theme="dark"]{--paper:#151923;--card:#1F2531;--ink:#EEF1F6;--muted:#A3ACBC;--line:#343C4B;--accent:#7A9BFF;--shade:#2A3140}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Atkinson Hyperlegible","Verdana","Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.55}
+main{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+nav{font-size:.95rem;margin-bottom:28px}nav a{color:var(--accent);text-decoration:none}nav span{color:var(--muted)}
+h1{font-size:2rem;line-height:1.15;margin:0 0 8px;letter-spacing:-0.01em}
+h2{font-size:1.35rem;margin:36px 0 10px}h3{font-size:1.1rem;margin:22px 0 6px}
+p{margin:0 0 14px;max-width:66ch}.lead{color:var(--muted);font-size:1.1rem}
+ul,ol{padding-left:22px;max-width:66ch}li{margin-bottom:8px}
+.wrap{overflow-x:auto;margin:12px 0 18px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:700;font-size:.88rem}
+.ev{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--shade)}
+.callout{padding:14px 16px;border-left:4px solid var(--accent);background:var(--shade);border-radius:0 10px 10px 0;margin:14px 0}
+.tag{font-size:.85rem;color:var(--muted)}
+a{color:var(--accent)}
+.foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+@media (max-width:480px){body{font-size:17px}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="./">← Project overview</a></nav>
+<h1>Dyslexia doesn't switch languages the way your keyboard does</h1>
+<p class="lead">A UX research case study. Secondary research phase, built on peer-reviewed sources, with an interview study designed next.</p>
+
+<h2>The problem</h2>
+<p>Most dyslexia-friendly features in software were designed around English. Dyslexic users who live in two languages get half a solution.</p>
+<p>Dyslexia shows up differently in each writing system. In English it looks like spelling and decoding errors. In Farsi, everyday text drops vowel marks, so reading means sounding out consonants. In Mandarin there is no alphabet: typing means picking the right character from a list of look-alikes.</p>
+<p>A bilingual dyslexic person switches between these systems dozens of times a day. Every switch resets the keyboard, the autocorrect and the predictions. Nobody owns that moment.</p>
+
+<h2>Research question</h2>
+<p><strong>When bilingual adults with dyslexia switch languages on their phone or computer, where do things break, and what workarounds have they built?</strong></p>
+<h3>Scope</h3>
+<ul>
+<li>Languages: English paired with Farsi and with Mandarin. Chosen because the three scripts fail in different ways.</li>
+<li>Users: adults who use both languages on a device most days. Self-identified dyslexia counts.</li>
+<li>Moments: messaging, search, forms, reading. The focus is the switch, not dyslexia in general.</li>
+</ul>
+<p>Why this question: it names one observable moment, and "workarounds" turns every user story into a design opportunity.</p>
+
+<h2>What I did</h2>
+<p>This phase is secondary research built on peer-reviewed studies only. I had no access to participants, so I worked from published evidence and was explicit about where it stops.</p>
+<ol>
+<li><strong>Reviewed the literature</strong> on dyslexia in Persian and Chinese scripts, including brain-imaging work showing the two scripts use different reading pathways, and studies of adults with dyslexia reading, spelling and typing in a second language.</li>
+<li><strong>Mapped what each study covers and what it does not.</strong> Almost all of it is lab reading and spelling tasks, mostly with children. None covers bilingual adults switching languages on a device.</li>
+<li><strong>Built three provisional personas</strong>, each a pattern rather than a person. Every trait is tagged <span class="ev">S</span> (supported by a peer-reviewed source) or <span class="ev">H</span> (hypothesis to test).</li>
+<li><strong>Extracted findings and recommendations</strong>, with confidence rated low until interviews confirm them.</li>
+</ol>
+<p>Full personas, source list and tags are in <a href="personas-and-sources.html">Personas and sources</a>.</p>
+
+<h2>Who I studied</h2>
+<p>Three patterns, each breaking at a different step. Names are placeholders.</p>
+<div class="wrap"><table>
+<tr><th>Persona</th><th>Where it breaks</th><th>Sourced core</th><th>Main hypothesis</th></tr>
+<tr><td>Farsi–English, diagnosed late</td><td>Decoding Farsi text without vowel marks</td><td>Vowel-free Persian forces letter-by-letter reading; Persian spelling habits cause specific English errors</td><td>Went undiagnosed until studying in another language; relies on voice notes</td></tr>
+<tr><td>Mandarin–English, dyslexic in English only</td><td>English spelling and autocorrect</td><td>Adults with dyslexia make more spelling errors and type less accurately in a second language</td><td>Reads Chinese without difficulty; copies English words rather than typing them</td></tr>
+<tr><td>Mandarin–English, dyslexic in Chinese</td><td>Picking the right character from the pinyin list</td><td>Chinese dyslexia involves visual processing of characters; pinyin input means choosing from same-sound options</td><td>Confuses look-alike characters; uses emoji to replace uncertain words</td></tr>
+</table></div>
+
+<h2>What I found</h2>
+<p>Four findings. All are low confidence until interviews confirm them; that is stated, not hidden.</p>
+<p><strong>1. Dyslexia does not transfer between scripts.</strong> Brain-imaging research shows Chinese and alphabetic reading impairments involve different regions, and early bilingual reading changes how dyslexia shows up in adults. Products still treat "dyslexic user" as one account-level setting.</p>
+<p><strong>2. The switch moment is unowned.</strong> Dyslexic spelling errors differ by language, yet no study looks at what happens when a user switches languages on a device. The hypothesis: keyboard, autocorrect and predictions each guess separately, and dyslexic users pay more for each wrong guess.</p>
+<p><strong>3. Each script breaks at a different step.</strong> Farsi: decoding without vowel marks. English: spelling. Mandarin: choosing between look-alike characters. One "dyslexia mode" cannot fix all three.</p>
+<p><strong>4. Nobody has asked these users about their phones.</strong> Published research covers reading and spelling in lab tasks, mostly with children. Adults with dyslexia are known to type more slowly and less accurately, but no peer-reviewed study covers bilingual adults on their devices. That gap is the project's main contribution.</p>
+
+<h2>What I recommend</h2>
+<div class="wrap"><table>
+<tr><th>Recommendation</th><th>Fixes</th><th>Who would own it</th></tr>
+<tr><td>Accessibility settings per language, not per account</td><td>Finding 1</td><td>OS accessibility teams</td></tr>
+<tr><td>One active-language signal that keyboard, autocorrect and predictions all follow</td><td>Finding 2</td><td>Keyboard and input teams</td></tr>
+<tr><td>Optional vowel-mark display for Farsi text</td><td>Finding 3</td><td>Keyboard and reading-mode teams</td></tr>
+<tr><td>Meaning hints or context previews in the Chinese character picker</td><td>Finding 3</td><td>Input-method teams</td></tr>
+<tr><td>Run the interview study before building any of the above</td><td>Finding 4</td><td>Research</td></tr>
+</table></div>
+<p>The first two are cheap and help every bilingual user. The script-specific ones need validation with real users first.</p>
+
+<h2>Try it</h2>
+<ul>
+<li><a href="feel-the-switch.html">Feel the switch</a> — three two-minute trials: read Farsi without vowels, pick between look-alike Chinese characters, and type a mixed-language text while autocorrect fights you.</li>
+<li><a href="friction-map.html">Friction map</a> — one message from first tap to send, with nine stops, each tagged by persona, evidence and fix to test.</li>
+</ul>
+
+<h2>What I would do next</h2>
+<p>A six-to-eight person interview study, two to three per language pair, using the <span class="ev">H</span> hypotheses as the interview guide.</p>
+<ul>
+<li><strong>Format:</strong> 45-minute remote sessions, with two or three run as screen-shares during a real messaging task.</li>
+<li><strong>Pre-task:</strong> each participant screenshots three moments in a week where a language switch tripped them up. The interview starts from real artifacts, not memory.</li>
+<li><strong>Recruitment:</strong> dyslexia communities online, Iranian and Chinese community groups in the Toronto area, university accessibility offices, snowball referrals.</li>
+<li><strong>Questions to settle:</strong> does dyslexia make switching worse than it is for any bilingual user? Which workarounds are real? Is the character picker the true pain point?</li>
+</ul>
+<p>Output: validated personas, a friction map of the switch moment, and prioritized recommendations.</p>
+
+<h2>What this project shows about how I work</h2>
+<ul>
+<li><strong>I separate evidence from assumption.</strong> Every persona trait is tagged sourced or hypothesis. Nothing invented is presented as data.</li>
+<li><strong>I scope tightly.</strong> One moment (the switch), three scripts, four findings. Depth over breadth.</li>
+<li><strong>I find the gap.</strong> The most useful output is not a recommendation; it is spotting that no one has studied adult bilingual dyslexic users on their devices.</li>
+<li><strong>I know what comes next.</strong> The hypotheses are already an interview guide.</li>
+</ul>
+<p>My background is in design, support and teaching. All three taught me the same thing: people rarely tell you where they are stuck, but they always show you through the workarounds they invent. This project is built on looking for those workarounds.</p>
+<div class="foot">Part of <a href="./">Dyslexia Across Languages</a> · <a href="feel-the-switch.html">Feel the switch</a> · <a href="friction-map.html">Friction map</a> · <a href="case-study.html">Case study</a> · <a href="personas-and-sources.html">Personas and sources</a></div>
+</main>
+</body>
+</html>

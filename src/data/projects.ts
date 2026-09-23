@@ -496,28 +496,28 @@ export const projects: Project[] = [
       },
       {
         heading: 'Pieces',
-        body: 'The research is published as four pieces, each on its own page, so a reader can start with two minutes of feeling the problem or go straight to the evidence.',
+        body: 'The research is published as four pieces, each on its own page on this site, so a reader can start with two minutes of feeling the problem or go straight to the evidence.',
         pieces: [
           {
-            href: 'https://claude.ai/artifact/7zjoeHsqViYEkhxkmAPHcN',
+            href: '/work/dyslexia-across-languages/feel-the-switch.html',
             title: 'Feel the switch',
             body: 'Three two-minute trials that put you inside the problem: read without vowels, pick a character, fight autocorrect.',
             note: 'start here if you have 2 minutes',
           },
           {
-            href: 'https://claude.ai/artifact/RR6VkZrKSkStGDzisuLNX4',
+            href: '/work/dyslexia-across-languages/friction-map.html',
             title: 'Friction map',
             body: 'One message from first tap to send. Nine stops, each tagged by persona, evidence and fix to test.',
             note: 'start here if you want the analysis',
           },
           {
-            href: 'https://claude.ai/artifact/VhxoCYkjuYeYswMCST7t54',
+            href: '/work/dyslexia-across-languages/case-study.html',
             title: 'Case study',
             body: 'Problem, question, method, personas, findings, recommendations, and the interview study designed next.',
             note: 'the full write-up',
           },
           {
-            href: 'https://claude.ai/artifact/Djxv5x4UwGr4gS25hT9mgk',
+            href: '/work/dyslexia-across-languages/personas-and-sources.html',
             title: 'Personas and sources',
             body: 'Three provisional personas with every trait tagged sourced or hypothesis, plus the nine peer-reviewed sources.',
             note: 'the evidence base',
