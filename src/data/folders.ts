@@ -15,6 +15,8 @@ function projectFolder(
   num: string,
   tone: string,
   tabOffset: number,
+  /** A folder named for a kind of work rather than the project inside it. */
+  title?: string,
 ): Folder {
   const project = findProject(slug);
   // Loud at build time, because a silently missing folder would just be a
@@ -24,7 +26,7 @@ function projectFolder(
   return {
     key: project.slug,
     num,
-    title: project.title,
+    title: title ?? project.title,
     description: project.summary,
     contents: project.contents,
     cta: 'Open the case study →',
@@ -45,7 +47,7 @@ export const folders: Folder[] = [
   },
   projectFolder('bookloop', '02', 'var(--f3)', 172),
   projectFolder('nibbit-ai', '03', 'var(--f2)', 344),
-  projectFolder('dyslexia-across-languages', '04', 'var(--f3)', 516),
+  projectFolder('dyslexia-across-languages', '04', 'var(--f3)', 516, 'research'),
   {
     key: 'archive',
     num: '05',
