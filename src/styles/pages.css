@@ -202,6 +202,51 @@
 
 /* --------------------------------------------------------- counted tables */
 
+/* Pieces of the work that live on their own page. Cards rather than a
+   bulleted list, because each one needs a sentence to earn the click. */
+.pieces {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.piece {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.piece:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.piece-title {
+  font-size: 1.15em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.piece-body {
+  color: var(--muted);
+}
+
+.piece-note {
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
 .table-wrap {
   margin-top: 28px;
   border: 1px solid var(--line);

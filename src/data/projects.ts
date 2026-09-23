@@ -56,6 +56,19 @@ export type Spoken = {
 };
 
 /**
+ * A piece of the work that lives on its own page, an interactive trial, a
+ * map, a full write-up. The case study points at it rather than retyping it.
+ */
+export type Piece = {
+  href: string;
+  title: string;
+  /** What is on the other side, in a sentence. */
+  body: string;
+  /** Who it is for, 'start here if you have 2 minutes'. */
+  note?: string;
+};
+
+/**
  * Evidence hangs off the section it belongs to, so the reading order is the
  * order in this array and a project with nothing to show just omits it.
  */
@@ -67,6 +80,7 @@ export type Section = {
   shots?: Shot[];
   spoken?: Spoken;
   table?: Table;
+  pieces?: Piece[];
 };
 
 export type Project = {
@@ -438,6 +452,90 @@ export const projects: Project[] = [
       ['73/110', 'controls with no accessible name, at audit'],
       ['1.05:1', 'the dark-mode Search button, at audit'],
       ['99 → 0', 'the CI baseline, shipped live in v0.18.0'],
+    ],
+  },
+  {
+    slug: 'dyslexia-across-languages',
+    title: 'dyslexia across languages',
+    summary:
+      'A UX research case study on where phones fail bilingual adults with dyslexia, and what to build instead, from nine peer-reviewed sources, with an interview study designed and ready to run.',
+    contents: '3 scripts · 3 personas · 4 findings · 9 sources',
+    headline: 'Dyslexia does not switch languages the way your keyboard does',
+    meta: [
+      ['Role', 'Solo UX researcher'],
+      ['Method', 'Secondary research, provisional personas'],
+      ['Scope', '3 scripts, 3 personas, 4 findings'],
+      ['Status', 'Phase 1 done, interviews next'],
+    ],
+    hero: {
+      src: '/work/dyslexia-across-languages/hero.jpg',
+      alt: 'The word Farsi written in Persian script, the word Chinese written in Chinese characters, and the word English, set side by side in large bold type and separated by dots.',
+      w: 1640,
+      h: 680,
+    },
+    heroCaption: 'the three scripts the study covers, Farsi, Mandarin, English',
+    sections: [
+      {
+        heading: 'Problem',
+        body: 'Dyslexia shows up differently in every writing system: English breaks at spelling, Farsi at decoding text with no vowel marks, Mandarin at choosing between look-alike characters. Almost every dyslexia-friendly feature was designed around English. A bilingual person switches scripts dozens of times a day, and nobody owns that moment.',
+      },
+      {
+        heading: 'Pieces',
+        body: 'The research is published as four pieces, each on its own page, so a reader can start with two minutes of feeling the problem or go straight to the evidence.',
+        pieces: [
+          {
+            href: 'https://claude.ai/artifact/7zjoeHsqViYEkhxkmAPHcN',
+            title: 'Feel the switch',
+            body: 'Three two-minute trials that put you inside the problem: read without vowels, pick a character, fight autocorrect.',
+            note: 'start here if you have 2 minutes',
+          },
+          {
+            href: 'https://claude.ai/artifact/RR6VkZrKSkStGDzisuLNX4',
+            title: 'Friction map',
+            body: 'One message from first tap to send. Nine stops, each tagged by persona, evidence and fix to test.',
+            note: 'start here if you want the analysis',
+          },
+          {
+            href: 'https://claude.ai/artifact/VhxoCYkjuYeYswMCST7t54',
+            title: 'Case study',
+            body: 'Problem, question, method, personas, findings, recommendations, and the interview study designed next.',
+            note: 'the full write-up',
+          },
+          {
+            href: 'https://claude.ai/artifact/Djxv5x4UwGr4gS25hT9mgk',
+            title: 'Personas and sources',
+            body: 'Three provisional personas with every trait tagged sourced or hypothesis, plus the nine peer-reviewed sources.',
+            note: 'the evidence base',
+          },
+        ],
+      },
+      {
+        heading: 'Findings',
+        body: 'Four findings, each with the design consequence it carries. The last is a gap rather than a result, and it is the reason the next phase exists.',
+        table: {
+          caption: 'what the secondary research found, and what it means for the product',
+          head: ['Finding', 'What it means'],
+          rows: [
+            ['Dyslexia does not transfer between scripts', 'Accessibility settings should be per language, not per account'],
+            ['The switch moment is unowned', 'Keyboard, autocorrect and predictions each guess the language separately; they need one shared signal'],
+            ['Each script breaks at a different step', 'Decoding, spelling, picking: one dyslexia mode cannot cover all three'],
+            ['Nobody has asked these users about their phones', 'No peer-reviewed study covers bilingual adults with dyslexia on devices, so that is the study to run next'],
+          ],
+        },
+      },
+      {
+        heading: 'Method',
+        body: 'Evidence first, then hypothesis: every persona trait is tagged [S] sourced or [H] hypothesis, so nothing invented is presented as data. The scope stayed tight, one moment, three scripts, four findings, depth over breadth. Findings were turned into things people can experience rather than only read. And the next step is already written: the hypotheses double as an interview guide, and the recruitment plan is ready.',
+      },
+      {
+        heading: 'Next',
+        body: 'The next phase is six to eight interviews with Farsi–English and Mandarin–English speakers who have dyslexia. If that is you, or you know someone, I would like to talk.',
+      },
+    ],
+    metrics: [
+      ['9', 'peer-reviewed sources'],
+      ['3', 'scripts, Farsi, Mandarin, English'],
+      ['0', 'prior studies of these users on devices'],
     ],
   },
   {

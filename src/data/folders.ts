@@ -6,7 +6,7 @@ export type Folder = FolderItem;
 
 /*
  * The order below is the order of the pile, top folder first. The copy for the
- * two project folders is read out of projects.ts rather than retyped here, so a
+ * project folders is read out of projects.ts rather than retyped here, so a
  * folder and the case study it opens cannot drift apart; the number, colour and
  * tab position are decided below because they are layout, not work.
  */
@@ -45,14 +45,7 @@ export const folders: Folder[] = [
   },
   projectFolder('bookloop', '02', 'var(--f3)', 172),
   projectFolder('nibbit-ai', '03', 'var(--f2)', 344),
-  {
-    key: 'research',
-    num: '04',
-    title: 'research',
-    description: 'More to come.',
-    tone: 'var(--f3)',
-    tabOffset: 516,
-  },
+  projectFolder('dyslexia-across-languages', '04', 'var(--f3)', 516),
   {
     key: 'archive',
     num: '05',
