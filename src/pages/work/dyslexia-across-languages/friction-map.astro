@@ -1,0 +1,281 @@
+---
+import Piece from '../../../layouts/Piece.astro';
+
+/*
+ * Nine stops along one message. Each carries a friction level (1 works for
+ * most people, 2 trips any bilingual user, 3 is made worse by dyslexia) and
+ * the personas it hits, lettered as on the personas page.
+ */
+type Row = [label: string, text: string, tag?: 'S' | 'H'];
+type Stop = {
+  title: string;
+  sub: string;
+  level: 1 | 2 | 3;
+  who: ('A' | 'B' | 'C')[];
+  sample?: { text: string; lang?: 'fa' | 'zh'; html?: boolean };
+  note?: string;
+  rows?: Row[];
+};
+
+const levels = {
+  1: 'works for most people',
+  2: 'friction for bilingual users',
+  3: 'friction that dyslexia makes worse',
+} as const;
+
+const personas = [
+  { key: 'A', name: 'Farsi–English, diagnosed late' },
+  { key: 'B', name: 'Mandarin–English, dyslexic in English' },
+  { key: 'C', name: 'Mandarin–English, dyslexic in Chinese' },
+] as const;
+
+const stops: Stop[] = [
+  {
+    title: 'A message arrives',
+    sub: 'A friend writes in Farsi with one English word',
+    level: 1,
+    who: [],
+    sample: { text: 'فردا ساعت ۵ meeting داریم؟', lang: 'fa' },
+    note: '“Do we have the meeting tomorrow at 5?” Mixed-script text is normal in bilingual chats. Nothing breaks yet.',
+  },
+  {
+    title: 'Reading the Farsi',
+    sub: 'No vowel marks; decode letter by letter',
+    level: 3,
+    who: ['A'],
+    rows: [
+      ['What happens', 'Everyday Farsi omits short vowels. The reader reconstructs each word from consonants and context.'],
+      ['Why it is worse', 'That reconstruction is letter-by-letter decoding, the process dyslexia disrupts most.'],
+      ['Evidence', 'Vowel-free Persian behaves as an opaque script; readers rely on sub-lexical decoding. Pouretemad et al., 2011.', 'S'],
+      ['Fix to test', 'Optional vowel-mark display in reading mode.'],
+    ],
+  },
+  {
+    title: 'Choosing a keyboard',
+    sub: 'Three keyboards installed; pick one before typing',
+    level: 2,
+    who: ['A', 'B', 'C'],
+    rows: [
+      ['What happens', 'The user must decide the language before the first letter. Forget, and the word comes out in the wrong script and has to be deleted.'],
+      ['Evidence', 'Widely reported by bilingual users; no peer-reviewed study measures it, and none for dyslexic users.', 'H'],
+      ['Fix to test', 'Detect the language from the first two words and switch silently.'],
+    ],
+  },
+  {
+    title: 'Typing “salam” on the English keyboard',
+    sub: 'Autocorrect changes it to “salad”',
+    level: 3,
+    who: ['A', 'B'],
+    sample: { text: 'salam → <strong>salad</strong> · khoobi → <strong>hobby</strong> · merci → <strong>mercy</strong>', html: true },
+    rows: [
+      ['What happens', 'Many people write Farsi in Latin letters. English autocorrect treats every one as a typo.'],
+      ['Why it is worse', 'A dyslexic writer already doubts their spelling. The replacement looks about as plausible as what they typed, so it slips through.'],
+      ['Evidence', 'Adults with dyslexia make more spelling errors in a second language and type less accurately with more visual checking. Annals of Dyslexia, 2025; Reading and Writing, 2025.', 'S'],
+      ['Fix to test', 'Autocorrect that follows the active-language signal and never replaces a word it has never seen.'],
+    ],
+  },
+  {
+    title: 'The prediction bar',
+    sub: 'Suggests words from every installed language',
+    level: 2,
+    who: ['A', 'B', 'C'],
+    rows: [
+      ['What happens', 'Predictions come from all languages at once, or from the wrong one. The user reads three suggestions to find none that fit.'],
+      ['Evidence', 'Reported by multilingual users; not studied.', 'H'],
+      ['Evidence', 'Dyslexic error patterns differ by language, so a single mixed model would need per-language error data. Language Resources and Evaluation, 2022.', 'S'],
+      ['Fix to test', 'One shared active-language signal for keyboard, autocorrect and predictions.'],
+    ],
+  },
+  {
+    title: 'Switching to the Farsi keyboard mid-sentence',
+    sub: 'Text direction flips; the cursor jumps',
+    level: 2,
+    who: ['A'],
+    sample: { text: 'see you <span class="fa" lang="fa">فردا</span> at 5', html: true },
+    rows: [
+      ['What happens', 'Farsi runs right-to-left inside a left-to-right sentence. Deleting or inserting near the boundary moves the cursor somewhere unexpected.'],
+      ['Evidence', 'Known bidirectional-text behaviour; its cost for dyslexic users is unmeasured.', 'H'],
+      ['Fix to test', 'A visible direction boundary, and a cursor that stays where the finger is.'],
+    ],
+  },
+  {
+    title: 'Adding a Chinese word',
+    sub: 'Type pinyin, then pick from look-alike characters',
+    level: 3,
+    who: ['C'],
+    sample: { text: 'yǐ → <span class="zh" lang="zh">己 · 已 · 巳</span>', html: true },
+    rows: [
+      ['What happens', 'Typing the sound is easy. Choosing the character from a row of same-sound options is a visual task.'],
+      ['Why it is worse', 'Chinese dyslexia involves visual processing of character shape. The picker shows shape only.'],
+      ['Evidence', 'Siok, Perfetti, Jin & Tan, Nature, 2004; PNAS pinyin study; Frontiers in Psychology, 2017.', 'S'],
+      ['Fix to test', 'Meaning hints or a short context preview next to each character.'],
+    ],
+  },
+  {
+    title: 'Re-reading before sending',
+    sub: 'Three scripts, three kinds of error to check',
+    level: 3,
+    who: ['A', 'B', 'C'],
+    rows: [
+      ['What happens', 'The user proofreads Farsi without vowels, English that autocorrect touched, and a Chinese character chosen by shape. Each needs a different check.'],
+      ['Why it is worse', 'Adults with dyslexia rely more on visual monitoring while writing. Here it has to run three ways at once.'],
+      ['Evidence', 'Reading and Writing, 2025.', 'S'],
+      ['Evidence', 'Early bilingual reading changes how dyslexia shows in adults. Scientific Studies of Reading, 2018.', 'S'],
+      ['Fix to test', 'Accessibility settings per language, so each script gets its own support.'],
+    ],
+  },
+  {
+    title: 'Send',
+    sub: 'Or give up and record a voice note',
+    level: 1,
+    who: [],
+    rows: [
+      ['What happens', 'The message goes. Or, after enough friction, the user switches to voice. That workaround is a hypothesis worth testing first.'],
+      ['Evidence', 'No study has asked bilingual adults with dyslexia what they do on their phones.', 'H'],
+    ],
+  },
+];
+
+const count = (level: 1 | 2 | 3) => stops.filter((s) => s.level === level).length;
+const tagName = { S: 'sourced', H: 'hypothesis' } as const;
+---
+
+<Piece
+  project="dyslexia-across-languages"
+  title="friction map"
+  headline="One message, from first tap to send. Every place it breaks."
+  lede="A bilingual person with dyslexia replies to a friend. The reply mixes Farsi, English and a Chinese word. Open each stop to see what happens, who it hits, and what the research says."
+  description="One message from first tap to send: nine stops, each tagged by persona, evidence and a fix to test."
+  next={{ href: '/work/dyslexia-across-languages/personas-and-sources/', title: 'personas and sources' }}
+>
+  <div class="legend">
+    {
+      ([1, 2, 3] as const).map((level) => (
+        <span>
+          <i class:list={['level', `level-${level}`]} aria-hidden="true" />
+          {levels[level]}
+        </span>
+      ))
+    }
+  </div>
+
+  <div class="filters" role="group" aria-labelledby="filters-label">
+    <p class="filters-label mono" id="filters-label">highlight the stops that hit one persona</p>
+    {
+      personas.map((p) => (
+        <button type="button" class="pill" data-p={p.key} aria-pressed="false">
+          <span class="who" aria-hidden="true">{p.key}</span>
+          {p.name}
+        </button>
+      ))
+    }
+  </div>
+
+  <ol class="stops-rail" aria-label="Nine stops, from first tap to send">
+    {
+      stops.map((stop, i) => (
+        <li class="stop" data-p={stop.who.join(' ')}>
+          <i class:list={['level', `level-${stop.level}`]} aria-hidden="true" />
+          <button type="button" class="node" aria-expanded="false" aria-controls={`stop-${i + 1}`}>
+            <span>
+              <span class="node-title">
+                {i + 1}. {stop.title}
+              </span>
+              <span class="node-sub">{stop.sub}</span>
+            </span>
+            <span class="node-side">
+              {stop.who.map((w) => (
+                <span class="who" aria-hidden="true">{w}</span>
+              ))}
+              <span class="sr-only">
+                , {levels[stop.level]}
+                {stop.who.length > 0 && `, affects persona ${stop.who.join(', ')}`}
+              </span>
+              <span class="chev" aria-hidden="true">›</span>
+            </span>
+          </button>
+          <div class="detail" id={`stop-${i + 1}`} hidden>
+            <p class="detail-level mono">{levels[stop.level]}</p>
+            {stop.sample &&
+              (stop.sample.html ? (
+                <p class="sample" set:html={stop.sample.text} />
+              ) : (
+                <p class:list={['sample', stop.sample.lang]} lang={stop.sample.lang}>
+                  {stop.sample.text}
+                </p>
+              ))}
+            {stop.note && <p>{stop.note}</p>}
+            {stop.rows && (
+              <dl>
+                {stop.rows.map(([label, text, tag]) => (
+                  <>
+                    <dt>{label}</dt>
+                    <dd>
+                      {tag && (
+                        <>
+                          <span class:list={['ev', tag === 'H' && 'ev-h']} aria-hidden="true">{tag}</span>
+                          <span class="sr-only">{tagName[tag]}: </span>
+                        </>
+                      )}
+                      {text}
+                    </dd>
+                  </>
+                ))}
+              </dl>
+            )}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <section class="section" aria-labelledby="where">
+    <h2 id="where" class="hl">Where the friction sits</h2>
+    <div
+      class="bar"
+      role="img"
+      aria-label={`${count(1)} of nine stops work for most people, ${count(2)} are friction for bilingual users, ${count(3)} are made worse by dyslexia`}
+    >
+      <div class="b1" style={`flex:${count(1)}`}>{count(1)}</div>
+      <div class="b2" style={`flex:${count(2)}`}>{count(2)}</div>
+      <div class="b3" style={`flex:${count(3)}`}>{count(3)}</div>
+    </div>
+    <p>
+      Nine stops. Two are fine. Three trip up any bilingual user. Four are made worse by dyslexia, and
+      each of those four is a different script breaking in a different way.
+    </p>
+    <p>
+      Sourced claims are tagged <span class="ev" aria-hidden="true">S</span><span class="sr-only">S</span>;
+      hypotheses to test in interviews are tagged <span class="ev ev-h" aria-hidden="true">H</span><span class="sr-only">H</span>.
+    </p>
+  </section>
+</Piece>
+
+<script>
+  const stops = [...document.querySelectorAll<HTMLElement>('.stop')];
+
+  for (const stop of stops) {
+    const node = stop.querySelector<HTMLButtonElement>('.node')!;
+    const detail = stop.querySelector<HTMLElement>('.detail')!;
+    node.addEventListener('click', () => {
+      const open = node.getAttribute('aria-expanded') !== 'true';
+      node.setAttribute('aria-expanded', String(open));
+      detail.hidden = !open;
+    });
+  }
+
+  // One persona at a time; pressing the active one clears the highlight.
+  let active: string | null = null;
+  const pills = [...document.querySelectorAll<HTMLButtonElement>('.pill')];
+  for (const pill of pills) {
+    pill.addEventListener('click', () => {
+      const id = pill.dataset.p ?? null;
+      active = active === id ? null : id;
+      for (const p of pills) p.setAttribute('aria-pressed', String(p.dataset.p === active));
+      for (const stop of stops) {
+        const hit = !active || (stop.dataset.p ?? '').split(' ').includes(active);
+        stop.classList.toggle('is-dim', !hit);
+      }
+    });
+  }
+</script>

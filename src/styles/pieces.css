@@ -1,0 +1,619 @@
+/*
+ * Case-study pieces: the pages under a case study that do something the case
+ * study template cannot, a trial to try, a map to open, a full evidence table.
+ * Built from the site's tokens only, so they follow the palette, dark theme,
+ * high contrast and larger text like every other page.
+ *
+ * State is never carried by colour alone. Right and wrong answers change
+ * border style and say so in text; friction levels and personas are labelled,
+ * not just tinted.
+ */
+
+/* Persian and Chinese, self-hosted and cut down to the characters the pieces
+   use, so a page that is about scripts makes no request off the site. */
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/work/dyslexia-across-languages/fonts/vazirmatn.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/work/dyslexia-across-languages/fonts/noto-sans-sc.woff2') format('woff2');
+}
+
+.fa {
+  font-family: 'Vazirmatn', var(--font-sans);
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+.zh {
+  font-family: 'Noto Sans SC', var(--font-sans);
+}
+
+/* ------------------------------------------------------------ text blocks */
+
+.piece-page .section ul,
+.piece-page .section ol {
+  margin-top: 16px;
+  padding-left: 22px;
+  font-size: calc(17px * var(--ts));
+  line-height: 1.7;
+  color: var(--body);
+}
+
+.piece-page .section ul {
+  list-style: disc;
+}
+
+.piece-page .section ol {
+  list-style: decimal;
+}
+
+.piece-page .section li + li {
+  margin-top: 8px;
+}
+
+.piece-page .section li strong,
+.piece-page .section p strong {
+  color: var(--ink);
+}
+
+/* The note that closes a persona: what it means for the product. */
+.callout {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+  font-size: calc(16px * var(--ts));
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.callout b {
+  display: block;
+  margin-bottom: 4px;
+  font: 500 10px/1.4 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Sourced or hypothesis. A letter in a box, with the full word for screen
+   readers, so the tag is readable without the key. */
+.ev {
+  display: inline-block;
+  min-width: 1.7em;
+  margin-right: 6px;
+  padding: 1px 5px;
+  border: 1px solid var(--ink);
+  font: 500 11px/1.5 var(--font-mono);
+  text-align: center;
+  color: var(--ink);
+}
+
+.ev-h {
+  border-style: dashed;
+}
+
+/* A button in the site's voice: mono, ruled, the highlighter when it is the
+   thing to press next. */
+.piece-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--ink);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 500 calc(13px * var(--ts)) / 1.2 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.piece-btn-quiet {
+  background: transparent;
+  color: var(--ink);
+}
+
+.piece-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ------------------------------------------------------ feel the switch */
+
+/* Paragraph-level classes below are prefixed with .piece-page so they win
+   over the `.section p` rule the case-study pages share. */
+
+.trial {
+  margin-top: 36px;
+  padding: 26px 26px 28px;
+  border: 1px solid var(--line);
+}
+
+.piece-page .trial-step {
+  margin-top: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.trial h2 {
+  margin-top: 10px;
+}
+
+.piece-page .task {
+  margin: 18px 0;
+  padding: 18px 20px;
+  background: var(--paper);
+  font-size: calc(20px * var(--ts));
+  line-height: 1.6;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.piece-page .task-big {
+  font-size: calc(26px * var(--ts));
+}
+
+.trial-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.piece-page .trial-note {
+  font-size: calc(14px * var(--ts));
+  color: var(--muted);
+}
+
+/* Hidden until the trial earns it. `hidden` does the hiding, so a reader with
+   no styles gets the same order of events. */
+.reveal {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px dotted var(--line);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal:not([hidden]) {
+    animation: piece-in 0.25s ease-out;
+  }
+
+  @keyframes piece-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+}
+
+.finding {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+  font-size: calc(15px * var(--ts));
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.finding b {
+  display: block;
+  margin-bottom: 4px;
+  font: 500 10px/1.4 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 10px;
+}
+
+.choice {
+  position: relative;
+  min-width: 72px;
+  min-height: 72px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.choice:hover {
+  border-color: var(--ink);
+}
+
+/* Wrong is struck through and dashed; right is a heavy rule and a tick. */
+.choice.is-wrong {
+  border-style: dashed;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.choice.is-right {
+  border: 3px solid var(--ink);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.choice.is-right::after {
+  content: '✓';
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font: 500 12px/1 var(--font-mono);
+}
+
+.piece-page .trial-msg {
+  min-height: 1.6em;
+  font: 500 calc(13px * var(--ts)) / 1.6 var(--font-mono);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+/* The phone. Drawn in the site's own rules rather than a device frame, so it
+   reads as a diagram of a phone, not a screenshot of one. */
+.phone {
+  margin: 18px 0;
+  max-width: 420px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+}
+
+.phone-screen {
+  min-height: 96px;
+  padding: 16px;
+}
+
+.bubble {
+  display: inline-block;
+  max-width: 90%;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: calc(16px * var(--ts));
+  overflow-wrap: anywhere;
+}
+
+.bubble:empty {
+  display: none;
+}
+
+.bubble .fix {
+  padding: 0 3px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: underline wavy;
+  text-underline-offset: 3px;
+}
+
+.predict {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 8px 10px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  font-size: calc(14px * var(--ts));
+}
+
+.predict span {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+.predict .lang {
+  border: none;
+  background: transparent;
+  padding-left: 0;
+  font: 500 11px/2 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.phone-input {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.phone-input input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: calc(16px * var(--ts));
+}
+
+.counter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 8px;
+}
+
+.counter div {
+  font: 500 11px/1.4 var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.counter b {
+  display: block;
+  font: 400 28px/1.1 var(--font-serif);
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------ friction map */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 30px;
+  font-size: calc(13px * var(--ts));
+  color: var(--body);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Three levels, three fills: open, half, solid. Each stop also names its
+   level in text, so the dot is a summary, never the only signal. */
+.level {
+  display: inline-block;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.level-2 {
+  background: linear-gradient(90deg, var(--ink) 50%, var(--bg) 50%);
+}
+
+.level-3 {
+  background: var(--ink);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 30px;
+}
+
+.piece-page .filters-label {
+  flex-basis: 100%;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  font-size: calc(14px * var(--ts));
+  color: var(--ink);
+}
+
+.pill:hover {
+  border-color: var(--ink);
+}
+
+.pill[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Persona letter: the same mark on the filter and on every stop it touches. */
+.who {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid currentColor;
+  font: 500 11px/1 var(--font-mono);
+}
+
+.stops-rail {
+  position: relative;
+  padding-left: 40px;
+}
+
+.stops-rail::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  bottom: 12px;
+  border-left: 1px dotted var(--line);
+}
+
+.stop {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.stop > .level {
+  position: absolute;
+  left: -35px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+}
+
+.stop.is-dim {
+  opacity: 0.35;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  text-align: left;
+  color: var(--ink);
+}
+
+.node:hover {
+  border-color: var(--ink);
+}
+
+.node-title {
+  display: block;
+  font-size: calc(16px * var(--ts));
+  font-weight: 600;
+}
+
+.node-sub {
+  display: block;
+  font-size: calc(14px * var(--ts));
+  color: var(--muted);
+}
+
+.node-side {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink);
+}
+
+.chev {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chev {
+    transition: transform 0.2s;
+  }
+}
+
+.node[aria-expanded='true'] .chev {
+  transform: rotate(90deg);
+}
+
+.detail {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-top: none;
+}
+
+.detail dl {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 10px 14px;
+}
+
+.detail dt {
+  font: 500 10px/1.8 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.detail dd,
+.piece-page .detail p {
+  font-size: calc(15px * var(--ts));
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.piece-page .detail-level {
+  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.piece-page .sample {
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: var(--paper);
+  font-size: calc(17px * var(--ts));
+  color: var(--ink);
+}
+
+.bar {
+  display: flex;
+  height: 30px;
+  margin: 22px 0 8px;
+  border: 1px solid var(--ink);
+}
+
+.bar div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 12px/1 var(--font-mono);
+}
+
+.bar .b1 {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.bar .b2 {
+  background: var(--f4);
+  color: var(--ink);
+  border-left: 1px solid var(--ink);
+}
+
+.bar .b3 {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+@media (max-width: 600px) {
+  .trial {
+    padding: 20px 18px 22px;
+  }
+
+  .detail dl {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .detail dd {
+    margin-bottom: 10px;
+  }
+}

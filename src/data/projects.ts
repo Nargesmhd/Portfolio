@@ -492,32 +492,76 @@ export const projects: Project[] = [
     sections: [
       {
         heading: 'Problem',
-        body: 'Dyslexia shows up differently in every writing system: English breaks at spelling, Farsi at decoding text with no vowel marks, Mandarin at choosing between look-alike characters. Almost every dyslexia-friendly feature was designed around English. A bilingual person switches scripts dozens of times a day, and nobody owns that moment.',
+        body: 'Most dyslexia-friendly features in software were designed around English, so dyslexic users who live in two languages get half a solution. Dyslexia shows up differently in each writing system. In English it looks like spelling and decoding errors. In Farsi, everyday text drops vowel marks, so reading means sounding out consonants. In Mandarin there is no alphabet: typing means picking the right character from a list of look-alikes. A bilingual person with dyslexia switches between these systems dozens of times a day, and every switch resets the keyboard, the autocorrect and the predictions. Nobody owns that moment.',
+      },
+      {
+        heading: 'Question',
+        body: 'When bilingual adults with dyslexia switch languages on their phone or computer, where do things break, and what workarounds have they built? It names one observable moment, and asking about workarounds turns every answer into a design opportunity. The scope held to English paired with Farsi and with Mandarin, chosen because the three scripts fail in different ways; to adults who use both languages on a device most days, with self-identified dyslexia counting; and to messaging, search, forms and reading. The focus is the switch, not dyslexia in general.',
+      },
+      {
+        heading: 'Method',
+        body: 'This phase is secondary research built on peer-reviewed studies only. I had no access to participants, so I worked from published evidence and was explicit about where it stops. I reviewed the literature on dyslexia in Persian and Chinese scripts, including brain-imaging work showing the two use different reading pathways, and studies of adults with dyslexia reading, spelling and typing in a second language. I mapped what each study covers and what it does not: almost all of it is lab reading and spelling, mostly with children, and none covers bilingual adults switching languages on a device. From that I built three provisional personas, each a pattern rather than a person, with every trait tagged sourced or hypothesis so nothing invented is presented as data. Then I extracted findings and recommendations, with confidence rated low until interviews confirm them.',
+      },
+      {
+        heading: 'Personas',
+        body: 'Three patterns, each breaking at a different step. Names are placeholders; the full trait tables, with every line tagged sourced or hypothesis, are on the personas and sources page.',
+        table: {
+          caption: 'three provisional personas, what is sourced and what is still a guess',
+          head: ['Persona', 'Where it breaks', 'Sourced core', 'Main hypothesis'],
+          rows: [
+            ['Farsi–English, diagnosed late', 'Decoding Farsi text without vowel marks', 'Vowel-free Persian forces letter-by-letter reading; Persian spelling habits cause specific English errors', 'Went undiagnosed until studying in another language; relies on voice notes'],
+            ['Mandarin–English, dyslexic in English only', 'English spelling and autocorrect', 'Adults with dyslexia make more spelling errors and type less accurately in a second language', 'Reads Chinese without difficulty; copies English words rather than typing them'],
+            ['Mandarin–English, dyslexic in Chinese', 'Picking the right character from the pinyin list', 'Chinese dyslexia involves visual processing of characters; pinyin input means choosing from same-sound options', 'Confuses look-alike characters; uses emoji to replace uncertain words'],
+          ],
+        },
+      },
+      {
+        heading: 'Findings',
+        body: 'Four findings, all low confidence until interviews confirm them, and that is stated rather than hidden. Brain-imaging research shows Chinese and alphabetic reading impairments involve different regions, and early bilingual reading changes how dyslexia shows up in adults, yet products still treat a dyslexic user as one account-level setting. The last finding is a gap rather than a result: adults with dyslexia are known to type more slowly and less accurately, but no peer-reviewed study covers bilingual adults on their devices. That gap is the project\'s main contribution.',
+        table: {
+          caption: 'what the secondary research found, and what it means for the product',
+          head: ['Finding', 'What it means'],
+          rows: [
+            ['Dyslexia does not transfer between scripts', 'Accessibility settings should be per language, not per account'],
+            ['The switch moment is unowned', 'Keyboard, autocorrect and predictions each guess the language separately, and dyslexic users pay more for each wrong guess'],
+            ['Each script breaks at a different step', 'Farsi at decoding, English at spelling, Mandarin at picking: one dyslexia mode cannot fix all three'],
+            ['Nobody has asked these users about their phones', 'No peer-reviewed study covers bilingual adults with dyslexia on devices, so that is the study to run next'],
+          ],
+        },
+      },
+      {
+        heading: 'Recommendations',
+        body: 'The first two are cheap and help every bilingual user. The script-specific ones need validation with real users first, which is why the last recommendation is research rather than a feature.',
+        table: {
+          caption: 'what to build, which finding it answers, and who would own it',
+          head: ['Recommendation', 'Fixes', 'Owner'],
+          rows: [
+            ['Accessibility settings per language, not per account', 'Finding 1', 'OS accessibility teams'],
+            ['One active-language signal that keyboard, autocorrect and predictions all follow', 'Finding 2', 'Keyboard and input teams'],
+            ['Optional vowel-mark display for Farsi text', 'Finding 3', 'Keyboard and reading-mode teams'],
+            ['Meaning hints or context previews in the Chinese character picker', 'Finding 3', 'Input-method teams'],
+            ['Run the interview study before building any of the above', 'Finding 4', 'Research'],
+          ],
+        },
       },
       {
         heading: 'Pieces',
-        body: 'The research is published as four pieces, each on its own page on this site, so a reader can start with two minutes of feeling the problem or go straight to the evidence.',
+        body: 'Findings are easier to believe once you have felt them, so the research also ships as three pages of its own: two to try, and one with the full evidence.',
         pieces: [
           {
-            href: '/work/dyslexia-across-languages/feel-the-switch.html',
+            href: '/work/dyslexia-across-languages/feel-the-switch/',
             title: 'Feel the switch',
             body: 'Three two-minute trials that put you inside the problem: read without vowels, pick a character, fight autocorrect.',
             note: 'start here if you have 2 minutes',
           },
           {
-            href: '/work/dyslexia-across-languages/friction-map.html',
+            href: '/work/dyslexia-across-languages/friction-map/',
             title: 'Friction map',
             body: 'One message from first tap to send. Nine stops, each tagged by persona, evidence and fix to test.',
             note: 'start here if you want the analysis',
           },
           {
-            href: '/work/dyslexia-across-languages/case-study.html',
-            title: 'Case study',
-            body: 'Problem, question, method, personas, findings, recommendations, and the interview study designed next.',
-            note: 'the full write-up',
-          },
-          {
-            href: '/work/dyslexia-across-languages/personas-and-sources.html',
+            href: '/work/dyslexia-across-languages/personas-and-sources/',
             title: 'Personas and sources',
             body: 'Three provisional personas with every trait tagged sourced or hypothesis, plus the nine peer-reviewed sources.',
             note: 'the evidence base',
@@ -525,26 +569,18 @@ export const projects: Project[] = [
         ],
       },
       {
-        heading: 'Findings',
-        body: 'Four findings, each with the design consequence it carries. The last is a gap rather than a result, and it is the reason the next phase exists.',
+        heading: 'Next',
+        body: 'A six-to-eight person interview study, two or three per language pair, using the hypotheses as the interview guide. It would produce validated personas, a friction map of the switch moment checked against real phones, and prioritised recommendations. My background is in design, support and teaching, and all three taught me the same thing: people rarely tell you where they are stuck, but they always show you through the workarounds they invent. If you are a Farsi–English or Mandarin–English speaker with dyslexia, or know someone who is, I would like to talk.',
         table: {
-          caption: 'what the secondary research found, and what it means for the product',
-          head: ['Finding', 'What it means'],
+          caption: 'the interview study, designed and ready to run',
+          head: ['Part', 'Plan'],
           rows: [
-            ['Dyslexia does not transfer between scripts', 'Accessibility settings should be per language, not per account'],
-            ['The switch moment is unowned', 'Keyboard, autocorrect and predictions each guess the language separately; they need one shared signal'],
-            ['Each script breaks at a different step', 'Decoding, spelling, picking: one dyslexia mode cannot cover all three'],
-            ['Nobody has asked these users about their phones', 'No peer-reviewed study covers bilingual adults with dyslexia on devices, so that is the study to run next'],
+            ['Format', '45-minute remote sessions, two or three run as screen-shares during a real messaging task'],
+            ['Pre-task', 'Each participant screenshots three moments in a week where a language switch tripped them up, so the interview starts from real artifacts, not memory'],
+            ['Recruitment', 'Dyslexia communities online, Iranian and Chinese community groups in the Toronto area, university accessibility offices, snowball referrals'],
+            ['Questions', 'Does dyslexia make switching worse than it is for any bilingual user? Which workarounds are real? Is the character picker the true pain point?'],
           ],
         },
-      },
-      {
-        heading: 'Method',
-        body: 'Evidence first, then hypothesis: every persona trait is tagged [S] sourced or [H] hypothesis, so nothing invented is presented as data. The scope stayed tight, one moment, three scripts, four findings, depth over breadth. Findings were turned into things people can experience rather than only read. And the next step is already written: the hypotheses double as an interview guide, and the recruitment plan is ready.',
-      },
-      {
-        heading: 'Next',
-        body: 'The next phase is six to eight interviews with Farsi–English and Mandarin–English speakers who have dyslexia. If that is you, or you know someone, I would like to talk.',
       },
     ],
     metrics: [

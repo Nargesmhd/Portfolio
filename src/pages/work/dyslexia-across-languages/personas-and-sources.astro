@@ -1,0 +1,245 @@
+---
+import Piece from '../../../layouts/Piece.astro';
+
+/*
+ * Every trait carries a tag: S, supported by a peer-reviewed source listed at
+ * the end, or H, a hypothesis the interviews exist to test. The tag column is
+ * the point of the page, so it is a column and not a footnote.
+ */
+type Trait = [trait: string, tag: 'S' | 'H', source: string];
+
+const personas: {
+  id: string;
+  name: string;
+  core: string;
+  traits: Trait[];
+  opportunity: string;
+}[] = [
+  {
+    id: 'persona-1',
+    name: 'Farsi–English, diagnosed late',
+    core: 'Grew up undiagnosed, and discovered dyslexia only when studying in another language.',
+    traits: [
+      ['Farsi first language, English learned later', 'S', 'Framing of both Persian studies below'],
+      ['Everyday Farsi omits vowel marks; readers rely on letter-by-letter decoding', 'S', 'Pouretemad et al., 2011'],
+      ['Features of Persian spelling cause specific problems when reading and writing English', 'S', 'Teaching English to Students With Dyslexia in Iran, 2020'],
+      ['Dyslexia in a second language has been largely neglected in research and support', 'S', 'Same 2020 study'],
+      ['Went undiagnosed growing up; dyslexia surfaced only in another language', 'H', '—'],
+      ['Forgets to switch keyboard, retypes often', 'H', '—'],
+      ['Prefers voice notes over typing', 'H', '—'],
+      ['Age, job, name', 'H', 'Placeholder'],
+    ],
+    opportunity:
+      'Reduce decoding load in Farsi text entry and reading: an optional vowel-mark display, or keyboard auto-switching that reads the surrounding text.',
+  },
+  {
+    id: 'persona-2',
+    name: 'Mandarin–English, dyslexic in English only',
+    core: 'Reads Chinese without difficulty. Dyslexia appears only in English, so others doubt it.',
+    traits: [
+      ['Chinese and alphabetic reading impairments involve different brain regions', 'S', 'Siok, Perfetti, Jin & Tan, Nature, 2004'],
+      ['Adults with dyslexia make more spelling errors and read more slowly in English as a second language', 'S', 'Annals of Dyslexia, 2025'],
+      ['Adults with dyslexia type more slowly and less accurately, with more reliance on visual checking', 'S', 'Reading and Writing, 2025'],
+      ['Reads Chinese normally; dyslexia appears only in English', 'H', 'Consistent with Siok et al. but not tested directly'],
+      ['Autocorrect suggests words from every installed language at once', 'H', '—'],
+      ['Others doubt the diagnosis because "you read fine"', 'H', '—'],
+      ['Keeps messages short; copies English words instead of typing', 'H', '—'],
+      ['Age, job, name', 'H', 'Placeholder'],
+    ],
+    opportunity:
+      'Autocorrect that follows the active keyboard language, plus dyslexia-aware English suggestions for users whose first script is not alphabetic.',
+  },
+  {
+    id: 'persona-3',
+    name: 'Mandarin–English, dyslexic in Chinese',
+    core: 'Typing pinyin is easy. Choosing the right character from the pop-up list is the hard step.',
+    traits: [
+      ['Chinese dyslexia involves visual-orthographic processing of characters, not only sound', 'S', 'Siok et al., Nature, 2004'],
+      ['Most characters are compounds built from radicals; the cognitive profile of Chinese dyslexia is more complex than alphabetic', 'S', 'Frontiers in Psychology, 2017'],
+      ['Pinyin input requires picking a character from a list of same-sound options; heavy pinyin use is linked to weaker character reading', 'S', 'PNAS pinyin typing study'],
+      ['Can read pinyin but confuses look-alike characters', 'H', 'Consistent with the above, not tested directly'],
+      ['Often sends the wrong character', 'H', '—'],
+      ['Uses emoji to replace uncertain words', 'H', '—'],
+      ['Age, job, name', 'H', 'Placeholder'],
+    ],
+    opportunity:
+      'Character-selection lists that show meaning hints or context previews, so the choice does not depend on visual recognition alone.',
+  },
+];
+
+const findings: [finding: string, evidence: string, recommendation: string][] = [
+  [
+    'Dyslexia does not transfer between scripts',
+    'Chinese and alphabetic reading impairments involve different brain regions (Siok et al., 2004); bilingual reading changes how dyslexia shows in adults (Scientific Studies of Reading, 2018)',
+    'Accessibility settings per language, not per account',
+  ],
+  [
+    'The switch moment is unowned',
+    'Dyslexic spelling errors differ by language (Language Resources and Evaluation, 2022), yet no study covers language switching on devices',
+    'One active-language signal that keyboard, autocorrect and predictions all follow',
+  ],
+  [
+    'Each script breaks at a different step',
+    'Farsi: decoding without vowel marks (Pouretemad, 2011). English: second-language spelling (Annals of Dyslexia, 2025). Mandarin: visual character processing and the pinyin picker (Siok, 2004; PNAS)',
+    'Script-specific support: a vowel-mark toggle for Farsi, meaning hints in the Chinese character picker',
+  ],
+  [
+    'Nobody has asked these users about their phones',
+    'Adults with dyslexia type slower and less accurately (Reading and Writing, 2025), but no study covers bilingual switching on devices',
+    'Run the interview study; treat this gap as the project’s main contribution',
+  ],
+];
+
+const sources: [source: string, supports: string, journal: string][] = [
+  ['Pouretemad et al., 2011. Manifestations of Developmental Dyslexia in Monolingual Persian Speaking Students', 'Vowel-free Persian is opaque; readers decode letter by letter', 'Archives of Iranian Medicine'],
+  ['Teaching English to Students With Dyslexia in Iran: A Multiple-Case Study, 2020', 'Persian spelling features cause specific problems in English; second-language dyslexia is under-researched', 'Reading & Writing Quarterly'],
+  ['Siok, Perfetti, Jin & Tan, 2004. Biological abnormality of impaired reading is constrained by culture', 'Chinese and alphabetic dyslexia involve different brain regions', 'Nature'],
+  ['Phonological awareness training for Chinese children with dyslexia, 2017', 'Chinese dyslexia has a more complex, visually loaded profile', 'Frontiers in Psychology'],
+  ['Pinyin typing hinders Chinese reading development', 'Pinyin input means picking a character from a same-sound list', 'PNAS'],
+  ['Language skills of adults with dyslexia in English as a foreign language, 2025', 'More spelling errors and slower reading in a second language', 'Annals of Dyslexia'],
+  ['Writing performance in Spanish adults with dyslexia: handwriting versus typing, 2025', 'Adults with dyslexia type slower, less accurately, with more visual checking', 'Reading and Writing'],
+  ['Learning to Read Bilingually Modulates the Manifestations of Dyslexia in Adults, 2018', 'Early bilingual reading changes how dyslexia shows up in adulthood', 'Scientific Studies of Reading'],
+  ['Spelling errors made by people with dyslexia, 2022', 'Dyslexic typing errors differ by language; corpora used to design assistive tech', 'Language Resources and Evaluation'],
+];
+
+const tagName = { S: 'sourced', H: 'hypothesis' } as const;
+---
+
+<Piece
+  project="dyslexia-across-languages"
+  title="personas and sources"
+  headline="Three patterns, not three people"
+  lede="Provisional personas built from peer-reviewed research only. Every trait is tagged, so the evidence and the guesses never blur."
+  description="Three provisional personas for bilingual adults with dyslexia, every trait tagged sourced or hypothesis, and the nine peer-reviewed sources behind them."
+>
+  <section class="section" aria-labelledby="method">
+    <h2 id="method" class="hl">Method</h2>
+    <p>
+      These personas come from peer-reviewed research only. No interviews have been run yet, and no
+      forum posts, blogs or vendor pages are used as evidence. Each persona is a pattern, not a real
+      person; names, ages and jobs are placeholders.
+    </p>
+    <ul>
+      <li><span class="ev" aria-hidden="true">S</span><strong>Sourced:</strong> supported by a source listed at the end.</li>
+      <li><span class="ev ev-h" aria-hidden="true">H</span><strong>Hypothesis:</strong> not found in research, to be confirmed or rejected in interviews.</li>
+    </ul>
+    <p>
+      Most studies test reading and spelling in lab tasks, not phone use. Anything about keyboards,
+      autocorrect or messaging is therefore a hypothesis until interviews confirm it.
+    </p>
+  </section>
+
+  {
+    personas.map((persona, i) => (
+      <section class="section" aria-labelledby={persona.id}>
+        <h2 id={persona.id} class="hl">
+          Persona {i + 1}: {persona.name}
+        </h2>
+        <p>{persona.core}</p>
+        <div class="table-wrap" role="region" aria-label={`Persona ${i + 1} traits`} tabindex="0">
+          <table class="counted">
+            <caption class="mono">persona {i + 1}, what is sourced and what is a guess</caption>
+            <thead>
+              <tr>
+                <th scope="col">Trait</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {persona.traits.map(([trait, tag, source]) => (
+                <tr>
+                  <th scope="row">{trait}</th>
+                  <td>
+                    <span class:list={['ev', tag === 'H' && 'ev-h']} aria-hidden="true">{tag}</span>
+                    <span class="sr-only">{tagName[tag]}</span>
+                  </td>
+                  <td>{source}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <b>Design opportunity</b>
+          {persona.opportunity}
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section" aria-labelledby="findings">
+    <h2 id="findings" class="hl">Findings</h2>
+    <p>Four patterns from the secondary research. Confidence is low for all of them until interviews confirm.</p>
+    <div class="table-wrap" role="region" aria-label="Findings, evidence and recommendations" tabindex="0">
+      <table class="counted">
+        <caption class="mono">each finding, the evidence behind it, and what it recommends</caption>
+        <thead>
+          <tr>
+            <th scope="col">Finding</th>
+            <th scope="col">Evidence</th>
+            <th scope="col">Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            findings.map(([finding, evidence, recommendation]) => (
+              <tr>
+                <th scope="row">{finding}</th>
+                <td>{evidence}</td>
+                <td>{recommendation}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="sources">
+    <h2 id="sources" class="hl">Sources</h2>
+    <p>All nine are peer-reviewed.</p>
+    <div class="table-wrap" role="region" aria-label="Sources" tabindex="0">
+      <table class="counted">
+        <caption class="mono">the evidence base, nine peer-reviewed studies</caption>
+        <thead>
+          <tr>
+            <th scope="col">Source</th>
+            <th scope="col">What it supports</th>
+            <th scope="col">Journal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            sources.map(([source, supports, journal]) => (
+              <tr>
+                <th scope="row">{source}</th>
+                <td>{supports}</td>
+                <td>{journal}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The gap worth stating: no peer-reviewed study looks at dyslexic Farsi or Mandarin speakers
+      switching languages on a phone. Research covers reading and spelling in lab tasks, mostly with
+      children.
+    </p>
+  </section>
+
+  <section class="section" aria-labelledby="next">
+    <h2 id="next" class="hl">Next</h2>
+    <p>
+      The hypotheses are the interview guide. Six to eight interviews, two or three per language pair,
+      would confirm or reject them.
+    </p>
+    <ul>
+      <li>Does dyslexia make keyboard switching worse, or is it the same as for any bilingual user?</li>
+      <li>What workarounds do people actually use: voice notes, copying, emoji, something else?</li>
+      <li>Is the character-selection step the real pain point for Chinese dyslexic users?</li>
+      <li>Do late-diagnosed Farsi speakers see their phone habits differently after diagnosis?</li>
+    </ul>
+  </section>
+</Piece>

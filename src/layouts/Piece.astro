@@ -1,0 +1,54 @@
+---
+/*
+ * A piece of a case study that needs a page of its own: an interactive trial,
+ * a map, the full evidence base. It sits one level under the case study, so
+ * the crumb, the H1 and the footer nav are the case study's, with this page's
+ * title and lede, and the pieces link to each other in the order the case
+ * study lists them.
+ */
+import Base from './Base.astro';
+import { findProject, kindOf } from '../data/projects';
+import { projectUrl, routes } from '../lib/routes';
+import '../styles/pages.css';
+import '../styles/pieces.css';
+
+interface Props {
+  /** The project slug this piece belongs to. */
+  project: string;
+  /** Lowercase, as it reads in the crumb and the page title. */
+  title: string;
+  /** The H1. */
+  headline: string;
+  lede: string;
+  /** Short description for search results and link previews. */
+  description: string;
+  next?: { href: string; title: string };
+}
+
+const { project: slug, title, headline, lede, description, next } = Astro.props;
+const project = findProject(slug);
+if (!project) throw new Error(`Piece names a project that does not exist: ${slug}`);
+const caseStudy = projectUrl(project.slug);
+const shelf =
+  kindOf(project) === 'research'
+    ? { name: 'research', href: routes.research }
+    : { name: 'product design', href: routes.productDesign };
+---
+
+<Base title={`${title}, ${project.title}, Narges Mirheydari`} description={description} current="works">
+  <article class="reading col-820 piece-page">
+    <p class="breadcrumb mono">
+      <a href={routes.works}>works</a> / <a href={shelf.href}>{shelf.name}</a> / <a href={caseStudy}>{project.title}</a> / {title}
+    </p>
+
+    <h1 class="page-h1">{headline}</h1>
+    <p class="lede">{lede}</p>
+
+    <slot />
+
+    <nav class="page-nav mono" aria-label="Case study pieces">
+      <a href={caseStudy}>← back to the case study</a>
+      {next && <a href={next.href}>next: {next.title} →</a>}
+    </nav>
+  </article>
+</Base>

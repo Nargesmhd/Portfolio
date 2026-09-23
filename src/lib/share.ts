@@ -72,6 +72,27 @@ const pages: ShareCard[] = [
     kicker: 'secondary research · interviews next',
   },
   {
+    path: '/work/dyslexia-across-languages/feel-the-switch/',
+    eyebrow: 'Case study · dyslexia across languages',
+    title: 'Your keyboard switches languages in one tap. Dyslexia does not.',
+    sub: 'Three two-minute trials: read Farsi without vowels, pick a Chinese character, fight autocorrect.',
+    kicker: '3 trials · farsi · mandarin · english',
+  },
+  {
+    path: '/work/dyslexia-across-languages/friction-map/',
+    eyebrow: 'Case study · dyslexia across languages',
+    title: 'One message, from first tap to send',
+    sub: 'Nine stops where a bilingual reply breaks, each tagged by persona, evidence and a fix to test.',
+    kicker: '9 stops · 3 personas',
+  },
+  {
+    path: '/work/dyslexia-across-languages/personas-and-sources/',
+    eyebrow: 'Case study · dyslexia across languages',
+    title: 'Three patterns, not three people',
+    sub: 'Provisional personas with every trait tagged sourced or hypothesis, and the nine peer-reviewed sources.',
+    kicker: '3 personas · 9 sources',
+  },
+  {
     path: '/about/',
     eyebrow: 'About',
     title: 'About me',
